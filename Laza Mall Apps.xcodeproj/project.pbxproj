@@ -1,0 +1,750 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A2B36392A70A37E0050671E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36382A70A37E0050671E /* Extension.swift */; };
+		1A2B363E2A70DE700050671E /* NewPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B363D2A70DE700050671E /* NewPasswordVC.swift */; };
+		1A2B36412A70F7750050671E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36402A70F7750050671E /* HomeVC.swift */; };
+		1A2B36432A70F7C40050671E /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36422A70F7C40050671E /* MainTabBarVC.swift */; };
+		1A2B36462A70F9030050671E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36452A70F9030050671E /* Model.swift */; };
+		1A2B36482A70FE580050671E /* ApiUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36472A70FE580050671E /* ApiUsers.swift */; };
+		1A2B364A2A70FEE10050671E /* ApiAllProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36492A70FEE10050671E /* ApiAllProduct.swift */; };
+		1A6D95282A720F5C00BAC168 /* ProductHomeCollectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D95262A720F5C00BAC168 /* ProductHomeCollectCell.swift */; };
+		1A6D95292A720F5C00BAC168 /* ProductHomeCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6D95272A720F5C00BAC168 /* ProductHomeCollectCell.xib */; };
+		1A6D952C2A720FBD00BAC168 /* CategoryCollectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D952A2A720FBD00BAC168 /* CategoryCollectCell.swift */; };
+		1A6D952D2A720FBD00BAC168 /* CategoryCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6D952B2A720FBD00BAC168 /* CategoryCollectCell.xib */; };
+		1A6D95302A7213C000BAC168 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1A6D952F2A7213C000BAC168 /* SDWebImageSwiftUI */; };
+		1A6D95322A724AF800BAC168 /* ApiAllCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D95312A724AF800BAC168 /* ApiAllCategory.swift */; };
+		1ACBD63A2A6FD02C002C12A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD6392A6FD02C002C12A2 /* AppDelegate.swift */; };
+		1ACBD63C2A6FD02C002C12A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD63B2A6FD02C002C12A2 /* SceneDelegate.swift */; };
+		1ACBD63E2A6FD02C002C12A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD63D2A6FD02C002C12A2 /* ViewController.swift */; };
+		1ACBD6412A6FD02C002C12A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACBD63F2A6FD02C002C12A2 /* Main.storyboard */; };
+		1ACBD6432A6FD02E002C12A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACBD6422A6FD02E002C12A2 /* Assets.xcassets */; };
+		1ACBD6462A6FD02E002C12A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACBD6442A6FD02E002C12A2 /* LaunchScreen.storyboard */; };
+		1ACBD6512A6FD02E002C12A2 /* Laza_Mall_AppsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD6502A6FD02E002C12A2 /* Laza_Mall_AppsTests.swift */; };
+		1ACBD65B2A6FD02E002C12A2 /* Laza_Mall_AppsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD65A2A6FD02E002C12A2 /* Laza_Mall_AppsUITests.swift */; };
+		1ACBD65D2A6FD02E002C12A2 /* Laza_Mall_AppsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD65C2A6FD02E002C12A2 /* Laza_Mall_AppsUITestsLaunchTests.swift */; };
+		1ACBD66B2A6FD0C2002C12A2 /* Screen1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD66A2A6FD0C2002C12A2 /* Screen1VC.swift */; };
+		1ACBD66D2A700678002C12A2 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD66C2A700678002C12A2 /* CreateAccountVC.swift */; };
+		1ACBD66F2A7009E5002C12A2 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD66E2A7009E5002C12A2 /* SignUpVC.swift */; };
+		1ACBD6712A700FA3002C12A2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD6702A700FA3002C12A2 /* LoginVC.swift */; };
+		1ACBD6732A7012A7002C12A2 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD6722A7012A7002C12A2 /* ForgotPasswordVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1ACBD64D2A6FD02E002C12A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1ACBD62E2A6FD02C002C12A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1ACBD6352A6FD02C002C12A2;
+			remoteInfo = "Laza Mall Apps";
+		};
+		1ACBD6572A6FD02E002C12A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1ACBD62E2A6FD02C002C12A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1ACBD6352A6FD02C002C12A2;
+			remoteInfo = "Laza Mall Apps";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1A2B36382A70A37E0050671E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		1A2B363D2A70DE700050671E /* NewPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordVC.swift; sourceTree = "<group>"; };
+		1A2B36402A70F7750050671E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		1A2B36422A70F7C40050671E /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
+		1A2B36452A70F9030050671E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1A2B36472A70FE580050671E /* ApiUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUsers.swift; sourceTree = "<group>"; };
+		1A2B36492A70FEE10050671E /* ApiAllProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAllProduct.swift; sourceTree = "<group>"; };
+		1A6D95262A720F5C00BAC168 /* ProductHomeCollectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHomeCollectCell.swift; sourceTree = "<group>"; };
+		1A6D95272A720F5C00BAC168 /* ProductHomeCollectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductHomeCollectCell.xib; sourceTree = "<group>"; };
+		1A6D952A2A720FBD00BAC168 /* CategoryCollectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectCell.swift; sourceTree = "<group>"; };
+		1A6D952B2A720FBD00BAC168 /* CategoryCollectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectCell.xib; sourceTree = "<group>"; };
+		1A6D95312A724AF800BAC168 /* ApiAllCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAllCategory.swift; sourceTree = "<group>"; };
+		1ACBD6362A6FD02C002C12A2 /* Laza Mall Apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Laza Mall Apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACBD6392A6FD02C002C12A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1ACBD63B2A6FD02C002C12A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1ACBD63D2A6FD02C002C12A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1ACBD6402A6FD02C002C12A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1ACBD6422A6FD02E002C12A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1ACBD6452A6FD02E002C12A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1ACBD6472A6FD02E002C12A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1ACBD64C2A6FD02E002C12A2 /* Laza Mall AppsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Laza Mall AppsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACBD6502A6FD02E002C12A2 /* Laza_Mall_AppsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laza_Mall_AppsTests.swift; sourceTree = "<group>"; };
+		1ACBD6562A6FD02E002C12A2 /* Laza Mall AppsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Laza Mall AppsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACBD65A2A6FD02E002C12A2 /* Laza_Mall_AppsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laza_Mall_AppsUITests.swift; sourceTree = "<group>"; };
+		1ACBD65C2A6FD02E002C12A2 /* Laza_Mall_AppsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laza_Mall_AppsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1ACBD66A2A6FD0C2002C12A2 /* Screen1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen1VC.swift; sourceTree = "<group>"; };
+		1ACBD66C2A700678002C12A2 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
+		1ACBD66E2A7009E5002C12A2 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		1ACBD6702A700FA3002C12A2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		1ACBD6722A7012A7002C12A2 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1ACBD6332A6FD02C002C12A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A6D95302A7213C000BAC168 /* SDWebImageSwiftUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1ACBD6492A6FD02E002C12A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1ACBD6532A6FD02E002C12A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A2B36372A70A3670050671E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1A2B36382A70A37E0050671E /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1A2B363C2A70BD030050671E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1A2B36472A70FE580050671E /* ApiUsers.swift */,
+				1A2B36492A70FEE10050671E /* ApiAllProduct.swift */,
+				1A6D95312A724AF800BAC168 /* ApiAllCategory.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		1A2B363F2A70F75C0050671E /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				1A2B36402A70F7750050671E /* HomeVC.swift */,
+				1A2B36422A70F7C40050671E /* MainTabBarVC.swift */,
+			);
+			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		1A2B36442A70F8F30050671E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A2B36452A70F9030050671E /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A6D95252A720EFF00BAC168 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				1A6D95262A720F5C00BAC168 /* ProductHomeCollectCell.swift */,
+				1A6D95272A720F5C00BAC168 /* ProductHomeCollectCell.xib */,
+				1A6D952A2A720FBD00BAC168 /* CategoryCollectCell.swift */,
+				1A6D952B2A720FBD00BAC168 /* CategoryCollectCell.xib */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
+		1ACBD62D2A6FD02C002C12A2 = {
+			isa = PBXGroup;
+			children = (
+				1ACBD6382A6FD02C002C12A2 /* Laza Mall Apps */,
+				1ACBD64F2A6FD02E002C12A2 /* Laza Mall AppsTests */,
+				1ACBD6592A6FD02E002C12A2 /* Laza Mall AppsUITests */,
+				1ACBD6372A6FD02C002C12A2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1ACBD6372A6FD02C002C12A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1ACBD6362A6FD02C002C12A2 /* Laza Mall Apps.app */,
+				1ACBD64C2A6FD02E002C12A2 /* Laza Mall AppsTests.xctest */,
+				1ACBD6562A6FD02E002C12A2 /* Laza Mall AppsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1ACBD6382A6FD02C002C12A2 /* Laza Mall Apps */ = {
+			isa = PBXGroup;
+			children = (
+				1A6D95252A720EFF00BAC168 /* XIB */,
+				1A2B36442A70F8F30050671E /* Model */,
+				1A2B363C2A70BD030050671E /* API */,
+				1A2B36372A70A3670050671E /* Extension */,
+				1ACBD6692A6FD050002C12A2 /* Controller */,
+				1ACBD6392A6FD02C002C12A2 /* AppDelegate.swift */,
+				1ACBD63B2A6FD02C002C12A2 /* SceneDelegate.swift */,
+				1ACBD63D2A6FD02C002C12A2 /* ViewController.swift */,
+				1ACBD63F2A6FD02C002C12A2 /* Main.storyboard */,
+				1ACBD6422A6FD02E002C12A2 /* Assets.xcassets */,
+				1ACBD6442A6FD02E002C12A2 /* LaunchScreen.storyboard */,
+				1ACBD6472A6FD02E002C12A2 /* Info.plist */,
+			);
+			path = "Laza Mall Apps";
+			sourceTree = "<group>";
+		};
+		1ACBD64F2A6FD02E002C12A2 /* Laza Mall AppsTests */ = {
+			isa = PBXGroup;
+			children = (
+				1ACBD6502A6FD02E002C12A2 /* Laza_Mall_AppsTests.swift */,
+			);
+			path = "Laza Mall AppsTests";
+			sourceTree = "<group>";
+		};
+		1ACBD6592A6FD02E002C12A2 /* Laza Mall AppsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1ACBD65A2A6FD02E002C12A2 /* Laza_Mall_AppsUITests.swift */,
+				1ACBD65C2A6FD02E002C12A2 /* Laza_Mall_AppsUITestsLaunchTests.swift */,
+			);
+			path = "Laza Mall AppsUITests";
+			sourceTree = "<group>";
+		};
+		1ACBD6692A6FD050002C12A2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1A2B363F2A70F75C0050671E /* Tab Bar */,
+				1ACBD66A2A6FD0C2002C12A2 /* Screen1VC.swift */,
+				1ACBD66C2A700678002C12A2 /* CreateAccountVC.swift */,
+				1ACBD66E2A7009E5002C12A2 /* SignUpVC.swift */,
+				1ACBD6702A700FA3002C12A2 /* LoginVC.swift */,
+				1ACBD6722A7012A7002C12A2 /* ForgotPasswordVC.swift */,
+				1A2B363D2A70DE700050671E /* NewPasswordVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1ACBD6352A6FD02C002C12A2 /* Laza Mall Apps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1ACBD6602A6FD02E002C12A2 /* Build configuration list for PBXNativeTarget "Laza Mall Apps" */;
+			buildPhases = (
+				1ACBD6322A6FD02C002C12A2 /* Sources */,
+				1ACBD6332A6FD02C002C12A2 /* Frameworks */,
+				1ACBD6342A6FD02C002C12A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Laza Mall Apps";
+			packageProductDependencies = (
+				1A6D952F2A7213C000BAC168 /* SDWebImageSwiftUI */,
+			);
+			productName = "Laza Mall Apps";
+			productReference = 1ACBD6362A6FD02C002C12A2 /* Laza Mall Apps.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1ACBD64B2A6FD02E002C12A2 /* Laza Mall AppsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1ACBD6632A6FD02E002C12A2 /* Build configuration list for PBXNativeTarget "Laza Mall AppsTests" */;
+			buildPhases = (
+				1ACBD6482A6FD02E002C12A2 /* Sources */,
+				1ACBD6492A6FD02E002C12A2 /* Frameworks */,
+				1ACBD64A2A6FD02E002C12A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1ACBD64E2A6FD02E002C12A2 /* PBXTargetDependency */,
+			);
+			name = "Laza Mall AppsTests";
+			productName = "Laza Mall AppsTests";
+			productReference = 1ACBD64C2A6FD02E002C12A2 /* Laza Mall AppsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1ACBD6552A6FD02E002C12A2 /* Laza Mall AppsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1ACBD6662A6FD02E002C12A2 /* Build configuration list for PBXNativeTarget "Laza Mall AppsUITests" */;
+			buildPhases = (
+				1ACBD6522A6FD02E002C12A2 /* Sources */,
+				1ACBD6532A6FD02E002C12A2 /* Frameworks */,
+				1ACBD6542A6FD02E002C12A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1ACBD6582A6FD02E002C12A2 /* PBXTargetDependency */,
+			);
+			name = "Laza Mall AppsUITests";
+			productName = "Laza Mall AppsUITests";
+			productReference = 1ACBD6562A6FD02E002C12A2 /* Laza Mall AppsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1ACBD62E2A6FD02C002C12A2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					1ACBD6352A6FD02C002C12A2 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					1ACBD64B2A6FD02E002C12A2 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 1ACBD6352A6FD02C002C12A2;
+					};
+					1ACBD6552A6FD02E002C12A2 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 1ACBD6352A6FD02C002C12A2;
+					};
+				};
+			};
+			buildConfigurationList = 1ACBD6312A6FD02C002C12A2 /* Build configuration list for PBXProject "Laza Mall Apps" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1ACBD62D2A6FD02C002C12A2;
+			packageReferences = (
+				1A6D952E2A7213C000BAC168 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
+			productRefGroup = 1ACBD6372A6FD02C002C12A2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1ACBD6352A6FD02C002C12A2 /* Laza Mall Apps */,
+				1ACBD64B2A6FD02E002C12A2 /* Laza Mall AppsTests */,
+				1ACBD6552A6FD02E002C12A2 /* Laza Mall AppsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1ACBD6342A6FD02C002C12A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1ACBD6462A6FD02E002C12A2 /* LaunchScreen.storyboard in Resources */,
+				1ACBD6432A6FD02E002C12A2 /* Assets.xcassets in Resources */,
+				1ACBD6412A6FD02C002C12A2 /* Main.storyboard in Resources */,
+				1A6D952D2A720FBD00BAC168 /* CategoryCollectCell.xib in Resources */,
+				1A6D95292A720F5C00BAC168 /* ProductHomeCollectCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1ACBD64A2A6FD02E002C12A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1ACBD6542A6FD02E002C12A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1ACBD6322A6FD02C002C12A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A6D95322A724AF800BAC168 /* ApiAllCategory.swift in Sources */,
+				1A2B36392A70A37E0050671E /* Extension.swift in Sources */,
+				1A2B363E2A70DE700050671E /* NewPasswordVC.swift in Sources */,
+				1A2B364A2A70FEE10050671E /* ApiAllProduct.swift in Sources */,
+				1ACBD66B2A6FD0C2002C12A2 /* Screen1VC.swift in Sources */,
+				1A2B36482A70FE580050671E /* ApiUsers.swift in Sources */,
+				1A2B36432A70F7C40050671E /* MainTabBarVC.swift in Sources */,
+				1ACBD63E2A6FD02C002C12A2 /* ViewController.swift in Sources */,
+				1ACBD6712A700FA3002C12A2 /* LoginVC.swift in Sources */,
+				1ACBD63A2A6FD02C002C12A2 /* AppDelegate.swift in Sources */,
+				1A2B36462A70F9030050671E /* Model.swift in Sources */,
+				1ACBD66D2A700678002C12A2 /* CreateAccountVC.swift in Sources */,
+				1ACBD66F2A7009E5002C12A2 /* SignUpVC.swift in Sources */,
+				1A6D952C2A720FBD00BAC168 /* CategoryCollectCell.swift in Sources */,
+				1ACBD6732A7012A7002C12A2 /* ForgotPasswordVC.swift in Sources */,
+				1A6D95282A720F5C00BAC168 /* ProductHomeCollectCell.swift in Sources */,
+				1A2B36412A70F7750050671E /* HomeVC.swift in Sources */,
+				1ACBD63C2A6FD02C002C12A2 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1ACBD6482A6FD02E002C12A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1ACBD6512A6FD02E002C12A2 /* Laza_Mall_AppsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1ACBD6522A6FD02E002C12A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1ACBD65D2A6FD02E002C12A2 /* Laza_Mall_AppsUITestsLaunchTests.swift in Sources */,
+				1ACBD65B2A6FD02E002C12A2 /* Laza_Mall_AppsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1ACBD64E2A6FD02E002C12A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1ACBD6352A6FD02C002C12A2 /* Laza Mall Apps */;
+			targetProxy = 1ACBD64D2A6FD02E002C12A2 /* PBXContainerItemProxy */;
+		};
+		1ACBD6582A6FD02E002C12A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1ACBD6352A6FD02C002C12A2 /* Laza Mall Apps */;
+			targetProxy = 1ACBD6572A6FD02E002C12A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1ACBD63F2A6FD02C002C12A2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1ACBD6402A6FD02C002C12A2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1ACBD6442A6FD02E002C12A2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1ACBD6452A6FD02E002C12A2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1ACBD65E2A6FD02E002C12A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1ACBD65F2A6FD02E002C12A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1ACBD6612A6FD02E002C12A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FZ6QC7T222;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Laza Mall Apps/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hafsah.Laza-Mall-Apps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1ACBD6622A6FD02E002C12A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FZ6QC7T222;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Laza Mall Apps/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hafsah.Laza-Mall-Apps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1ACBD6642A6FD02E002C12A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FZ6QC7T222;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hafsah.Laza-Mall-AppsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Laza Mall Apps.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Laza Mall Apps";
+			};
+			name = Debug;
+		};
+		1ACBD6652A6FD02E002C12A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FZ6QC7T222;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hafsah.Laza-Mall-AppsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Laza Mall Apps.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Laza Mall Apps";
+			};
+			name = Release;
+		};
+		1ACBD6672A6FD02E002C12A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FZ6QC7T222;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hafsah.Laza-Mall-AppsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Laza Mall Apps";
+			};
+			name = Debug;
+		};
+		1ACBD6682A6FD02E002C12A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FZ6QC7T222;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hafsah.Laza-Mall-AppsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Laza Mall Apps";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1ACBD6312A6FD02C002C12A2 /* Build configuration list for PBXProject "Laza Mall Apps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1ACBD65E2A6FD02E002C12A2 /* Debug */,
+				1ACBD65F2A6FD02E002C12A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1ACBD6602A6FD02E002C12A2 /* Build configuration list for PBXNativeTarget "Laza Mall Apps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1ACBD6612A6FD02E002C12A2 /* Debug */,
+				1ACBD6622A6FD02E002C12A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1ACBD6632A6FD02E002C12A2 /* Build configuration list for PBXNativeTarget "Laza Mall AppsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1ACBD6642A6FD02E002C12A2 /* Debug */,
+				1ACBD6652A6FD02E002C12A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1ACBD6662A6FD02E002C12A2 /* Build configuration list for PBXNativeTarget "Laza Mall AppsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1ACBD6672A6FD02E002C12A2 /* Debug */,
+				1ACBD6682A6FD02E002C12A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A6D952E2A7213C000BAC168 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A6D952F2A7213C000BAC168 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A6D952E2A7213C000BAC168 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1ACBD62E2A6FD02C002C12A2 /* Project object */;
+}
