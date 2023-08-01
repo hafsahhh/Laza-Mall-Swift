@@ -174,7 +174,7 @@ class SignUpVC: UIViewController {
             )
             saveUserDefault(userDetail)
         } else {
-
+            
             //remove data dari userdefault
             UserDefaults.standard.removeObject(forKey: SavedUser)
             print("User data removed from UserDefaults.")

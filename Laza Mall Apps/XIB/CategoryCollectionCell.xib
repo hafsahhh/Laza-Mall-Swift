@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryBrand" id="gTV-IL-0wX" customClass="CategoryCollectionCell" customModule="Laza_Mall_Apps" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOK-Hl-4MS">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYD-W0-J5j">
+                                <rect key="frame" x="54.666666666666657" y="24.666666666666671" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.88398171772040812" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sYD-W0-J5j" firstAttribute="centerY" secondItem="VOK-Hl-4MS" secondAttribute="centerY" id="1pv-qo-oaW"/>
+                            <constraint firstItem="sYD-W0-J5j" firstAttribute="centerX" secondItem="VOK-Hl-4MS" secondAttribute="centerX" id="gnX-aO-Tz3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="VOK-Hl-4MS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4kQ-iC-j6I"/>
+                <constraint firstAttribute="bottom" secondItem="VOK-Hl-4MS" secondAttribute="bottom" id="YEy-M9-noC"/>
+                <constraint firstItem="VOK-Hl-4MS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bVb-sE-bB4"/>
+                <constraint firstAttribute="trailing" secondItem="VOK-Hl-4MS" secondAttribute="trailing" id="jyG-qL-9ep"/>
+            </constraints>
+            <size key="customSize" width="150" height="70"/>
+            <connections>
+                <outlet property="labelBrand" destination="sYD-W0-J5j" id="E4w-ww-t4n"/>
+                <outlet property="viewContainer" destination="VOK-Hl-4MS" id="vDG-E0-GKQ"/>
+            </connections>
+            <point key="canvasLocation" x="206.10687022900763" y="-5.6338028169014089"/>
+        </collectionViewCell>
+    </objects>
+</document>

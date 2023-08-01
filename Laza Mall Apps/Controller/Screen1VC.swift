@@ -63,7 +63,7 @@ class Screen1VC: UIViewController {
     
 
     @IBAction func skipBtnAct(_ sender: Any) {
-        let skipBtnCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateAccountVC") as! CreateAccountVC
+        let skipBtnCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
         skipBtnCtrl.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(skipBtnCtrl, animated: true)
 //        let skipBtnCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateAccountVC") as! CreateAccountVC

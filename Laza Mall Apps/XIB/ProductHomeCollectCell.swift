@@ -10,13 +10,14 @@ import SDWebImage
 
 class ProductHomeCollectCell: UICollectionViewCell {
     
+    static let identifier = "ProductHomeCollectCell"
+    static func nib() -> UINib {
+        return UINib(nibName: "ProductHomeCollectCell", bundle: nil)
+    }
     
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var loveView: UIButton!
-    
     @IBOutlet weak var titleView: UILabel!
-    
     @IBOutlet weak var priceView: UILabel!
     
     override func awakeFromNib() {

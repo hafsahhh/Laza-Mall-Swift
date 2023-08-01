@@ -7,6 +7,7 @@
 
 import Foundation
 
+//typealias Categoriess = [String]
 
 struct ProductIndex : Codable{
     var results: [ProductEntry]!
@@ -19,9 +20,9 @@ struct ProductEntry : Codable{
     let category : Category
 }
  
-struct categoryIndex : Codable{
-    var results: [categoryEntry]!
-}
+//struct categoryIndex : Codable{
+//    var results: [categoryEntry]!
+//}
 
 struct categoryEntry : Codable{
     let category : Category
