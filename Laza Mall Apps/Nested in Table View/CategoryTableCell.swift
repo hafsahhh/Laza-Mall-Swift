@@ -15,6 +15,8 @@ class CategoryTableCell: UITableViewCell {
     @IBOutlet weak var categoryCollectView: UICollectionView!
     
     var modelCat = categoryIndex()
+    var reloadTable: (() -> Void)?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +28,7 @@ class CategoryTableCell: UITableViewCell {
         AllCategoryApi().getData { [weak self] category in
             self?.modelCat.append(contentsOf: category)
             self?.categoryCollectView.reloadData()
+            self?.reloadTable?()
         }
     }
     

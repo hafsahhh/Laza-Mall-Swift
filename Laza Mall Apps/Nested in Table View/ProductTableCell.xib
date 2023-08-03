@@ -18,13 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Arrival" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHu-jU-mFg">
-                        <rect key="frame" x="20" y="20" width="280" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="20" y="20" width="280" height="20.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXZ-yr-eEz">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXZ-yr-eEz">
                         <rect key="frame" x="220" y="20" width="80" height="26.666666666666671"/>
+                        <color key="tintColor" red="0.56078431370000004" green="0.58431372550000005" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain">
                             <attributedString key="attributedTitle">
@@ -38,10 +39,10 @@
                             </attributedString>
                         </buttonConfiguration>
                     </button>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rem-Jd-r0O">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rem-Jd-r0O" customClass="DynamicHeightCollectionView" customModule="Laza_Mall_Apps" customModuleProvider="target">
                         <rect key="frame" x="20" y="60" width="280" height="58"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LdH-MF-eWx">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LdH-MF-eWx">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -68,7 +69,7 @@
                 <outlet property="productCollectView" destination="rem-Jd-r0O" id="mKV-FX-72h"/>
                 <outlet property="viewAllBtnOutlet" destination="FXZ-yr-eEz" id="wsF-Eg-hDP"/>
             </connections>
-            <point key="canvasLocation" x="126.71755725190839" y="53.87323943661972"/>
+            <point key="canvasLocation" x="128" y="56"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol productTableCellProtocol {
+    func showDetailProduct(product: ProductEntry)
+}
+
 class ProductTableCell: UITableViewCell {
     
     static let identifier = "ProductTableCell"
@@ -19,6 +23,8 @@ class ProductTableCell: UITableViewCell {
     @IBOutlet weak var productCollectView: UICollectionView!
     
     var modelProduct = [ProductEntry]()
+    var reloadTable: (()->Void)?
+    var delegateProductDetail: productTableCellProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +41,7 @@ class ProductTableCell: UITableViewCell {
             for product in self.modelProduct{
                 print("helo \(product.title)")
             }
+            self.reloadTable?()
         }
         
     }
@@ -52,7 +59,7 @@ extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 181, height: 358)
+        return CGSize(width: 160, height: 400)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -69,5 +76,9 @@ extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource
         return productCell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegateProductDetail?.showDetailProduct(product: modelProduct[indexPath.item])
+        print("data ini\(modelProduct)")
+    }
     
 }

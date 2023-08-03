@@ -6,12 +6,24 @@
 //
 
 import UIKit
+import SideMenu
 
 class HomeNestedVC: UIViewController {
 
     @IBOutlet weak var homeTableView: UITableView!
     @IBOutlet weak var searchHome: UISearchBar!
     @IBOutlet weak var micOutlet: UIButton!
+    
+    var blurEffectView: UIVisualEffectView?
+    var isMenuClicked: Bool = false
+    
+    lazy var parentBlurView : UIVisualEffectView = {
+        var blurView = UIVisualEffectView()
+        blurView.effect = UIBlurEffect(style: .light)
+        let size = CGSize(width: view.frame.size.width/2, height: view.frame.size.height)
+        blurView.frame = CGRect(origin: .zero, size: size)
+        return blurView
+    }()
     
     private func setupTabBarText() {
         let label2 = UILabel()
@@ -37,8 +49,27 @@ class HomeNestedVC: UIViewController {
     
     //Menu Button
     @objc func menuBtnAct(){
-        print("bau")
+        print("isMenu",isMenuClicked)
+        if isMenuClicked {
+            isMenuClicked = false
+            parentBlurView.isHidden = true
+        } else {
+            isMenuClicked = true
+            parentBlurView.isHidden = false
+            performSegue(withIdentifier: "SideMenuNavigationController" , sender: nil)
+        }
     }
+    
+//    func blurEffect(){
+//        let blurEffect = UIBlurEffect(style: .light)
+//        blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView?.frame = view.bounds
+//        view.addSubview(blurEffectView ?? UIVisualEffectView())
+//    }
+//    func removeBlurEffect(){
+//        blurEffectView?.removeFromSuperview()
+//        blurEffectView = nil
+//    }
     
     //Cart Button
     private lazy var cartBtn : UIButton = {
@@ -46,13 +77,12 @@ class HomeNestedVC: UIViewController {
         let cartBtn = UIButton.init(type: .custom)
         cartBtn.setImage(UIImage(named:"Cart"), for: .normal)
         cartBtn.addTarget(self, action: #selector(cartBtnAct), for: .touchUpInside)
-        cartBtn.frame = CGRect(x: 300, y: 90, width: 45, height: 45)
+        cartBtn.frame = CGRect(x: 330, y: 0, width: 45, height: 45)
         return cartBtn
     }()
     
     //Cart Button
     @objc func cartBtnAct(){
-        
     }
     
     override func viewDidLoad() {
@@ -61,10 +91,12 @@ class HomeNestedVC: UIViewController {
         //func tab Bar action
         setupTabBarText()
         
-        
         //nampilin menu dan cart button
+
         view.addSubview(menuBtn)
         view.addSubview(cartBtn)
+        view.addSubview(parentBlurView)
+        parentBlurView.isHidden = true
         
         //menu button
         let menuBtn = UIBarButtonItem(customView: menuBtn)
@@ -86,11 +118,9 @@ class HomeNestedVC: UIViewController {
         homeTableView.register(ProductTableCell.nib(), forCellReuseIdentifier: ProductTableCell.identifier)
         
     }
-
 }
 
-extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource {
-    
+extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTableCellProtocol {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -102,9 +132,17 @@ extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row < 1 {
             guard let catCell =  tableView.dequeueReusableCell(withIdentifier: "CategoryTableCell") as? CategoryTableCell else {return UITableViewCell()}
+            catCell.reloadTable = { [weak self] in
+                self?.homeTableView.reloadData()
+            }
+            
             return catCell
         } else {
             guard let prodCell = tableView.dequeueReusableCell(withIdentifier: ProductTableCell.identifier, for: indexPath) as? ProductTableCell else { return UITableViewCell()}
+            prodCell.reloadTable = { [weak self] in
+                self?.homeTableView.reloadData()
+                prodCell.delegateProductDetail = self
+            }
 //                    tableView.dequeueReusableCell(withIdentifier: "ProductTableCell") as? CategoryTableCell else {return UITableViewCell()}
             return prodCell
         }
@@ -114,7 +152,21 @@ extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row < 1 {
             return 150
         } else {
-            return 500
+            return UITableView.automaticDimension
         }
+    }
+    
+    func showDetailProduct(product: ProductEntry) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailProVC") as? DetailProVC {
+            detailViewController.product = product
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
+    }
+}
+
+extension HomeNestedVC: SideMenuNavigationControllerDelegate {
+    func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+        parentBlurView.isHidden = true
     }
 }

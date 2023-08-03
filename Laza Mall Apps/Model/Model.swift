@@ -18,11 +18,15 @@ struct ProductEntry : Codable{
     let image : String
     let price : Double
     let category : Category
+    let description: String
+    let rating: Rating
 }
  
-//struct categoryIndex : Codable{
-//    var results: [categoryEntry]!
-//}
+struct Rating: Codable {
+    let rate: Double
+    let count: Int
+}
+
 
 struct categoryEntry : Codable{
     let category : Category
@@ -35,12 +39,10 @@ enum Category: String, Codable {
 }
 
 struct ProductDetail : Codable {
-    
     let id: Int
     let title: String
     let price: Double
     let description: String
-
 }
 
 

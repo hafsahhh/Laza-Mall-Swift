@@ -8,7 +8,7 @@
 import UIKit
 
 class MainTabBarVC: UITabBarController {
-
+    var blurEffectView: UIVisualEffectView?
     override func viewDidLoad() {
         super.viewDidLoad()
 

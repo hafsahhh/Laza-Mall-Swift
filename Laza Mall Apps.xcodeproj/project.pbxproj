@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0671ED2A7B58CE0079B97F /* sizeCollectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671EB2A7B58CE0079B97F /* sizeCollectCell.swift */; };
+		1A0671EE2A7B58CE0079B97F /* sizeCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0671EC2A7B58CE0079B97F /* sizeCollectCell.xib */; };
+		1A0671F12A7B883C0079B97F /* DataDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F02A7B883C0079B97F /* DataDummy.swift */; };
+		1A0671F52A7B8B150079B97F /* ReviewsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F32A7B8B150079B97F /* ReviewsTableCell.swift */; };
+		1A0671F62A7B8B150079B97F /* ReviewsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0671F42A7B8B150079B97F /* ReviewsTableCell.xib */; };
+		1A0671F82A7B8B360079B97F /* ReviewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F72A7B8B360079B97F /* ReviewsVC.swift */; };
 		1A24CEA02A789396008F693F /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A24CE9E2A789396008F693F /* CategoryCollectionCell.swift */; };
 		1A24CEA12A789396008F693F /* CategoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A24CE9F2A789396008F693F /* CategoryCollectionCell.xib */; };
 		1A24CEB52A78B4D4008F693F /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A24CEB32A78B4D4008F693F /* CategoryTableCell.swift */; };
@@ -24,10 +30,14 @@
 		1A4F61D32A77F2C2004D4C7E /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F61D22A77F2C2004D4C7E /* CartVC.swift */; };
 		1A4F61D52A77F2E7004D4C7E /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F61D42A77F2E7004D4C7E /* CardVC.swift */; };
 		1A4F61D72A77F460004D4C7E /* HomepageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F61D62A77F460004D4C7E /* HomepageVC.swift */; };
+		1A561E522A79DD6A0024FF29 /* DetailProVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A561E512A79DD6A0024FF29 /* DetailProVC.swift */; };
+		1A561E542A7A03B30024FF29 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A561E532A7A03B30024FF29 /* IntrinsicTableView.swift */; };
+		1A561E562A7A046D0024FF29 /* DynamicHeightTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A561E552A7A046D0024FF29 /* DynamicHeightTable.swift */; };
 		1A6D95282A720F5C00BAC168 /* ProductHomeCollectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D95262A720F5C00BAC168 /* ProductHomeCollectCell.swift */; };
 		1A6D95292A720F5C00BAC168 /* ProductHomeCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A6D95272A720F5C00BAC168 /* ProductHomeCollectCell.xib */; };
 		1A6D95302A7213C000BAC168 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1A6D952F2A7213C000BAC168 /* SDWebImageSwiftUI */; };
 		1A6D95322A724AF800BAC168 /* ApiAllCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D95312A724AF800BAC168 /* ApiAllCategory.swift */; };
+		1A91598D2A793F3500139480 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A91598C2A793F3500139480 /* MenuVC.swift */; };
 		1ACBD63A2A6FD02C002C12A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD6392A6FD02C002C12A2 /* AppDelegate.swift */; };
 		1ACBD63C2A6FD02C002C12A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD63B2A6FD02C002C12A2 /* SceneDelegate.swift */; };
 		1ACBD63E2A6FD02C002C12A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD63D2A6FD02C002C12A2 /* ViewController.swift */; };
@@ -42,6 +52,9 @@
 		1ACBD66F2A7009E5002C12A2 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD66E2A7009E5002C12A2 /* SignUpVC.swift */; };
 		1ACBD6712A700FA3002C12A2 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD6702A700FA3002C12A2 /* LoginVC.swift */; };
 		1ACBD6732A7012A7002C12A2 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD6722A7012A7002C12A2 /* ForgotPasswordVC.swift */; };
+		56380A5DEEEC949634732607 /* Pods_Laza_Mall_Apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C592FC0A93E2E3000B7BC4BD /* Pods_Laza_Mall_Apps.framework */; };
+		769472CC08A4F183FBF02C0F /* Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8128A43794B2D80F40D4DD40 /* Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests.framework */; };
+		D37F379CB3A5A65F258A124D /* Pods_Laza_Mall_AppsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED84E7319BA563EE0FA3F6D4 /* Pods_Laza_Mall_AppsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +75,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A1AC6BAB9F69B4CB75CEF73 /* Pods-Laza Mall Apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza Mall Apps.debug.xcconfig"; path = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps.debug.xcconfig"; sourceTree = "<group>"; };
+		1A0671EB2A7B58CE0079B97F /* sizeCollectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sizeCollectCell.swift; sourceTree = "<group>"; };
+		1A0671EC2A7B58CE0079B97F /* sizeCollectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = sizeCollectCell.xib; sourceTree = "<group>"; };
+		1A0671F02A7B883C0079B97F /* DataDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDummy.swift; sourceTree = "<group>"; };
+		1A0671F32A7B8B150079B97F /* ReviewsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableCell.swift; sourceTree = "<group>"; };
+		1A0671F42A7B8B150079B97F /* ReviewsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsTableCell.xib; sourceTree = "<group>"; };
+		1A0671F72A7B8B360079B97F /* ReviewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsVC.swift; sourceTree = "<group>"; };
 		1A24CE9E2A789396008F693F /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		1A24CE9F2A789396008F693F /* CategoryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionCell.xib; sourceTree = "<group>"; };
 		1A24CEB32A78B4D4008F693F /* CategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableCell.swift; sourceTree = "<group>"; };
@@ -79,9 +99,13 @@
 		1A4F61D22A77F2C2004D4C7E /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		1A4F61D42A77F2E7004D4C7E /* CardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
 		1A4F61D62A77F460004D4C7E /* HomepageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageVC.swift; sourceTree = "<group>"; };
+		1A561E512A79DD6A0024FF29 /* DetailProVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProVC.swift; sourceTree = "<group>"; };
+		1A561E532A7A03B30024FF29 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
+		1A561E552A7A046D0024FF29 /* DynamicHeightTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTable.swift; sourceTree = "<group>"; };
 		1A6D95262A720F5C00BAC168 /* ProductHomeCollectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHomeCollectCell.swift; sourceTree = "<group>"; };
 		1A6D95272A720F5C00BAC168 /* ProductHomeCollectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductHomeCollectCell.xib; sourceTree = "<group>"; };
 		1A6D95312A724AF800BAC168 /* ApiAllCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAllCategory.swift; sourceTree = "<group>"; };
+		1A91598C2A793F3500139480 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		1ACBD6362A6FD02C002C12A2 /* Laza Mall Apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Laza Mall Apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACBD6392A6FD02C002C12A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ACBD63B2A6FD02C002C12A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +124,14 @@
 		1ACBD66E2A7009E5002C12A2 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		1ACBD6702A700FA3002C12A2 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		1ACBD6722A7012A7002C12A2 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		2F5E43070E35D62F25DF064F /* Pods-Laza Mall Apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza Mall Apps.release.xcconfig"; path = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps.release.xcconfig"; sourceTree = "<group>"; };
+		50EFF30AA52DE4DAC95E03C3 /* Pods-Laza Mall AppsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza Mall AppsTests.release.xcconfig"; path = "Target Support Files/Pods-Laza Mall AppsTests/Pods-Laza Mall AppsTests.release.xcconfig"; sourceTree = "<group>"; };
+		77C9A6C93833B58F4F11160D /* Pods-Laza Mall AppsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza Mall AppsTests.debug.xcconfig"; path = "Target Support Files/Pods-Laza Mall AppsTests/Pods-Laza Mall AppsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8128A43794B2D80F40D4DD40 /* Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DB030438080F50CAC6AFA51 /* Pods-Laza Mall Apps-Laza Mall AppsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza Mall Apps-Laza Mall AppsUITests.release.xcconfig"; path = "Target Support Files/Pods-Laza Mall Apps-Laza Mall AppsUITests/Pods-Laza Mall Apps-Laza Mall AppsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C592FC0A93E2E3000B7BC4BD /* Pods_Laza_Mall_Apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laza_Mall_Apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF13829C5CF3BAC66488BECF /* Pods-Laza Mall Apps-Laza Mall AppsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza Mall Apps-Laza Mall AppsUITests.debug.xcconfig"; path = "Target Support Files/Pods-Laza Mall Apps-Laza Mall AppsUITests/Pods-Laza Mall Apps-Laza Mall AppsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		ED84E7319BA563EE0FA3F6D4 /* Pods_Laza_Mall_AppsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Laza_Mall_AppsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A6D95302A7213C000BAC168 /* SDWebImageSwiftUI in Frameworks */,
+				56380A5DEEEC949634732607 /* Pods_Laza_Mall_Apps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D37F379CB3A5A65F258A124D /* Pods_Laza_Mall_AppsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,12 +156,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				769472CC08A4F183FBF02C0F /* Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A0671EA2A7B58A20079B97F /* Size Product */ = {
+			isa = PBXGroup;
+			children = (
+				1A0671EB2A7B58CE0079B97F /* sizeCollectCell.swift */,
+				1A0671EC2A7B58CE0079B97F /* sizeCollectCell.xib */,
+			);
+			path = "Size Product";
+			sourceTree = "<group>";
+		};
+		1A0671EF2A7B88270079B97F /* Data Dummy */ = {
+			isa = PBXGroup;
+			children = (
+				1A0671F02A7B883C0079B97F /* DataDummy.swift */,
+			);
+			path = "Data Dummy";
+			sourceTree = "<group>";
+		};
+		1A0671F22A7B8AEF0079B97F /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				1A0671F32A7B8B150079B97F /* ReviewsTableCell.swift */,
+				1A0671F42A7B8B150079B97F /* ReviewsTableCell.xib */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
 		1A24CEA22A78A881008F693F /* Nested in Table View */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				1A2B36382A70A37E0050671E /* Extension.swift */,
+				1A561E532A7A03B30024FF29 /* IntrinsicTableView.swift */,
+				1A561E552A7A046D0024FF29 /* DynamicHeightTable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -166,6 +229,7 @@
 				1A4F61D22A77F2C2004D4C7E /* CartVC.swift */,
 				1A4F61D42A77F2E7004D4C7E /* CardVC.swift */,
 				1A4F61D62A77F460004D4C7E /* HomepageVC.swift */,
+				1A91598C2A793F3500139480 /* MenuVC.swift */,
 			);
 			path = "Tab Bar";
 			sourceTree = "<group>";
@@ -176,6 +240,17 @@
 				1A2B36452A70F9030050671E /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1A561E502A79DD4E0024FF29 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				1A0671F22A7B8AEF0079B97F /* Review */,
+				1A0671EA2A7B58A20079B97F /* Size Product */,
+				1A561E512A79DD6A0024FF29 /* DetailProVC.swift */,
+				1A0671F72A7B8B360079B97F /* ReviewsVC.swift */,
+			);
+			path = Product;
 			sourceTree = "<group>";
 		};
 		1A6D95252A720EFF00BAC168 /* XIB */ = {
@@ -196,6 +271,8 @@
 				1ACBD64F2A6FD02E002C12A2 /* Laza Mall AppsTests */,
 				1ACBD6592A6FD02E002C12A2 /* Laza Mall AppsUITests */,
 				1ACBD6372A6FD02C002C12A2 /* Products */,
+				C12B52A2EBB9120AA2089EF5 /* Pods */,
+				8B4B3D084DFB1D1DB974FCF2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,6 +289,7 @@
 		1ACBD6382A6FD02C002C12A2 /* Laza Mall Apps */ = {
 			isa = PBXGroup;
 			children = (
+				1A0671EF2A7B88270079B97F /* Data Dummy */,
 				1A24CEA22A78A881008F693F /* Nested in Table View */,
 				1A6D95252A720EFF00BAC168 /* XIB */,
 				1A2B36442A70F8F30050671E /* Model */,
@@ -249,6 +327,7 @@
 		1ACBD6692A6FD050002C12A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1A561E502A79DD4E0024FF29 /* Product */,
 				1A2B363F2A70F75C0050671E /* Tab Bar */,
 				1ACBD66A2A6FD0C2002C12A2 /* Screen1VC.swift */,
 				1ACBD66C2A700678002C12A2 /* CreateAccountVC.swift */,
@@ -260,6 +339,29 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		8B4B3D084DFB1D1DB974FCF2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C592FC0A93E2E3000B7BC4BD /* Pods_Laza_Mall_Apps.framework */,
+				8128A43794B2D80F40D4DD40 /* Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests.framework */,
+				ED84E7319BA563EE0FA3F6D4 /* Pods_Laza_Mall_AppsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C12B52A2EBB9120AA2089EF5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A1AC6BAB9F69B4CB75CEF73 /* Pods-Laza Mall Apps.debug.xcconfig */,
+				2F5E43070E35D62F25DF064F /* Pods-Laza Mall Apps.release.xcconfig */,
+				CF13829C5CF3BAC66488BECF /* Pods-Laza Mall Apps-Laza Mall AppsUITests.debug.xcconfig */,
+				8DB030438080F50CAC6AFA51 /* Pods-Laza Mall Apps-Laza Mall AppsUITests.release.xcconfig */,
+				77C9A6C93833B58F4F11160D /* Pods-Laza Mall AppsTests.debug.xcconfig */,
+				50EFF30AA52DE4DAC95E03C3 /* Pods-Laza Mall AppsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -267,9 +369,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1ACBD6602A6FD02E002C12A2 /* Build configuration list for PBXNativeTarget "Laza Mall Apps" */;
 			buildPhases = (
+				FC653F76D53C39FADC34C22F /* [CP] Check Pods Manifest.lock */,
 				1ACBD6322A6FD02C002C12A2 /* Sources */,
 				1ACBD6332A6FD02C002C12A2 /* Frameworks */,
 				1ACBD6342A6FD02C002C12A2 /* Resources */,
+				F89D56EE85B01E8F5B4712EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -287,6 +391,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1ACBD6632A6FD02E002C12A2 /* Build configuration list for PBXNativeTarget "Laza Mall AppsTests" */;
 			buildPhases = (
+				32321A18D875A2C730775130 /* [CP] Check Pods Manifest.lock */,
 				1ACBD6482A6FD02E002C12A2 /* Sources */,
 				1ACBD6492A6FD02E002C12A2 /* Frameworks */,
 				1ACBD64A2A6FD02E002C12A2 /* Resources */,
@@ -305,9 +410,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1ACBD6662A6FD02E002C12A2 /* Build configuration list for PBXNativeTarget "Laza Mall AppsUITests" */;
 			buildPhases = (
+				53F484B8FE6AEEF170388547 /* [CP] Check Pods Manifest.lock */,
 				1ACBD6522A6FD02E002C12A2 /* Sources */,
 				1ACBD6532A6FD02E002C12A2 /* Frameworks */,
 				1ACBD6542A6FD02E002C12A2 /* Resources */,
+				6D633F8B3C2793687E082676 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -375,8 +482,10 @@
 				1ACBD6412A6FD02C002C12A2 /* Main.storyboard in Resources */,
 				1A6D95292A720F5C00BAC168 /* ProductHomeCollectCell.xib in Resources */,
 				1A24CEBA2A78B510008F693F /* ProductTableCell.xib in Resources */,
+				1A0671EE2A7B58CE0079B97F /* sizeCollectCell.xib in Resources */,
 				1A24CEB62A78B4D4008F693F /* CategoryTableCell.xib in Resources */,
 				1A24CEA12A789396008F693F /* CategoryCollectionCell.xib in Resources */,
+				1A0671F62A7B8B150079B97F /* ReviewsTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,17 +505,124 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		32321A18D875A2C730775130 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Laza Mall AppsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53F484B8FE6AEEF170388547 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Laza Mall Apps-Laza Mall AppsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D633F8B3C2793687E082676 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laza Mall Apps-Laza Mall AppsUITests/Pods-Laza Mall Apps-Laza Mall AppsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laza Mall Apps-Laza Mall AppsUITests/Pods-Laza Mall Apps-Laza Mall AppsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Laza Mall Apps-Laza Mall AppsUITests/Pods-Laza Mall Apps-Laza Mall AppsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F89D56EE85B01E8F5B4712EE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC653F76D53C39FADC34C22F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Laza Mall Apps-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1ACBD6322A6FD02C002C12A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1A6D95322A724AF800BAC168 /* ApiAllCategory.swift in Sources */,
+				1A561E522A79DD6A0024FF29 /* DetailProVC.swift in Sources */,
 				1A2B36392A70A37E0050671E /* Extension.swift in Sources */,
 				1A4F61D32A77F2C2004D4C7E /* CartVC.swift in Sources */,
+				1A561E542A7A03B30024FF29 /* IntrinsicTableView.swift in Sources */,
 				1A2B363E2A70DE700050671E /* NewPasswordVC.swift in Sources */,
 				1A4F61D12A77F298004D4C7E /* WishlistVC.swift in Sources */,
 				1A2B364A2A70FEE10050671E /* ApiAllProduct.swift in Sources */,
+				1A0671F82A7B8B360079B97F /* ReviewsVC.swift in Sources */,
+				1A0671F52A7B8B150079B97F /* ReviewsTableCell.swift in Sources */,
 				1ACBD66B2A6FD0C2002C12A2 /* Screen1VC.swift in Sources */,
 				1A2B36482A70FE580050671E /* ApiUsers.swift in Sources */,
 				1A2B36432A70F7C40050671E /* MainTabBarVC.swift in Sources */,
@@ -417,9 +633,13 @@
 				1A4F61D72A77F460004D4C7E /* HomepageVC.swift in Sources */,
 				1ACBD63A2A6FD02C002C12A2 /* AppDelegate.swift in Sources */,
 				1A4F61D52A77F2E7004D4C7E /* CardVC.swift in Sources */,
+				1A0671F12A7B883C0079B97F /* DataDummy.swift in Sources */,
 				1A2B36462A70F9030050671E /* Model.swift in Sources */,
 				1ACBD66D2A700678002C12A2 /* CreateAccountVC.swift in Sources */,
 				1A24CEBC2A78BC4D008F693F /* HomeNestedVC.swift in Sources */,
+				1A561E562A7A046D0024FF29 /* DynamicHeightTable.swift in Sources */,
+				1A91598D2A793F3500139480 /* MenuVC.swift in Sources */,
+				1A0671ED2A7B58CE0079B97F /* sizeCollectCell.swift in Sources */,
 				1ACBD66F2A7009E5002C12A2 /* SignUpVC.swift in Sources */,
 				1ACBD6732A7012A7002C12A2 /* ForgotPasswordVC.swift in Sources */,
 				1A6D95282A720F5C00BAC168 /* ProductHomeCollectCell.swift in Sources */,
@@ -596,6 +816,7 @@
 		};
 		1ACBD6612A6FD02E002C12A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A1AC6BAB9F69B4CB75CEF73 /* Pods-Laza Mall Apps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -624,6 +845,7 @@
 		};
 		1ACBD6622A6FD02E002C12A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F5E43070E35D62F25DF064F /* Pods-Laza Mall Apps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -652,6 +874,7 @@
 		};
 		1ACBD6642A6FD02E002C12A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77C9A6C93833B58F4F11160D /* Pods-Laza Mall AppsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -672,6 +895,7 @@
 		};
 		1ACBD6652A6FD02E002C12A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50EFF30AA52DE4DAC95E03C3 /* Pods-Laza Mall AppsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -692,6 +916,7 @@
 		};
 		1ACBD6672A6FD02E002C12A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF13829C5CF3BAC66488BECF /* Pods-Laza Mall Apps-Laza Mall AppsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -710,6 +935,7 @@
 		};
 		1ACBD6682A6FD02E002C12A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DB030438080F50CAC6AFA51 /* Pods-Laza Mall Apps-Laza Mall AppsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
