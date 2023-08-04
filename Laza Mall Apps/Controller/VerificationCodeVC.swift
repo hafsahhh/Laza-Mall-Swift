@@ -8,22 +8,43 @@
 import UIKit
 
 class VerificationCodeVC: UIViewController {
+    
+    //Back Button
+    private lazy var backBtn : UIButton = {
+        //call back button
+        let backBtn = UIButton.init(type: .custom)
+        backBtn.setImage(UIImage(named:"Back"), for: .normal)
+        backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+        backBtn.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        return backBtn
+    }()
 
-        // Do any additional setup after loading the view.
+    //Back Button
+    @objc func backBtnAct(){
+        self.navigationController?.popViewController(animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let backBarBtn = UIBarButtonItem(customView: backBtn)
+        self.navigationItem.leftBarButtonItem  = backBarBtn
+        
+        
     }
-    */
-
+    
+    //untuk jump to new password view controller
+    func newPasswordVC(){
+        let newPassVc = self.storyboard?.instantiateViewController(withIdentifier: "NewPasswordVC") as! NewPasswordVC
+        newPassVc.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(newPassVc, animated: true)
+    }
+    
+    @IBAction func confirmPassBtn(_ sender: Any) {
+        
+        newPasswordVC()
+    }
+    
 }

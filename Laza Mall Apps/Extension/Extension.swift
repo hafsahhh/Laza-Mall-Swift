@@ -15,13 +15,14 @@ extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
+    func addShadow(color: UIColor, width: CGFloat, text: UITextField) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x: 0, y: text.frame.height + 10 , width: self.frame.size.width, height: width)
+        self.layer.addSublayer(border)
+        }
 }
 
-//extension UIImage {
-//    var base64: String?{
-//        self.pngData()?.base64EncodedString()
-//    }
-//}
 
 extension UIImage {
     // This method creates an image of a view
@@ -74,8 +75,11 @@ extension UITextField {
         return false
     }
     
+//    Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character:
     func validPassword(_ value:String) -> Bool {
-        let passwordValid = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$"
+        let passwordValid =
+        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]{8,}"
+//        "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$"
         let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordValid)
         if passwordPred.evaluate(with: value){
             return true

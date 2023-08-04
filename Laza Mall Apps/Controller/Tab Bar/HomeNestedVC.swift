@@ -43,7 +43,7 @@ class HomeNestedVC: UIViewController {
         let menuBtn = UIButton.init(type: .custom)
         menuBtn.setImage(UIImage(named:"Menu"), for: .normal)
         menuBtn.addTarget(self, action: #selector(menuBtnAct), for: .touchUpInside)
-        menuBtn.frame = CGRect(x: 20, y: 90, width: 45, height: 45)
+        menuBtn.frame = CGRect(x: 20, y: 75, width: 45, height: 45)
         return menuBtn
     }()
     
@@ -60,24 +60,13 @@ class HomeNestedVC: UIViewController {
         }
     }
     
-//    func blurEffect(){
-//        let blurEffect = UIBlurEffect(style: .light)
-//        blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView?.frame = view.bounds
-//        view.addSubview(blurEffectView ?? UIVisualEffectView())
-//    }
-//    func removeBlurEffect(){
-//        blurEffectView?.removeFromSuperview()
-//        blurEffectView = nil
-//    }
-    
     //Cart Button
     private lazy var cartBtn : UIButton = {
         //call back button
         let cartBtn = UIButton.init(type: .custom)
         cartBtn.setImage(UIImage(named:"Cart"), for: .normal)
         cartBtn.addTarget(self, action: #selector(cartBtnAct), for: .touchUpInside)
-        cartBtn.frame = CGRect(x: 330, y: 0, width: 45, height: 45)
+        cartBtn.frame = CGRect(x: 330, y: 75, width: 45, height: 45)
         return cartBtn
     }()
     

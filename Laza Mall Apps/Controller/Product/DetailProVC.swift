@@ -36,19 +36,19 @@ class DetailProVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    //Cart Button
-    private lazy var cartBtn : UIButton = {
+    //like Button
+    private lazy var likeBtn : UIButton = {
         //call back button
-        let cartBtn = UIButton.init(type: .custom)
-        cartBtn.setImage(UIImage(named:"Cart"), for: .normal)
-        cartBtn.addTarget(self, action: #selector(cartBtnAct), for: .touchUpInside)
-        cartBtn.frame = CGRect(x: 330, y: 0, width: 45, height: 45)
-        return cartBtn
+        let likeBtn = UIButton.init(type: .custom)
+        likeBtn.setImage(UIImage(named:"Heart"), for: .normal)
+        likeBtn.addTarget(self, action: #selector(likeBtnAct), for: .touchUpInside)
+        likeBtn.frame = CGRect(x: 330, y: 0, width: 45, height: 45)
+        return likeBtn
     }()
     
     
-    //Cart Button
-    @objc func cartBtnAct(){
+    //Like Button
+    @objc func likeBtnAct(){
         print("sumpil")
     }
     
@@ -60,8 +60,8 @@ class DetailProVC: UIViewController {
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
         //cart button
-        let cartBtn = UIBarButtonItem(customView: cartBtn)
-        self.navigationItem.rightBarButtonItem  = cartBtn
+        let likeBtn = UIBarButtonItem(customView: likeBtn)
+        self.navigationItem.rightBarButtonItem  = likeBtn
         
         
         loadDetail()
@@ -108,7 +108,7 @@ extension DetailProVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 60, height: 60 )
+        return CGSize(width: 100, height: 60 )
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

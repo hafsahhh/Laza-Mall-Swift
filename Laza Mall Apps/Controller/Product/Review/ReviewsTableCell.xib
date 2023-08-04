@@ -33,17 +33,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="Vpd-9y-4WS">
-                                <rect key="frame" x="60" y="33" width="25" height="15"/>
+                                <rect key="frame" x="55" y="33" width="25" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="O0h-pz-X9Y"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 Sep, 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-Mq-X0c">
-                                <rect key="frame" x="90" y="33" width="93" height="14"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="0.56862745100000001" green="0.56862745100000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHK-Cy-Cla">
                                 <rect key="frame" x="284" y="12" width="34" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -62,6 +56,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 Sep, 2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-Mq-X0c">
+                                <rect key="frame" x="85" y="33" width="228" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.56862745100000001" green="0.56862745100000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AGo-ex-pBV" secondAttribute="trailing" constant="100" id="3Mm-XJ-ZZO"/>
@@ -74,10 +74,10 @@
                             <constraint firstItem="AGo-ex-pBV" firstAttribute="top" secondItem="btF-3X-Kca" secondAttribute="top" constant="10" id="RdQ-7H-Xun"/>
                             <constraint firstItem="uHK-Cy-Cla" firstAttribute="top" secondItem="btF-3X-Kca" secondAttribute="top" constant="12" id="Vps-Jo-LMh"/>
                             <constraint firstItem="AGo-ex-pBV" firstAttribute="leading" secondItem="L0y-OK-Ycb" secondAttribute="trailing" constant="10" id="cer-2Q-VO4"/>
-                            <constraint firstItem="Vpd-9y-4WS" firstAttribute="leading" secondItem="L0y-OK-Ycb" secondAttribute="trailing" constant="10" id="d5C-7l-Ut6"/>
+                            <constraint firstItem="Vpd-9y-4WS" firstAttribute="leading" secondItem="L0y-OK-Ycb" secondAttribute="trailing" constant="5" id="d5C-7l-Ut6"/>
                             <constraint firstItem="Vpd-9y-4WS" firstAttribute="top" secondItem="AGo-ex-pBV" secondAttribute="bottom" constant="5" id="fud-GH-W3i"/>
                             <constraint firstItem="dbM-Mq-X0c" firstAttribute="top" secondItem="AGo-ex-pBV" secondAttribute="bottom" constant="5" id="irE-z3-M9g"/>
-                            <constraint firstAttribute="trailing" secondItem="dbM-Mq-X0c" secondAttribute="trailing" constant="150" id="pQm-mA-8bV"/>
+                            <constraint firstAttribute="trailing" secondItem="dbM-Mq-X0c" secondAttribute="trailing" constant="20" id="pQm-mA-8bV"/>
                             <constraint firstItem="L0y-OK-Ycb" firstAttribute="top" secondItem="btF-3X-Kca" secondAttribute="top" constant="10" id="r5Z-yg-W5F"/>
                             <constraint firstItem="L0y-OK-Ycb" firstAttribute="leading" secondItem="btF-3X-Kca" secondAttribute="leading" constant="10" id="urr-Lu-OxQ"/>
                             <constraint firstItem="dbM-Mq-X0c" firstAttribute="leading" secondItem="Vpd-9y-4WS" secondAttribute="trailing" constant="5" id="yRz-7d-9tP"/>

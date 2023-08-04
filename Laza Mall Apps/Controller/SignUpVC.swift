@@ -10,18 +10,39 @@ import UIKit
 class SignUpVC: UIViewController {
     
     
-    @IBOutlet weak var firstnameOutlet: UITextField!
-    @IBOutlet weak var lastnameOutlet: UITextField!
-    @IBOutlet weak var usernameOutlet: UITextField!
-    @IBOutlet weak var emailOutlet: UITextField!
-    @IBOutlet weak var phoneOutlet: UITextField!
-    @IBOutlet weak var passwordOutlet: UITextField!
+    @IBOutlet weak var usernameOutlet: UITextField!{
+        didSet{
+            usernameOutlet.addShadow(color: .gray, width: 0.5, text: usernameOutlet)
+        }
+    }
+    @IBOutlet weak var emailOutlet: UITextField!{
+        didSet{
+            emailOutlet.addShadow(color: .gray, width: 0.5, text: emailOutlet)
+        }
+    }
+    @IBOutlet weak var passwordOutlet: UITextField!{
+        didSet{
+            passwordOutlet.addShadow(color: .gray, width: 0.5, text: passwordOutlet)
+        }
+    }
+    
+    @IBOutlet weak var confirmPassOutlet: UITextField!{
+        didSet{
+            confirmPassOutlet.addShadow(color: .gray, width: 0.5, text: confirmPassOutlet)
+        }
+    }
+    
     @IBOutlet weak var signUpOutlet: UIButton!
     @IBOutlet weak var saveUserData: UISwitch!
+    @IBOutlet weak var eyePassOutlet: UIButton!
+    
     
     let userDefault = UserDefaults.standard
     //key untuk userdefault
-    let SavedUser = "SavedUser"
+    let savedUser = "savedUser"
+    let signUpUserDefault = "signUpUserDefault"
+    var iconClick = true
+    
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -37,7 +58,7 @@ class SignUpVC: UIViewController {
     @objc func backBtnAct(){
         self.navigationController?.popViewController(animated: true)
     }
-    
+    // MARK: - Func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         let backBarBtn = UIBarButtonItem(customView: backBtn)
@@ -45,12 +66,58 @@ class SignUpVC: UIViewController {
         
         signUpOutlet.isEnabled = false
         passwordOutlet.isSecureTextEntry = true
+        confirmPassOutlet.isSecureTextEntry = true
         
-        emailOutlet.addTarget(self, action:  #selector(cekValidasi),  for:.editingChanged )
-        passwordOutlet.addTarget(self, action:  #selector(cekValidasi),  for:.editingChanged )
+        // Tambahkan target untuk text field untuk melakukan validasi saat text berubah
+        usernameOutlet.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        emailOutlet.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordOutlet.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        confirmPassOutlet.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        // Lakukan validasi awal
+        validateTextFields()
         
         loadUserData()
     }
+    
+    private func signUp() {
+        guard let username = usernameOutlet.text,
+              let email = emailOutlet.text,
+              let password = passwordOutlet.text,
+              let confirmPassword = confirmPassOutlet.text else {
+            return
+        }
+        
+        // Check if password and confirm password match
+        guard confirmPassword == confirmPassOutlet.text else {
+            showAlert(title: "Password Mismatch", message: "Password dosen't match")
+            return
+        }
+        
+        // Validasi password regex
+        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        let isPasswordValid = passwordPredicate.evaluate(with: password)
+        
+        // Validasi email regex
+        let emailRegex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        let isEmailValid = emailPredicate.evaluate(with: email)
+    
+        
+        // cek validasi emial dan password
+        if !isEmailValid {
+            showAlert(title: "Invalid Email", message: "Please try again. ex: sitiHafsah@gmail.com")
+        } else if !isPasswordValid {
+            showAlert(title: "Invalid Password", message: "The password must be at least 8 characters long and contain at least one letter and one number. Ex: HelloWorld123")
+        } else {
+            self.tabBarController()
+        }
+        
+        
+    }
+    
+    
     
     
     //fungsi untuk menambahkan data
@@ -60,10 +127,8 @@ class SignUpVC: UIViewController {
         
         // Prepare the data to be sent in JSON format
         let userDetail = allUser (
-            name: Name(firstname: firstnameOutlet.text ?? "", lastname: lastnameOutlet.text ?? ""),
             username: usernameOutlet.text ?? "",
             email: emailOutlet.text ?? "",
-            phone: phoneOutlet.text ?? "",
             password: passwordOutlet.text ?? ""
         )
         do {
@@ -80,22 +145,15 @@ class SignUpVC: UIViewController {
             URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     print("Error: \(error)")
-                    // Handle error here (e.g., show an alert)
                     return
                 }
-                
                 if let data = data {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
                         print("Response JSON: \(json)")
-                        
-                        //                        self.saveUserDefault(userDetail)
-                        //                        self.checkUserDefaultsData()
-                        
                         DispatchQueue.main.async {
                             self.tabBarController()
                         }
-                        
                     } catch {
                         print("Error parsing JSON: \(error)")
                         // Handle error in parsing JSON response
@@ -116,32 +174,30 @@ class SignUpVC: UIViewController {
             let encoder = JSONEncoder()
             do {
                 let encoded = try encoder.encode(userDetail)
-                defaults.set(encoded, forKey: SavedUser)
+                defaults.set(encoded, forKey: savedUser)
+                UserDefaults.standard.set(true, forKey: signUpUserDefault )
                 print("User data saved to UserDefaults.")
             } catch {
                 print("Failed to encode user data: \(error.localizedDescription)")
             }
         } else {
-            UserDefaults.standard.removeObject(forKey: SavedUser)
+            UserDefaults.standard.removeObject(forKey: savedUser)
             print("User data removed from UserDefaults.")
         }
         
         //untuk mengecek file userdefault
-        let path: [AnyObject] = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true) as [AnyObject]
-        let folder: String = path[0] as! String
-        NSLog("Your NSUserDefaults are stored in this folder: %@/Preferences", folder)
+//        let path: [AnyObject] = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true) as [AnyObject]
+//        let folder: String = path[0] as! String
+//        NSLog("Your NSUserDefaults are stored in this folder: %@/Preferences", folder)
     }
     
     //Fungsi untuk menampilkan user default yang ada di textfield
     func loadUserData() {
-        if let savedData = UserDefaults.standard.data(forKey: SavedUser) {
+        if let savedData = UserDefaults.standard.data(forKey: savedUser) {
             let decoder = JSONDecoder()
             if let userDetail = try? decoder.decode(allUser.self, from: savedData) {
-                firstnameOutlet.text = userDetail.name.firstname
-                lastnameOutlet.text = userDetail.name.lastname
                 usernameOutlet.text = userDetail.username
                 emailOutlet.text = userDetail.email
-                phoneOutlet.text = userDetail.phone
                 passwordOutlet.text = userDetail.password
             }
         }
@@ -156,8 +212,37 @@ class SignUpVC: UIViewController {
     
     // MARK: - Sign Up Button
     @IBAction func signUpBtnAct(_ sender: Any) {
-        signUpUser()
+        signUp()
+//        signUpUser()
     }
+
+    
+    // MARK: - eye password button
+    @IBAction func eyePassBtn(_ sender: Any) {
+        if iconClick {
+            iconClick = true
+            passwordOutlet.isSecureTextEntry = false
+        } else {
+            iconClick = false
+            passwordOutlet.isSecureTextEntry = true
+        }
+        iconClick = !iconClick
+    }
+    
+    @IBAction func eyeConfrimPassBtn(_ sender: Any) {
+        if iconClick {
+            iconClick = true
+            confirmPassOutlet.isSecureTextEntry = false
+        } else {
+            iconClick = false
+            passwordOutlet.isSecureTextEntry = true
+            confirmPassOutlet.isSecureTextEntry = true
+        }
+        iconClick = !iconClick
+    }
+    
+    
+    
     
     
     // MARK: - Switch Button
@@ -166,52 +251,44 @@ class SignUpVC: UIViewController {
         if (sender as AnyObject).isOn {
             // Call the function here passing the user details to be saved
             let userDetail = allUser(
-                name: Name(firstname: firstnameOutlet.text ?? "", lastname: lastnameOutlet.text ?? ""),
                 username: usernameOutlet.text ?? "",
                 email: emailOutlet.text ?? "",
-                phone: phoneOutlet.text ?? "",
                 password: passwordOutlet.text ?? ""
             )
             saveUserDefault(userDetail)
         } else {
             
             //remove data dari userdefault
-            UserDefaults.standard.removeObject(forKey: SavedUser)
+            UserDefaults.standard.removeObject(forKey: savedUser)
             print("User data removed from UserDefaults.")
         }
     }
     
     
-    //membuat fungsi untuk cekvalidasi email dan password
-    @objc private func cekValidasi(){
-        let isEmailValid =
-        //validasi email [validEmail] di folder extensions
-        emailOutlet.validEmail(emailOutlet.text ?? "")
-        let isPassValid =
-        //validasi email [validPassword] di folder extensions
-        passwordOutlet.validPassword(passwordOutlet.text ?? "")
-        
-        //jika email dan password valid maka button akan berwarna biru
-        if isEmailValid || isPassValid{
-            signUpOutlet.isEnabled = true
-            signUpOutlet.backgroundColor = UIColor(named: "ColorBg" )
-        } else {
-            signUpOutlet.isEnabled = false
-            signUpOutlet.backgroundColor = UIColor(named: "ColorValid" )
-        }
-        
-    }
-    
-    //Mengubah warna pada button
-    @objc func textFieldDidChange() {
-        if emailOutlet.text == "" || passwordOutlet.hasText{
-            signUpOutlet.isEnabled = false
-            signUpOutlet.backgroundColor = UIColor(named: "ColorValid" )
-        }else{
-            signUpOutlet.isEnabled = true
-            signUpOutlet.backgroundColor = UIColor(named: "ColorBg" )
-        }
-    }
-    
-    
+    @objc private func textFieldDidChange() {
+         validateTextFields()
+     }
+     
+     private func validateTextFields() {
+         // Jika salah satu text field kosong, nonaktifkan tombol sign up dan beri warna abu-abu
+         guard let username = usernameOutlet.text, !username.isEmpty,
+               let email = emailOutlet.text, !email.isEmpty,
+               let confirmPassword = confirmPassOutlet.text, !confirmPassword.isEmpty,
+               let password = passwordOutlet.text, !password.isEmpty else {
+             signUpOutlet.isEnabled = false
+             signUpOutlet.alpha = 0.5
+             signUpOutlet.backgroundColor = UIColor.gray
+             return
+         }
+         signUpOutlet.isEnabled = true
+         signUpOutlet.alpha = 1.0
+         signUpOutlet.backgroundColor = UIColor(red: 151/255, green: 117/255, blue: 250/255, alpha: 1.0)
+     }
+     
+     private func showAlert(title: String, message: String) {
+         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+         alertController.addAction(okAction)
+         present(alertController, animated: true, completion: nil)
+     }
 }

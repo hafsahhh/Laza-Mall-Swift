@@ -9,7 +9,11 @@ import UIKit
 
 class ForgotPasswordVC: UIViewController {
 
-    @IBOutlet weak var emailOutlet: UITextField!
+    @IBOutlet weak var emailOutlet: UITextField!{
+        didSet{
+            emailOutlet.addShadow(color: .gray, width: 0.5, text: emailOutlet)
+        }
+    }
     @IBOutlet weak var forgotPassOutlet: UIButton!
     
     //Back Button
@@ -67,22 +71,26 @@ class ForgotPasswordVC: UIViewController {
                 // Login berhasil, tampilkan pesan sukses atau navigasi ke halaman berikutnya
                 print("Login berhasil, user: \(user)")
                 DispatchQueue.main.async {
-                    self.newPasswordVC()
+                    self.verificationCodeVC()
                 }
             } else {
                 // email salah, update paswword gagal
-                print("Update password gagal, email salah")
+                let alert = UIAlertController(title: "Waring!!!", message: "Email yang dimasukkan salah, tolong masukkan email sesuai dengan yang tersimpan di API", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                print("Email yang dimasukkan salah")
             }
         }
     }
     
     //untuk jump to new password view controller
-    func newPasswordVC(){
-        let newPassVc = self.storyboard?.instantiateViewController(withIdentifier: "NewPasswordVC") as! NewPasswordVC
-        newPassVc.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(newPassVc, animated: true)
+    func verificationCodeVC(){
+        let verifCodeVc = self.storyboard?.instantiateViewController(withIdentifier: "VerificationCodeVC") as! VerificationCodeVC
+        verifCodeVc.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(verifCodeVc, animated: true)
     }
     
+
     // MARK: - Forgot Password Button
     @IBAction func forgotPassBtnAct(_ sender: Any) {
         guard let email = emailOutlet.text else {

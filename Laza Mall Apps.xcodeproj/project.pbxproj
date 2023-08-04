@@ -13,6 +13,8 @@
 		1A0671F52A7B8B150079B97F /* ReviewsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F32A7B8B150079B97F /* ReviewsTableCell.swift */; };
 		1A0671F62A7B8B150079B97F /* ReviewsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0671F42A7B8B150079B97F /* ReviewsTableCell.xib */; };
 		1A0671F82A7B8B360079B97F /* ReviewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F72A7B8B360079B97F /* ReviewsVC.swift */; };
+		1A0671FA2A7BE60B0079B97F /* AddReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F92A7BE60B0079B97F /* AddReviewVC.swift */; };
+		1A0671FC2A7BEB370079B97F /* VerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671FB2A7BEB370079B97F /* VerificationCodeVC.swift */; };
 		1A24CEA02A789396008F693F /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A24CE9E2A789396008F693F /* CategoryCollectionCell.swift */; };
 		1A24CEA12A789396008F693F /* CategoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A24CE9F2A789396008F693F /* CategoryCollectionCell.xib */; };
 		1A24CEB52A78B4D4008F693F /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A24CEB32A78B4D4008F693F /* CategoryTableCell.swift */; };
@@ -82,6 +84,8 @@
 		1A0671F32A7B8B150079B97F /* ReviewsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableCell.swift; sourceTree = "<group>"; };
 		1A0671F42A7B8B150079B97F /* ReviewsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsTableCell.xib; sourceTree = "<group>"; };
 		1A0671F72A7B8B360079B97F /* ReviewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsVC.swift; sourceTree = "<group>"; };
+		1A0671F92A7BE60B0079B97F /* AddReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVC.swift; sourceTree = "<group>"; };
+		1A0671FB2A7BEB370079B97F /* VerificationCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeVC.swift; sourceTree = "<group>"; };
 		1A24CE9E2A789396008F693F /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		1A24CE9F2A789396008F693F /* CategoryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionCell.xib; sourceTree = "<group>"; };
 		1A24CEB32A78B4D4008F693F /* CategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableCell.swift; sourceTree = "<group>"; };
@@ -89,6 +93,15 @@
 		1A24CEB72A78B510008F693F /* ProductTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableCell.swift; sourceTree = "<group>"; };
 		1A24CEB82A78B510008F693F /* ProductTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableCell.xib; sourceTree = "<group>"; };
 		1A24CEBB2A78BC4D008F693F /* HomeNestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNestedVC.swift; sourceTree = "<group>"; };
+		1A29A8B42A7C886900FA25AA /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Light.ttf"; path = "../../../../../Downloads/Inter/static/Inter-Light.ttf"; sourceTree = "<group>"; };
+		1A29A8B52A7C886900FA25AA /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Medium.ttf"; path = "../../../../../Downloads/Inter/static/Inter-Medium.ttf"; sourceTree = "<group>"; };
+		1A29A8B62A7C886900FA25AA /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-ExtraLight.ttf"; path = "../../../../../Downloads/Inter/static/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		1A29A8B72A7C886900FA25AA /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-SemiBold.ttf"; path = "../../../../../Downloads/Inter/static/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		1A29A8B82A7C886900FA25AA /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Regular.ttf"; path = "../../../../../Downloads/Inter/static/Inter-Regular.ttf"; sourceTree = "<group>"; };
+		1A29A8B92A7C886900FA25AA /* Inter-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Thin.ttf"; path = "../../../../../Downloads/Inter/static/Inter-Thin.ttf"; sourceTree = "<group>"; };
+		1A29A8BA2A7C886A00FA25AA /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Bold.ttf"; path = "../../../../../Downloads/Inter/static/Inter-Bold.ttf"; sourceTree = "<group>"; };
+		1A29A8BB2A7C886A00FA25AA /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-ExtraBold.ttf"; path = "../../../../../Downloads/Inter/static/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		1A29A8BC2A7C886A00FA25AA /* Inter-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Inter-Black.ttf"; path = "../../../../../Downloads/Inter/static/Inter-Black.ttf"; sourceTree = "<group>"; };
 		1A2B36382A70A37E0050671E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		1A2B363D2A70DE700050671E /* NewPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordVC.swift; sourceTree = "<group>"; };
 		1A2B36422A70F7C40050671E /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
@@ -200,6 +213,22 @@
 			path = "Nested in Table View";
 			sourceTree = "<group>";
 		};
+		1A29A8B32A7C884F00FA25AA /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1A29A8BC2A7C886A00FA25AA /* Inter-Black.ttf */,
+				1A29A8BA2A7C886A00FA25AA /* Inter-Bold.ttf */,
+				1A29A8BB2A7C886A00FA25AA /* Inter-ExtraBold.ttf */,
+				1A29A8B62A7C886900FA25AA /* Inter-ExtraLight.ttf */,
+				1A29A8B42A7C886900FA25AA /* Inter-Light.ttf */,
+				1A29A8B52A7C886900FA25AA /* Inter-Medium.ttf */,
+				1A29A8B82A7C886900FA25AA /* Inter-Regular.ttf */,
+				1A29A8B72A7C886900FA25AA /* Inter-SemiBold.ttf */,
+				1A29A8B92A7C886900FA25AA /* Inter-Thin.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		1A2B36372A70A3670050671E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +278,7 @@
 				1A0671EA2A7B58A20079B97F /* Size Product */,
 				1A561E512A79DD6A0024FF29 /* DetailProVC.swift */,
 				1A0671F72A7B8B360079B97F /* ReviewsVC.swift */,
+				1A0671F92A7BE60B0079B97F /* AddReviewVC.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -289,6 +319,7 @@
 		1ACBD6382A6FD02C002C12A2 /* Laza Mall Apps */ = {
 			isa = PBXGroup;
 			children = (
+				1A29A8B32A7C884F00FA25AA /* fonts */,
 				1A0671EF2A7B88270079B97F /* Data Dummy */,
 				1A24CEA22A78A881008F693F /* Nested in Table View */,
 				1A6D95252A720EFF00BAC168 /* XIB */,
@@ -335,6 +366,7 @@
 				1ACBD6702A700FA3002C12A2 /* LoginVC.swift */,
 				1ACBD6722A7012A7002C12A2 /* ForgotPasswordVC.swift */,
 				1A2B363D2A70DE700050671E /* NewPasswordVC.swift */,
+				1A0671FB2A7BEB370079B97F /* VerificationCodeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -634,6 +666,7 @@
 				1ACBD63A2A6FD02C002C12A2 /* AppDelegate.swift in Sources */,
 				1A4F61D52A77F2E7004D4C7E /* CardVC.swift in Sources */,
 				1A0671F12A7B883C0079B97F /* DataDummy.swift in Sources */,
+				1A0671FA2A7BE60B0079B97F /* AddReviewVC.swift in Sources */,
 				1A2B36462A70F9030050671E /* Model.swift in Sources */,
 				1ACBD66D2A700678002C12A2 /* CreateAccountVC.swift in Sources */,
 				1A24CEBC2A78BC4D008F693F /* HomeNestedVC.swift in Sources */,
@@ -642,6 +675,7 @@
 				1A0671ED2A7B58CE0079B97F /* sizeCollectCell.swift in Sources */,
 				1ACBD66F2A7009E5002C12A2 /* SignUpVC.swift in Sources */,
 				1ACBD6732A7012A7002C12A2 /* ForgotPasswordVC.swift in Sources */,
+				1A0671FC2A7BEB370079B97F /* VerificationCodeVC.swift in Sources */,
 				1A6D95282A720F5C00BAC168 /* ProductHomeCollectCell.swift in Sources */,
 				1A24CEB92A78B510008F693F /* ProductTableCell.swift in Sources */,
 				1ACBD63C2A6FD02C002C12A2 /* SceneDelegate.swift in Sources */,

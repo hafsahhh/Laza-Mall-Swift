@@ -51,10 +51,10 @@ struct userIndex : Codable{
 }
 
 struct allUser : Codable {
-    var name : Name
+//    var name : Name
     var username : String
     var email : String
-    var phone : String
+//    var phone : String
     var password : String
 //    var address : Address
 //    var id : Int

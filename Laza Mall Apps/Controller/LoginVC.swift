@@ -10,13 +10,23 @@ import UIKit
 class LoginVC: UIViewController {
 
     
-    @IBOutlet weak var usernameOutlet: UITextField!
-    @IBOutlet weak var passwordOutlet: UITextField!
+    @IBOutlet weak var usernameOutlet: UITextField!{
+        didSet{
+            usernameOutlet.addShadow(color: .gray, width: 0.5, text: usernameOutlet)
+        }
+    }
+    @IBOutlet weak var passwordOutlet: UITextField! {
+        didSet{
+            passwordOutlet.addShadow(color: .gray, width: 0.5, text: passwordOutlet)
+        }
+    }
     @IBOutlet weak var loginBtnOutlet: UIButton!
     @IBOutlet weak var saveUserLoginOutlet: UISwitch!
     
     let userDefault = UserDefaults.standard
     let saveDataLogin = "saveDataLogin"
+    let loginTrue = "loginTrue"
+    var iconClick = true
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -132,7 +142,19 @@ class LoginVC: UIViewController {
         tabbarVC.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(tabbarVC, animated: true)
     }
-
+    
+    
+    // MARK: - eye Password Button
+    @IBAction func eyePassBtn(_ sender: Any) {
+        if iconClick {
+            iconClick = true
+            passwordOutlet.isSecureTextEntry = false
+        } else {
+            iconClick = false
+            passwordOutlet.isSecureTextEntry = true
+        }
+        iconClick = !iconClick
+    }
     
     // MARK: - Forget Password Button
     @IBAction func forgotPassBtnAct(_ sender: Any) {
@@ -145,8 +167,9 @@ class LoginVC: UIViewController {
     @IBAction func saveDataLoginSwitch(_ sender: Any) {
         if (sender as AnyObject).isOn {
             // Call the function here passing the user details to be saved
-            let userDetail = allUser(name: Name(firstname: "", lastname: ""), username: usernameOutlet.text ?? "", email: "", phone: "", password: passwordOutlet.text ?? "")
+            let userDetail = allUser(username: usernameOutlet.text ?? "", email: "", password: passwordOutlet.text ?? "")
             saveUserDefault(userDetail)
+            UserDefaults.standard.set(true, forKey: loginTrue)
         } else {
             // If the switch is turned off, you can decide what to do here.
             // You might want to remove user data from UserDefaults as you do in the saveUserDefault function.

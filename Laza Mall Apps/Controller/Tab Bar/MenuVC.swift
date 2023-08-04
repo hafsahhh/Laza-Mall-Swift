@@ -8,9 +8,10 @@
 import UIKit
 
 class MenuVC: UIViewController {
-
+    
     let userDefault = UserDefaults.standard
     let saveDataLogin = "saveDataLogin"
+    let userLoginTrue = "loginTrue"
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var logoutBtnOutlet: UIButton!
@@ -25,10 +26,10 @@ class MenuVC: UIViewController {
         
     }
     //    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        updateUsername()
-//    }
-
+    //        super.viewWillAppear(animated)
+    //        updateUsername()
+    //    }
+    
     // MARK: - update username label
     func updateUsername(){
         if let username = UserDefaults.standard.data(forKey: saveDataLogin) {
@@ -40,9 +41,27 @@ class MenuVC: UIViewController {
             usernameLabel.text = "Hello, Guest"
         }
     }
-
+    
     @IBAction func logoutBtn(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: saveDataLogin)
+        UserDefaults.standard.removeObject(forKey: userLoginTrue)
+        let signInBtnAct = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        signInBtnAct.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(signInBtnAct, animated: true)
     }
     
-
+    @IBAction func wishlistBtn(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc: UITabBarController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
+        vc.selectedIndex = 2 // index tabBar
+        self.navigationController?.view.window?.windowScene?.keyWindow?.rootViewController = vc
+    }
+    
+    @IBAction func cardsMenuBtn(_ sender: Any) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc: UITabBarController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
+        vc.selectedIndex = 2 // index tabBar
+        self.navigationController?.view.window?.windowScene?.keyWindow?.rootViewController = vc
+    }
+    
 }

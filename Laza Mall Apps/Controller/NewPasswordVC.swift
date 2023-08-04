@@ -9,9 +9,19 @@ import UIKit
 
 class NewPasswordVC: UIViewController {
     
-    @IBOutlet weak var newPasswordOutlet: UITextField!
-    @IBOutlet weak var confirmPassOutlet: UITextField!
+    @IBOutlet weak var newPasswordOutlet: UITextField!{
+        didSet{
+            newPasswordOutlet.addShadow(color: .gray, width: 0.5, text: newPasswordOutlet)
+        }
+    }
+    @IBOutlet weak var confirmPassOutlet: UITextField!{
+        didSet{
+            confirmPassOutlet.addShadow(color: .gray, width: 0.5, text: confirmPassOutlet)
+        }
+    }
     @IBOutlet weak var resetPassOutlet: UIButton!
+    
+    var iconClick = true
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -30,6 +40,8 @@ class NewPasswordVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +49,7 @@ class NewPasswordVC: UIViewController {
         self.navigationItem.leftBarButtonItem  = backBarBtn
         resetPassOutlet.isEnabled = false
         newPasswordOutlet.isSecureTextEntry = true
+        confirmPassOutlet.isSecureTextEntry = true
         confirmPassOutlet.addTarget(self, action:  #selector(textFieldDidChange),  for:.editingChanged )
         newPasswordOutlet.addTarget(self, action:  #selector(textFieldDidChange),  for:.editingChanged )
         
@@ -46,7 +59,14 @@ class NewPasswordVC: UIViewController {
     
     //fungsi untuk mengubah button backgournd color
     @objc func textFieldDidChange() {
-        if newPasswordOutlet.text == "" || confirmPassOutlet.text == "" {
+        let isNewPassValid =
+        //validasi email [validEmail] di folder extensions
+        newPasswordOutlet.validPassword(newPasswordOutlet.text ?? "")
+        let isConfirmPassValid =
+        //validasi password [validPassword] di folder extensions
+        confirmPassOutlet.validPassword(confirmPassOutlet.text ?? "")
+        
+        if (isNewPassValid != nil) || (isConfirmPassValid != nil) {
             resetPassOutlet.isEnabled = false
             resetPassOutlet.backgroundColor = UIColor(named: "ColorValid" )
         }else{
@@ -55,9 +75,16 @@ class NewPasswordVC: UIViewController {
         }
     }
     
-    
+    // MARK: - Func Validasi Updatse Pass
     @objc func validasiUpdatePass() {
-        if newPasswordOutlet.text == confirmPassOutlet.text{
+        let isNewPassValid =
+        //validasi email [validEmail] di folder extensions
+        newPasswordOutlet.validPassword(newPasswordOutlet.text ?? "")
+        let isConfirmPassValid =
+        //validasi password [validPassword] di folder extensions
+        confirmPassOutlet.validPassword(confirmPassOutlet.text ?? "")
+        
+        if isNewPassValid == isConfirmPassValid {
             let saveUpdatepassctrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
             saveUpdatepassctrl.navigationItem.hidesBackButton = true
             self.navigationController?.pushViewController(saveUpdatepassctrl, animated: true)
@@ -69,14 +96,44 @@ class NewPasswordVC: UIViewController {
             print("wrong password")
             // create the alert
             let alert = UIAlertController(title: "Wrong Password", message: "Please try another password.", preferredStyle: UIAlertController.Style.alert)
-            
             // add an action (button)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            
-            
             // show the alert
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func eyeBtn (){
+        if iconClick {
+            iconClick = true
+            newPasswordOutlet.isSecureTextEntry = false
+        } else {
+            iconClick = false
+            newPasswordOutlet.isSecureTextEntry = true
+        }
+        iconClick = !iconClick
+    }
+    
+    @IBAction func eyePassBtn(_ sender: Any) {
+        if iconClick {
+            iconClick = true
+            newPasswordOutlet.isSecureTextEntry = false
+        } else {
+            iconClick = false
+            newPasswordOutlet.isSecureTextEntry = true
+        }
+        iconClick = !iconClick
+    }
+    
+    @IBAction func eyeConfrimPaaBtn(_ sender: Any) {
+        if iconClick {
+            iconClick = true
+            confirmPassOutlet.isSecureTextEntry = false
+        } else {
+            iconClick = false
+            confirmPassOutlet.isSecureTextEntry = true
+        }
+        iconClick = !iconClick
     }
     
     // MARK: - Reset Password Button

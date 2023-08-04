@@ -10,20 +10,40 @@ import UIKit
 class ReviewsVC: UIViewController {
 
     @IBOutlet weak var userReviewTable: UITableView!
+    
+    //Back Button
+    private lazy var backBtn : UIButton = {
+        //call back button
+        let backBtn = UIButton.init(type: .custom)
+        backBtn.setImage(UIImage(named:"Back"), for: .normal)
+        backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+        backBtn.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        return backBtn
+    }()
+    
+    //Back Button
+    @objc func backBtnAct(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //back button
+        let backBarBtn = UIBarButtonItem(customView: backBtn)
+        self.navigationItem.leftBarButtonItem  = backBarBtn
         
         // Register the xib for tableview cell product
         userReviewTable.delegate = self
         userReviewTable.dataSource = self
         userReviewTable.register(UINib(nibName: "ReviewsTableCell", bundle: nil), forCellReuseIdentifier: "ReviewsTableCell")
-//        userReviewTable.dataSource = self
-//        userReviewTable.delegate = self
-//        userReviewTable.register(ReviewsTableCell.nib(), forCellReuseIdentifier: ReviewsTableCell.identifier)
     }
     
     // MARK: - Navigation
 
+    @IBAction func addReviewBtn(_ sender: Any) {
+        let addReviewCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddReviewVC") as! AddReviewVC
+        self.navigationController?.pushViewController(addReviewCtrl, animated: true)
+    }
 }
 
 extension ReviewsVC: UITableViewDataSource, UITableViewDelegate {
