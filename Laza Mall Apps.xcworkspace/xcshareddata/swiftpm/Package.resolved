@@ -17,6 +17,15 @@
         "revision" : "e837c37d45449fbd3b4745c10c5b5274e73edead",
         "version" : "2.2.3"
       }
+    },
+    {
+      "identity" : "stripe-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stripe/stripe-ios-spm",
+      "state" : {
+        "revision" : "74c52df3cf28fc01b8ee1e14ce1d2d1e93dca189",
+        "version" : "23.13.0"
+      }
     }
   ],
   "version" : 2
