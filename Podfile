@@ -8,6 +8,8 @@ target 'Laza Mall Apps' do
   # Pods for Laza Mall Apps
 pod 'SideMenu'
 
+pod 'CreditCardForm'
+
   target 'Laza Mall AppsTests' do
     inherit! :search_paths
     # Pods for testing

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryFilterCollectCell" id="gTV-IL-0wX" customClass="CategoryFilterCollectCell" customModule="Laza_Mall_Apps" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="181" height="269"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="181" height="269"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIp-8S-jMP">
+                        <rect key="frame" x="0.0" y="0.0" width="181" height="269"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bed-y8-knh">
+                                <rect key="frame" x="10" y="10" width="161" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image 7" translatesAutoresizingMaskIntoConstraints="NO" id="jCf-Zo-2Hw">
+                                        <rect key="frame" x="0.0" y="0.0" width="161" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="LYa-58-bqy"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="jCf-Zo-2Hw" firstAttribute="leading" secondItem="bed-y8-knh" secondAttribute="leading" id="AAf-JR-NMz"/>
+                                    <constraint firstAttribute="trailing" secondItem="jCf-Zo-2Hw" secondAttribute="trailing" id="PNc-2h-Px6"/>
+                                    <constraint firstItem="jCf-Zo-2Hw" firstAttribute="top" secondItem="bed-y8-knh" secondAttribute="top" id="nx6-tC-MWa"/>
+                                    <constraint firstAttribute="height" constant="200" id="tir-nW-Keh"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike Sportswear Club Fleece" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68b-Bq-oWM">
+                                <rect key="frame" x="10" y="215" width="161" height="13.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdc-uH-KrR">
+                                <rect key="frame" x="10" y="233.33333333333334" width="161" height="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="ColorWhite"/>
+                        <constraints>
+                            <constraint firstItem="68b-Bq-oWM" firstAttribute="top" secondItem="bed-y8-knh" secondAttribute="bottom" constant="5" id="28J-Eb-iYv"/>
+                            <constraint firstItem="68b-Bq-oWM" firstAttribute="leading" secondItem="zIp-8S-jMP" secondAttribute="leading" constant="10" id="HD8-5b-YlP"/>
+                            <constraint firstItem="Jdc-uH-KrR" firstAttribute="top" secondItem="68b-Bq-oWM" secondAttribute="bottom" constant="5" id="Lfi-Ip-nuP"/>
+                            <constraint firstAttribute="trailing" secondItem="bed-y8-knh" secondAttribute="trailing" constant="10" id="POq-yh-L07"/>
+                            <constraint firstAttribute="trailing" secondItem="68b-Bq-oWM" secondAttribute="trailing" constant="10" id="bC1-45-ZIl"/>
+                            <constraint firstItem="Jdc-uH-KrR" firstAttribute="leading" secondItem="zIp-8S-jMP" secondAttribute="leading" constant="10" id="boo-3G-3Fm"/>
+                            <constraint firstItem="bed-y8-knh" firstAttribute="leading" secondItem="zIp-8S-jMP" secondAttribute="leading" constant="10" id="byA-jM-EvY"/>
+                            <constraint firstAttribute="trailing" secondItem="Jdc-uH-KrR" secondAttribute="trailing" constant="10" id="c8m-gY-kVe"/>
+                            <constraint firstItem="bed-y8-knh" firstAttribute="top" secondItem="zIp-8S-jMP" secondAttribute="top" constant="10" id="nlB-S1-9FZ"/>
+                            <constraint firstItem="Jdc-uH-KrR" firstAttribute="top" secondItem="68b-Bq-oWM" secondAttribute="bottom" constant="5" id="q70-fZ-R4b"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="zIp-8S-jMP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KST-IL-W6A"/>
+                <constraint firstAttribute="trailing" secondItem="zIp-8S-jMP" secondAttribute="trailing" id="cuC-F3-hJD"/>
+                <constraint firstAttribute="bottom" secondItem="zIp-8S-jMP" secondAttribute="bottom" id="pE9-GB-d5q"/>
+                <constraint firstItem="zIp-8S-jMP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="twe-ZM-HEV"/>
+            </constraints>
+            <size key="customSize" width="321" height="364"/>
+            <connections>
+                <outlet property="categoryImageView" destination="jCf-Zo-2Hw" id="ybE-MC-113"/>
+                <outlet property="categoryPriceTitle" destination="Jdc-uH-KrR" id="rHG-bm-0WH"/>
+                <outlet property="categoryTitleView" destination="68b-Bq-oWM" id="g5h-1F-pv3"/>
+            </connections>
+            <point key="canvasLocation" x="286.25954198473283" y="66.549295774647888"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="image 7" width="77" height="96"/>
+        <namedColor name="ColorWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

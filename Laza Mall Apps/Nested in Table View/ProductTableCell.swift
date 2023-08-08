@@ -25,12 +25,14 @@ class ProductTableCell: UITableViewCell {
     var modelProduct = [ProductEntry]()
     var reloadTable: (()->Void)?
     var delegateProductDetail: productTableCellProtocol?
+    var searchTextActive: Bool = false
+    var filterProduct: [ProductEntry] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Comment if you set Datasource and delegate in .xib
-        self.productCollectView.dataSource = self
-        self.productCollectView.delegate = self
+        productCollectView.dataSource = self
+        productCollectView.delegate = self
         productCollectView.register(ProductHomeCollectCell.nib(), forCellWithReuseIdentifier: ProductHomeCollectCell.identifier)
         
         
@@ -38,6 +40,7 @@ class ProductTableCell: UITableViewCell {
         AllProductApi().getData { ProductIndex in
             self.modelProduct.append(contentsOf: ProductIndex)
             self.productCollectView.reloadData()
+//            self.delegateProductDetail?.loadApiProd()
             for product in self.modelProduct{
                 print("helo \(product.title)")
             }
@@ -55,7 +58,11 @@ class ProductTableCell: UITableViewCell {
 }
 extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modelProduct.count
+        if searchTextActive == true{
+            return filterProduct.count
+        } else {
+            return modelProduct.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -70,15 +77,32 @@ extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let productCell =  collectionView.dequeueReusableCell(withReuseIdentifier: ProductHomeCollectCell.identifier, for: indexPath) as? ProductHomeCollectCell else { return UICollectionViewCell() }
-        productCell.configure(data: modelProduct[indexPath.item])
-        
-        return productCell
+        if let productCell =  collectionView.dequeueReusableCell(withReuseIdentifier: ProductHomeCollectCell.identifier, for: indexPath) as? ProductHomeCollectCell {
+            if searchTextActive == true {
+                _ = filterProduct[indexPath.item]
+            } else {
+                let cellFilter = modelProduct[indexPath.item]
+                productCell.configure(data: cellFilter)
+            }
+            return productCell
+        }
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegateProductDetail?.showDetailProduct(product: modelProduct[indexPath.item])
-        print("data ini\(modelProduct)")
+        if searchTextActive == true {
+            delegateProductDetail?.showDetailProduct(product: modelProduct[indexPath.item])
+        } else {
+            delegateProductDetail?.showDetailProduct(product: modelProduct[indexPath.item])
+        }
     }
     
+}
+
+extension ProductTableCell: searchProductHomeProtocol {
+    func searchProdFetch(isActive: Bool, textString: String) {
+        searchTextActive = isActive
+        filterProduct = modelProduct.filter{$0.title.contains(textString)}
+        self.productCollectView.reloadData()
+    }
 }

@@ -7,8 +7,10 @@
 
 import UIKit
 
+
+
 class CategoryTableCell: UITableViewCell {
-    
+
     
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var viewAllBtnOutlet: UIButton!
@@ -16,7 +18,7 @@ class CategoryTableCell: UITableViewCell {
     
     var modelCat = categoryIndex()
     var reloadTable: (() -> Void)?
-    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

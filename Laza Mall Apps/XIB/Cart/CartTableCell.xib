@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="195" id="KGk-i7-Jjw" customClass="CartTableCell" customModule="Laza_Mall_Apps" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="126"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="335" height="126"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqh-b0-NZ7">
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="126"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRE-Cj-ocN">
+                                <rect key="frame" x="5" y="5" width="100" height="116"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image 7" translatesAutoresizingMaskIntoConstraints="NO" id="pc6-Ip-LQY">
+                                        <rect key="frame" x="10" y="10" width="80" height="96"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pc6-Ip-LQY" secondAttribute="trailing" constant="10" id="Sc1-HL-eOh"/>
+                                    <constraint firstItem="pc6-Ip-LQY" firstAttribute="leading" secondItem="SRE-Cj-ocN" secondAttribute="leading" constant="10" id="THQ-3d-tic"/>
+                                    <constraint firstAttribute="width" constant="100" id="V7g-MM-2LD"/>
+                                    <constraint firstAttribute="bottom" secondItem="pc6-Ip-LQY" secondAttribute="bottom" constant="10" id="dc9-0V-6f5"/>
+                                    <constraint firstItem="pc6-Ip-LQY" firstAttribute="centerY" secondItem="SRE-Cj-ocN" secondAttribute="centerY" id="zwp-HE-PL8"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OL9-lv-CVt">
+                                <rect key="frame" x="115" y="11.999999999999996" width="205" height="40.666666666666657"/>
+                                <string key="text">Men's Tie-Dye T-Shirt
+Nike Sportswear</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$45 (-$4.00 Tax)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euU-o3-x5R">
+                                <rect key="frame" x="120" y="67.666666666666671" width="200" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34T-3P-1ZU">
+                                <rect key="frame" x="120" y="88.666666666666671" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="aYm-ve-zqX"/>
+                                    <constraint firstAttribute="height" constant="30" id="jVl-Q5-JrB"/>
+                                </constraints>
+                                <color key="tintColor" red="0.56862745100000001" green="0.56862745100000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Arrow - Down"/>
+                                <connections>
+                                    <action selector="arrowDownBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0nS-rt-Cyj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7H-AO-xi9">
+                                <rect key="frame" x="165" y="93.666666666666671" width="7.6666666666666572" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6vH-U0-nBF">
+                                <rect key="frame" x="187.66666666666666" y="88.666666666666671" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LaK-86-7ij"/>
+                                    <constraint firstAttribute="width" constant="30" id="Z7Q-dG-ziw"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Arrow - Up"/>
+                                <connections>
+                                    <action selector="arrowUpBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="C3Y-Ic-EzF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpq-Hs-UWM">
+                                <rect key="frame" x="295" y="88.666666666666671" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="BYg-CU-cnV"/>
+                                    <constraint firstAttribute="height" constant="30" id="UQN-z3-bZb"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                                <connections>
+                                    <action selector="deleteBtnView:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Vy2-fh-t7u"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="ColorWhite"/>
+                        <constraints>
+                            <constraint firstItem="dpq-Hs-UWM" firstAttribute="top" secondItem="euU-o3-x5R" secondAttribute="bottom" constant="5" id="1JL-rx-zXN"/>
+                            <constraint firstAttribute="trailing" secondItem="OL9-lv-CVt" secondAttribute="trailing" constant="15" id="1No-VR-xao"/>
+                            <constraint firstItem="dpq-Hs-UWM" firstAttribute="leading" secondItem="6vH-U0-nBF" secondAttribute="trailing" constant="77.329999999999998" id="4Rf-gl-tST"/>
+                            <constraint firstItem="euU-o3-x5R" firstAttribute="top" secondItem="OL9-lv-CVt" secondAttribute="bottom" constant="15" id="4fb-wn-Eha"/>
+                            <constraint firstItem="u7H-AO-xi9" firstAttribute="leading" secondItem="34T-3P-1ZU" secondAttribute="trailing" constant="15" id="926-0b-YEY"/>
+                            <constraint firstItem="SRE-Cj-ocN" firstAttribute="leading" secondItem="oqh-b0-NZ7" secondAttribute="leading" constant="5" id="DZO-p6-Na0"/>
+                            <constraint firstItem="OL9-lv-CVt" firstAttribute="top" secondItem="oqh-b0-NZ7" secondAttribute="top" constant="12" id="HRk-SD-vHg"/>
+                            <constraint firstItem="u7H-AO-xi9" firstAttribute="top" secondItem="euU-o3-x5R" secondAttribute="bottom" constant="10" id="KOI-3U-kME"/>
+                            <constraint firstItem="6vH-U0-nBF" firstAttribute="top" secondItem="euU-o3-x5R" secondAttribute="bottom" constant="5" id="RbT-2I-Ya1"/>
+                            <constraint firstItem="6vH-U0-nBF" firstAttribute="leading" secondItem="u7H-AO-xi9" secondAttribute="trailing" constant="15" id="UH4-d8-JlS"/>
+                            <constraint firstAttribute="bottom" secondItem="SRE-Cj-ocN" secondAttribute="bottom" constant="5" id="UVf-cs-Zlf"/>
+                            <constraint firstAttribute="trailing" secondItem="euU-o3-x5R" secondAttribute="trailing" constant="15" id="ZGD-We-ilF"/>
+                            <constraint firstItem="34T-3P-1ZU" firstAttribute="top" secondItem="euU-o3-x5R" secondAttribute="bottom" constant="5" id="c9l-7W-cgI"/>
+                            <constraint firstItem="34T-3P-1ZU" firstAttribute="leading" secondItem="SRE-Cj-ocN" secondAttribute="trailing" constant="15" id="diF-NJ-Re4"/>
+                            <constraint firstItem="OL9-lv-CVt" firstAttribute="leading" secondItem="SRE-Cj-ocN" secondAttribute="trailing" constant="10" id="mVy-FK-kG5"/>
+                            <constraint firstItem="SRE-Cj-ocN" firstAttribute="top" secondItem="oqh-b0-NZ7" secondAttribute="top" constant="5" id="wRm-Ha-6sc"/>
+                            <constraint firstItem="euU-o3-x5R" firstAttribute="leading" secondItem="SRE-Cj-ocN" secondAttribute="trailing" constant="15" id="wxy-wl-k49"/>
+                            <constraint firstAttribute="trailing" secondItem="dpq-Hs-UWM" secondAttribute="trailing" constant="10" id="zKF-tL-lQk"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oqh-b0-NZ7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5Wf-kH-KE4"/>
+                    <constraint firstItem="oqh-b0-NZ7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="U1m-7a-hIg"/>
+                    <constraint firstAttribute="bottom" secondItem="oqh-b0-NZ7" secondAttribute="bottom" id="Wno-4U-bet"/>
+                    <constraint firstAttribute="trailing" secondItem="oqh-b0-NZ7" secondAttribute="trailing" id="aYQ-hX-nQ7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="arrowDown" destination="34T-3P-1ZU" id="8oK-IJ-Tfx"/>
+                <outlet property="arrowUp" destination="6vH-U0-nBF" id="3ST-rI-diD"/>
+                <outlet property="deleteBtnView" destination="dpq-Hs-UWM" id="Jnu-i1-vaY"/>
+                <outlet property="imageProductView" destination="SRE-Cj-ocN" id="cca-6u-NH1"/>
+                <outlet property="priceProductView" destination="euU-o3-x5R" id="lIO-Kc-sez"/>
+                <outlet property="quantityLabel" destination="u7H-AO-xi9" id="x7S-k7-uWa"/>
+                <outlet property="quantityProductView" destination="u7H-AO-xi9" id="H3S-Kc-LvA"/>
+                <outlet property="titleProductView" destination="OL9-lv-CVt" id="vQ6-qY-Xu5"/>
+            </connections>
+            <point key="canvasLocation" x="121.37404580152672" y="2.8169014084507045"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Arrow - Down" width="15" height="15"/>
+        <image name="Arrow - Up" width="15" height="15"/>
+        <image name="image 7" width="77" height="96"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
+        <namedColor name="ColorWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

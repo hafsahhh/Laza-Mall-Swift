@@ -88,3 +88,32 @@ struct userDefault : Codable {
     var phoneNo : String
     var password : String
 }
+// MARK: - CartElement
+struct CartElement: Codable {
+    let id, userID: Int
+    let date: String
+    let products: [Product]
+    let v: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userID = "userId"
+        case date, products
+        case v = "__v"
+    }
+}
+
+// MARK: - Product
+struct Product: Codable {
+    let productID : Int
+    let quantity : Int
+    enum CodingKeys: String, CodingKey {
+        case productID = "productId"
+        case quantity
+    }
+}
+
+struct CartProd: Codable {
+    let productID : Int
+    let quantity : Int
+}

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WishlistCollectCell" id="gTV-IL-0wX" customClass="WishlistCollectCell" customModule="Laza_Mall_Apps" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="181" height="267"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="181" height="267"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zx1-fl-2TJ">
+                        <rect key="frame" x="0.0" y="0.0" width="181" height="267"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nike Sportswear Club Fleece" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LN7-Fv-tAc">
+                                <rect key="frame" x="10" y="218" width="161" height="13.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsK-ON-443">
+                                <rect key="frame" x="10" y="236.33333333333334" width="161" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezh-5B-I1g">
+                                <rect key="frame" x="10" y="10" width="161" height="200"/>
+                                <color key="backgroundColor" white="0.8839817177" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="ds2-W3-3Zj"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image 7" translatesAutoresizingMaskIntoConstraints="NO" id="rWv-yq-hos">
+                                <rect key="frame" x="10" y="10" width="161" height="203"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="203" id="A2E-Gm-y7h"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="rWv-yq-hos" secondAttribute="trailing" constant="10" id="03c-ly-GKv"/>
+                            <constraint firstItem="gsK-ON-443" firstAttribute="top" secondItem="LN7-Fv-tAc" secondAttribute="bottom" constant="5" id="0Mc-fI-uTu"/>
+                            <constraint firstItem="rWv-yq-hos" firstAttribute="leading" secondItem="Zx1-fl-2TJ" secondAttribute="leading" constant="10" id="62Y-YR-Ocv"/>
+                            <constraint firstAttribute="trailing" secondItem="Ezh-5B-I1g" secondAttribute="trailing" constant="10" id="NGN-OS-A9I"/>
+                            <constraint firstItem="Ezh-5B-I1g" firstAttribute="top" secondItem="Zx1-fl-2TJ" secondAttribute="top" constant="10" id="O0i-nj-faW"/>
+                            <constraint firstItem="gsK-ON-443" firstAttribute="leading" secondItem="Zx1-fl-2TJ" secondAttribute="leading" constant="10" id="P1s-MY-8oH"/>
+                            <constraint firstItem="rWv-yq-hos" firstAttribute="top" secondItem="Zx1-fl-2TJ" secondAttribute="top" constant="10" id="UQ1-hl-M9g"/>
+                            <constraint firstItem="LN7-Fv-tAc" firstAttribute="top" secondItem="rWv-yq-hos" secondAttribute="bottom" constant="5" id="W6Q-Ip-Qj4"/>
+                            <constraint firstItem="Ezh-5B-I1g" firstAttribute="leading" secondItem="Zx1-fl-2TJ" secondAttribute="leading" constant="10" id="Ylh-iL-Pym"/>
+                            <constraint firstAttribute="trailing" secondItem="LN7-Fv-tAc" secondAttribute="trailing" constant="10" id="gBs-yV-Qcb"/>
+                            <constraint firstItem="LN7-Fv-tAc" firstAttribute="leading" secondItem="Zx1-fl-2TJ" secondAttribute="leading" constant="10" id="mpZ-6S-VOf"/>
+                            <constraint firstAttribute="trailing" secondItem="gsK-ON-443" secondAttribute="trailing" constant="10" id="xf2-LV-Xkr"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Zx1-fl-2TJ" secondAttribute="bottom" id="13q-u2-21x"/>
+                <constraint firstAttribute="trailing" secondItem="Zx1-fl-2TJ" secondAttribute="trailing" id="8kG-gX-rv9"/>
+                <constraint firstItem="Zx1-fl-2TJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="V27-ea-O4l"/>
+                <constraint firstItem="Zx1-fl-2TJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sRc-q9-7Wi"/>
+            </constraints>
+            <size key="customSize" width="181" height="267"/>
+            <connections>
+                <outlet property="priceWhislistView" destination="gsK-ON-443" id="lQc-wV-3Dv"/>
+                <outlet property="titleWhishlistView" destination="LN7-Fv-tAc" id="Bfd-LV-hEa"/>
+            </connections>
+            <point key="canvasLocation" x="119.84732824427481" y="-44.718309859154935"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="image 7" width="77" height="96"/>
+    </resources>
+</document>

@@ -77,14 +77,67 @@ extension UITextField {
     
 //    Minimum 8 characters at least 1 Alphabet, 1 Number and 1 Special Character:
     func validPassword(_ value:String) -> Bool {
-        let passwordValid =
-        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[d$@$!%*?&#])[A-Za-z\\dd$@$!%*?&#]{8,}"
-//        "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$"
-        let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordValid)
-        if passwordPred.evaluate(with: value){
-            return true
+        let regularExpression = "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[A-Z]).{6,}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regularExpression)
+        if predicate.evaluate(with: value){
+          return true
         }
         return false
     }
 }
 
+extension UITextView {
+//     Berfungsi sebagai "keys" untuk menyimpan dan mengambil nilai-nilai tambahan (associated objects) pada UITextView.
+    public struct AssociatedKeys {
+        static var placeholderLabel = "placeholderLabel"
+    }
+    
+    // Computed property untuk menambahkan placeholder pada UITextView
+    var placeholder: String? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.placeholderLabel) as? String
+        }
+        set {
+            if let newValue = newValue {
+                if let placeholderLabel = objc_getAssociatedObject(self, &AssociatedKeys.placeholderLabel) as? UILabel {
+                    placeholderLabel.text = newValue
+                } else {
+                    addPlaceholderLabel(newValue)
+                }
+            } else {
+                removePlaceholderLabel()
+            }
+        }
+    }
+    
+    // Fungsi untuk menambahkan UILabel sebagai placeholder
+    private func addPlaceholderLabel(_ placeholderText: String) {
+        let placeholderLabel = UILabel()
+        placeholderLabel.text = placeholderText
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.font = font
+        placeholderLabel.sizeToFit()
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: 8) // Atur posisi placeholder sesuai keinginan
+        placeholderLabel.tag = 100 // Tag digunakan untuk kemudahan identifikasi jika perlu dihapus nanti
+        addSubview(placeholderLabel)
+        bringSubviewToFront(placeholderLabel)
+        objc_setAssociatedObject(self, &AssociatedKeys.placeholderLabel, placeholderLabel, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(textChanged), name: UITextView.textDidChangeNotification, object: nil)
+    }
+    
+    // Fungsi untuk menghapus placeholder saat UITextView tidak kosong
+    private func removePlaceholderLabel() {
+        if let placeholderLabel = objc_getAssociatedObject(self, &AssociatedKeys.placeholderLabel) as? UILabel {
+            placeholderLabel.removeFromSuperview()
+            NotificationCenter.default.removeObserver(self, name: UITextView.textDidChangeNotification, object: nil)
+        }
+    }
+    
+    // Fungsi yang dipanggil saat isi UITextView berubah
+    @objc private func textChanged() {
+        if let placeholderLabel = objc_getAssociatedObject(self, &AssociatedKeys.placeholderLabel) as? UILabel {
+            placeholderLabel.isHidden = !text.isEmpty
+        }
+    }
+}

@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Laza Mall Apps-Laza Mall AppsUITests/Pods-Laza Mall Apps-Laza Mall AppsUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/CreditCardForm/CreditCardForm.framework
 ${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework

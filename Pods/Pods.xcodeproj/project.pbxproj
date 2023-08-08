@@ -7,120 +7,182 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		057B453F4AE14D10EA77D38FA1A0B8FB /* SideMenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DA75D7F8119ABA5A3EF4AB757FE0EF /* SideMenuPresentationController.swift */; };
-		115E3F13F1C9CDAEF205E802E1EB0B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		1185EE8A8E1538A8F62C35A078B6F0F4 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FEFDFB2C9EB7921C11B406B49D4E6E48 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1F0DDBBAF86A028D6D60A7E10B4D3634 /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C723107D860DB31CABCD028704863BA8 /* SideMenu-dummy.m */; };
-		3817F4830A10E51D20B72530EF6A56D2 /* SideMenuTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296BE21FF7AAD7D19E6ED839F0804FC1 /* SideMenuTransitionController.swift */; };
-		5587C359D9C8789950E7F6585C2292E7 /* SideMenuPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1907B78B39DE0F0C6221B3F154AAC862 /* SideMenuPresentationStyle.swift */; };
+		04459CB3692B269C1329E312F51AFE3D /* CreditCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D958B16DE35DD4B9920E8BCD6A9E718 /* CreditCardValidator.swift */; };
+		057B453F4AE14D10EA77D38FA1A0B8FB /* SideMenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F40EA8C92E4BE2C5370943A86C3F900 /* SideMenuPresentationController.swift */; };
+		115E3F13F1C9CDAEF205E802E1EB0B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		1F0DDBBAF86A028D6D60A7E10B4D3634 /* SideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79939FABFE7BD829941C2746908F8773 /* SideMenu-dummy.m */; };
+		22ED29F9016C52DA1E72532741940FEE /* AKMaskFieldPatternCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23692743AA80103323A7D235EA08B48D /* AKMaskFieldPatternCharacter.swift */; };
+		26ABF3DB731F943AF963007F803283BC /* Pods-Laza Mall Apps-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0626AD8300FB42867D17675483EF3F6 /* Pods-Laza Mall Apps-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		290021B707C80BCE5AD8F43E526116EE /* CreditCardForm-CreditCardForm in Resources */ = {isa = PBXBuildFile; fileRef = 93206FEF9D2EA9994A33B6A8CABAF03B /* CreditCardForm-CreditCardForm */; };
+		2B3E0E26A36FF090CD950D2030B0A012 /* AKMaskFieldEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E07B03BF784788020D8C11831FF4EC1 /* AKMaskFieldEvent.swift */; };
+		2DD44305EF5E437A3EBD94AE94BB2D1E /* CreditCardForm.h in Headers */ = {isa = PBXBuildFile; fileRef = 12C9CA03A70FED298565CDF1CB7BE3F2 /* CreditCardForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3817F4830A10E51D20B72530EF6A56D2 /* SideMenuTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C35EEE45423C77DFAC2175838687A20 /* SideMenuTransitionController.swift */; };
+		3AB0F1F27CBEEBD8511DE7DF3A094119 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3BB001BBB58FE519C506E2AA52BED11 /* Images.xcassets */; };
+		412AE862699535BCC1EC902C75A5FCB3 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FEFDFB2C9EB7921C11B406B49D4E6E48 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		452B67C804FE3C4E2008392CCCDA5225 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		4B49A6E17AD908DC17E5BEC15E5AEEB4 /* AKMaskFieldBlockCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B639C036424FEA9BF18FB717E4C3AD /* AKMaskFieldBlockCharacter.swift */; };
+		4BB5D1B52BB1857C8B11C8C550C2746B /* Pods-Laza Mall Apps-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F41288FD3D15B098F7B982A22C50CAA /* Pods-Laza Mall Apps-dummy.m */; };
+		5587C359D9C8789950E7F6585C2292E7 /* SideMenuPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E04ABDFB9AAB0CA0F240F747EC86B9 /* SideMenuPresentationStyle.swift */; };
 		61062551D4AD263BA552588219B71C80 /* Pods-Laza Mall AppsTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 94127A2EF8A58D7B756489BF4FE125A6 /* Pods-Laza Mall AppsTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		74106BDED4B8B2281DFE4BE5E109D847 /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B435A692AE8CB71108BC3C8B3E424BE1 /* Initializable.swift */; };
-		7799D500B8C3CDB2DE96355313F1619F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		887D7E546D6837CC964318D1B0C842D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		901A05C05CA75D6DF164743438CA0510 /* Pods-Laza Mall Apps-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F41288FD3D15B098F7B982A22C50CAA /* Pods-Laza Mall Apps-dummy.m */; };
-		95EC50881DDEB792B95B02B47E1F2ACD /* Pods-Laza Mall Apps-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C0626AD8300FB42867D17675483EF3F6 /* Pods-Laza Mall Apps-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E9F19E0120EA3C46967C28E637F52C8 /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4B80BD863C174D5427612E5FC99ED1 /* SideMenuNavigationController.swift */; };
+		6B65E6C8F78DDECBBFB484910EE4EAC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
+		6DDE3F21B8B439281D1EDF228D0ED065 /* AKMaskFieldUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB5E11388BB1C3C67726F3C995E492 /* AKMaskFieldUtility.swift */; };
+		6F58BCE7397C1FE3E24A99F084DA62DE /* CreditCardForm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FE61EF165A866B593329275500E08D06 /* CreditCardForm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74106BDED4B8B2281DFE4BE5E109D847 /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D139C6ACF70FE553CC5DBFC4F4C275 /* Initializable.swift */; };
+		77C6C66B86FD24572A3F0953A593FB35 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A6CFFDA6530165735EB7EEBC86303A /* Pods-Laza Mall Apps-Laza Mall AppsUITests-dummy.m */; };
+		79D4FB6A3DCB4A5B95178B24B097D079 /* AKMaskField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C6D48D4EA8F6857B19FCB9C02ED596 /* AKMaskField.swift */; };
+		887D7E546D6837CC964318D1B0C842D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		9D0F1C8863CA6D9DB6275AE0134C569A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		9E9F19E0120EA3C46967C28E637F52C8 /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98ED2BF1268DE1A7D38ED4A646E743ED /* SideMenuNavigationController.swift */; };
 		A1D0D753B9B94D9CAF1B22D0E34DC7CD /* Pods-Laza Mall AppsTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0670707128005F45E0155F42E20AB5C4 /* Pods-Laza Mall AppsTests-dummy.m */; };
-		B804587E525773FCA9698855B2C752DC /* SideMenuAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDB9B2576E9F7BC25C5B4B3ED9D9275 /* SideMenuAnimationController.swift */; };
-		BC9C2E663681EDDBFE985034DCC7AAAF /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7C515B3D13887A728A453D7099F17D /* UITableViewVibrantCell.swift */; };
-		BE79F903F87E7D5918C6414E6203743E /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8A8B5179015129C9DC09887F8A8E0F /* Print.swift */; };
-		BEE33FDF7133E326390DEE679DBBA29F /* Pods-Laza Mall Apps-Laza Mall AppsUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A6CFFDA6530165735EB7EEBC86303A /* Pods-Laza Mall Apps-Laza Mall AppsUITests-dummy.m */; };
-		D3BE0026C39E4B360BBDA0D5C57DD25D /* Deprecations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E0EF1FE9720FBF7E95FDF1468E9464 /* Deprecations.swift */; };
-		D74D0BC4C9AD8D4A2F6597389ED28269 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		DAD5950A205347FCDBD3751604472431 /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F12E6E9DEC732642010364EE9795B /* Protected.swift */; };
-		E56EEF71CC5AF0DA40228F2CA67B4BA0 /* SideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FAEDAD33E39B2C6517EE2C665A844ABA /* SideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E709C98B763E8065628D8E88715E0BF8 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D16C168F52FDF8EC2C45F49A36F215C /* SideMenuManager.swift */; };
-		E72252B09CC270B50217CA6AEABD620A /* SideMenuPushCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007E87349E50118E13B294C1DF5CA0D /* SideMenuPushCoordinator.swift */; };
-		E97C7A323474D0205E872AE7BC773650 /* SideMenuInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF29DE67A5AA1D16125206E5A037E259 /* SideMenuInteractionController.swift */; };
-		F28D439429A375B6D4FCD037ED317CD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD16025EBF0FAAFEC087DE312E58C8 /* Extensions.swift */; };
+		AB25C18FE52C5B5B953D3C030CCC156B /* CreditCardForm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BC4C091A0DB869698498B5506C0F6B /* CreditCardForm-dummy.m */; };
+		B190209DDD0006F9A27C0F6BBA977F82 /* CreditCardValidationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ED5F6AF07A4E7BC75ADA3CC23B2DE9 /* CreditCardValidationType.swift */; };
+		B804587E525773FCA9698855B2C752DC /* SideMenuAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2640E4AA5FBD4840C433B0F950065D /* SideMenuAnimationController.swift */; };
+		BC9C2E663681EDDBFE985034DCC7AAAF /* UITableViewVibrantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE6DB727F48D71EA702C7C75FCB0709 /* UITableViewVibrantCell.swift */; };
+		BE79F903F87E7D5918C6414E6203743E /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FEAF65722B9C908FA32B19AEC319F7 /* Print.swift */; };
+		D3BE0026C39E4B360BBDA0D5C57DD25D /* Deprecations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6704AA747BF343E8808A945B8B64A283 /* Deprecations.swift */; };
+		D9177C6D1ECFA477627483848294F90E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		DAD5950A205347FCDBD3751604472431 /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6BF6F6E39D4EF11CF7B690275AB19A /* Protected.swift */; };
+		DEC8BA2FD8A5D7CFAD5ED8DF2839C382 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40C0A0F8CA7AD01A3C97EA067E4C1F4 /* Utilities.swift */; };
+		E4D20EC4339FF0197D892F4CB12C1DB5 /* CreditCardFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CEECE63F3829F34A1AFACA06173914 /* CreditCardFormView.swift */; };
+		E56EEF71CC5AF0DA40228F2CA67B4BA0 /* SideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BD8FFBA734CD0C273DC1DC6B98669FB5 /* SideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5A89E0C46FF7FCA7C4BB2C4FE9EE1DA /* AKMaskFieldStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8D63933BF958CDEBAE628FE621316F /* AKMaskFieldStatus.swift */; };
+		E709C98B763E8065628D8E88715E0BF8 /* SideMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26332673D25EC72AE7525552E68D0E6C /* SideMenuManager.swift */; };
+		E72252B09CC270B50217CA6AEABD620A /* SideMenuPushCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99DAA112C5AFE55C99AE56CD22060D3 /* SideMenuPushCoordinator.swift */; };
+		E97C7A323474D0205E872AE7BC773650 /* SideMenuInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA53F33C6DE3BBDC01ACA1658263E2 /* SideMenuInteractionController.swift */; };
+		F0A147DCC8930062BE7085C81CD60DA2 /* AKMaskFieldBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F374C98658D1C671341E556C74171B /* AKMaskFieldBlock.swift */; };
+		F28D439429A375B6D4FCD037ED317CD6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C597FB8740FC3F1EBD72330C029051CA /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3CDF27FD200CAC41727848E2CEF9CE60 /* PBXContainerItemProxy */ = {
+		0F8394A0F9B8DF6A023CF87EDD627581 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 845A1266A2D0AD42C903573C45B1839E;
+			remoteInfo = CreditCardForm;
+		};
+		14E1632ABD1C606C19253765E4A0E05F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 845A1266A2D0AD42C903573C45B1839E;
+			remoteInfo = CreditCardForm;
+		};
+		16EB294B6F72BB6FD2DE20D23E5C8CE6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4A0A7D8591B67FB75E2E8D215E3735B;
+			remoteInfo = SideMenu;
+		};
+		3FAC8176389CFB8D31561BA4DC0767B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BE0A5B95BAB6E93ADE9F4327DBD91818;
 			remoteInfo = "Pods-Laza Mall Apps";
 		};
-		BDC96B0A2CFE9304B9A43FCE7C9C896D /* PBXContainerItemProxy */ = {
+		4B9671064EBC452F6DBFDE090E8716A8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C4A0A7D8591B67FB75E2E8D215E3735B;
 			remoteInfo = SideMenu;
 		};
-		CAAE0166490A173D6804C0CFAB62ADBE /* PBXContainerItemProxy */ = {
+		9675D0D54C07B77CFDBE7644B5BF6F54 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C4A0A7D8591B67FB75E2E8D215E3735B;
-			remoteInfo = SideMenu;
+			remoteGlobalIDString = 8361D64686865DCA05B2F78B6D91C4CE;
+			remoteInfo = "CreditCardForm-CreditCardForm";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00ED5F6AF07A4E7BC75ADA3CC23B2DE9 /* CreditCardValidationType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CreditCardValidationType.swift; path = CreditCardForm/Classes/CreditCardValidationType.swift; sourceTree = "<group>"; };
 		028C76F1A08576B604934D3E9C25E117 /* Pods-Laza Mall AppsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Laza Mall AppsTests.release.xcconfig"; sourceTree = "<group>"; };
+		02BA53F33C6DE3BBDC01ACA1658263E2 /* SideMenuInteractionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuInteractionController.swift; path = Pod/Classes/SideMenuInteractionController.swift; sourceTree = "<group>"; };
 		0670707128005F45E0155F42E20AB5C4 /* Pods-Laza Mall AppsTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Laza Mall AppsTests-dummy.m"; sourceTree = "<group>"; };
 		09050D44469DB5CD003771F65CACA1EC /* Pods-Laza Mall Apps-Laza Mall AppsUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Laza Mall Apps-Laza Mall AppsUITests-Info.plist"; sourceTree = "<group>"; };
 		092CBC65AB25EC48E45F933DD6F1390A /* Pods-Laza Mall Apps */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Laza Mall Apps"; path = Pods_Laza_Mall_Apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DB2953ADA0D2C1CE90BFF5E0FC3E04D /* SideMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.debug.xcconfig; sourceTree = "<group>"; };
 		0E70A9F1DEFEEB77371706DB481A0204 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Laza Mall Apps-Laza Mall AppsUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1907B78B39DE0F0C6221B3F154AAC862 /* SideMenuPresentationStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuPresentationStyle.swift; path = Pod/Classes/SideMenuPresentationStyle.swift; sourceTree = "<group>"; };
+		12C9CA03A70FED298565CDF1CB7BE3F2 /* CreditCardForm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CreditCardForm.h; path = CreditCardForm/CreditCardForm.h; sourceTree = "<group>"; };
+		18F374C98658D1C671341E556C74171B /* AKMaskFieldBlock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AKMaskFieldBlock.swift; path = CreditCardForm/Classes/AKMaskFieldBlock.swift; sourceTree = "<group>"; };
 		19A6CFFDA6530165735EB7EEBC86303A /* Pods-Laza Mall Apps-Laza Mall AppsUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Laza Mall Apps-Laza Mall AppsUITests-dummy.m"; sourceTree = "<group>"; };
+		19FEAF65722B9C908FA32B19AEC319F7 /* Print.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Print.swift; path = Pod/Classes/Print.swift; sourceTree = "<group>"; };
+		1A6BF6F6E39D4EF11CF7B690275AB19A /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Pod/Classes/Protected.swift; sourceTree = "<group>"; };
 		1B71CAA32213F38B35D4BBC6D6BCCAD5 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Laza Mall Apps-Laza Mall AppsUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		1E1FD7EEB006BAF7D3AF2A213578E4D4 /* Pods-Laza Mall Apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Laza Mall Apps.debug.xcconfig"; sourceTree = "<group>"; };
-		296BE21FF7AAD7D19E6ED839F0804FC1 /* SideMenuTransitionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuTransitionController.swift; path = Pod/Classes/SideMenuTransitionController.swift; sourceTree = "<group>"; };
-		29DA75D7F8119ABA5A3EF4AB757FE0EF /* SideMenuPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuPresentationController.swift; path = Pod/Classes/SideMenuPresentationController.swift; sourceTree = "<group>"; };
-		319D06AA0D1D0BA345459C039040A1ED /* SideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EF1467D7734B9CE8C86E64FCF7692D4 /* SideMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.release.xcconfig; sourceTree = "<group>"; };
+		216705F6BD1DA67E4590F8A18DF27E3A /* CreditCardForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CreditCardForm.debug.xcconfig; sourceTree = "<group>"; };
+		21E04ABDFB9AAB0CA0F240F747EC86B9 /* SideMenuPresentationStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuPresentationStyle.swift; path = Pod/Classes/SideMenuPresentationStyle.swift; sourceTree = "<group>"; };
+		23692743AA80103323A7D235EA08B48D /* AKMaskFieldPatternCharacter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AKMaskFieldPatternCharacter.swift; path = CreditCardForm/Classes/AKMaskFieldPatternCharacter.swift; sourceTree = "<group>"; };
+		26332673D25EC72AE7525552E68D0E6C /* SideMenuManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuManager.swift; path = Pod/Classes/SideMenuManager.swift; sourceTree = "<group>"; };
+		27BC4C091A0DB869698498B5506C0F6B /* CreditCardForm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CreditCardForm-dummy.m"; sourceTree = "<group>"; };
+		319D06AA0D1D0BA345459C039040A1ED /* SideMenu */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SideMenu; path = SideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		320C46B064CE2B90236AAFBF7A4DCD0D /* Pods-Laza Mall AppsTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Laza Mall AppsTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		39731C041E2E77BC5245E8132FC071E0 /* SideMenu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SideMenu-Info.plist"; sourceTree = "<group>"; };
+		32C6D48D4EA8F6857B19FCB9C02ED596 /* AKMaskField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AKMaskField.swift; path = CreditCardForm/Classes/AKMaskField.swift; sourceTree = "<group>"; };
+		38CEECE63F3829F34A1AFACA06173914 /* CreditCardFormView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CreditCardFormView.swift; path = CreditCardForm/Classes/CreditCardFormView.swift; sourceTree = "<group>"; };
+		3F40EA8C92E4BE2C5370943A86C3F900 /* SideMenuPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuPresentationController.swift; path = Pod/Classes/SideMenuPresentationController.swift; sourceTree = "<group>"; };
 		432C8F2F8BC0FA55BE6F064C7D6CDA5C /* Pods-Laza Mall Apps-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Laza Mall Apps-frameworks.sh"; sourceTree = "<group>"; };
 		44886EAD1C3653FF86C679C409FB933B /* Pods-Laza Mall AppsTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Laza Mall AppsTests.modulemap"; sourceTree = "<group>"; };
-		639605EE872C890DF7392A3818475BB5 /* SideMenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.release.xcconfig; sourceTree = "<group>"; };
-		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7D16C168F52FDF8EC2C45F49A36F215C /* SideMenuManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuManager.swift; path = Pod/Classes/SideMenuManager.swift; sourceTree = "<group>"; };
-		8E4B80BD863C174D5427612E5FC99ED1 /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuNavigationController.swift; path = Pod/Classes/SideMenuNavigationController.swift; sourceTree = "<group>"; };
+		4C35EEE45423C77DFAC2175838687A20 /* SideMenuTransitionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuTransitionController.swift; path = Pod/Classes/SideMenuTransitionController.swift; sourceTree = "<group>"; };
+		4E07B03BF784788020D8C11831FF4EC1 /* AKMaskFieldEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AKMaskFieldEvent.swift; path = CreditCardForm/Classes/AKMaskFieldEvent.swift; sourceTree = "<group>"; };
+		51CD10E94D0534634F3E35D5A6C1A7F7 /* CreditCardForm-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CreditCardForm-prefix.pch"; sourceTree = "<group>"; };
+		54B6133C87F2CDCBD978FDE566B4D601 /* ResourceBundle-CreditCardForm-CreditCardForm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-CreditCardForm-CreditCardForm-Info.plist"; sourceTree = "<group>"; };
+		645B2C69F1F423B2C9C878A8A897E222 /* SideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SideMenu.modulemap; sourceTree = "<group>"; };
+		6704AA747BF343E8808A945B8B64A283 /* Deprecations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deprecations.swift; path = Pod/Classes/Deprecations.swift; sourceTree = "<group>"; };
+		6AAE56341AC19202993DD27463FF8B4D /* CreditCardForm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CreditCardForm.modulemap; sourceTree = "<group>"; };
+		79939FABFE7BD829941C2746908F8773 /* SideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SideMenu-dummy.m"; sourceTree = "<group>"; };
+		83B639C036424FEA9BF18FB717E4C3AD /* AKMaskFieldBlockCharacter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AKMaskFieldBlockCharacter.swift; path = CreditCardForm/Classes/AKMaskFieldBlockCharacter.swift; sourceTree = "<group>"; };
+		8C8D63933BF958CDEBAE628FE621316F /* AKMaskFieldStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AKMaskFieldStatus.swift; path = CreditCardForm/Classes/AKMaskFieldStatus.swift; sourceTree = "<group>"; };
+		8D958B16DE35DD4B9920E8BCD6A9E718 /* CreditCardValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CreditCardValidator.swift; path = CreditCardForm/Classes/CreditCardValidator.swift; sourceTree = "<group>"; };
+		93206FEF9D2EA9994A33B6A8CABAF03B /* CreditCardForm-CreditCardForm */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "CreditCardForm-CreditCardForm"; path = CreditCardForm.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		94127A2EF8A58D7B756489BF4FE125A6 /* Pods-Laza Mall AppsTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Laza Mall AppsTests-umbrella.h"; sourceTree = "<group>"; };
 		978BD56BD9E30462CFB704FF6CD2F802 /* Pods-Laza Mall AppsTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Laza Mall AppsTests"; path = Pods_Laza_Mall_AppsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9E1F12E6E9DEC732642010364EE9795B /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Pod/Classes/Protected.swift; sourceTree = "<group>"; };
+		98ED2BF1268DE1A7D38ED4A646E743ED /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuNavigationController.swift; path = Pod/Classes/SideMenuNavigationController.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F41288FD3D15B098F7B982A22C50CAA /* Pods-Laza Mall Apps-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Laza Mall Apps-dummy.m"; sourceTree = "<group>"; };
+		A57BF24E5F87DCBF8DE432E498D41084 /* SideMenu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SideMenu-Info.plist"; sourceTree = "<group>"; };
 		A64949B5433D45A7726D363481F154F7 /* Pods-Laza Mall AppsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Laza Mall AppsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AAF8C60A273E105C576C766F1A6EB2DC /* Pods-Laza Mall Apps.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Laza Mall Apps.modulemap"; sourceTree = "<group>"; };
-		AE8A8B5179015129C9DC09887F8A8E0F /* Print.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Print.swift; path = Pod/Classes/Print.swift; sourceTree = "<group>"; };
-		B007E87349E50118E13B294C1DF5CA0D /* SideMenuPushCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuPushCoordinator.swift; path = Pod/Classes/SideMenuPushCoordinator.swift; sourceTree = "<group>"; };
-		B435A692AE8CB71108BC3C8B3E424BE1 /* Initializable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Initializable.swift; path = Pod/Classes/Initializable.swift; sourceTree = "<group>"; };
+		ADBEE831BB9DFB6C88557A120A49B580 /* SideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-prefix.pch"; sourceTree = "<group>"; };
 		B596226BA1E7F6C3C7CA81633C86D7B0 /* Pods-Laza Mall Apps-Laza Mall AppsUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Laza Mall Apps-Laza Mall AppsUITests.modulemap"; sourceTree = "<group>"; };
 		B67DD82DCFAEC5B43F6D28404B77ACD9 /* Pods-Laza Mall AppsTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Laza Mall AppsTests-Info.plist"; sourceTree = "<group>"; };
-		B72C4994EA5E6719DEB95FF5415FB140 /* SideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SideMenu.modulemap; sourceTree = "<group>"; };
-		B741F11F3B190DB6E66E566ECF54FC35 /* SideMenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SideMenu.debug.xcconfig; sourceTree = "<group>"; };
-		BA7C515B3D13887A728A453D7099F17D /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITableViewVibrantCell.swift; path = Pod/Classes/UITableViewVibrantCell.swift; sourceTree = "<group>"; };
-		BB7389E65A56B13A2B00F28FCEF9794F /* SideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-prefix.pch"; sourceTree = "<group>"; };
+		BD8FFBA734CD0C273DC1DC6B98669FB5 /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
 		BDACC3E85F3FAE44D04CB3D45C1ED6BA /* Pods-Laza Mall Apps-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Laza Mall Apps-acknowledgements.markdown"; sourceTree = "<group>"; };
-		BF29DE67A5AA1D16125206E5A037E259 /* SideMenuInteractionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuInteractionController.swift; path = Pod/Classes/SideMenuInteractionController.swift; sourceTree = "<group>"; };
 		C0626AD8300FB42867D17675483EF3F6 /* Pods-Laza Mall Apps-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Laza Mall Apps-umbrella.h"; sourceTree = "<group>"; };
-		C5E0EF1FE9720FBF7E95FDF1468E9464 /* Deprecations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Deprecations.swift; path = Pod/Classes/Deprecations.swift; sourceTree = "<group>"; };
-		C723107D860DB31CABCD028704863BA8 /* SideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SideMenu-dummy.m"; sourceTree = "<group>"; };
+		C40C0A0F8CA7AD01A3C97EA067E4C1F4 /* Utilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = CreditCardForm/Classes/Utilities.swift; sourceTree = "<group>"; };
+		C597FB8740FC3F1EBD72330C029051CA /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Pod/Classes/Extensions.swift; sourceTree = "<group>"; };
 		C81E08014A00380F84A51B12E52014EC /* Pods-Laza Mall Apps-Laza Mall AppsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Laza Mall Apps-Laza Mall AppsUITests.release.xcconfig"; sourceTree = "<group>"; };
-		CACD16025EBF0FAAFEC087DE312E58C8 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Pod/Classes/Extensions.swift; sourceTree = "<group>"; };
 		CCE4B337D9EE914E2327FC04E58D70B4 /* Pods-Laza Mall Apps-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Laza Mall Apps-acknowledgements.plist"; sourceTree = "<group>"; };
+		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D3D139C6ACF70FE553CC5DBFC4F4C275 /* Initializable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Initializable.swift; path = Pod/Classes/Initializable.swift; sourceTree = "<group>"; };
 		D3FD292C1D8E4C171C8322AFC9882A35 /* Pods-Laza Mall AppsTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Laza Mall AppsTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		DEDB9B2576E9F7BC25C5B4B3ED9D9275 /* SideMenuAnimationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuAnimationController.swift; path = Pod/Classes/SideMenuAnimationController.swift; sourceTree = "<group>"; };
+		D5CB5E11388BB1C3C67726F3C995E492 /* AKMaskFieldUtility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AKMaskFieldUtility.swift; path = CreditCardForm/Classes/AKMaskFieldUtility.swift; sourceTree = "<group>"; };
+		E3BB001BBB58FE519C506E2AA52BED11 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CreditCardForm/Images.xcassets; sourceTree = "<group>"; };
 		E7059B41EE67185B4B995B0359CDEF8B /* Pods-Laza Mall Apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Laza Mall Apps.release.xcconfig"; sourceTree = "<group>"; };
 		E759ACDCA306B9D94CC29A95AC418C83 /* Pods-Laza Mall Apps-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Laza Mall Apps-Info.plist"; sourceTree = "<group>"; };
 		E76059FFFCC52518BDCF010818AFC226 /* Pods-Laza Mall Apps-Laza Mall AppsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Laza Mall Apps-Laza Mall AppsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E7E85A6793FACBE2E63CB87A30B5EA66 /* CreditCardForm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CreditCardForm-Info.plist"; sourceTree = "<group>"; };
+		EA2640E4AA5FBD4840C433B0F950065D /* SideMenuAnimationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuAnimationController.swift; path = Pod/Classes/SideMenuAnimationController.swift; sourceTree = "<group>"; };
+		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		ECF7B2A881CE8688B9F07AA764AF31CD /* CreditCardForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CreditCardForm.release.xcconfig; sourceTree = "<group>"; };
+		EFE6DB727F48D71EA702C7C75FCB0709 /* UITableViewVibrantCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UITableViewVibrantCell.swift; path = Pod/Classes/UITableViewVibrantCell.swift; sourceTree = "<group>"; };
+		F32E27864407A620B6E64A3D2FB222B1 /* CreditCardForm */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CreditCardForm; path = CreditCardForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6D45AD61E1E99383ED1E53695ED8420 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Laza Mall Apps-Laza Mall AppsUITests-frameworks.sh"; sourceTree = "<group>"; };
-		FAEDAD33E39B2C6517EE2C665A844ABA /* SideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SideMenu-umbrella.h"; sourceTree = "<group>"; };
+		F99DAA112C5AFE55C99AE56CD22060D3 /* SideMenuPushCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuPushCoordinator.swift; path = Pod/Classes/SideMenuPushCoordinator.swift; sourceTree = "<group>"; };
 		FBD07857A6C38460D635A245196915BD /* Pods-Laza Mall Apps-Laza Mall AppsUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Laza Mall Apps-Laza Mall AppsUITests"; path = Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE61EF165A866B593329275500E08D06 /* CreditCardForm-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CreditCardForm-umbrella.h"; sourceTree = "<group>"; };
 		FEFDFB2C9EB7921C11B406B49D4E6E48 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Laza Mall Apps-Laza Mall AppsUITests-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		596F0814C38807AF13FACBB4EAABC9E5 /* Frameworks */ = {
+		4C64A51859CDD750A56B10BB6F6E9D08 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7799D500B8C3CDB2DE96355313F1619F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +194,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		61310E76792CC0AC22884C991612682D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				452B67C804FE3C4E2008392CCCDA5225 /* Foundation.framework in Frameworks */,
+				6B65E6C8F78DDECBBFB484910EE4EAC0 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		941F985288ED32A3C1361ED453460537 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,32 +211,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5FF83E8D1CAEB04B7883DC9FACD5F0B /* Frameworks */ = {
+		9A60C9CAEE5FB7379EA6175ADF5D78B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D74D0BC4C9AD8D4A2F6597389ED28269 /* Foundation.framework in Frameworks */,
+				9D0F1C8863CA6D9DB6275AE0134C569A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF2D8FD717AC3CAAB84C79420D246DA4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9177C6D1ECFA477627483848294F90E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		065FF3C006D1A5171BF836C6AA535B96 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B72C4994EA5E6719DEB95FF5415FB140 /* SideMenu.modulemap */,
-				C723107D860DB31CABCD028704863BA8 /* SideMenu-dummy.m */,
-				39731C041E2E77BC5245E8132FC071E0 /* SideMenu-Info.plist */,
-				BB7389E65A56B13A2B00F28FCEF9794F /* SideMenu-prefix.pch */,
-				FAEDAD33E39B2C6517EE2C665A844ABA /* SideMenu-umbrella.h */,
-				B741F11F3B190DB6E66E566ECF54FC35 /* SideMenu.debug.xcconfig */,
-				639605EE872C890DF7392A3818475BB5 /* SideMenu.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SideMenu";
-			sourceTree = "<group>";
-		};
 		1134986D4594C8E96863E28545A9489F /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,53 +240,38 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		56C10A42581BAD13B52C19349C44443E /* Products */ = {
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				092CBC65AB25EC48E45F933DD6F1390A /* Pods-Laza Mall Apps */,
-				FBD07857A6C38460D635A245196915BD /* Pods-Laza Mall Apps-Laza Mall AppsUITests */,
-				978BD56BD9E30462CFB704FF6CD2F802 /* Pods-Laza Mall AppsTests */,
-				319D06AA0D1D0BA345459C039040A1ED /* SideMenu.framework */,
+				59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */,
 			);
-			name = Products;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+				EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */,
+				D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		7D34FA07FC7B9431D63786FEAE0BA6F5 /* Pods */ = {
+		6503B51BCDD4F7A4DCE26827FC77C93B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				860B550C527090E352A83A65C289DBC3 /* SideMenu */,
+				953AB1F5289B68AFE027FCF53FD49DA4 /* CreditCardForm */,
+				AB241B0B29BAEAE885489A60F8C41AE3 /* SideMenu */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		860B550C527090E352A83A65C289DBC3 /* SideMenu */ = {
+		6D8AB49A99AE4910AB98F375F756D516 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C5E0EF1FE9720FBF7E95FDF1468E9464 /* Deprecations.swift */,
-				CACD16025EBF0FAAFEC087DE312E58C8 /* Extensions.swift */,
-				B435A692AE8CB71108BC3C8B3E424BE1 /* Initializable.swift */,
-				AE8A8B5179015129C9DC09887F8A8E0F /* Print.swift */,
-				9E1F12E6E9DEC732642010364EE9795B /* Protected.swift */,
-				DEDB9B2576E9F7BC25C5B4B3ED9D9275 /* SideMenuAnimationController.swift */,
-				BF29DE67A5AA1D16125206E5A037E259 /* SideMenuInteractionController.swift */,
-				7D16C168F52FDF8EC2C45F49A36F215C /* SideMenuManager.swift */,
-				8E4B80BD863C174D5427612E5FC99ED1 /* SideMenuNavigationController.swift */,
-				29DA75D7F8119ABA5A3EF4AB757FE0EF /* SideMenuPresentationController.swift */,
-				1907B78B39DE0F0C6221B3F154AAC862 /* SideMenuPresentationStyle.swift */,
-				B007E87349E50118E13B294C1DF5CA0D /* SideMenuPushCoordinator.swift */,
-				296BE21FF7AAD7D19E6ED839F0804FC1 /* SideMenuTransitionController.swift */,
-				BA7C515B3D13887A728A453D7099F17D /* UITableViewVibrantCell.swift */,
-				065FF3C006D1A5171BF836C6AA535B96 /* Support Files */,
+				E3BB001BBB58FE519C506E2AA52BED11 /* Images.xcassets */,
 			);
-			path = SideMenu;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		86818DBEB6584DAA43C85A49A148E6BC /* Pods-Laza Mall Apps */ = {
@@ -259,23 +308,89 @@
 			path = "Target Support Files/Pods-Laza Mall Apps-Laza Mall AppsUITests";
 			sourceTree = "<group>";
 		};
+		8B7185CDA9215B00D59193EC8966E27E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F32E27864407A620B6E64A3D2FB222B1 /* CreditCardForm */,
+				93206FEF9D2EA9994A33B6A8CABAF03B /* CreditCardForm-CreditCardForm */,
+				092CBC65AB25EC48E45F933DD6F1390A /* Pods-Laza Mall Apps */,
+				FBD07857A6C38460D635A245196915BD /* Pods-Laza Mall Apps-Laza Mall AppsUITests */,
+				978BD56BD9E30462CFB704FF6CD2F802 /* Pods-Laza Mall AppsTests */,
+				319D06AA0D1D0BA345459C039040A1ED /* SideMenu */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		953AB1F5289B68AFE027FCF53FD49DA4 /* CreditCardForm */ = {
+			isa = PBXGroup;
+			children = (
+				32C6D48D4EA8F6857B19FCB9C02ED596 /* AKMaskField.swift */,
+				18F374C98658D1C671341E556C74171B /* AKMaskFieldBlock.swift */,
+				83B639C036424FEA9BF18FB717E4C3AD /* AKMaskFieldBlockCharacter.swift */,
+				4E07B03BF784788020D8C11831FF4EC1 /* AKMaskFieldEvent.swift */,
+				23692743AA80103323A7D235EA08B48D /* AKMaskFieldPatternCharacter.swift */,
+				8C8D63933BF958CDEBAE628FE621316F /* AKMaskFieldStatus.swift */,
+				D5CB5E11388BB1C3C67726F3C995E492 /* AKMaskFieldUtility.swift */,
+				12C9CA03A70FED298565CDF1CB7BE3F2 /* CreditCardForm.h */,
+				38CEECE63F3829F34A1AFACA06173914 /* CreditCardFormView.swift */,
+				00ED5F6AF07A4E7BC75ADA3CC23B2DE9 /* CreditCardValidationType.swift */,
+				8D958B16DE35DD4B9920E8BCD6A9E718 /* CreditCardValidator.swift */,
+				C40C0A0F8CA7AD01A3C97EA067E4C1F4 /* Utilities.swift */,
+				6D8AB49A99AE4910AB98F375F756D516 /* Resources */,
+				F0DCFF851AA98C5239A27CBEBD3EAEE4 /* Support Files */,
+			);
+			name = CreditCardForm;
+			path = CreditCardForm;
+			sourceTree = "<group>";
+		};
+		AB241B0B29BAEAE885489A60F8C41AE3 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				6704AA747BF343E8808A945B8B64A283 /* Deprecations.swift */,
+				C597FB8740FC3F1EBD72330C029051CA /* Extensions.swift */,
+				D3D139C6ACF70FE553CC5DBFC4F4C275 /* Initializable.swift */,
+				19FEAF65722B9C908FA32B19AEC319F7 /* Print.swift */,
+				1A6BF6F6E39D4EF11CF7B690275AB19A /* Protected.swift */,
+				EA2640E4AA5FBD4840C433B0F950065D /* SideMenuAnimationController.swift */,
+				02BA53F33C6DE3BBDC01ACA1658263E2 /* SideMenuInteractionController.swift */,
+				26332673D25EC72AE7525552E68D0E6C /* SideMenuManager.swift */,
+				98ED2BF1268DE1A7D38ED4A646E743ED /* SideMenuNavigationController.swift */,
+				3F40EA8C92E4BE2C5370943A86C3F900 /* SideMenuPresentationController.swift */,
+				21E04ABDFB9AAB0CA0F240F747EC86B9 /* SideMenuPresentationStyle.swift */,
+				F99DAA112C5AFE55C99AE56CD22060D3 /* SideMenuPushCoordinator.swift */,
+				4C35EEE45423C77DFAC2175838687A20 /* SideMenuTransitionController.swift */,
+				EFE6DB727F48D71EA702C7C75FCB0709 /* UITableViewVibrantCell.swift */,
+				FD07F015FF94C4F66910D6611301594E /* Support Files */,
+			);
+			name = SideMenu;
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				7D34FA07FC7B9431D63786FEAE0BA6F5 /* Pods */,
-				56C10A42581BAD13B52C19349C44443E /* Products */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				6503B51BCDD4F7A4DCE26827FC77C93B /* Pods */,
+				8B7185CDA9215B00D59193EC8966E27E /* Products */,
 				1134986D4594C8E96863E28545A9489F /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		F0DCFF851AA98C5239A27CBEBD3EAEE4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				578452D2E740E91742655AC8F1636D1F /* iOS */,
+				6AAE56341AC19202993DD27463FF8B4D /* CreditCardForm.modulemap */,
+				27BC4C091A0DB869698498B5506C0F6B /* CreditCardForm-dummy.m */,
+				E7E85A6793FACBE2E63CB87A30B5EA66 /* CreditCardForm-Info.plist */,
+				51CD10E94D0534634F3E35D5A6C1A7F7 /* CreditCardForm-prefix.pch */,
+				FE61EF165A866B593329275500E08D06 /* CreditCardForm-umbrella.h */,
+				216705F6BD1DA67E4590F8A18DF27E3A /* CreditCardForm.debug.xcconfig */,
+				ECF7B2A881CE8688B9F07AA764AF31CD /* CreditCardForm.release.xcconfig */,
+				54B6133C87F2CDCBD978FDE566B4D601 /* ResourceBundle-CreditCardForm-CreditCardForm-Info.plist */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/CreditCardForm";
 			sourceTree = "<group>";
 		};
 		F8450CE21766F603999FD56DBA66D0F9 /* Pods-Laza Mall AppsTests */ = {
@@ -294,9 +409,32 @@
 			path = "Target Support Files/Pods-Laza Mall AppsTests";
 			sourceTree = "<group>";
 		};
+		FD07F015FF94C4F66910D6611301594E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				645B2C69F1F423B2C9C878A8A897E222 /* SideMenu.modulemap */,
+				79939FABFE7BD829941C2746908F8773 /* SideMenu-dummy.m */,
+				A57BF24E5F87DCBF8DE432E498D41084 /* SideMenu-Info.plist */,
+				ADBEE831BB9DFB6C88557A120A49B580 /* SideMenu-prefix.pch */,
+				BD8FFBA734CD0C273DC1DC6B98669FB5 /* SideMenu-umbrella.h */,
+				0DB2953ADA0D2C1CE90BFF5E0FC3E04D /* SideMenu.debug.xcconfig */,
+				1EF1467D7734B9CE8C86E64FCF7692D4 /* SideMenu.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SideMenu";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0B1F204E2D543A3EA82431545BC6C9AC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26ABF3DB731F943AF963007F803283BC /* Pods-Laza Mall Apps-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		532E477CDF8523D3911E71785BB65579 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -305,11 +443,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A5880DA11994C8B8BDCEA224E61D371 /* Headers */ = {
+		6A488179EB28253F1FF1988537067C63 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95EC50881DDEB792B95B02B47E1F2ACD /* Pods-Laza Mall Apps-umbrella.h in Headers */,
+				412AE862699535BCC1EC902C75A5FCB3 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,11 +459,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E9D9D655A617AB957F69E0B56609B0F /* Headers */ = {
+		ADD14E1FCF7B161FC2C61DF0C731CC82 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1185EE8A8E1538A8F62C35A078B6F0F4 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-umbrella.h in Headers */,
+				2DD44305EF5E437A3EBD94AE94BB2D1E /* CreditCardForm.h in Headers */,
+				6F58BCE7397C1FE3E24A99F084DA62DE /* CreditCardForm-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,17 +473,18 @@
 /* Begin PBXNativeTarget section */
 		22D686C58D94F91E911F51C0EDB5C8D4 /* Pods-Laza Mall Apps-Laza Mall AppsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2DF08A81186D65C9789F2AE779EBBD5E /* Build configuration list for PBXNativeTarget "Pods-Laza Mall Apps-Laza Mall AppsUITests" */;
+			buildConfigurationList = 6B31D534E61733474819E753C03C3C49 /* Build configuration list for PBXNativeTarget "Pods-Laza Mall Apps-Laza Mall AppsUITests" */;
 			buildPhases = (
-				9E9D9D655A617AB957F69E0B56609B0F /* Headers */,
-				8CB5B3EAE2B91407932FDD1311412663 /* Sources */,
-				596F0814C38807AF13FACBB4EAABC9E5 /* Frameworks */,
-				0F673C2D88B4BD778C15D12CC7023100 /* Resources */,
+				6A488179EB28253F1FF1988537067C63 /* Headers */,
+				0E036F852A314469D2340C761B279469 /* Sources */,
+				DF2D8FD717AC3CAAB84C79420D246DA4 /* Frameworks */,
+				02D6915B5B4BEBBE0E24B9A3DDB29A81 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0CEA190DFC86688AD3F53CCF93A66A1B /* PBXTargetDependency */,
+				8D8E4DC6A123BF395674CFE8394239DA /* PBXTargetDependency */,
+				8AE6A36FD06BA614728AA662108630D0 /* PBXTargetDependency */,
 			);
 			name = "Pods-Laza Mall Apps-Laza Mall AppsUITests";
 			productName = Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests;
@@ -363,26 +503,63 @@
 			buildRules = (
 			);
 			dependencies = (
-				56BB9ACDDB7E25C402F795596418B749 /* PBXTargetDependency */,
+				9B2D130D8485C52744BC875567AA21B4 /* PBXTargetDependency */,
 			);
 			name = "Pods-Laza Mall AppsTests";
 			productName = Pods_Laza_Mall_AppsTests;
 			productReference = 978BD56BD9E30462CFB704FF6CD2F802 /* Pods-Laza Mall AppsTests */;
 			productType = "com.apple.product-type.framework";
 		};
-		BE0A5B95BAB6E93ADE9F4327DBD91818 /* Pods-Laza Mall Apps */ = {
+		8361D64686865DCA05B2F78B6D91C4CE /* CreditCardForm-CreditCardForm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A250C91840296F11D58433700080376E /* Build configuration list for PBXNativeTarget "Pods-Laza Mall Apps" */;
+			buildConfigurationList = D2ED0311950376A0E4BBDDE099DC54E5 /* Build configuration list for PBXNativeTarget "CreditCardForm-CreditCardForm" */;
 			buildPhases = (
-				6A5880DA11994C8B8BDCEA224E61D371 /* Headers */,
-				45819C05C18FE06DAC64B068C42073B2 /* Sources */,
-				B5FF83E8D1CAEB04B7883DC9FACD5F0B /* Frameworks */,
-				C826B69D1A7B6E2FDE881DC9F1AD893B /* Resources */,
+				00A2685E543BD4B06FBED87634D02B48 /* Sources */,
+				4C64A51859CDD750A56B10BB6F6E9D08 /* Frameworks */,
+				C54780BC7A3F33748BE71FEBFFCBF12C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8A2B94DA4BFFFCA6F494BAC65E89936B /* PBXTargetDependency */,
+			);
+			name = "CreditCardForm-CreditCardForm";
+			productName = CreditCardForm;
+			productReference = 93206FEF9D2EA9994A33B6A8CABAF03B /* CreditCardForm-CreditCardForm */;
+			productType = "com.apple.product-type.bundle";
+		};
+		845A1266A2D0AD42C903573C45B1839E /* CreditCardForm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E165C9D19825055FCBEC3BFB76B1C2C1 /* Build configuration list for PBXNativeTarget "CreditCardForm" */;
+			buildPhases = (
+				ADD14E1FCF7B161FC2C61DF0C731CC82 /* Headers */,
+				576ACDBF78F0DD37D4FBB88D4CE0F026 /* Sources */,
+				61310E76792CC0AC22884C991612682D /* Frameworks */,
+				48A49AAABCAF664665D6E7D6D2C8FABC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C6030F24F51120515AF96A3A1B877EB2 /* PBXTargetDependency */,
+			);
+			name = CreditCardForm;
+			productName = CreditCardForm;
+			productReference = F32E27864407A620B6E64A3D2FB222B1 /* CreditCardForm */;
+			productType = "com.apple.product-type.framework";
+		};
+		BE0A5B95BAB6E93ADE9F4327DBD91818 /* Pods-Laza Mall Apps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9D90F8B86B1DA8C4B09CD45708E372C /* Build configuration list for PBXNativeTarget "Pods-Laza Mall Apps" */;
+			buildPhases = (
+				0B1F204E2D543A3EA82431545BC6C9AC /* Headers */,
+				FE889A98FEC3B86DB136FD30BE241B53 /* Sources */,
+				9A60C9CAEE5FB7379EA6175ADF5D78B2 /* Frameworks */,
+				FED17F1900AF54650FE7EF0FD690203B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7BF09F902029B8A6FE3BCD892EC4DEF7 /* PBXTargetDependency */,
+				B0153D1C296848F2C31E3602F412F8B7 /* PBXTargetDependency */,
 			);
 			name = "Pods-Laza Mall Apps";
 			productName = Pods_Laza_Mall_Apps;
@@ -404,7 +581,7 @@
 			);
 			name = SideMenu;
 			productName = SideMenu;
-			productReference = 319D06AA0D1D0BA345459C039040A1ED /* SideMenu.framework */;
+			productReference = 319D06AA0D1D0BA345459C039040A1ED /* SideMenu */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -425,10 +602,12 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 56C10A42581BAD13B52C19349C44443E /* Products */;
+			productRefGroup = 8B7185CDA9215B00D59193EC8966E27E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				845A1266A2D0AD42C903573C45B1839E /* CreditCardForm */,
+				8361D64686865DCA05B2F78B6D91C4CE /* CreditCardForm-CreditCardForm */,
 				BE0A5B95BAB6E93ADE9F4327DBD91818 /* Pods-Laza Mall Apps */,
 				22D686C58D94F91E911F51C0EDB5C8D4 /* Pods-Laza Mall Apps-Laza Mall AppsUITests */,
 				646846CE1806058E587806D5B84A336A /* Pods-Laza Mall AppsTests */,
@@ -438,10 +617,18 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0F673C2D88B4BD778C15D12CC7023100 /* Resources */ = {
+		02D6915B5B4BEBBE0E24B9A3DDB29A81 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48A49AAABCAF664665D6E7D6D2C8FABC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				290021B707C80BCE5AD8F43E526116EE /* CreditCardForm-CreditCardForm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +646,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C826B69D1A7B6E2FDE881DC9F1AD893B /* Resources */ = {
+		C54780BC7A3F33748BE71FEBFFCBF12C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AB0F1F27CBEEBD8511DE7DF3A094119 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FED17F1900AF54650FE7EF0FD690203B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -469,11 +664,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		45819C05C18FE06DAC64B068C42073B2 /* Sources */ = {
+		00A2685E543BD4B06FBED87634D02B48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				901A05C05CA75D6DF164743438CA0510 /* Pods-Laza Mall Apps-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E036F852A314469D2340C761B279469 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77C6C66B86FD24572A3F0953A593FB35 /* Pods-Laza Mall Apps-Laza Mall AppsUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		576ACDBF78F0DD37D4FBB88D4CE0F026 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79D4FB6A3DCB4A5B95178B24B097D079 /* AKMaskField.swift in Sources */,
+				F0A147DCC8930062BE7085C81CD60DA2 /* AKMaskFieldBlock.swift in Sources */,
+				4B49A6E17AD908DC17E5BEC15E5AEEB4 /* AKMaskFieldBlockCharacter.swift in Sources */,
+				2B3E0E26A36FF090CD950D2030B0A012 /* AKMaskFieldEvent.swift in Sources */,
+				22ED29F9016C52DA1E72532741940FEE /* AKMaskFieldPatternCharacter.swift in Sources */,
+				E5A89E0C46FF7FCA7C4BB2C4FE9EE1DA /* AKMaskFieldStatus.swift in Sources */,
+				6DDE3F21B8B439281D1EDF228D0ED065 /* AKMaskFieldUtility.swift in Sources */,
+				AB25C18FE52C5B5B953D3C030CCC156B /* CreditCardForm-dummy.m in Sources */,
+				E4D20EC4339FF0197D892F4CB12C1DB5 /* CreditCardFormView.swift in Sources */,
+				B190209DDD0006F9A27C0F6BBA977F82 /* CreditCardValidationType.swift in Sources */,
+				04459CB3692B269C1329E312F51AFE3D /* CreditCardValidator.swift in Sources */,
+				DEC8BA2FD8A5D7CFAD5ED8DF2839C382 /* Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,14 +720,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8CB5B3EAE2B91407932FDD1311412663 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BEE33FDF7133E326390DEE679DBBA29F /* Pods-Laza Mall Apps-Laza Mall AppsUITests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B77071C587F65E6A55F39F634DAF3B4C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -515,105 +728,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE889A98FEC3B86DB136FD30BE241B53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BB5D1B52BB1857C8B11C8C550C2746B /* Pods-Laza Mall Apps-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0CEA190DFC86688AD3F53CCF93A66A1B /* PBXTargetDependency */ = {
+		7BF09F902029B8A6FE3BCD892EC4DEF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CreditCardForm;
+			target = 845A1266A2D0AD42C903573C45B1839E /* CreditCardForm */;
+			targetProxy = 0F8394A0F9B8DF6A023CF87EDD627581 /* PBXContainerItemProxy */;
+		};
+		8AE6A36FD06BA614728AA662108630D0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SideMenu;
 			target = C4A0A7D8591B67FB75E2E8D215E3735B /* SideMenu */;
-			targetProxy = BDC96B0A2CFE9304B9A43FCE7C9C896D /* PBXContainerItemProxy */;
+			targetProxy = 16EB294B6F72BB6FD2DE20D23E5C8CE6 /* PBXContainerItemProxy */;
 		};
-		56BB9ACDDB7E25C402F795596418B749 /* PBXTargetDependency */ = {
+		8D8E4DC6A123BF395674CFE8394239DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CreditCardForm;
+			target = 845A1266A2D0AD42C903573C45B1839E /* CreditCardForm */;
+			targetProxy = 14E1632ABD1C606C19253765E4A0E05F /* PBXContainerItemProxy */;
+		};
+		9B2D130D8485C52744BC875567AA21B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Laza Mall Apps";
 			target = BE0A5B95BAB6E93ADE9F4327DBD91818 /* Pods-Laza Mall Apps */;
-			targetProxy = 3CDF27FD200CAC41727848E2CEF9CE60 /* PBXContainerItemProxy */;
+			targetProxy = 3FAC8176389CFB8D31561BA4DC0767B2 /* PBXContainerItemProxy */;
 		};
-		8A2B94DA4BFFFCA6F494BAC65E89936B /* PBXTargetDependency */ = {
+		B0153D1C296848F2C31E3602F412F8B7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SideMenu;
 			target = C4A0A7D8591B67FB75E2E8D215E3735B /* SideMenu */;
-			targetProxy = CAAE0166490A173D6804C0CFAB62ADBE /* PBXContainerItemProxy */;
+			targetProxy = 4B9671064EBC452F6DBFDE090E8716A8 /* PBXContainerItemProxy */;
+		};
+		C6030F24F51120515AF96A3A1B877EB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CreditCardForm-CreditCardForm";
+			target = 8361D64686865DCA05B2F78B6D91C4CE /* CreditCardForm-CreditCardForm */;
+			targetProxy = 9675D0D54C07B77CFDBE7644B5BF6F54 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		2758BD09A1A112AEB9ACE882887D6F8F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7059B41EE67185B4B995B0359CDEF8B /* Pods-Laza Mall Apps.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		46BFE2312ECDC35BEC02D94DC5B60F4C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 639605EE872C890DF7392A3818475BB5 /* SideMenu.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SideMenu/SideMenu-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
-				PRODUCT_MODULE_NAME = SideMenu;
-				PRODUCT_NAME = SideMenu;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		487CFEA751C106624C1CDCD2C10A28C3 /* Release */ = {
+		0A74552A5E05C9B8C0EBFE33BD0A8BCA /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C81E08014A00380F84A51B12E52014EC /* Pods-Laza Mall Apps-Laza Mall AppsUITests.release.xcconfig */;
 			buildSettings = {
@@ -651,6 +816,114 @@
 			};
 			name = Release;
 		};
+		2C63AD0579C6EDAFF93045FD9CF4E136 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECF7B2A881CE8688B9F07AA764AF31CD /* CreditCardForm.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CreditCardForm/CreditCardForm-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CreditCardForm/CreditCardForm-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CreditCardForm/CreditCardForm.modulemap";
+				PRODUCT_MODULE_NAME = CreditCardForm;
+				PRODUCT_NAME = CreditCardForm;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		46BFE2312ECDC35BEC02D94DC5B60F4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EF1467D7734B9CE8C86E64FCF7692D4 /* SideMenu.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SideMenu/SideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SideMenu/SideMenu-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SideMenu/SideMenu.modulemap";
+				PRODUCT_MODULE_NAME = SideMenu;
+				PRODUCT_NAME = SideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		49E4F7A86ABD28F48F0B0F3322D659C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E1FD7EEB006BAF7D3AF2A213578E4D4 /* Pods-Laza Mall Apps.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		731169D8C0E617F5BDAD118FE3A7CDC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A64949B5433D45A7726D363481F154F7 /* Pods-Laza Mall AppsTests.debug.xcconfig */;
@@ -682,6 +955,40 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		792C3A89968A0FFF1266D825C93C1681 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 216705F6BD1DA67E4590F8A18DF27E3A /* CreditCardForm.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CreditCardForm/CreditCardForm-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CreditCardForm/CreditCardForm-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CreditCardForm/CreditCardForm.modulemap";
+				PRODUCT_MODULE_NAME = CreditCardForm;
+				PRODUCT_NAME = CreditCardForm;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -754,46 +1061,9 @@
 			};
 			name = Debug;
 		};
-		970E5086346AFEBB4D2F2F9E7798FB84 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E1FD7EEB006BAF7D3AF2A213578E4D4 /* Pods-Laza Mall Apps.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		9E0C37648D76E361234D07CA876D0358 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B741F11F3B190DB6E66E566ECF54FC35 /* SideMenu.debug.xcconfig */;
+			baseConfigurationReference = 0DB2953ADA0D2C1CE90BFF5E0FC3E04D /* SideMenu.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -864,7 +1134,41 @@
 			};
 			name = Release;
 		};
-		D793EB4CDF8A28D7C166BD128104E697 /* Debug */ = {
+		C04FDEC37742188D3684C1710A145E96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECF7B2A881CE8688B9F07AA764AF31CD /* CreditCardForm.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CreditCardForm";
+				IBSC_MODULE = CreditCardForm;
+				INFOPLIST_FILE = "Target Support Files/CreditCardForm/ResourceBundle-CreditCardForm-CreditCardForm-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = CreditCardForm;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		D1245630322A65468E5037802A4BD426 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 216705F6BD1DA67E4590F8A18DF27E3A /* CreditCardForm.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CreditCardForm";
+				IBSC_MODULE = CreditCardForm;
+				INFOPLIST_FILE = "Target Support Files/CreditCardForm/ResourceBundle-CreditCardForm-CreditCardForm-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = CreditCardForm;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		E0F95AAB17D76AF04020D820547557B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E76059FFFCC52518BDCF010818AFC226 /* Pods-Laza Mall Apps-Laza Mall AppsUITests.debug.xcconfig */;
 			buildSettings = {
@@ -900,6 +1204,44 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		F71C9188E2CFF269B83668CDD9D91D84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7059B41EE67185B4B995B0359CDEF8B /* Pods-Laza Mall Apps.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		FF0A36149038A192FFD678E1D4A40D3B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -975,15 +1317,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2DF08A81186D65C9789F2AE779EBBD5E /* Build configuration list for PBXNativeTarget "Pods-Laza Mall Apps-Laza Mall AppsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D793EB4CDF8A28D7C166BD128104E697 /* Debug */,
-				487CFEA751C106624C1CDCD2C10A28C3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -993,11 +1326,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A250C91840296F11D58433700080376E /* Build configuration list for PBXNativeTarget "Pods-Laza Mall Apps" */ = {
+		6B31D534E61733474819E753C03C3C49 /* Build configuration list for PBXNativeTarget "Pods-Laza Mall Apps-Laza Mall AppsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				970E5086346AFEBB4D2F2F9E7798FB84 /* Debug */,
-				2758BD09A1A112AEB9ACE882887D6F8F /* Release */,
+				E0F95AAB17D76AF04020D820547557B9 /* Debug */,
+				0A74552A5E05C9B8C0EBFE33BD0A8BCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1007,6 +1340,33 @@
 			buildConfigurations = (
 				9E0C37648D76E361234D07CA876D0358 /* Debug */,
 				46BFE2312ECDC35BEC02D94DC5B60F4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2ED0311950376A0E4BBDDE099DC54E5 /* Build configuration list for PBXNativeTarget "CreditCardForm-CreditCardForm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1245630322A65468E5037802A4BD426 /* Debug */,
+				C04FDEC37742188D3684C1710A145E96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E165C9D19825055FCBEC3BFB76B1C2C1 /* Build configuration list for PBXNativeTarget "CreditCardForm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				792C3A89968A0FFF1266D825C93C1681 /* Debug */,
+				2C63AD0579C6EDAFF93045FD9CF4E136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9D90F8B86B1DA8C4B09CD45708E372C /* Build configuration list for PBXNativeTarget "Pods-Laza Mall Apps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49E4F7A86ABD28F48F0B0F3322D659C1 /* Debug */,
+				F71C9188E2CFF269B83668CDD9D91D84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

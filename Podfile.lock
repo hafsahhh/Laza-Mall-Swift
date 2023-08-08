@@ -1,16 +1,20 @@
 PODS:
+  - CreditCardForm (0.2.0)
   - SideMenu (6.5.0)
 
 DEPENDENCIES:
+  - CreditCardForm
   - SideMenu
 
 SPEC REPOS:
   trunk:
+    - CreditCardForm
     - SideMenu
 
 SPEC CHECKSUMS:
+  CreditCardForm: bba4aad545236f97f2dc45ea3bed0cb57d5e0e99
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: a457c13ac5cf6036554240fd1d610837687c67dd
+PODFILE CHECKSUM: 953cd3674f79b95d5cfb5d842e93e5088776abff
 
 COCOAPODS: 1.12.1
