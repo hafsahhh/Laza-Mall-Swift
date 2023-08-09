@@ -29,4 +29,8 @@ class ShowAlert {
       self.showAlert(on: viewController, title: "Invalid Password", message: "The password must be at least 8 characters long and contain at least one letter and one number. Ex: HelloWorld@123")
     }
     
+    public static func alertChoosePayment(on viewController:UIViewController){
+      self.showAlert(on: viewController, title: "Please Choose Payment", message: "Please choose payment methode between GoPay or Credit Card")
+    }
+
 }

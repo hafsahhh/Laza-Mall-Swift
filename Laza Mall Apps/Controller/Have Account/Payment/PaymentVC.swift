@@ -9,6 +9,8 @@ import UIKit
 
 class PaymentVC: UIViewController {
 
+    
+    @IBOutlet weak var cardPaymentCollect: UICollectionView!
     //Back Button
     private lazy var backBtn : UIButton = {
         //call back button
@@ -32,6 +34,10 @@ class PaymentVC: UIViewController {
 
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
+        
+        cardPaymentCollect.dataSource = self
+        cardPaymentCollect.delegate = self
+        cardPaymentCollect.register(PaymentCollectCell.nib(), forCellWithReuseIdentifier: PaymentCollectCell.identifier)
     }
     
     @IBAction func addNewCartBtn(_ sender: Any) {
@@ -40,3 +46,37 @@ class PaymentVC: UIViewController {
     }
     
 }
+
+extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 300, height: 200)
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let listPayCell = collectionView.dequeueReusableCell(withReuseIdentifier: PaymentCollectCell.identifier, for: indexPath) as? PaymentCollectCell
+        else {
+            return UICollectionViewCell()
+        }
+        return listPayCell
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+}
+
+
+//extension PaymentVC: PaymentCardTextFieldDelegate {
+//    func paymentCardDidChange(cardNumber: String, expirationYear: UInt?, expirationMonth: UInt?) {
+//        <#code#>
+//    }
+
+    
+//}

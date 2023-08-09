@@ -20,7 +20,7 @@ class CartVC: UIViewController {
         let label3 = UILabel()
         label3.numberOfLines = 1
         label3.textAlignment = .center
-        label3.text = "Cart"
+        label3.text = "Order"
         label3.font = UIFont(name: "inter-Medium", size: 11)
         label3.sizeToFit()
         
@@ -51,13 +51,13 @@ class CartVC: UIViewController {
         }
     }
     @IBAction func addressBtn(_ sender: Any) {
-        let AddressVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddressVC") as! AddressVC
-        self.navigationController?.pushViewController(AddressVC, animated: true)
+        let listAddress = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ListAddressVC") as! ListAddressVC
+        self.navigationController?.pushViewController(listAddress, animated: true)
     }
     
     
     @IBAction func paymentBtn(_ sender: Any) {
-        let payemntBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
+        let payemntBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChoosePaymentVC") as! ChoosePaymentVC
         self.navigationController?.pushViewController(payemntBtn, animated: true)
     }
     

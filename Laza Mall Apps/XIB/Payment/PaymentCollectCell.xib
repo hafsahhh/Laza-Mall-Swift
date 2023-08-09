@@ -17,20 +17,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="330" height="230"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLg-Eq-xsw">
-                        <rect key="frame" x="15" y="15" width="300" height="200"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLg-Eq-xsw" customClass="CreditCardFormView" customModule="CreditCardForm">
+                        <rect key="frame" x="0.0" y="0.0" width="330" height="230"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dLg-Eq-xsw" secondAttribute="trailing" constant="15" id="Uih-Lv-Bdm"/>
-                <constraint firstItem="dLg-Eq-xsw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="XeI-bk-I4G"/>
-                <constraint firstAttribute="bottom" secondItem="dLg-Eq-xsw" secondAttribute="bottom" constant="15" id="msP-oZ-yXp"/>
-                <constraint firstItem="dLg-Eq-xsw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="zyp-wD-jY9"/>
+                <constraint firstAttribute="trailing" secondItem="dLg-Eq-xsw" secondAttribute="trailing" id="Uih-Lv-Bdm"/>
+                <constraint firstItem="dLg-Eq-xsw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XeI-bk-I4G"/>
+                <constraint firstAttribute="bottom" secondItem="dLg-Eq-xsw" secondAttribute="bottom" id="msP-oZ-yXp"/>
+                <constraint firstItem="dLg-Eq-xsw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zyp-wD-jY9"/>
             </constraints>
             <size key="customSize" width="330" height="230"/>
+            <connections>
+                <outlet property="listCardPayment" destination="dLg-Eq-xsw" id="3YY-yO-L3K"/>
+            </connections>
             <point key="canvasLocation" x="343.51145038167937" y="50.70422535211268"/>
         </collectionViewCell>
     </objects>
