@@ -17,6 +17,7 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
     var productFilter: [ProductEntry] = []
     var searchActive : Bool = false
     
+    
     private func setupTabBarText() {
         let label2 = UILabel()
         label2.numberOfLines = 1

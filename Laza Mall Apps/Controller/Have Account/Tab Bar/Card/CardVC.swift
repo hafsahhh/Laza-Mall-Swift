@@ -11,6 +11,10 @@ class CardVC: UIViewController {
 
     
     @IBOutlet weak var cardCollectView: UICollectionView!
+    @IBOutlet weak var emptyDataCreditCard: UILabel!
+    
+    
+    let modelCreditCard = indexCreditCard()
     
     //wishlist card
     private func setupTabBarText() {
@@ -47,7 +51,12 @@ class CardVC: UIViewController {
 
 extension CardVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if modelCreditCard.count == 0 {
+            emptyDataCreditCard.isHidden = false
+        } else {
+            emptyDataCreditCard.isHidden = true
+        }
+        return modelCreditCard.count
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 300, height: 200)

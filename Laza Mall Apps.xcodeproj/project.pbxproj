@@ -23,6 +23,9 @@
 		1A0671FA2A7BE60B0079B97F /* AddReviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F92A7BE60B0079B97F /* AddReviewVC.swift */; };
 		1A0671FC2A7BEB370079B97F /* VerificationCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671FB2A7BEB370079B97F /* VerificationCodeVC.swift */; };
 		1A0A44142A7ECD81008B2A52 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0A44132A7ECD81008B2A52 /* ShowAlert.swift */; };
+		1A11841A2A8867F400D2CAC9 /* SignUpVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1184192A8867F400D2CAC9 /* SignUpVM.swift */; };
+		1A11841C2A88803600D2CAC9 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A11841B2A88803600D2CAC9 /* LoginVM.swift */; };
+		1A11841E2A88EF6500D2CAC9 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A11841D2A88EF6500D2CAC9 /* Slider.swift */; };
 		1A24CEA02A789396008F693F /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A24CE9E2A789396008F693F /* CategoryCollectionCell.swift */; };
 		1A24CEA12A789396008F693F /* CategoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A24CE9F2A789396008F693F /* CategoryCollectionCell.xib */; };
 		1A24CEB52A78B4D4008F693F /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A24CEB32A78B4D4008F693F /* CategoryTableCell.swift */; };
@@ -36,10 +39,14 @@
 		1A2B36462A70F9030050671E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36452A70F9030050671E /* Model.swift */; };
 		1A2B36482A70FE580050671E /* ApiUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36472A70FE580050671E /* ApiUsers.swift */; };
 		1A2B364A2A70FEE10050671E /* ApiAllProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36492A70FEE10050671E /* ApiAllProduct.swift */; };
+		1A2D5C5B2A8608D5000F51DD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D5C5A2A8608D5000F51DD /* HomeViewModel.swift */; };
+		1A2D5C5E2A860F84000F51DD /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2D5C5D2A860F84000F51DD /* Cosmos */; };
 		1A4F61D12A77F298004D4C7E /* WishlistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F61D02A77F298004D4C7E /* WishlistVC.swift */; };
 		1A4F61D32A77F2C2004D4C7E /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F61D22A77F2C2004D4C7E /* CartVC.swift */; };
 		1A4F61D52A77F2E7004D4C7E /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F61D42A77F2E7004D4C7E /* CardVC.swift */; };
 		1A4F61D72A77F460004D4C7E /* HomepageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4F61D62A77F460004D4C7E /* HomepageVC.swift */; };
+		1A53A8012A84E352001886C6 /* SnackBar in Frameworks */ = {isa = PBXBuildFile; productRef = 1A53A8002A84E352001886C6 /* SnackBar */; };
+		1A53A8032A84E37A001886C6 /* Snack Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A53A8022A84E37A001886C6 /* Snack Bar.swift */; };
 		1A561E522A79DD6A0024FF29 /* DetailProVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A561E512A79DD6A0024FF29 /* DetailProVC.swift */; };
 		1A561E542A7A03B30024FF29 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A561E532A7A03B30024FF29 /* IntrinsicTableView.swift */; };
 		1A561E562A7A046D0024FF29 /* DynamicHeightTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A561E552A7A046D0024FF29 /* DynamicHeightTable.swift */; };
@@ -125,6 +132,9 @@
 		1A0671F92A7BE60B0079B97F /* AddReviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVC.swift; sourceTree = "<group>"; };
 		1A0671FB2A7BEB370079B97F /* VerificationCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeVC.swift; sourceTree = "<group>"; };
 		1A0A44132A7ECD81008B2A52 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
+		1A1184192A8867F400D2CAC9 /* SignUpVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVM.swift; sourceTree = "<group>"; };
+		1A11841B2A88803600D2CAC9 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		1A11841D2A88EF6500D2CAC9 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		1A24CE9E2A789396008F693F /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		1A24CE9F2A789396008F693F /* CategoryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionCell.xib; sourceTree = "<group>"; };
 		1A24CEB32A78B4D4008F693F /* CategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableCell.swift; sourceTree = "<group>"; };
@@ -147,10 +157,12 @@
 		1A2B36452A70F9030050671E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1A2B36472A70FE580050671E /* ApiUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUsers.swift; sourceTree = "<group>"; };
 		1A2B36492A70FEE10050671E /* ApiAllProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAllProduct.swift; sourceTree = "<group>"; };
+		1A2D5C5A2A8608D5000F51DD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1A4F61D02A77F298004D4C7E /* WishlistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistVC.swift; sourceTree = "<group>"; };
 		1A4F61D22A77F2C2004D4C7E /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		1A4F61D42A77F2E7004D4C7E /* CardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
 		1A4F61D62A77F460004D4C7E /* HomepageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageVC.swift; sourceTree = "<group>"; };
+		1A53A8022A84E37A001886C6 /* Snack Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Snack Bar.swift"; sourceTree = "<group>"; };
 		1A561E512A79DD6A0024FF29 /* DetailProVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProVC.swift; sourceTree = "<group>"; };
 		1A561E532A7A03B30024FF29 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		1A561E552A7A046D0024FF29 /* DynamicHeightTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightTable.swift; sourceTree = "<group>"; };
@@ -211,6 +223,8 @@
 				1A6D95302A7213C000BAC168 /* SDWebImageSwiftUI in Frameworks */,
 				1A8C3D662A81E4A900ADE799 /* StripeFinancialConnections in Frameworks */,
 				1A8C3D622A81E4A900ADE799 /* StripeApplePay in Frameworks */,
+				1A53A8012A84E352001886C6 /* SnackBar in Frameworks */,
+				1A2D5C5E2A860F84000F51DD /* Cosmos in Frameworks */,
 				1A8C3D682A81E4A900ADE799 /* StripeIdentity in Frameworks */,
 				56380A5DEEEC949634732607 /* Pods_Laza_Mall_Apps.framework in Frameworks */,
 				1A8C3D642A81E4A900ADE799 /* StripeCardScan in Frameworks */,
@@ -307,6 +321,15 @@
 			path = Password;
 			sourceTree = "<group>";
 		};
+		1A1184182A8867D300D2CAC9 /* Haven't Account */ = {
+			isa = PBXGroup;
+			children = (
+				1A1184192A8867F400D2CAC9 /* SignUpVM.swift */,
+				1A11841B2A88803600D2CAC9 /* LoginVM.swift */,
+			);
+			path = "Haven't Account";
+			sourceTree = "<group>";
+		};
 		1A24CEA22A78A881008F693F /* Nested in Table View */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +364,8 @@
 				1A561E532A7A03B30024FF29 /* IntrinsicTableView.swift */,
 				1A561E552A7A046D0024FF29 /* DynamicHeightTable.swift */,
 				1A0A44132A7ECD81008B2A52 /* ShowAlert.swift */,
+				1A53A8022A84E37A001886C6 /* Snack Bar.swift */,
+				1A11841D2A88EF6500D2CAC9 /* Slider.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -376,6 +401,15 @@
 				1AAF92562A7F7CC5005BBB68 /* Like Product.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1A2D5C592A8608AE000F51DD /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A1184182A8867D300D2CAC9 /* Haven't Account */,
+				1A2D5C5A2A8608D5000F51DD /* HomeViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		1A561E502A79DD4E0024FF29 /* Product */ = {
@@ -537,6 +571,7 @@
 		1ACBD6382A6FD02C002C12A2 /* Laza Mall Apps */ = {
 			isa = PBXGroup;
 			children = (
+				1A2D5C592A8608AE000F51DD /* View Model */,
 				1A29A8B32A7C884F00FA25AA /* fonts */,
 				1A0671EF2A7B88270079B97F /* Data Dummy */,
 				1A24CEA22A78A881008F693F /* Nested in Table View */,
@@ -643,6 +678,8 @@
 				1A8C3D692A81E4A900ADE799 /* StripePaymentSheet */,
 				1A8C3D6B2A81E4A900ADE799 /* StripePayments */,
 				1A8C3D6D2A81E4A900ADE799 /* StripePaymentsUI */,
+				1A53A8002A84E352001886C6 /* SnackBar */,
+				1A2D5C5D2A860F84000F51DD /* Cosmos */,
 			);
 			productName = "Laza Mall Apps";
 			productReference = 1ACBD6362A6FD02C002C12A2 /* Laza Mall Apps.app */;
@@ -722,6 +759,8 @@
 			packageReferences = (
 				1A6D952E2A7213C000BAC168 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				1A8C3D5E2A81E4A900ADE799 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
+				1A53A7FF2A84E352001886C6 /* XCRemoteSwiftPackageReference "SnackBar" */,
+				1A2D5C5C2A860F84000F51DD /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = 1ACBD6372A6FD02C002C12A2 /* Products */;
 			projectDirPath = "";
@@ -891,11 +930,14 @@
 				1A2B363E2A70DE700050671E /* NewPasswordVC.swift in Sources */,
 				1A4F61D12A77F298004D4C7E /* WishlistVC.swift in Sources */,
 				1A2B364A2A70FEE10050671E /* ApiAllProduct.swift in Sources */,
+				1A11841A2A8867F400D2CAC9 /* SignUpVM.swift in Sources */,
 				1A0671F82A7B8B360079B97F /* ReviewsVC.swift in Sources */,
 				1A0671F52A7B8B150079B97F /* ReviewsTableCell.swift in Sources */,
 				1ACBD66B2A6FD0C2002C12A2 /* Screen1VC.swift in Sources */,
 				1A2B36482A70FE580050671E /* ApiUsers.swift in Sources */,
 				1A69B8EA2A8096B90059EB85 /* CategoryFilterCollectCell.swift in Sources */,
+				1A53A8032A84E37A001886C6 /* Snack Bar.swift in Sources */,
+				1A2D5C5B2A8608D5000F51DD /* HomeViewModel.swift in Sources */,
 				1A2B36432A70F7C40050671E /* MainTabBarVC.swift in Sources */,
 				1AAF92502A7F4649005BBB68 /* AddressVC.swift in Sources */,
 				1A69B8F02A80AE070059EB85 /* PaymentVC.swift in Sources */,
@@ -912,6 +954,8 @@
 				1A0671F12A7B883C0079B97F /* DataDummy.swift in Sources */,
 				1A0671FA2A7BE60B0079B97F /* AddReviewVC.swift in Sources */,
 				1A2B36462A70F9030050671E /* Model.swift in Sources */,
+				1A11841E2A88EF6500D2CAC9 /* Slider.swift in Sources */,
+				1A11841C2A88803600D2CAC9 /* LoginVM.swift in Sources */,
 				1ACBD66D2A700678002C12A2 /* CreateAccountVC.swift in Sources */,
 				1A24CEBC2A78BC4D008F693F /* HomeNestedVC.swift in Sources */,
 				1A041A862A837E8300737C0A /* GopayVC.swift in Sources */,
@@ -1281,6 +1325,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1A2D5C5C2A860F84000F51DD /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
+		1A53A7FF2A84E352001886C6 /* XCRemoteSwiftPackageReference "SnackBar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ahmedAlmasri/SnackBar.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
 		1A6D952E2A7213C000BAC168 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -1300,6 +1360,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1A2D5C5D2A860F84000F51DD /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A2D5C5C2A860F84000F51DD /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
+		1A53A8002A84E352001886C6 /* SnackBar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A53A7FF2A84E352001886C6 /* XCRemoteSwiftPackageReference "SnackBar" */;
+			productName = SnackBar;
+		};
 		1A6D952F2A7213C000BAC168 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1A6D952E2A7213C000BAC168 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;

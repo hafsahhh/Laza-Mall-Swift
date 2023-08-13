@@ -38,6 +38,7 @@ class LoginVC: UIViewController {
     let userDefault = UserDefaults.standard
     let saveDataLogin = "saveDataLogin"
     let loginTrue = "loginTrue"
+    let loginViewModel = LoginViewModel()
     var iconClick = true
     var isUsernameValid = false
     var isPasswordValid = false
@@ -105,7 +106,7 @@ class LoginVC: UIViewController {
             loginBtnOutlet.backgroundColor = UIColor(named: "ColorBg")
         } else {
             loginBtnOutlet.isEnabled = false
-            loginBtnOutlet.backgroundColor = UIColor(named: "ColorValid")
+            loginBtnOutlet.backgroundColor = UIColor(named: "ColorDarkValid")
         }
     }
     
@@ -118,18 +119,14 @@ class LoginVC: UIViewController {
         loginAndGetData(username: username, password: password)
     }
     
+    // MARK: - Func getData dari kelas UserAllApi
     // Panggil fungsi getData dari kelas UserAllApi
     func loginAndGetData(username: String, password: String) {
-
-        UserAllApi().getData { userIndex in
-            // Lakukan pengecekan apakah ada user dengan username dan password yang sesuai dalam data userIndex
-            let matchingUser = userIndex.first { user in
-                user.username == username && user.password == password
-            }
-            
-            if let user = matchingUser {
+        
+        loginViewModel.loginApiGetData(username: username, password: password) { success in
+            if success {
                 // Login berhasil, tampilkan pesan sukses atau navigasi ke halaman berikutnya
-                print("Login berhasil, user: \(user)")
+                print("Login berhasil")
                 DispatchQueue.main.async {
                     self.tabBarController()
                 }

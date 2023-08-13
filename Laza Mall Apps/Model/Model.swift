@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 //typealias Categoriess = [String]
 
@@ -117,3 +118,43 @@ struct CartProd: Codable {
     let productID : Int
     let quantity : Int
 }
+
+// MARK: - Review
+typealias cellUserReviews = [userReviews]
+struct userReviews{
+    var name: String
+    var userImage: UIImage
+    var textReviews: String
+    var rating: String
+    var time: String
+}
+
+
+// MARK: - Address
+typealias cellListAddressUser = [listAddressUser]
+struct listAddressUser{
+    var nameUser: String
+    var numberHandphone: String
+    var countryUser: String
+    var cityUser: String
+    var fulladdress: String
+}
+
+// MARK: - Wishlist
+typealias indexWishlist = [wishlist]
+struct wishlist {
+    var name: String
+    var image_url: String
+    var price: Float
+    var brand_name: String
+}
+
+// MARK: - Credit Card
+typealias indexCreditCard = [creditCard]
+struct creditCard {
+    var card_number: String
+    var expired_month: Int
+    var expired_year: Int
+    var user_id: Int
+}
+

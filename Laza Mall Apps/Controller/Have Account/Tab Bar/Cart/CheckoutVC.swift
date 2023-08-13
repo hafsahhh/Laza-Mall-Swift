@@ -9,21 +9,29 @@ import UIKit
 
 class CheckoutVC: UIViewController {
 
+    
+    @IBOutlet weak var goToOrder: UIButton!{
+        didSet{
+            goToOrder.layer.cornerRadius = 5
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func goToOrderBtn(_ sender: Any) {
+      let goToOrderCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartVC") as! CartVC
+        goToOrderCtrl.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(goToOrderCtrl, animated: true)
     }
-    */
-
+    
+    
+    @IBAction func continueShopBtn(_ sender: Any) {
+        let continueShopCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNestedVC") as! HomeNestedVC
+        continueShopCtrl.navigationItem.hidesBackButton = true
+          self.navigationController?.pushViewController(continueShopCtrl, animated: true)
+    }
 }

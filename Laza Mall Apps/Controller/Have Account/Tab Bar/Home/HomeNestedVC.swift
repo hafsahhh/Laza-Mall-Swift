@@ -7,6 +7,7 @@
 
 import UIKit
 import SideMenu
+import SnackBar
 
 //protocol untuk search bar
 protocol searchProductHomeProtocol: AnyObject {
@@ -22,7 +23,11 @@ class HomeNestedVC: UIViewController {
     var blurEffectView: UIVisualEffectView?
     var isMenuClicked: Bool = false
     var searchTextActive: Bool = false
-    weak var delegateSearch : searchProductHomeProtocol?
+    //weak var delegateSearch : searchProductHomeProtocol?
+    var viewModel = HomeViewModel()
+    // Variabel untuk mengatur indikator loading circle
+    var isLoading = false
+    var activityIndicator: UIActivityIndicatorView!
     
     lazy var parentBlurView : UIVisualEffectView = {
         var blurView = UIVisualEffectView()
@@ -67,16 +72,16 @@ class HomeNestedVC: UIViewController {
         }
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchHome.delegate = self
-        
+        AppSnackBar.make(in: self.view, message: "Welcome to LAZA MALL", duration: .lengthLong).show()
         //func tab Bar action
         setupTabBarText()
         
         //nampilin menu dan cart button
-
         view.addSubview(menuBtn)
         view.addSubview(parentBlurView)
         parentBlurView.isHidden = true
@@ -96,6 +101,14 @@ class HomeNestedVC: UIViewController {
         // Register the xib for tableview cell product
         homeTableView.register(ProductTableCell.nib(), forCellReuseIdentifier: ProductTableCell.identifier)
         
+        // Inisialisasi indikator pemuatan
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .gray
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
 }
 
@@ -122,7 +135,7 @@ extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTable
             prodCell.reloadTable = { [weak self] in
                 self?.homeTableView.reloadData()
                 prodCell.delegateProductDetail = self
-                self?.delegateSearch = prodCell
+                self?.viewModel.delegateSearch = prodCell
             }
 //                    tableView.dequeueReusableCell(withIdentifier: "ProductTableCell") as? CategoryTableCell else {return UITableViewCell()}
             return prodCell
@@ -154,12 +167,7 @@ extension HomeNestedVC: SideMenuNavigationControllerDelegate {
 
 extension HomeNestedVC: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
-            searchTextActive = false
-        } else {
-            searchTextActive = true
-        }
-        delegateSearch?.searchProdFetch(isActive: searchTextActive, textString: searchText)
+        viewModel.performSearch(with: searchText)
         homeTableView.reloadData()
     }
 }

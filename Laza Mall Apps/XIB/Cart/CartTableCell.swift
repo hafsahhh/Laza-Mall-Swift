@@ -14,7 +14,19 @@ class CartTableCell: UITableViewCell {
         return UINib(nibName: "CartTableCell", bundle: nil)
     }
     
-
+    
+    @IBOutlet weak var mainCartView: UIView!{
+        didSet{
+            mainCartView.layer.cornerRadius = 5
+        }
+    }
+    
+    @IBOutlet weak var cartView: UIView!{
+        didSet{
+            cartView.layer.cornerRadius = 5
+        }
+    }
+    
     @IBOutlet weak var imageProductView: UIView!
     
     @IBOutlet weak var titleProductView: UILabel!

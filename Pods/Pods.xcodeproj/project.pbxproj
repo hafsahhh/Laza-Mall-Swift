@@ -142,7 +142,7 @@
 		94127A2EF8A58D7B756489BF4FE125A6 /* Pods-Laza Mall AppsTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Laza Mall AppsTests-umbrella.h"; sourceTree = "<group>"; };
 		978BD56BD9E30462CFB704FF6CD2F802 /* Pods-Laza Mall AppsTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Laza Mall AppsTests"; path = Pods_Laza_Mall_AppsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98ED2BF1268DE1A7D38ED4A646E743ED /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuNavigationController.swift; path = Pod/Classes/SideMenuNavigationController.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F41288FD3D15B098F7B982A22C50CAA /* Pods-Laza Mall Apps-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Laza Mall Apps-dummy.m"; sourceTree = "<group>"; };
 		A57BF24E5F87DCBF8DE432E498D41084 /* SideMenu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SideMenu-Info.plist"; sourceTree = "<group>"; };
 		A64949B5433D45A7726D363481F154F7 /* Pods-Laza Mall AppsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Laza Mall AppsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -339,7 +339,6 @@
 				6D8AB49A99AE4910AB98F375F756D516 /* Resources */,
 				F0DCFF851AA98C5239A27CBEBD3EAEE4 /* Support Files */,
 			);
-			name = CreditCardForm;
 			path = CreditCardForm;
 			sourceTree = "<group>";
 		};
@@ -362,7 +361,6 @@
 				EFE6DB727F48D71EA702C7C75FCB0709 /* UITableViewVibrantCell.swift */,
 				FD07F015FF94C4F66910D6611301594E /* Support Files */,
 			);
-			name = SideMenu;
 			path = SideMenu;
 			sourceTree = "<group>";
 		};
@@ -592,6 +590,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					845A1266A2D0AD42C903573C45B1839E = {
+						LastSwiftMigration = "";
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 14.0";

@@ -9,8 +9,8 @@ import UIKit
 
 class CartVC: UIViewController {
     
-    
     @IBOutlet weak var cartTableView: UITableView!
+    @IBOutlet weak var emptyDataCart: UILabel!
     
     var cartModel = [CartElement]()
     
@@ -63,6 +63,7 @@ class CartVC: UIViewController {
     
     @IBAction func checkoutBtn(_ sender: Any) {
         let checkoutBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "CheckoutVC") as! CheckoutVC
+        checkoutBtn.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(checkoutBtn, animated: true)
     }
     
@@ -72,7 +73,12 @@ class CartVC: UIViewController {
 
 extension CartVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cartModel.count
+        if cartModel.count == 0 {
+            emptyDataCart.isHidden = false
+        } else {
+            emptyDataCart.isHidden = true
+        }
+        return cartModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,7 +88,7 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 210
         
     }
     

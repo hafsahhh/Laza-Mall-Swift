@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class ReviewsTableCell: UITableViewCell {
     
@@ -19,10 +20,12 @@ class ReviewsTableCell: UITableViewCell {
     @IBOutlet weak var ratingView: UILabel!
     @IBOutlet weak var reviewView: UILabel!
     @IBOutlet weak var dateView: UILabel!
+    @IBOutlet weak var ratingFromUser: CosmosView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        ratingFromUser.rating = 4
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

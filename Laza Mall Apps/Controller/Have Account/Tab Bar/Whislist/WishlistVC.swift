@@ -11,9 +11,10 @@ class WishlistVC: UIViewController {
     
     
     @IBOutlet weak var wishlistCollectView: UICollectionView!
+    @IBOutlet weak var emptyDataWishlist: UILabel!
     
     
-//    var whishlistModel: [likeProductWhishlist] = []
+    let modelWhishlist = indexWishlist()
     
     //tab bar wishlist
     private func setupTabBarText() {
@@ -38,30 +39,19 @@ class WishlistVC: UIViewController {
         self.wishlistCollectView.dataSource = self
         self.wishlistCollectView.delegate = self
         wishlistCollectView.register(WishlistCollectCell.nib(), forCellWithReuseIdentifier: WishlistCollectCell.identifier)
-        
-//        loadDataFromUserDefaults()
         wishlistCollectView.reloadData()
     }
-    
-//    // Function to load data from UserDefaults to whishlistModel
-//    private func loadDataFromUserDefaults() {
-//        if let savedData = UserDefaults.standard.data(forKey: "whishlistModelKey") {
-//            let decoder = JSONDecoder()
-//            if let savedWhishlistModel = try? decoder.decode([likeProductWhishlist].self, from: savedData) {
-//                whishlistModel = savedWhishlistModel
-//                print("Wishlist loaded from UserDefaults: \(whishlistModel)")
-//            }
-//        }
-//    }
-
-
     
 }
 extension WishlistVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        print("whislist model  \(whishlistModel.count)")
-        return 10
+        if modelWhishlist.count == 0{
+            emptyDataWishlist.isHidden = false
+        } else {
+            emptyDataWishlist.isHidden = true
+        }
+        return modelWhishlist.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -73,22 +63,6 @@ extension WishlistVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         else {
             return UICollectionViewCell()
         }
-        
-        
-//        let wishlistProduct = whishlistModel [indexPath.row]
-//
-//        // Muatan URL secara asinkron menggunakan URLSession
-//        if let urlGambar = URL(string: wishlistProduct.imageWhishlistProd) {
-//            URLSession.shared.dataTask(with: urlGambar) { (data, response, error) in
-//                if let dataGambar = data {
-//                    DispatchQueue.main.async {
-//                        wishlistCell.productWhishlistView.image = UIImage(data: dataGambar)
-//                    }
-//                }
-//            }.resume()
-//        }
-//        wishlistCell.titleWhishlistView.text = wishlistProduct.titleWhishlistProd
-//        wishlistCell.priceWhislistView.text = String("$ \(wishlistProduct.priceWhislistProd)")
         return wishlistCell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,11 +23,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-z4-vQx">
                                 <rect key="frame" x="27.333333333333332" y="26.333333333333336" width="41.333333333333343" height="20.333333333333336"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="ColorBlack"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.96078431372549022" green="0.96470588235294119" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="ColorDarkValid"/>
                         <constraints>
                             <constraint firstItem="3f4-z4-vQx" firstAttribute="centerY" secondItem="lah-wJ-Q7Y" secondAttribute="centerY" id="XPh-WY-II6"/>
                             <constraint firstItem="3f4-z4-vQx" firstAttribute="centerX" secondItem="lah-wJ-Q7Y" secondAttribute="centerX" id="b7L-WI-Jmz"/>
@@ -35,6 +36,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" name="ColorDarkValid"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="lah-wJ-Q7Y" secondAttribute="trailing" id="17g-Dl-BdS"/>
                 <constraint firstAttribute="bottom" secondItem="lah-wJ-Q7Y" secondAttribute="bottom" id="Jag-7W-Rol"/>
@@ -48,4 +50,12 @@
             <point key="canvasLocation" x="164.8854961832061" y="-4.5774647887323949"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <namedColor name="ColorBlack">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorDarkValid">
+            <color red="0.96078431372549022" green="0.96470588235294119" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -10,6 +10,9 @@ import UIKit
 class ListAddressVC: UIViewController {
 
     @IBOutlet weak var listAddressTableView: UITableView!
+    @IBOutlet weak var emptyDataView: UILabel!
+    
+    let modelAddress = cellListAddressUser()
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -26,9 +29,10 @@ class ListAddressVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        emptyDataView.isHidden = true
         //back button
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
@@ -47,7 +51,12 @@ class ListAddressVC: UIViewController {
 
 extension ListAddressVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if modelAddress.count == 0 {
+            emptyDataView.isHidden = false
+        } else {
+            emptyDataView.isHidden = true
+        }
+        return modelAddress.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

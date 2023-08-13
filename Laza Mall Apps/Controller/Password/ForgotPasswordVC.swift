@@ -53,7 +53,7 @@ class ForgotPasswordVC: UIViewController {
             forgotPassOutlet.backgroundColor = UIColor(named: "ColorBg" )
         } else {
             forgotPassOutlet.isEnabled = false
-            forgotPassOutlet.backgroundColor = UIColor(named: "ColorValid" )
+            forgotPassOutlet.backgroundColor = UIColor(named: "ColorDarkValid" )
         }
         
     }

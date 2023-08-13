@@ -90,7 +90,7 @@ class NewPasswordVC: UIViewController {
             
         } else {
             resetPassOutlet.isEnabled = false
-            resetPassOutlet.backgroundColor = UIColor(named: "ColorValid" )
+            resetPassOutlet.backgroundColor = UIColor(named: "ColorDarkValid" )
             print("wrong password")
             // create the alert
             let alert = UIAlertController(title: "Wrong Password", message: "Please try another password.", preferredStyle: UIAlertController.Style.alert)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class AddReviewVC: UIViewController {
     
@@ -16,7 +17,18 @@ class AddReviewVC: UIViewController {
     }
     
     
-    @IBOutlet weak var slideRatingOutlet: UISlider!
+    @IBOutlet weak var slider: CustomSlider! {
+        didSet {
+            slider.sliderHeight = CGFloat(18)
+            slider.minimumValue = 0.0
+            slider.maximumValue = 5.0
+            slider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+        }
+    }
+    
+    @IBOutlet weak var scoreRating: UILabel!
+    
+    private let ratingLb: Float = 0.0
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -44,14 +56,9 @@ class AddReviewVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func sliderValueChanged(_ sender: CustomSlider) {
+        let value = sender.value
+        scoreRating.text = String(format: "%.1f", value) // Mengubah teks label rating dengan nilai slider
     }
-    */
 
 }

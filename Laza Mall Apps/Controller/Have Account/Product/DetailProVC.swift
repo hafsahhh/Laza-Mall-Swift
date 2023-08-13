@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class DetailProVC: UIViewController {
     
@@ -17,6 +18,8 @@ class DetailProVC: UIViewController {
     @IBOutlet weak var sizeCollectView: UICollectionView!
     @IBOutlet weak var descView: UILabel!
     @IBOutlet weak var reviewView: UILabel!
+    @IBOutlet weak var ratingProView: CosmosView!
+    
     
     var product: ProductEntry?
     let sizeDummy = ["S", "L", "XL", "2XL", "3XL"]
@@ -96,7 +99,9 @@ class DetailProVC: UIViewController {
         sizeCollectView.delegate = self
         sizeCollectView.register(sizeCollectCell.nib(), forCellWithReuseIdentifier: sizeCollectCell.identifier)
         
-
+        //rating
+        ratingProView.rating = 2
+        ratingProView.text = " "
     }
     
 

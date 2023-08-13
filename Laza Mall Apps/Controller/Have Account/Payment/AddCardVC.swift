@@ -54,11 +54,14 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
 
+        cardNumberText.postalCodeEntryEnabled = false
+
+        
         cardParams = STPPaymentMethodCardParams()
         cardParams.number = cardNumberText.cardNumber
         cardParams.expMonth = 03
         cardParams.expYear = 23
-        cardParams.cvc = "1234"
+//        cardParams.cvc = "1234"
         self.cardNumberText.paymentMethodParams.card = cardParams
 
     }

@@ -44,6 +44,7 @@ class MenuVC: UIViewController {
     
     
     @IBAction func switchBtnMode(_ sender: UISwitch) {
+        
         let appDelegate = UIApplication.shared.windows.first
         if sender.isOn {
             appDelegate?.overrideUserInterfaceStyle = .dark
@@ -56,7 +57,7 @@ class MenuVC: UIViewController {
     @IBAction func logoutBtn(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: saveDataLogin)
         UserDefaults.standard.removeObject(forKey: userLoginTrue)
-        let signInBtnAct = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        let signInBtnAct = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateAccountVC") as! CreateAccountVC
         signInBtnAct.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(signInBtnAct, animated: true)
     }

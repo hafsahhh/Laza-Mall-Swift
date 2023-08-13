@@ -62,10 +62,10 @@ class SignUpVC: UIViewController {
     }
     
     
-    let userDefault = UserDefaults.standard
-    //key untuk userdefault
+//    //key untuk userdefault
     let savedUser = "savedUser"
-    let signUpUserDefault = "signUpUserDefault"
+    let signUpTrue = "signUpTrue"
+    let signUpViewModel = SignUpViewModel()
     var iconClick = true
     var isEmailValid = false
     var isUsernameValid = false
@@ -104,8 +104,6 @@ class SignUpVC: UIViewController {
         passwordOutlet.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         confirmPassOutlet.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
-        //Fungsi untuk menampilkan user default yang ada di textfield
-        loadUserData()
     }
     
     // MARK: - Func validate with regex
@@ -170,95 +168,32 @@ class SignUpVC: UIViewController {
             signUpOutlet.backgroundColor = UIColor(named: "ColorBg")
         } else {
             signUpOutlet.isEnabled = false
-            signUpOutlet.backgroundColor = UIColor(named: "ColorValid")
+            signUpOutlet.backgroundColor = UIColor(named: "ColorDarkValid")
         }
     }
     
     
     // MARK: - Func for add new user using API
     func signUpUserWithAPI() {
-        let urlString = "https://fakestoreapi.com/users"
-        guard let url = URL(string: urlString) else { return }
+        let username = usernameOutlet.text ?? ""
+        let email = emailOutlet.text ?? ""
+        let password = passwordOutlet.text ?? ""
         
-        // Prepare the data to be sent in JSON format
-        let userDetail = allUser (
-            username: usernameOutlet.text ?? "",
-            email: emailOutlet.text ?? "",
-            password: passwordOutlet.text ?? ""
-        )
-        do {
-            let encoder = JSONEncoder()
-            let jsonData = try encoder.encode(userDetail)
-            //            let jsonData = try JSONSerialization.data(withJSONObject: userData, options: [])
-            
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = jsonData
-            
-            // Send the request
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    print("Error: \(error)")
-                    return
+        signUpViewModel.signUpUserAPI(username: username, email: email, password: password) { result in
+            switch result {
+            case .success(let json):
+                print("Response JSON: \(json)")
+                DispatchQueue.main.async {
+                    self.tabBarController()
                 }
-                if let data = data {
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: [])
-                        print("Response JSON: \(json)")
-                        DispatchQueue.main.async {
-                            self.tabBarController()
-                        }
-                    } catch {
-                        print("Error parsing JSON: \(error)")
-                        // Handle error in parsing JSON response
-                    }
-                }
-            }.resume()
-        } catch {
-            print("Error creating JSON data: \(error)")
-            // Handle error in creating JSON data
-        }
-    }
-    
-    
-    // MARK: - Func Userdefault
-    //fungsi userdefault untuk menyimpan textfield yang sudah terisi
-    func saveUserDefault(_ userDetail: allUser){
-        // Dengan mengansumsikan memiliki variabel 'saveUserDataSwitch' yang mewakili tombol sakelar
-        if saveUserData.isOn {
-            let defaults = UserDefaults.standard
-            let encoder = JSONEncoder()
-            do {
-                let encoded = try encoder.encode(userDetail)
-                defaults.set(encoded, forKey: savedUser)
-                UserDefaults.standard.set(true, forKey: signUpUserDefault )
-                print("User data saved to UserDefaults.")
-            } catch {
-                print("Failed to encode user data: \(error.localizedDescription)")
-            }
-        } else {
-            UserDefaults.standard.removeObject(forKey: savedUser)
-            print("User data removed from UserDefaults.")
-        }
-        
-        //untuk mengecek file userdefault
-        //        let path: [AnyObject] = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true) as [AnyObject]
-        //        let folder: String = path[0] as! String
-        //        NSLog("Your NSUserDefaults are stored in this folder: %@/Preferences", folder)
-    }
-    
-    //Fungsi untuk menampilkan user default yang ada di textfield
-    func loadUserData() {
-        if let savedData = UserDefaults.standard.data(forKey: savedUser) {
-            let decoder = JSONDecoder()
-            if let userDetail = try? decoder.decode(allUser.self, from: savedData) {
-                usernameOutlet.text = userDetail.username
-                emailOutlet.text = userDetail.email
-                passwordOutlet.text = userDetail.password
+            case .failure(let error):
+                print("Error: \(error)")
+                // Handle error appropriately
             }
         }
     }
+    
+
     
     //fungsi tabBar
     func tabBarController(){
@@ -271,6 +206,9 @@ class SignUpVC: UIViewController {
     @IBAction func signUpBtnAct(_ sender: Any) {
         signUpValidate()
 //        signUpUser()
+        
+        //signUp with API
+        signUpUserWithAPI()
     }
 
     
@@ -298,24 +236,22 @@ class SignUpVC: UIViewController {
         iconClick = !iconClick
     }
     
-    
-    
-    
-    
+
     // MARK: - Switch Button
     //fungsi switch button untuk menyimpan data di user default jadi kalau misalnya klik button on maka data akan di simpan di user default
     @IBAction func saveUserData(_ sender: Any) {
         if (sender as AnyObject).isOn {
-            // Call the function here passing the user details to be saved
-            let userDetail = allUser(
-                username: usernameOutlet.text ?? "",
-                email: emailOutlet.text ?? "",
-                password: passwordOutlet.text ?? ""
-            )
-            saveUserDefault(userDetail)
-        } else {
+            let username = usernameOutlet.text ?? ""
+            let email = emailOutlet.text ?? ""
+            let password = passwordOutlet.text ?? ""
             
-            //remove data dari userdefault
+            let userDetail = allUser(username: username, email: email, password: password)
+            
+            signUpViewModel.isSaveUserDataOn = (sender as AnyObject).isOn
+            signUpViewModel.saveUserDefault(userDetail)
+            UserDefaults.standard.set(true, forKey: signUpTrue)
+        } else {
+            // Remove data from UserDefaults
             UserDefaults.standard.removeObject(forKey: savedUser)
             print("User data removed from UserDefaults.")
         }

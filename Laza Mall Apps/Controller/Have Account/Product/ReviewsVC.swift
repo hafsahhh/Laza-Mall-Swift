@@ -6,10 +6,17 @@
 //
 
 import UIKit
+import Cosmos
+
 
 class ReviewsVC: UIViewController {
 
     @IBOutlet weak var userReviewTable: UITableView!
+    @IBOutlet weak var reviewRating: CosmosView!
+    @IBOutlet weak var emptyDataReview: UILabel!
+    
+    
+    let modelReview =  cellUserReviews()
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -32,6 +39,11 @@ class ReviewsVC: UIViewController {
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
         
+        
+        //rating
+        reviewRating.rating = 2
+        reviewRating.text = " "
+        
         // Register the xib for tableview cell product
         userReviewTable.delegate = self
         userReviewTable.dataSource = self
@@ -48,19 +60,17 @@ class ReviewsVC: UIViewController {
 
 extension ReviewsVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellUserReviews.count
+        if modelReview.count == 0 {
+            emptyDataReview.isHidden = false
+        } else {
+            emptyDataReview.isHidden = true
+        }
+        return modelReview.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewsTableCell", for: indexPath) as? ReviewsTableCell
         else {return UITableViewCell()}
-            let cellReviewTable = cellUserReviews [indexPath.row]
-            tableView.deselectRow(at: indexPath, animated: true)
-        cell.imageUser.image = cellReviewTable.userImage
-        cell.usernameView.text = cellReviewTable.name
-        cell.dateView.text = cellReviewTable.time
-        cell.ratingView.text = cellReviewTable.rating
-        cell.reviewView.text = cellReviewTable.textReviews
          return cell
     }
     
