@@ -120,23 +120,29 @@ class LoginVC: UIViewController {
     func loginAndGetData() {
         let username = usernameOutlet.text ?? ""
         let password = passwordOutlet.text ?? ""
+        let apiLogin = UserAllApi() // Simpan instance ApiSignUp ke dalam variabel
         
-        UserAllApi().getDataLogin(username: username, password: password) { result in
+        apiLogin.getDataLogin(username: username, password: password) { result in
             switch result {
             case .success(let json):
                 // Panggil metode untuk berpindah ke view controller selanjutnya
-                DispatchQueue.main.async {
-                    self.tabBarController()
-                }
+                    DispatchQueue.main.async {
+                        self.tabBarController()
+                    }
                 print("Response JSON: \(String(describing: json))")
             case .failure(let error):
+                apiLogin.apiAlertLogin = { status, description in
+                    DispatchQueue.main.async {
+                        ShowAlert.failedSignUpApi(on: self, title: status, message: description)
+                    }
+                }
                 print("Error: \(error)")
                 // Handle error appropriately
             }
         }
     }
     
-
+    
     //fungsi userdefault untuk menyimpan textfield yang sudah terisi
     func saveUserDefault(_ userDetail: allUser){
         // Dengan mengansumsikan memiliki variabel 'saveUserLoginOutlet' yang mewakili tombol sakelar

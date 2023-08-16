@@ -53,38 +53,29 @@ struct ProductDetail : Codable {
 }
 
 // MARK: - User
-struct ResponseSignUpSuccess: Codable {
-  let status: String
-  let isError : Bool
-  let data: Success
+struct userEntry: Codable {
+    let status: String
+    let isError: Bool
+    let data: DataUser
 }
 
-struct Success: Codable {
-  let id: Int
-  let fullName, username, email: String
-  let createdAt, updatedAt: String
-  
-  enum CodingKeys: String, CodingKey {
-    case id
-    case fullName = "full_name"
-    case username, email
-    case createdAt = "created_at"
-    case updatedAt = "updated_at"
-  }
+// MARK: - DataClass
+struct DataUser: Codable {
+    let id: Int
+    let fullName, username, email: String
+    let isVerified: Bool
+    let createdAt, updatedAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case fullName = "full_name"
+        case username, email
+        case isVerified = "is_verified"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
 }
 
-// MARK: - User Failed
-struct ResponseSignUpFailed: Codable {
-  let status: String
-  let isError: Bool
-  let descriptionKey: String
-  
-  enum CodingKeys: String, CodingKey{
-    case status
-    case isError
-    case descriptionKey = "description"
-  }
-}
 
 // MARK: - User
 typealias UserIndex = [allUser]

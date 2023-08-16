@@ -62,17 +62,17 @@ class ApiSignUp{
                             self.apiAlertSIgnUp?(status, description)
                         }
                     }
-                        completion(.failure(signUpError.Error))
-                    } else {
-                        print("Sukses signUp")
-                        // Success
-                        completion(.success(data))
-                    }
+                    completion(.failure(signUpError.Error))
+                } else {
+                    print("Sukses signUp")
+                    // Success
+                    completion(.success(data))
                 }
-            }.resume()
-        }
+            }
+        }.resume()
     }
-    
-    enum signUpError: Error {
-        case Error
-    }
+}
+
+enum signUpError: Error {
+    case Error
+}
