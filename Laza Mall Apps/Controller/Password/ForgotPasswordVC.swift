@@ -58,34 +58,30 @@ class ForgotPasswordVC: UIViewController {
         
     }
     
-    // Panggil fungsi getData dari kelas UserAllApi untuk cek data email ada atau tidak
-    func loginAndGetData(email: String) {
-
-        UserAllApi().getData { userIndex in
-            // Lakukan pengecekan apakah ada user dengan username dan password yang sesuai dalam data userIndex
-            let matchingUser = userIndex.first { user in
-                user.email == email
-            }
-            
-            if let user = matchingUser {
-                // Login berhasil, tampilkan pesan sukses atau navigasi ke halaman berikutnya
-                print("Login berhasil, user: \(user)")
+     
+    // MARK: - Func getData dari kelas UserAllApi
+    // Panggil fungsi getData dari kelas UserAllApi
+    func forgotPasswordApi() {
+        let email = emailOutlet.text ?? ""
+        ApiForgotPassword().getPassEmail(email: email) { result in
+            switch result {
+            case .success(let json):
+                // Panggil metode untuk berpindah ke view controller selanjutnya
                 DispatchQueue.main.async {
                     self.verificationCodeVC()
                 }
-            } else {
-                // email salah, update paswword gagal
-                let alert = UIAlertController(title: "Waring!!!", message: "Email yang dimasukkan salah, tolong masukkan email sesuai dengan yang tersimpan di API", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                print("Email yang dimasukkan salah")
+                print("Response JSON: \(String(describing: json))")
+            case .failure(let error):
+                print("Error: \(error)")
+                // Handle error appropriately
             }
         }
     }
     
     //untuk jump to new password view controller
     func verificationCodeVC(){
-        let verifCodeVc = self.storyboard?.instantiateViewController(withIdentifier: "VerificationCodeVC") as! VerificationCodeVC
+        let verifCodeVc = self.storyboard?.instantiateViewController(withIdentifier: "VerifyCodeVC") as! VerifyCodeVC
+        verifCodeVc.userEmail = emailOutlet.text
         verifCodeVc.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(verifCodeVc, animated: true)
     }
@@ -93,12 +89,7 @@ class ForgotPasswordVC: UIViewController {
 
     // MARK: - Forgot Password Button
     @IBAction func forgotPassBtnAct(_ sender: Any) {
-        guard let email = emailOutlet.text else {
-            return
-        }
-        // Panggil fungsi untuk melakukan login dan mendapatkan data user
-        loginAndGetData(email: email)
-        
+        forgotPasswordApi()
     }
     
 

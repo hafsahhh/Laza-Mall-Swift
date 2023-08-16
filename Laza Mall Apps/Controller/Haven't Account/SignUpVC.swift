@@ -58,11 +58,11 @@ class SignUpVC: UIViewController {
         didSet {
             cekStrongConfirmPass.isHidden = true
         }
-
+        
     }
     
     
-//    //key untuk userdefault
+    //    //key untuk userdefault
     let savedUser = "savedUser"
     let signUpTrue = "signUpTrue"
     let signUpViewModel = SignUpViewModel()
@@ -92,7 +92,7 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
-        
+        let signUp = signUpOutlet
         signUpOutlet.isEnabled = false
         passwordOutlet.isSecureTextEntry = true
         confirmPassOutlet.isSecureTextEntry = true
@@ -121,9 +121,6 @@ class SignUpVC: UIViewController {
             ShowAlert.alertValidPassword(on: self)
         } else if !isMatchPassword {
             ShowAlert.passwordDoestMatch(on: self)
-        }
-        else {
-            self.tabBarController()
         }
     }
     
@@ -179,38 +176,46 @@ class SignUpVC: UIViewController {
         let email = emailOutlet.text ?? ""
         let password = passwordOutlet.text ?? ""
         
-        signUpViewModel.signUpUserAPI(username: username, email: email, password: password) { result in
+        let apiSignUp = ApiSignUp() // Simpan instance ApiSignUp ke dalam variabel
+        
+
+        
+        apiSignUp.signUpUserAPI(username: username, email: email, password: password) { result in
             switch result {
             case .success(let json):
-                print("Response JSON: \(json)")
+                // Panggil metode untuk berpindah ke view controller selanjutnya
                 DispatchQueue.main.async {
-                    self.tabBarController()
+                    self.loginVcController()
                 }
+                print("Response JSON: \(String(describing: json))")
             case .failure(let error):
-                print("Error: \(error)")
-                // Handle error appropriately
+                apiSignUp.apiAlertSIgnUp = { status, description in
+                    DispatchQueue.main.async {
+                        ShowAlert.failedSignUpApi(on: self, title: status, message: description)
+                    }
+                }
+//                DispatchQueue.main.async {
+//                    ShowAlert.failedSignUpApi(on: self, title: "Registration Failed", message: "Error")
+//                }
+                print("JSON WOY ERROR: \(error)")
             }
-        }
+        } 
     }
     
-
-    
     //fungsi tabBar
-    func tabBarController(){
-        let tabbarVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
-        tabbarVC.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(tabbarVC, animated: true)
+    func loginVcController(){
+        let loginCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        loginCtrl.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(loginCtrl, animated: true)
     }
     
     // MARK: - Sign Up Button
     @IBAction func signUpBtnAct(_ sender: Any) {
-        signUpValidate()
-//        signUpUser()
-        
+//        signUpValidate()
         //signUp with API
         signUpUserWithAPI()
     }
-
+    
     
     // MARK: - eye password button
     @IBAction func eyePassBtn(_ sender: Any) {
@@ -236,24 +241,25 @@ class SignUpVC: UIViewController {
         iconClick = !iconClick
     }
     
-
+    
     // MARK: - Switch Button
     //fungsi switch button untuk menyimpan data di user default jadi kalau misalnya klik button on maka data akan di simpan di user default
     @IBAction func saveUserData(_ sender: Any) {
-        if (sender as AnyObject).isOn {
-            let username = usernameOutlet.text ?? ""
-            let email = emailOutlet.text ?? ""
-            let password = passwordOutlet.text ?? ""
-            
-            let userDetail = allUser(username: username, email: email, password: password)
-            
-            signUpViewModel.isSaveUserDataOn = (sender as AnyObject).isOn
-            signUpViewModel.saveUserDefault(userDetail)
-            UserDefaults.standard.set(true, forKey: signUpTrue)
-        } else {
-            // Remove data from UserDefaults
-            UserDefaults.standard.removeObject(forKey: savedUser)
-            print("User data removed from UserDefaults.")
-        }
+//        if (sender as AnyObject).isOn {
+//            let username = usernameOutlet.text ?? ""
+//            let email = emailOutlet.text ?? ""
+//            let password = passwordOutlet.text ?? ""
+//
+////            let userDetail = allUser(username: username, email: email, password: password)
+//
+//            signUpViewModel.isSaveUserDataOn = (sender as AnyObject).isOn
+//            signUpViewModel.saveUserDefault(userDetail)
+//            UserDefaults.standard.set(true, forKey: signUpTrue)
+//        } else {
+//            // Remove data from UserDefaults
+//            UserDefaults.standard.removeObject(forKey: savedUser)
+//            print("User data removed from UserDefaults.")
+//        }
     }
 }
+

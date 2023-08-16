@@ -8,35 +8,41 @@
 import Foundation
 import UIKit
 
-//typealias Categoriess = [String]
 
-struct ProductIndex : Codable{
-    var results: [ProductEntry]!
+// MARK: - All Product
+typealias ProductIndex = ProductResponse?
+struct ProductResponse: Codable{
+    let status: String
+    let isError: Bool
+    let data: [ProductEntry]!
 }
-
-struct ProductEntry : Codable{
-    let title : String
-    let image : String
+struct ProductEntry : Codable {
+    let id : Int
+    let name : String
+    let image_url : String
     let price : Double
-    let category : Category
-    let description: String
-    let rating: Rating
+//    let category : Category
+//    let description: String
+//    let rating: Rating
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, name, price
+        case image_url = "image_url"
+    }
 }
  
-struct Rating: Codable {
-    let rate: Double
-    let count: Int
+
+// MARK: - Brand Product
+typealias categoryIndex = categoryResponse?
+struct categoryResponse: Codable{
+    let status: String
+    let isError: Bool
+    let description: [categoryEntry]
 }
-
-
 struct categoryEntry : Codable{
-    let category : Category
-}
-enum Category: String, Codable {
-    case electronics = "electronics"
-    case jewelery = "jewelery"
-    case menSClothing = "men's clothing"
-    case womenSClothing = "women's clothing"
+    let id : Int
+    let name : String
+    let logo_url : String
 }
 
 struct ProductDetail : Codable {
@@ -46,19 +52,52 @@ struct ProductDetail : Codable {
     let description: String
 }
 
+// MARK: - User
+struct ResponseSignUpSuccess: Codable {
+  let status: String
+  let isError : Bool
+  let data: Success
+}
 
+struct Success: Codable {
+  let id: Int
+  let fullName, username, email: String
+  let createdAt, updatedAt: String
+  
+  enum CodingKeys: String, CodingKey {
+    case id
+    case fullName = "full_name"
+    case username, email
+    case createdAt = "created_at"
+    case updatedAt = "updated_at"
+  }
+}
+
+// MARK: - User Failed
+struct ResponseSignUpFailed: Codable {
+  let status: String
+  let isError: Bool
+  let descriptionKey: String
+  
+  enum CodingKeys: String, CodingKey{
+    case status
+    case isError
+    case descriptionKey = "description"
+  }
+}
+
+// MARK: - User
+typealias UserIndex = [allUser]
 struct userIndex : Codable{
     var results: [allUser]!
 }
 
 struct allUser : Codable {
-//    var name : Name
+//    var full_name : String
     var username : String
     var email : String
-//    var phone : String
     var password : String
-//    var address : Address
-//    var id : Int
+
 }
 
 struct Name : Codable {

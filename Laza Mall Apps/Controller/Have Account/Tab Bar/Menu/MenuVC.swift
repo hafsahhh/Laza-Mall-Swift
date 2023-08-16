@@ -56,7 +56,7 @@ class MenuVC: UIViewController {
     
     @IBAction func logoutBtn(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: saveDataLogin)
-        UserDefaults.standard.removeObject(forKey: userLoginTrue)
+//        UserDefaults.standard.removeObject(forKey: userLoginTrue)
         let signInBtnAct = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateAccountVC") as! CreateAccountVC
         signInBtnAct.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(signInBtnAct, animated: true)

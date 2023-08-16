@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
+    
     
     @IBOutlet weak var usernameOutlet: UITextField!{
         didSet{
@@ -38,7 +38,7 @@ class LoginVC: UIViewController {
     let userDefault = UserDefaults.standard
     let saveDataLogin = "saveDataLogin"
     let loginTrue = "loginTrue"
-    let loginViewModel = LoginViewModel()
+    //    let userApiLogin = UserAllApi()
     var iconClick = true
     var isUsernameValid = false
     var isPasswordValid = false
@@ -53,16 +53,16 @@ class LoginVC: UIViewController {
         backBtn.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         return backBtn
     }()
-
+    
     //Back Button
     @objc func backBtnAct(){
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
         
@@ -112,31 +112,31 @@ class LoginVC: UIViewController {
     
     // MARK: - Login Button
     @IBAction func loginBtnAct(_ sender: UIButton) {
-        guard let username = usernameOutlet.text, let password = passwordOutlet.text else {
-            return
-        }
-        // Panggil fungsi untuk melakukan login dan mendapatkan data user
-        loginAndGetData(username: username, password: password)
+        loginAndGetData()
     }
     
     // MARK: - Func getData dari kelas UserAllApi
     // Panggil fungsi getData dari kelas UserAllApi
-    func loginAndGetData(username: String, password: String) {
+    func loginAndGetData() {
+        let username = usernameOutlet.text ?? ""
+        let password = passwordOutlet.text ?? ""
         
-        loginViewModel.loginApiGetData(username: username, password: password) { success in
-            if success {
-                // Login berhasil, tampilkan pesan sukses atau navigasi ke halaman berikutnya
-                print("Login berhasil")
+        UserAllApi().getDataLogin(username: username, password: password) { result in
+            switch result {
+            case .success(let json):
+                // Panggil metode untuk berpindah ke view controller selanjutnya
                 DispatchQueue.main.async {
                     self.tabBarController()
                 }
-            } else {
-                // Login gagal, tampilkan pesan error atau notifikasi bahwa username atau password salah
-                print("Login gagal, username atau password salah.")
+                print("Response JSON: \(String(describing: json))")
+            case .failure(let error):
+                print("Error: \(error)")
+                // Handle error appropriately
             }
         }
     }
     
+
     //fungsi userdefault untuk menyimpan textfield yang sudah terisi
     func saveUserDefault(_ userDetail: allUser){
         // Dengan mengansumsikan memiliki variabel 'saveUserLoginOutlet' yang mewakili tombol sakelar
@@ -154,7 +154,7 @@ class LoginVC: UIViewController {
             UserDefaults.standard.removeObject(forKey: saveDataLogin)
             print("User data removed from UserDefaults.")
         }
-    
+        
     }
     
     //Fungsi untuk membaca user default yang ada di textfield

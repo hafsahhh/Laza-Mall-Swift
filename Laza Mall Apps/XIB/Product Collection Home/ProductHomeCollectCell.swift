@@ -31,9 +31,9 @@ class ProductHomeCollectCell: UICollectionViewCell {
     }
     
     func configure(data :  ProductEntry){
-        let imgURL = URL(string: "\(data.image)")
+        let imgURL = URL(string: "\(data.image_url)")
         self.imageView.sd_setImage(with: imgURL)
-        titleView.text = data.title
+        titleView.text = data.name
         priceView.text = String("$ \(data.price)")
     }
 

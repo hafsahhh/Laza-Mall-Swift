@@ -54,8 +54,8 @@ class DetailProVC: UIViewController {
     
     //Like Button
     @objc func likeBtnAct(){
-        guard let imageProduct = self.product?.image else {return}
-        guard let titleProduct = self.product?.title else {return}
+        guard let imageProduct = self.product?.image_url else {return}
+        guard let titleProduct = self.product?.name else {return}
         guard let priceProduct = self.product?.price else {return}
         
         let newLikedProduct = likeProductWhishlist(imageWhishlistProd: imageProduct, titleWhishlistProd: titleProduct, priceWhislistProd: Int16(priceProduct))
@@ -108,12 +108,12 @@ class DetailProVC: UIViewController {
     // MARK: - UI with API
     func loadDetail(){
         if let detailProduct = product {
-            catTitleView.text = detailProduct.title
-            catBrandView.text = detailProduct.category.rawValue
+            catTitleView.text = detailProduct.name
+//            catBrandView.text = detailProduct.category.rawValue
             priceView.text = String("$ \(detailProduct.price)")
-            descView.text = detailProduct.description
+//            descView.text = detailProduct.description
             
-            if let imageUrl = URL(string: detailProduct.image){
+            if let imageUrl = URL(string: detailProduct.image_url){
                 URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                     if let data = data, let image = UIImage(data: data) {
                         DispatchQueue.main.async {

@@ -5,16 +5,23 @@
 //  Created by Siti Hafsah on 06/08/23.
 //
 
-import Foundation
 import UIKit
 
 class ShowAlert {
-    private static func showAlert(on viewControl: UIViewController, title:String, message: String?){
+    private static func showAlert(on viewControl: UIViewController, title:String, message: String){
       DispatchQueue.main.async{
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
           viewControl.present(alert, animated: true)
       }
+    }
+    
+    public static func signUpApi(on viewController:UIViewController, title titleAlert:String, message messageAlert:String){
+        self.showAlert(on: viewController, title: titleAlert, message: messageAlert)
+    }
+    
+    public static func failedSignUpApi(on viewController:UIViewController, title titleAlert:String, message messageAlert:String){
+        self.showAlert(on: viewController, title: titleAlert, message: messageAlert)
     }
     
     public static func passwordDoestMatch(on viewController:UIViewController){

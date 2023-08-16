@@ -22,6 +22,7 @@ class ProductTableCell: UITableViewCell {
     @IBOutlet weak var viewAllBtnOutlet: UIButton!
     @IBOutlet weak var productCollectView: UICollectionView!
     
+//    var modProduct : ProductResponse?
     var modelProduct = [ProductEntry]()
     var reloadTable: (()->Void)?
     var delegateProductDetail: productTableCellProtocol?
@@ -38,12 +39,12 @@ class ProductTableCell: UITableViewCell {
         
         //panggil AllProductApi
         AllProductApi().getData { ProductIndex in
-            self.modelProduct.append(contentsOf: ProductIndex)
+            guard let response = ProductIndex else { return }
+            self.modelProduct.append(contentsOf: response.data)
             self.productCollectView.reloadData()
-//            self.delegateProductDetail?.loadApiProd()
-            for product in self.modelProduct{
-                print("helo \(product.title)")
-            }
+//            for product in self.modelProduct{
+//                print("helo \(product.name)")
+//            }
             self.reloadTable?()
         }
         
@@ -102,7 +103,7 @@ extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource
 extension ProductTableCell: searchProductHomeProtocol {
     func searchProdFetch(isActive: Bool, textString: String) {
         searchTextActive = isActive
-        filterProduct = modelProduct.filter{$0.title.contains(textString)}
+        filterProduct = modelProduct.filter{$0.name.contains(textString)}
         self.productCollectView.reloadData()
     }
 }

@@ -12,7 +12,7 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
     @IBOutlet weak var catagoryBrand: UICollectionView!
     @IBOutlet weak var productCollectCellView: UICollectionView!
     
-    var catModel = categoryIndex()
+//    var catModel = categoryIndex()
     var productModel = [ProductEntry]()
     var productFilter: [ProductEntry] = []
     var searchActive : Bool = false
@@ -95,17 +95,19 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
         //
         //}
         
-        AllCategoryApi().getData { [weak self] category in
-            self?.catModel.append(contentsOf: category)
-            self?.catagoryBrand.reloadData()
-        }
+//        AllCategoryApi().getData { [weak self] category in
+//            self?.catModel.append(contentsOf: category)
+//            self?.catagoryBrand.reloadData()
+//        }
         
         //panggil AllProductApi
         AllProductApi().getData { ProductIndex in
-            self.productModel.append(contentsOf: ProductIndex)
+            guard let response = ProductIndex else { return }
+            self.productModel.append(contentsOf: response.data)
+//            self.productModel.append(contentsOf: ProductIndex)
             self.productCollectCellView.reloadData()
             for product in self.productModel{
-                print(product.title)
+                print(product.name)
             }
         }
 
@@ -117,9 +119,9 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
 extension HomepageVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == catagoryBrand {
-            return catModel.count
-        }
+//        if collectionView == catagoryBrand {
+//            return catModel.count
+//        }
         return productModel.count
     }
 
@@ -145,8 +147,8 @@ extension HomepageVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == catagoryBrand {
             guard let catagoryCell =  collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionCell.identifier, for: indexPath) as? CategoryCollectionCell else { return UICollectionViewCell() }
-            
-            catagoryCell.labelBrand.text = catModel[indexPath.row].capitalized
+//            
+//            catagoryCell.labelBrand.text = catModel[indexPath.row].capitalized
             return catagoryCell
         } else {
             let cellProduct = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductHomeCollectCell", for: indexPath) as! ProductHomeCollectCell

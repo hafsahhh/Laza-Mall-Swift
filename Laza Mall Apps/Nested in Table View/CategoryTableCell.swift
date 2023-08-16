@@ -16,7 +16,7 @@ class CategoryTableCell: UITableViewCell {
     @IBOutlet weak var viewAllBtnOutlet: UIButton!
     @IBOutlet weak var categoryCollectView: UICollectionView!
     
-    var modelCat = categoryIndex()
+    var modelCat = [categoryEntry]()
     var reloadTable: (() -> Void)?
 
     
@@ -27,10 +27,25 @@ class CategoryTableCell: UITableViewCell {
         categoryCollectView.delegate = self
         categoryCollectView.register(CategoryCollectionCell.nib(), forCellWithReuseIdentifier: CategoryCollectionCell.identifier)
         
-        AllCategoryApi().getData { [weak self] category in
-            self?.modelCat.append(contentsOf: category)
-            self?.categoryCollectView.reloadData()
-            self?.reloadTable?()
+//        AllCategoryApi().getData { category in
+//            guard let catResponses = category else { return }
+//            self.modelCat.append(contentsOf: catResponses.data)
+//            self.categoryCollectView.reloadData()
+//            for category in self.modelCat{
+//                print("helo \(category.name)")
+//            }
+//            self.reloadTable?()
+//        }
+        
+        //panggil AllCategoryApi
+        AllCategoryApi().getData { categoryIndex in
+            guard let response = categoryIndex else { return }
+            self.modelCat.append(contentsOf: response.description)
+            self.categoryCollectView.reloadData()
+            for product in self.modelCat{
+                print("helo \(product.name)")
+            }
+            self.reloadTable?()
         }
     }
     
@@ -44,9 +59,8 @@ class CategoryTableCell: UITableViewCell {
 extension CategoryTableCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let catagoryCell =  collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionCell.identifier, for: indexPath) as? CategoryCollectionCell else { return UICollectionViewCell() }
-        
-        catagoryCell.labelBrand.text = modelCat[indexPath.row].capitalized
-        print("data yang ini",modelCat[indexPath.row].capitalized)
+        catagoryCell.configure(data: modelCat[indexPath.item])
+        print("data yang ini",modelCat[indexPath.row])
         return catagoryCell
     }
     

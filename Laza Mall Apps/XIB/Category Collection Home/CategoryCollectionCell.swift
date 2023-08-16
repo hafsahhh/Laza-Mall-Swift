@@ -20,9 +20,13 @@ class CategoryCollectionCell: UICollectionViewCell {
         }
     }
     @IBOutlet weak var labelBrand: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    func configure(data :  categoryEntry){
+        labelBrand.text = data.name
+    }
 }

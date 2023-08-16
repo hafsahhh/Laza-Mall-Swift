@@ -25,6 +25,9 @@ class NewPasswordVC: UIViewController {
     var isNewPassValid = false
     var isConfirmPassValid = false
     
+    var email: String?
+    var code: String?
+    
     //Back Button
     private lazy var backBtn : UIButton = {
         //call back button
@@ -52,28 +55,28 @@ class NewPasswordVC: UIViewController {
         resetPassOutlet.isEnabled = false
         newPasswordOutlet.isSecureTextEntry = true
         confirmPassOutlet.isSecureTextEntry = true
-        confirmPassOutlet.addTarget(self, action:  #selector(textFieldDidChange),  for:.editingChanged )
-        newPasswordOutlet.addTarget(self, action:  #selector(textFieldDidChange),  for:.editingChanged )
+        confirmPassOutlet.addTarget(self, action:  #selector(validasiUpdatePass),  for:.editingChanged )
+        newPasswordOutlet.addTarget(self, action:  #selector(validasiUpdatePass),  for:.editingChanged )
         
         // Do any additional setup after loading the view.
     }
     
     
     //fungsi untuk mengubah button backgournd color
-    @objc func textFieldDidChange() {
-        //validasi email [validEmail] di folder extensions
-        isNewPassValid = newPasswordOutlet.validPassword(newPasswordOutlet.text ?? "")
-        //validasi password [validPassword] di folder extensions
-        isConfirmPassValid = confirmPassOutlet.validPassword(confirmPassOutlet.text ?? "")
-        
-        if isNewPassValid || isConfirmPassValid {
-            resetPassOutlet.isEnabled = false
-            resetPassOutlet.backgroundColor = UIColor(named: "ColorValid" )
-        }else{
-            resetPassOutlet.isEnabled = true
-            resetPassOutlet.backgroundColor = UIColor(named: "ColorBg" )
-        }
-    }
+//    @objc func textFieldDidChange() {
+//        //validasi email [validEmail] di folder extensions
+//        isNewPassValid = newPasswordOutlet.validPassword(newPasswordOutlet.text ?? "")
+//        //validasi password [validPassword] di folder extensions
+//        isConfirmPassValid = confirmPassOutlet.validPassword(confirmPassOutlet.text ?? "")
+//
+//        if isNewPassValid || isConfirmPassValid {
+//            resetPassOutlet.isEnabled = false
+//            resetPassOutlet.backgroundColor = UIColor(named: "ColorValid" )
+//        }else{
+//            resetPassOutlet.isEnabled = true
+//            resetPassOutlet.backgroundColor = UIColor(named: "ColorBg" )
+//        }
+//    }
     
     // MARK: - Func Validasi Updatse Pass
     @objc func validasiUpdatePass() {
@@ -83,24 +86,49 @@ class NewPasswordVC: UIViewController {
         isConfirmPassValid = confirmPassOutlet.validPassword(confirmPassOutlet.text ?? "")
         
         if isNewPassValid == isConfirmPassValid {
-            let saveUpdatepassctrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
-            saveUpdatepassctrl.navigationItem.hidesBackButton = true
-            self.navigationController?.pushViewController(saveUpdatepassctrl, animated: true)
-            
-            
+            resetPassOutlet.isEnabled = true
+            resetPassOutlet.backgroundColor = UIColor(named: "ColorBg" )
         } else {
             resetPassOutlet.isEnabled = false
             resetPassOutlet.backgroundColor = UIColor(named: "ColorDarkValid" )
-            print("wrong password")
-            // create the alert
-            let alert = UIAlertController(title: "Wrong Password", message: "Please try another password.", preferredStyle: UIAlertController.Style.alert)
-            // add an action (button)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
+//            print("wrong password")
+//            // create the alert
+//            let alert = UIAlertController(title: "Wrong Password", message: "Please try another password.", preferredStyle: UIAlertController.Style.alert)
+//            // add an action (button)
+//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+//            // show the alert
+//            self.present(alert, animated: true, completion: nil)
         }
     }
     
+    // MARK: - Func getData dari kelas UserAllApi
+    // Panggil fungsi getData dari kelas UserAllApi
+    func newPassword() {
+        let newPassword = newPasswordOutlet.text ?? ""
+        let rePassword = confirmPassOutlet.text ?? ""
+        guard let userEmail = email else { return }
+        guard let userCode = code else {return}
+        ApiNewPassword().getCodeVerify(newPassword: newPassword, rePassword: rePassword, email: userEmail, code: userCode) { result in
+            switch result {
+            case .success(let json):
+                // Panggil metode untuk berpindah ke view controller selanjutnya
+                DispatchQueue.main.async {
+                    self.verificationCodeVC()
+                }
+                print("Response JSON: \(String(describing: json))")
+            case .failure(let error):
+                print("Error: \(error)")
+                // Handle error appropriately
+            }
+        }
+    }
+    
+    //untuk jump to new password view controller
+    func verificationCodeVC(){
+        let verifCodeVc = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        verifCodeVc.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(verifCodeVc, animated: true)
+    }
     func eyeBtn (){
         if iconClick {
             iconClick = true
@@ -137,6 +165,7 @@ class NewPasswordVC: UIViewController {
     // MARK: - Reset Password Button
     @IBAction func resetPassBtnAct(_ sender: Any) {
         validasiUpdatePass()
+        newPassword()
     }
     
     

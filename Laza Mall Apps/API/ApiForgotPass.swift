@@ -1,12 +1,12 @@
 //
-//  ApiUsers.swift
+//  ApiForgotPass.swift
 //  Laza Mall Apps
 //
-//  Created by Siti Hafsah on 26/07/23.
+//  Created by Siti Hafsah on 15/08/23.
 //
 
 import Foundation
-class ApiLoginService {
+class ApiPaswordService {
     static func getHttpBodyForm(param: [String:Any]) -> Data? {
         var body = [String]()
         param.forEach { (key, value) in
@@ -21,18 +21,16 @@ class ApiLoginService {
     }
 }
 
-class UserAllApi  {
-    func getDataLogin(username: String,
-                      password: String,
+class ApiForgotPassword  {
+    func getPassEmail(email: String,
                       completion: @escaping (Result<Data?, Error>) -> Void)//closure atau blok kode yang dapat dilewatkan ke fungsi sebagai parameter
    {
-       let urlString = "https://lazaapp.shop/login"
+       let urlString = "https://lazaapp.shop/auth/forgotpassword"
        guard let url = URL(string: urlString) else { return }
        var request = URLRequest(url: url)
        request.httpMethod = "POST"
        request.httpBody = ApiLoginService.getHttpBodyRaw(param: [
-           "username": username,
-           "password": password
+           "email": email
        ])
        
        URLSession.shared.dataTask(with: request){
@@ -44,8 +42,8 @@ class UserAllApi  {
            let httpResponse = response as? HTTPURLResponse
            if let statusCode = httpResponse?.statusCode, statusCode != 200 {
                // Error
-               print("respon login Api \(statusCode)")
-               completion(.failure(LoginError.Error))
+               print("respon forgot password Api \(statusCode)")
+               completion(.failure(ForgotPassError.Error))
                return
            }
            // Success
@@ -54,7 +52,6 @@ class UserAllApi  {
    }
 }
 
-enum LoginError: Error {
+enum ForgotPassError: Error {
     case Error
 }
-
