@@ -53,6 +53,6 @@ class ApiVerifyPassCode {
    }
 }
 
-enum verifyCodePassError: Error {
-    case Error
-}
+//enum verifyCodePassError: Error {
+//    case Error
+//}

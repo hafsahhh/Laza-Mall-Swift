@@ -29,7 +29,7 @@ class ApiForgotPassword  {
        guard let url = URL(string: urlString) else { return }
        var request = URLRequest(url: url)
        request.httpMethod = "POST"
-       request.httpBody = ApiLoginService.getHttpBodyRaw(param: [
+       request.httpBody = ApiService.getHttpBodyRaw(param: [
            "email": email
        ])
        
@@ -52,6 +52,6 @@ class ApiForgotPassword  {
    }
 }
 
-enum ForgotPassError: Error {
-    case Error
-}
+//enum ForgotPassError: Error {
+//    case Error
+//}

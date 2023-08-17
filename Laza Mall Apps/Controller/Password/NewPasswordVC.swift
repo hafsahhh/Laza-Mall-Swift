@@ -88,6 +88,7 @@ class NewPasswordVC: UIViewController {
         if isNewPassValid == isConfirmPassValid {
             resetPassOutlet.isEnabled = true
             resetPassOutlet.backgroundColor = UIColor(named: "ColorBg" )
+            resetPassOutlet.tintColor = UIColor(named: "ColorWhite")
         } else {
             resetPassOutlet.isEnabled = false
             resetPassOutlet.backgroundColor = UIColor(named: "ColorDarkValid" )

@@ -56,11 +56,17 @@ struct ProductDetail : Codable {
 struct userEntry: Codable {
     let status: String
     let isError: Bool
-    let data: DataUser
+    let data: DataUseProfile
 }
 
-// MARK: - DataClass
-struct DataUser: Codable {
+// MARK: - DataUseProfile
+typealias profileIndex = profileUser?
+struct profileUser: Codable {
+    let status: String
+    let isError: Bool
+    let data: DataUseProfile
+}
+struct DataUseProfile: Codable {
     let id: Int
     let fullName, username, email: String
     let isVerified: Bool
@@ -74,6 +80,17 @@ struct DataUser: Codable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
     }
+}
+
+struct LoginResponse: Codable {
+    let status: String
+    let isError: Bool
+    let data: AuthData
+}
+typealias AuthToken = AuthData?
+struct AuthData: Codable {
+    let access_token: String
+//    let refresh_token: String
 }
 
 

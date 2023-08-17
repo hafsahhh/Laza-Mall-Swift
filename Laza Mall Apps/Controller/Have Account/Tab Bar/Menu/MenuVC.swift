@@ -12,6 +12,7 @@ class MenuVC: UIViewController {
     let userDefault = UserDefaults.standard
     let saveDataLogin = "saveDataLogin"
     let userLoginTrue = "loginTrue"
+    let menuViewModel = LoginViewModel()
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var logoutBtnOutlet: UIButton!
@@ -19,7 +20,7 @@ class MenuVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUsername()
+        fetchUserProfile()
     }
     
     @IBAction func menuCloseBtn(_ sender: UIButton) {
@@ -41,7 +42,30 @@ class MenuVC: UIViewController {
             usernameLabel.text = "Hello, Guest"
         }
     }
+    func fetchUserProfile() {
+        menuViewModel.getUserProfile { result in
+            switch result {
+            case .success(let userProfile):
+                // Panggil fungsi untuk menampilkan data profil pengguna di tampilan
+                self.displayUserProfile(userProfile)
+            case .failure(let error):
+                // Tangani kesalahan dengan sesuai
+                print("Error fetching user profile: \(error)")
+            }
+        }
+    }
     
+    func displayUserProfile(_ userProfile: DataUseProfile?) {
+        if let userProfile = userProfile {
+            DispatchQueue.main.async {
+                // Mengisi IBOutlets dengan data profil pengguna
+                self.usernameLabel.text = userProfile.username
+            }
+        } else {
+            // Failed to get user profile
+            print("Failed to get user profile")
+        }
+    }
     
     @IBAction func switchBtnMode(_ sender: UISwitch) {
         
@@ -55,7 +79,7 @@ class MenuVC: UIViewController {
     }
     
     @IBAction func logoutBtn(_ sender: Any) {
-        UserDefaults.standard.removeObject(forKey: saveDataLogin)
+        UserDefaults.standard.removeObject(forKey: "auth_token")
 //        UserDefaults.standard.removeObject(forKey: userLoginTrue)
         let signInBtnAct = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateAccountVC") as! CreateAccountVC
         signInBtnAct.navigationItem.hidesBackButton = true

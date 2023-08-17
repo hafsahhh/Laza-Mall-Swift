@@ -92,7 +92,6 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
-        let signUp = signUpOutlet
         signUpOutlet.isEnabled = false
         passwordOutlet.isSecureTextEntry = true
         confirmPassOutlet.isSecureTextEntry = true
@@ -163,6 +162,7 @@ class SignUpVC: UIViewController {
         if usernameOutlet.hasText && emailOutlet.hasText && passwordOutlet.hasText && confirmPassOutlet.hasText{
             signUpOutlet.isEnabled = true
             signUpOutlet.backgroundColor = UIColor(named: "ColorBg")
+            signUpOutlet.tintColor = UIColor(named: "ColorWhite")
         } else {
             signUpOutlet.isEnabled = false
             signUpOutlet.backgroundColor = UIColor(named: "ColorDarkValid")
@@ -176,28 +176,22 @@ class SignUpVC: UIViewController {
         let email = emailOutlet.text ?? ""
         let password = passwordOutlet.text ?? ""
         
-        let apiSignUp = ApiSignUp() // Simpan instance ApiSignUp ke dalam variabel
-        
-
-        
-        apiSignUp.signUpUserAPI(username: username, email: email, password: password) { result in
+        signUpViewModel.signUpUserAPI(username: username, email: email, password: password) { result in
             switch result {
             case .success(let json):
                 // Panggil metode untuk berpindah ke view controller selanjutnya
                 DispatchQueue.main.async {
+                    ShowAlert.signUpApi(on: self, title: "Succesfully Created Account", message: "Please check your email to confrim the verification")
                     self.loginVcController()
                 }
-                print("Response JSON: \(String(describing: json))")
+                print("Response JSON Sign Up: \(String(describing: json))")
             case .failure(let error):
-                apiSignUp.apiAlertSIgnUp = { status, description in
+                self.signUpViewModel.apiAlertSIgnUp = { status, description in
                     DispatchQueue.main.async {
-                        ShowAlert.failedSignUpApi(on: self, title: status, message: description)
+                        ShowAlert.signUpApi(on: self, title: status, message: description)
                     }
                 }
-//                DispatchQueue.main.async {
-//                    ShowAlert.failedSignUpApi(on: self, title: "Registration Failed", message: "Error")
-//                }
-                print("JSON WOY ERROR: \(error)")
+                print("JSON Sign Up Error: \(error)")
             }
         } 
     }

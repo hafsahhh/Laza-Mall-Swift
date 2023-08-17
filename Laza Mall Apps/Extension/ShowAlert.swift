@@ -20,7 +20,15 @@ class ShowAlert {
         self.showAlert(on: viewController, title: titleAlert, message: messageAlert)
     }
     
-    public static func failedSignUpApi(on viewController:UIViewController, title titleAlert:String, message messageAlert:String){
+    public static func loginApi(on viewController:UIViewController, title titleAlert:String, message messageAlert:String){
+        self.showAlert(on: viewController, title: titleAlert, message: messageAlert)
+    }
+    
+    public static func forgotPassApi(on viewController:UIViewController, title titleAlert:String, message messageAlert:String){
+        self.showAlert(on: viewController, title: titleAlert, message: messageAlert)
+    }
+    
+    public static func verifyPassApi(on viewController:UIViewController, title titleAlert:String, message messageAlert:String){
         self.showAlert(on: viewController, title: titleAlert, message: messageAlert)
     }
     

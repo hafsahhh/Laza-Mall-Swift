@@ -8,13 +8,15 @@
 import UIKit
 
 class ForgotPasswordVC: UIViewController {
-
+    
     @IBOutlet weak var emailOutlet: UITextField!{
         didSet{
             emailOutlet.addShadow(color: .gray, width: 0.5, text: emailOutlet)
         }
     }
     @IBOutlet weak var forgotPassOutlet: UIButton!
+    
+    let forgotPassViewModel = ForgotPasswordViewModel()
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -24,10 +26,10 @@ class ForgotPasswordVC: UIViewController {
         backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         backBtn.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         
-
+        
         return backBtn
     }()
-
+    
     //Back Button
     @objc func backBtnAct(){
         self.navigationController?.popViewController(animated: true)
@@ -51,6 +53,7 @@ class ForgotPasswordVC: UIViewController {
         if isEmailValid {
             forgotPassOutlet.isEnabled = true
             forgotPassOutlet.backgroundColor = UIColor(named: "ColorBg" )
+            forgotPassOutlet.tintColor = UIColor(named: "ColorWhite")
         } else {
             forgotPassOutlet.isEnabled = false
             forgotPassOutlet.backgroundColor = UIColor(named: "ColorDarkValid" )
@@ -58,20 +61,29 @@ class ForgotPasswordVC: UIViewController {
         
     }
     
-     
+    
     // MARK: - Func getData dari kelas UserAllApi
     // Panggil fungsi getData dari kelas UserAllApi
     func forgotPasswordApi() {
         let email = emailOutlet.text ?? ""
-        ApiForgotPassword().getPassEmail(email: email) { result in
+        forgotPassViewModel.getPassEmail(email: email) { result in
             switch result {
             case .success(let json):
                 // Panggil metode untuk berpindah ke view controller selanjutnya
-                DispatchQueue.main.async {
-                    self.verificationCodeVC()
+                self.forgotPassViewModel.succesAlerForgotPass = { successMessage in
+                    DispatchQueue.main.async {
+                        self.verificationCodeVC()
+                        ShowAlert.forgotPassApi(on: self, title: "Notification", message: successMessage)
+                    }
                 }
                 print("Response JSON: \(String(describing: json))")
             case .failure(let error):
+                self.forgotPassViewModel.failedApiAlertForgotPassword = { description in
+                    DispatchQueue.main.async {
+                        print("Alert showing for failure case - errorMessage: \(description)")
+                        ShowAlert.forgotPassApi(on: self, title: "Error Message", message: description)
+                    }
+                }
                 print("Error: \(error)")
                 // Handle error appropriately
             }
@@ -86,11 +98,11 @@ class ForgotPasswordVC: UIViewController {
         self.navigationController?.pushViewController(verifCodeVc, animated: true)
     }
     
-
+    
     // MARK: - Forgot Password Button
     @IBAction func forgotPassBtnAct(_ sender: Any) {
         forgotPasswordApi()
     }
     
-
+    
 }

@@ -38,7 +38,7 @@ class LoginVC: UIViewController {
     let userDefault = UserDefaults.standard
     let saveDataLogin = "saveDataLogin"
     let loginTrue = "loginTrue"
-    //    let userApiLogin = UserAllApi()
+    let loginViewModel = LoginViewModel()
     var iconClick = true
     var isUsernameValid = false
     var isPasswordValid = false
@@ -104,6 +104,7 @@ class LoginVC: UIViewController {
         if usernameOutlet.hasText && passwordOutlet.hasText {
             loginBtnOutlet.isEnabled = true
             loginBtnOutlet.backgroundColor = UIColor(named: "ColorBg")
+            loginBtnOutlet.tintColor = UIColor(named: "ColorWhite")
         } else {
             loginBtnOutlet.isEnabled = false
             loginBtnOutlet.backgroundColor = UIColor(named: "ColorDarkValid")
@@ -120,26 +121,40 @@ class LoginVC: UIViewController {
     func loginAndGetData() {
         let username = usernameOutlet.text ?? ""
         let password = passwordOutlet.text ?? ""
-        let apiLogin = UserAllApi() // Simpan instance ApiSignUp ke dalam variabel
         
-        apiLogin.getDataLogin(username: username, password: password) { result in
+        loginViewModel.getDataLogin(username: username, password: password) { result in
             switch result {
-            case .success(let json):
-                // Panggil metode untuk berpindah ke view controller selanjutnya
-                    DispatchQueue.main.async {
-                        self.tabBarController()
-                    }
-                print("Response JSON: \(String(describing: json))")
-            case .failure(let error):
-                apiLogin.apiAlertLogin = { status, description in
-                    DispatchQueue.main.async {
-                        ShowAlert.failedSignUpApi(on: self, title: status, message: description)
+            case .success:
+                // Login berhasil, panggil getUserProfile untuk mendapatkan profil pengguna
+                self.loginViewModel.getUserProfile { result in
+                    switch result {
+                    case .success(let userProfile):
+                        // Panggil metode untuk berpindah ke view controller selanjutnya
+                        DispatchQueue.main.async {
+                            self.tabBarController(userProfile: userProfile)
+                        }
+                    case .failure(let error):
+                        print("Error getting user profile: \(error)")
+                        // Panggil fungsi untuk menampilkan alert login gagal
+                        self.loginViewModel.apiAlertLogin?("Error", "Login failed")
                     }
                 }
-                print("Error: \(error)")
-                // Handle error appropriately
+            case .failure(let error):
+                self.loginViewModel.apiAlertLogin = { status, description in
+//                    DispatchQueue.main.async {
+//                        ShowAlert.failedLoginApi(on: self, title: status, message: description)
+//                    }
+                }
+                print("JSON Login Error: \(error)")
             }
         }
+    }
+    
+    func tabBarController(userProfile: DataUseProfile?){
+        let tabbarVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
+        tabbarVC.userProfile = userProfile
+        tabbarVC.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(tabbarVC, animated: true)
     }
     
     
@@ -172,12 +187,6 @@ class LoginVC: UIViewController {
                 passwordOutlet.text = userDetail.password
             }
         }
-    }
-    
-    func tabBarController(){
-        let tabbarVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
-        tabbarVC.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(tabbarVC, animated: true)
     }
     
     
