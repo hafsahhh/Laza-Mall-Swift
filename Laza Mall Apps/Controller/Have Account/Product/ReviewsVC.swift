@@ -19,7 +19,7 @@ class ReviewsVC: UIViewController {
     let modelReview =  cellUserReviews()
     var reviewId : Int!
     let reviewViewModel = ReviewViewModel()
-    var reviewProduct = [Review]()
+    var reviewProduct = [ReviewAllProduct]()
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -42,10 +42,11 @@ class ReviewsVC: UIViewController {
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
         
+        reviewAllByProductIdApi()
         
-        //rating
-        reviewRating.rating = 2
-        reviewRating.text = " "
+//        //rating
+//        reviewRating.rating = 2
+//        reviewRating.text = " "
         
         // Register the xib for tableview cell product
         userReviewTable.delegate = self
@@ -54,7 +55,7 @@ class ReviewsVC: UIViewController {
     }
     
     // MARK: - Navigation
-    func detailProductApi() {
+    func reviewAllByProductIdApi() {
         reviewViewModel.getDataReviewProduct(id: reviewId) { [weak self] productDetail in
             DispatchQueue.main.async {
                 if let product = productDetail?.data {
@@ -86,8 +87,24 @@ extension ReviewsVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewsTableCell", for: indexPath) as? ReviewsTableCell
         else {return UITableViewCell()}
-        cell.usernameView.text = reviewProduct[indexPath.row].fullName
+        let review = reviewProduct[indexPath.row]
+        let ratingString = String(review.rating)
+        cell.usernameView.text = review.fullName.rawValue
         cell.reviewView.text = reviewProduct[indexPath.row].comment
+        cell.ratingFromUser.rating = reviewProduct[indexPath.row].rating
+        cell.ratingView.text = ratingString
+        cell.dateView.text = DateTimeUtils.shared.formatReview(date: review.createdAt)
+        // Load the image asynchronously from the URL
+        if let imageUrl = URL(string: review.imageURL) {
+            DispatchQueue.global().async {
+                if let imageData = try? Data(contentsOf: imageUrl) {
+                    DispatchQueue.main.async {
+                        // Create a UIImage from the loaded image data and assign it to the UIImageView
+                        cell.imageUser.image = UIImage(data: imageData)
+                    }
+                }
+            }
+        }
          return cell
     }
     

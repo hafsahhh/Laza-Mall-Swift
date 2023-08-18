@@ -1708,10 +1708,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ysd-uh-blw" customClass="CosmosView" customModule="Cosmos">
-                                                        <rect key="frame" x="253" y="30" width="90" height="20"/>
+                                                        <rect key="frame" x="233" y="30" width="110" height="20"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="90" id="tPy-Lx-CaC"/>
+                                                            <constraint firstAttribute="width" constant="110" id="tPy-Lx-CaC"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -1850,8 +1850,10 @@
                         <outlet property="dateReviewView" destination="7ds-R4-67f" id="iNz-wJ-H1d"/>
                         <outlet property="descView" destination="P3D-Y9-G0W" id="OFK-gg-rb2"/>
                         <outlet property="imageProView" destination="tm4-Db-Ht1" id="JvC-iL-Ljd"/>
+                        <outlet property="imageReviewView" destination="qVL-Qw-gBr" id="ZiR-gv-s3A"/>
                         <outlet property="priceView" destination="RSo-yR-dmq" id="mYd-KQ-pST"/>
                         <outlet property="ratingProView" destination="Ysd-uh-blw" id="cQM-F3-Yd8"/>
+                        <outlet property="ratingUserReview" destination="Smi-3n-6jt" id="mjI-h4-9ub"/>
                         <outlet property="reviewView" destination="oHa-Ac-F0K" id="YbP-ze-JaM"/>
                         <outlet property="sizeCollectView" destination="HyQ-6p-g2O" id="EXx-tk-wfY"/>
                         <outlet property="usernameReviewerView" destination="rGp-NZ-YDK" id="V27-ae-xw6"/>

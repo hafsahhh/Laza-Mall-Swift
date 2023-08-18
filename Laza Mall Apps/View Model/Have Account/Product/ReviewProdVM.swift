@@ -8,9 +8,9 @@
 import Foundation
 class ReviewViewModel {
     
-    func getDataReviewProduct(id: Int, completion:@escaping (ProductDetailIndex) -> ()) {
-        print("producrId: \(id)")
-        guard let url = URL(string: "https://lazaapp.shop//products/\(id)/reviews") else { return }
+    func getDataReviewProduct(id: Int, completion:@escaping (ReviewAll) -> ()) {
+        print("product id review: \(id)")
+        guard let url = URL(string: "https://lazaapp.shop/products/\(id)/reviews") else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
@@ -21,7 +21,7 @@ class ReviewViewModel {
                 print("Serisllized data")
                 let serializedJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
                 print(serializedJson)
-                let productList = try JSONDecoder().decode(ProductDetailIndex.self, from: data)
+                let productList = try JSONDecoder().decode(ReviewAll.self, from: data)
                 completion(productList)
             } catch {
                 print("Error decoding data: \(error)")
