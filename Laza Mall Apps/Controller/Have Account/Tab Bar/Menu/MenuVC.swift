@@ -80,6 +80,7 @@ class MenuVC: UIViewController {
     
     @IBAction func logoutBtn(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "auth_token")
+        UserDefaults.standard.removeObject(forKey: "loginTrue")
 //        UserDefaults.standard.removeObject(forKey: userLoginTrue)
         let signInBtnAct = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateAccountVC") as! CreateAccountVC
         signInBtnAct.navigationItem.hidesBackButton = true

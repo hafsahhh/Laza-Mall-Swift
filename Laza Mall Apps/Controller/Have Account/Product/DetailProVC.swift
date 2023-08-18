@@ -17,12 +17,18 @@ class DetailProVC: UIViewController {
     @IBOutlet weak var priceView: UILabel!
     @IBOutlet weak var sizeCollectView: UICollectionView!
     @IBOutlet weak var descView: UILabel!
+    @IBOutlet weak var usernameReviewerView: UILabel!
     @IBOutlet weak var reviewView: UILabel!
+    @IBOutlet weak var dateReviewView: UILabel!
     @IBOutlet weak var ratingProView: CosmosView!
     
     
     var product: ProductEntry?
-    let sizeDummy = ["S", "L", "XL", "2XL", "3XL"]
+    var productDetail: DataDetailProduct?
+    var productId : Int!
+    var detailProductViewModel = DetailProductViewModel()
+    var sizeProduct = [Size]()
+    var reviewProduct = [Review]()
     var whishlistModel: [likeProductWhishlist] = []
     
     
@@ -45,7 +51,7 @@ class DetailProVC: UIViewController {
     private lazy var likeBtn : UIButton = {
         //call back button
         let likeBtn = UIButton.init(type: .custom)
-        likeBtn.setImage(UIImage(named:"Heart"), for: .normal)
+        likeBtn.setImage(UIImage(named:"Whislist-Menu"), for: .normal)
         likeBtn.addTarget(self, action: #selector(likeBtnAct), for: .touchUpInside)
         likeBtn.frame = CGRect(x: 330, y: 0, width: 45, height: 45)
         return likeBtn
@@ -54,11 +60,11 @@ class DetailProVC: UIViewController {
     
     //Like Button
     @objc func likeBtnAct(){
-        guard let imageProduct = self.product?.image_url else {return}
+        guard let imageProduct = self.product?.imageURL else {return}
         guard let titleProduct = self.product?.name else {return}
         guard let priceProduct = self.product?.price else {return}
         
-        let newLikedProduct = likeProductWhishlist(imageWhishlistProd: imageProduct, titleWhishlistProd: titleProduct, priceWhislistProd: Int16(priceProduct))
+        let newLikedProduct = likeProductWhishlist(imageWhishlistProd: imageProduct, titleWhishlistProd: titleProduct, priceWhislistProd: Int16(Int(priceProduct)))
         
         // Pastikan produk belum ada di dalam daftar sebelum menambahkannya
         if !whishlistModel.contains(newLikedProduct) {
@@ -92,42 +98,57 @@ class DetailProVC: UIViewController {
         let likeBtn = UIBarButtonItem(customView: likeBtn)
         self.navigationItem.rightBarButtonItem  = likeBtn
         
+        detailProductApi()
         
-        loadDetail()
         //category collection
         sizeCollectView.dataSource = self
         sizeCollectView.delegate = self
         sizeCollectView.register(sizeCollectCell.nib(), forCellWithReuseIdentifier: sizeCollectCell.identifier)
         
-        //rating
-        ratingProView.rating = 2
-        ratingProView.text = " "
     }
     
-
-    // MARK: - UI with API
-    func loadDetail(){
-        if let detailProduct = product {
-            catTitleView.text = detailProduct.name
-//            catBrandView.text = detailProduct.category.rawValue
-            priceView.text = String("$ \(detailProduct.price)")
-//            descView.text = detailProduct.description
-            
-            if let imageUrl = URL(string: detailProduct.image_url){
-                URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                    if let data = data, let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self.imageProView.image = image
-                        }
+    
+    
+    func detailProductApi() {
+        detailProductViewModel.getDataDetailProduct(id: productId) { [weak self] productDetail in
+            DispatchQueue.main.async {
+                if let product = productDetail?.data {
+                    self?.sizeProduct.append(contentsOf: product.size)
+                    self?.reviewProduct.append(contentsOf: product.reviews)
+                    self?.catTitleView.text = product.name
+                    self?.priceView.text = String("$ \(product.price)")
+                    self?.descView.text = product.description
+                    self?.catBrandView.text = product.category.category
+                    if let imageUrl = URL(string: product.imageURL){
+                        URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                            if let data = data, let image = UIImage(data: data) {
+                                DispatchQueue.main.async {
+                                    self?.imageProView.image = image
+                                }
+                            }
+                        }.resume()
                     }
-                }.resume()
-                
+                    if let rating = self?.reviewProduct.first?.rating {
+                        self?.ratingProView.text = String(rating)
+                        self?.ratingProView.rating = (rating
+                        )
+                    }
+                    if let review =  self?.reviewProduct.first {
+                        self?.reviewView.text = review.comment
+                        self?.usernameReviewerView.text = review.fullName
+                        self?.dateReviewView.text = DateTimeUtils.shared.formatReview(date: review.createdAt)
+                    }
+                    self?.sizeCollectView.reloadData()
+                } else {
+                    print("productDetail data is nil")
+                }
             }
         }
     }
     
     @IBAction func reviewViewAll(_ sender: Any) {
         let reviewViewAllBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReviewsVC") as! ReviewsVC
+        reviewViewAllBtn.reviewId = productId
         self.navigationController?.pushViewController(reviewViewAllBtn, animated: true)
     }
     
@@ -135,7 +156,8 @@ class DetailProVC: UIViewController {
 // MARK: - extension
 extension DetailProVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        sizeDummy.count
+        print("size product\(sizeProduct)")
+        return sizeProduct.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -153,7 +175,7 @@ extension DetailProVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let sizeCell =  collectionView.dequeueReusableCell(withReuseIdentifier: sizeCollectCell.identifier, for: indexPath) as? sizeCollectCell else { return UICollectionViewCell() }
         
-        sizeCell.sizeLabel.text = sizeDummy[indexPath.row]
+        sizeCell.sizeLabel.text = sizeProduct[indexPath.row].size
         return sizeCell
     }
     

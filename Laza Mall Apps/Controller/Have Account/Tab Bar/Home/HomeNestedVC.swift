@@ -153,7 +153,7 @@ extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTable
     func showDetailProduct(product: ProductEntry) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailProVC") as? DetailProVC {
-            detailViewController.product = product
+            detailViewController.productId = product.id
             navigationController?.pushViewController(detailViewController, animated: true)
         }
     }

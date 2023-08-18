@@ -131,6 +131,7 @@ class LoginVC: UIViewController {
                     case .success(let userProfile):
                         // Panggil metode untuk berpindah ke view controller selanjutnya
                         DispatchQueue.main.async {
+                            UserDefaults.standard.set(true, forKey: "loginTrue")
                             self.tabBarController(userProfile: userProfile)
                         }
                     case .failure(let error):
@@ -141,9 +142,9 @@ class LoginVC: UIViewController {
                 }
             case .failure(let error):
                 self.loginViewModel.apiAlertLogin = { status, description in
-//                    DispatchQueue.main.async {
-//                        ShowAlert.failedLoginApi(on: self, title: status, message: description)
-//                    }
+                    DispatchQueue.main.async {
+                        ShowAlert.signUpApi(on: self, title: "Notification \(status)", message: description)
+                    }
                 }
                 print("JSON Login Error: \(error)")
             }

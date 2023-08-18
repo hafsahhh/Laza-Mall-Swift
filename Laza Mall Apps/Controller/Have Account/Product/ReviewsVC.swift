@@ -17,6 +17,9 @@ class ReviewsVC: UIViewController {
     
     
     let modelReview =  cellUserReviews()
+    var reviewId : Int!
+    let reviewViewModel = ReviewViewModel()
+    var reviewProduct = [Review]()
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -51,7 +54,19 @@ class ReviewsVC: UIViewController {
     }
     
     // MARK: - Navigation
-
+    func detailProductApi() {
+        reviewViewModel.getDataReviewProduct(id: reviewId) { [weak self] productDetail in
+            DispatchQueue.main.async {
+                if let product = productDetail?.data {
+                    self?.reviewProduct = product.reviews
+                    self?.userReviewTable.reloadData()
+                    print("review ada\(product)")
+                } else {
+                    print("review product data is nil")
+                }
+            }
+        }
+    }
     @IBAction func addReviewBtn(_ sender: Any) {
         let addReviewCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddReviewVC") as! AddReviewVC
         self.navigationController?.pushViewController(addReviewCtrl, animated: true)
@@ -60,17 +75,19 @@ class ReviewsVC: UIViewController {
 
 extension ReviewsVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if modelReview.count == 0 {
+        if reviewProduct.count == 0 {
             emptyDataReview.isHidden = false
         } else {
             emptyDataReview.isHidden = true
         }
-        return modelReview.count
+        return reviewProduct.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewsTableCell", for: indexPath) as? ReviewsTableCell
         else {return UITableViewCell()}
+        cell.usernameView.text = reviewProduct[indexPath.row].fullName
+        cell.reviewView.text = reviewProduct[indexPath.row].comment
          return cell
     }
     

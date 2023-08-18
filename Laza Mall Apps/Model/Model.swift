@@ -17,20 +17,20 @@ struct ProductResponse: Codable{
     let data: [ProductEntry]!
 }
 struct ProductEntry : Codable {
-    let id : Int
-    let name : String
-    let image_url : String
-    let price : Double
-//    let category : Category
-//    let description: String
-//    let rating: Rating
-    
-    private enum CodingKeys: String, CodingKey {
-        case id, name, price
-        case image_url = "image_url"
-    }
+    let id: Int
+     let name: String
+     let imageURL: String
+     let price: Int
+     let createdAt: String
+
+     enum CodingKeys: String, CodingKey {
+         case id, name
+         case imageURL = "image_url"
+         case price
+         case createdAt = "created_at"
+     }
 }
- 
+
 
 // MARK: - Brand Product
 typealias categoryIndex = categoryResponse?

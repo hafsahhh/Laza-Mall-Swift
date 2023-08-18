@@ -1,28 +1,12 @@
 //
-//  ApiNewPassword.swift
+//  NewPasswordVM.swift
 //  Laza Mall Apps
 //
-//  Created by Siti Hafsah on 15/08/23.
+//  Created by Siti Hafsah on 18/08/23.
 //
 
 import Foundation
-
-class ApiNewPasswordService {
-    static func getHttpBodyForm(param: [String:Any]) -> Data? {
-        var body = [String]()
-        param.forEach { (key, value) in
-            body.append("\(key)=\(value)")
-        }
-        let bodyString = body.joined(separator: "&")
-        return bodyString.data(using: .utf8)
-    }
-    static func getHttpBodyRaw(param: [String:Any]) -> Data?{
-        let jsonData = try? JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
-        return jsonData
-    }
-}
-
-class ApiNewPassword {
+class NewPasswordViewModel {
     func getCodeVerify(newPassword: String, rePassword: String, email: String, code: String,
                       completion: @escaping (Result<Data?, Error>) -> Void)//closure atau blok kode yang dapat dilewatkan ke fungsi sebagai parameter
    {
@@ -30,7 +14,7 @@ class ApiNewPassword {
        guard let url = URL(string: urlString) else { return }
        var request = URLRequest(url: url)
        request.httpMethod = "POST"
-       request.httpBody = ApiNewPasswordService.getHttpBodyRaw(param: [
+       request.httpBody = ApiService.getHttpBodyRaw(param: [
         "new_password": newPassword,
         "re_password": rePassword,
        ])
@@ -55,6 +39,6 @@ class ApiNewPassword {
    }
 }
 
-//enum newPasswordError: Error {
-//    case Error
-//}
+enum newPasswordError: Error {
+    case Error
+}

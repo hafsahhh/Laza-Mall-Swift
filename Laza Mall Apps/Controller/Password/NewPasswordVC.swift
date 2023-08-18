@@ -24,9 +24,9 @@ class NewPasswordVC: UIViewController {
     var iconClick = true
     var isNewPassValid = false
     var isConfirmPassValid = false
-    
     var email: String?
     var code: String?
+    let newPassViewModel = NewPasswordViewModel()
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -92,13 +92,13 @@ class NewPasswordVC: UIViewController {
         } else {
             resetPassOutlet.isEnabled = false
             resetPassOutlet.backgroundColor = UIColor(named: "ColorDarkValid" )
-//            print("wrong password")
-//            // create the alert
-//            let alert = UIAlertController(title: "Wrong Password", message: "Please try another password.", preferredStyle: UIAlertController.Style.alert)
-//            // add an action (button)
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-//            // show the alert
-//            self.present(alert, animated: true, completion: nil)
+            print("wrong password")
+            // create the alert
+            let alert = UIAlertController(title: "Wrong Password", message: "Please try the same password.", preferredStyle: UIAlertController.Style.alert)
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -109,7 +109,7 @@ class NewPasswordVC: UIViewController {
         let rePassword = confirmPassOutlet.text ?? ""
         guard let userEmail = email else { return }
         guard let userCode = code else {return}
-        ApiNewPassword().getCodeVerify(newPassword: newPassword, rePassword: rePassword, email: userEmail, code: userCode) { result in
+        newPassViewModel.getCodeVerify(newPassword: newPassword, rePassword: rePassword, email: userEmail, code: userCode) { result in
             switch result {
             case .success(let json):
                 // Panggil metode untuk berpindah ke view controller selanjutnya
