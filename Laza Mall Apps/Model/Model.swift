@@ -33,13 +33,13 @@ struct ProductEntry : Codable {
 
 
 // MARK: - Brand Product
-typealias categoryIndex = categoryResponse?
-struct categoryResponse: Codable{
+typealias brandAllIndex = brandAllResponse?
+struct brandAllResponse: Codable{
     let status: String
     let isError: Bool
-    let description: [categoryEntry]
+    let description: [brandAllEntry]
 }
-struct categoryEntry : Codable{
+struct brandAllEntry : Codable{
     let id : Int
     let name : String
     let logo_url : String

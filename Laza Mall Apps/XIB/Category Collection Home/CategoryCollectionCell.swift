@@ -16,17 +16,21 @@ class CategoryCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var viewContainer: UIView! {
         didSet{
-            viewContainer.layer.cornerRadius = CGFloat(10)
+            viewContainer.layer.cornerRadius = CGFloat(15)
         }
     }
     @IBOutlet weak var labelBrand: UILabel!
-
+    @IBOutlet weak var imageBrandView: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    func configure(data :  categoryEntry){
+    func configure(data :  brandAllEntry){
+        let imgURL = URL(string: "\(data.logo_url)")
+        self.imageBrandView.sd_setImage(with: imgURL)
         labelBrand.text = data.name
     }
 }

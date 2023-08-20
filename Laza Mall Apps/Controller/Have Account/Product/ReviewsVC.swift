@@ -70,6 +70,7 @@ class ReviewsVC: UIViewController {
     }
     @IBAction func addReviewBtn(_ sender: Any) {
         let addReviewCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddReviewVC") as! AddReviewVC
+        addReviewCtrl.addReviewId = reviewId
         self.navigationController?.pushViewController(addReviewCtrl, animated: true)
     }
 }
@@ -89,7 +90,7 @@ extension ReviewsVC: UITableViewDataSource, UITableViewDelegate {
         else {return UITableViewCell()}
         let review = reviewProduct[indexPath.row]
         let ratingString = String(review.rating)
-        cell.usernameView.text = review.fullName.rawValue
+        cell.usernameView.text = review.fullName
         cell.reviewView.text = reviewProduct[indexPath.row].comment
         cell.ratingFromUser.rating = reviewProduct[indexPath.row].rating
         cell.ratingView.text = ratingString

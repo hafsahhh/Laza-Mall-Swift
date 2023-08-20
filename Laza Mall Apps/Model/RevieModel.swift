@@ -30,7 +30,7 @@ struct ReviewAllProduct: Codable {
     let id: Int
     let comment: String
     let rating: Double
-    let fullName: FullName
+    let fullName: String
     let imageURL: String
     let createdAt: String
 

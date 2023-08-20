@@ -112,7 +112,8 @@ class HomeNestedVC: UIViewController {
     }
 }
 
-extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTableCellProtocol {
+extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTableCellProtocol, categoryTableCellProtocol {
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -127,6 +128,7 @@ extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTable
             guard let catCell =  tableView.dequeueReusableCell(withIdentifier: "CategoryTableCell") as? CategoryTableCell else {return UITableViewCell()}
             catCell.reloadTable = { [weak self] in
                 self?.homeTableView.reloadData()
+                catCell.delegateBrand = self
             }
             
             return catCell
@@ -155,6 +157,16 @@ extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTable
         if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailProVC") as? DetailProVC {
             detailViewController.productId = product.id
             navigationController?.pushViewController(detailViewController, animated: true)
+        }
+    }
+    
+    func showDetailBrand(brand: brandAllEntry) {
+        let catBrandVc = UIStoryboard(name: "Main", bundle: nil)
+        if let brandViewController = catBrandVc.instantiateViewController(withIdentifier: "CategoryBrandVC") as? CategoryBrandVC {
+            brandViewController.brandId = brand.id
+            print("IDBrand \(brand.id)")
+            self.navigationItem.hidesBackButton = true
+            navigationController?.pushViewController(brandViewController, animated: true)
         }
     }
 }

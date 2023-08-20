@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol categoryTableCellProtocol {
+    func showDetailBrand(brand: brandAllEntry)
+}
 
 
 class CategoryTableCell: UITableViewCell {
@@ -16,9 +19,9 @@ class CategoryTableCell: UITableViewCell {
     @IBOutlet weak var viewAllBtnOutlet: UIButton!
     @IBOutlet weak var categoryCollectView: UICollectionView!
     
-    var modelCat = [categoryEntry]()
+    var modelCat = [brandAllEntry]()
     var reloadTable: (() -> Void)?
-
+    var delegateBrand: categoryTableCellProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -78,4 +81,9 @@ extension CategoryTableCell: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegateBrand?.showDetailBrand(brand: modelCat[indexPath.item])
+    }
 }
+

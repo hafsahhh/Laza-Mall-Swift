@@ -109,53 +109,59 @@ class DetailProVC: UIViewController {
         
     }
     
-    
-    
     func detailProductApi() {
         detailProductViewModel.getDataDetailProduct(id: productId) { [weak self] productDetail in
             DispatchQueue.main.async {
-                if let product = productDetail?.data {
-                    self?.sizeProduct.append(contentsOf: product.size)
-                    self?.reviewProduct.append(contentsOf: product.reviews)
-                    self?.catTitleView.text = product.name
-                    self?.priceView.text = String("$ \(product.price)")
-                    self?.descView.text = product.description
-                    self?.catBrandView.text = product.category.category
-                    if let imageUrl = URL(string: product.imageURL){
+                guard let product = productDetail?.data else {
+                    print("productDetail data is nil")
+                    return
+                }
+                
+                self?.sizeProduct.append(contentsOf: product.size)
+                self?.reviewProduct.append(contentsOf: product.reviews)
+                self?.catTitleView.text = product.name
+                self?.priceView.text = String("$ \(product.price)")
+                self?.descView.text = product.description
+                self?.catBrandView.text = product.category.category
+                
+                if let imageUrl = URL(string: product.imageURL) {
+                    URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                        guard let data = data, let image = UIImage(data: data) else {
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            self?.imageProView.image = image
+                        }
+                    }.resume()
+                }
+                
+                if let rating = self?.reviewProduct.first?.rating {
+                    self?.ratingProView.rating = rating
+                    self?.ratingUserReview.text = String(rating)
+                }
+                
+                if let review = self?.reviewProduct.first {
+                    self?.reviewView.text = review.comment
+                    self?.usernameReviewerView.text = review.fullName
+                    self?.dateReviewView.text = DateTimeUtils.shared.formatReview(date: review.createdAt)
+                    
+                    if let imageUrl = URL(string: review.imageURL) {
                         URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                            if let data = data, let image = UIImage(data: data) {
-                                DispatchQueue.main.async {
-                                    self?.imageProView.image = image
-                                }
+                            guard let data = data, let image = UIImage(data: data) else {
+                                return
+                            }
+                            DispatchQueue.main.async {
+                                self?.imageReviewView.image = image
                             }
                         }.resume()
                     }
-                    if let rating = self?.reviewProduct.first?.rating {
-                        self?.ratingProView.rating = rating
-                        self?.ratingUserReview.text = String(rating)
-                    }
-                    if let review =  self?.reviewProduct.first {
-                        self?.reviewView.text = review.comment
-                        self?.usernameReviewerView.text = review.fullName
-                        self?.dateReviewView.text = DateTimeUtils.shared.formatReview(date: review.createdAt)
-                        if let imageUrl = URL(string: review.imageURL){
-                            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                                if let data = data, let image = UIImage(data: data) {
-                                    DispatchQueue.main.async {
-                                        self?.imageReviewView.image = image
-                                    }
-                                }
-                            }.resume()
-                        }
-                    }
-                    
-                    self?.sizeCollectView.reloadData()
-                } else {
-                    print("productDetail data is nil")
                 }
+                
+                self?.sizeCollectView.reloadData()
             }
         }
     }
+    
     
     @IBAction func reviewViewAll(_ sender: Any) {
         let reviewViewAllBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReviewsVC") as! ReviewsVC

@@ -32,6 +32,10 @@ class ShowAlert {
         self.showAlert(on: viewController, title: titleAlert, message: messageAlert)
     }
     
+    public static func addReview(on viewController:UIViewController, title titleAlert:String, message messageAlert:String){
+        self.showAlert(on: viewController, title: titleAlert, message: messageAlert)
+    }
+    
     public static func passwordDoestMatch(on viewController:UIViewController){
       self.showAlert(on: viewController, title: "Password Mismatch", message: "Password dosen't match")
     }

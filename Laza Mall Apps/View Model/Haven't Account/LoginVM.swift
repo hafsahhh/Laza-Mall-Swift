@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 class LoginViewModel{
     var apiAlertLogin: ((String, String) -> Void)?
@@ -135,24 +134,4 @@ class LoginViewModel{
 enum LoginError: Error {
     case Error
 }
-//let urlString = "https://lazaapp.shop/user/profile"
-//guard let url = URL(string: urlString) else { return }
-//var request = URLRequest(url: url)
-//
-//request.setValue("Bearer \(access_token)", forHTTPHeaderField: "X-Auth-Token")
-//URLSession.shared.dataTask(with: request){
-//    (data, response, error) in
-//    if let error = error {
-//        print(error)
-//        return
-//    }
-//    let httpResponse = response as? HTTPURLResponse
-//    if let statusCode = httpResponse?.statusCode, statusCode != 200 {
-//        // Error
-//        print("respon get profile \(statusCode)")
-//        completion(.failure(LoginError.Error))
-//        return
-//    }
-//    // Success
-//    completion(.success(data))
-//}.resume()
+
