@@ -36,5 +36,11 @@ class ProductHomeCollectCell: UICollectionViewCell {
         titleView.text = data.name
         priceView.text = String("$ \(data.price)")
     }
-
+    
+    func configureWishlist(data: ProductWishlistEntry){
+        let imgURL = URL(string: "\(data.imageURL)")
+        self.imageView.sd_setImage(with: imgURL)
+        titleView.text = data.name
+        priceView.text = String("$ \(data.price)")
+    }
 }

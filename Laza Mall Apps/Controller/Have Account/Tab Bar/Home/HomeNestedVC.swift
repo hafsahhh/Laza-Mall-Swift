@@ -163,7 +163,7 @@ extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTable
     func showDetailBrand(brand: brandAllEntry) {
         let catBrandVc = UIStoryboard(name: "Main", bundle: nil)
         if let brandViewController = catBrandVc.instantiateViewController(withIdentifier: "CategoryBrandVC") as? CategoryBrandVC {
-            brandViewController.brandId = brand.id
+            brandViewController.brandName = brand.name
             print("IDBrand \(brand.id)")
             self.navigationItem.hidesBackButton = true
             navigationController?.pushViewController(brandViewController, animated: true)

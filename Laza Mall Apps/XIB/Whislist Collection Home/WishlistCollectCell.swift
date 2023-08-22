@@ -18,7 +18,6 @@ class WishlistCollectCell: UICollectionViewCell {
     @IBOutlet weak var titleWhishlistView: UILabel!
     @IBOutlet weak var priceWhislistView: UILabel!
     
-    var whishlistModel: [likeProductWhishlist] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()

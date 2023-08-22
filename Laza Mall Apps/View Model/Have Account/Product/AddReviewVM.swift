@@ -48,6 +48,7 @@ class AddReviewViewModel{
             }
             if let httpResponse = response as? HTTPURLResponse {
                 let statusCode = httpResponse.statusCode
+                print("Status code Add review: \(httpResponse.statusCode)")
                 if statusCode != 201 {
                     // Error
                     print("Response Status Code Add Review Api: \(statusCode)")

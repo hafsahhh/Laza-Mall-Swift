@@ -62,7 +62,7 @@ extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource
         if searchTextActive == true{
             return filterProduct.count
         } else {
-            return modelProduct.count
+            return min(6, modelProduct.count)
         }
     }
     
@@ -82,8 +82,10 @@ extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource
             if searchTextActive == true {
                 _ = filterProduct[indexPath.item]
             } else {
-                let cellFilter = modelProduct[indexPath.item]
-                productCell.configure(data: cellFilter)
+              if indexPath.row < modelProduct.count{
+                    let cellFilter = modelProduct[indexPath.item]
+                    productCell.configure(data: cellFilter)
+                }
             }
             return productCell
         }

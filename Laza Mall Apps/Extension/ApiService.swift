@@ -15,8 +15,13 @@ class ApiService {
         let bodyString = body.joined(separator: "&")
         return bodyString.data(using: .utf8)
     }
+    
     static func getHttpBodyRaw(param: [String:Any]) -> Data?{
         let jsonData = try? JSONSerialization.data(withJSONObject: param, options: .prettyPrinted)
         return jsonData
+    }
+    
+    static func generateBoundary() -> String {
+        return "Boundary-\(NSUUID().uuidString)"
     }
 }

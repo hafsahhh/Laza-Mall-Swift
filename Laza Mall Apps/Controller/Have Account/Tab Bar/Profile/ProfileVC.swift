@@ -26,8 +26,25 @@ class ProfileVC: UIViewController {
     let imagePicker = UIImagePickerController()
     let profileViewModel = LoginViewModel()
     
+    //Profile
+    private func setupTabBarText() {
+        let label4 = UILabel()
+        label4.numberOfLines = 1
+        label4.textAlignment = .center
+        label4.text = "Profile"
+        label4.font = UIFont(name: "inter-Medium", size: 11)
+        label4.sizeToFit()
+        
+        tabBarItem.standardAppearance?.selectionIndicatorTintColor = UIColor(named: "colorBg")
+        tabBarItem.selectedImage = UIImage(view: label4)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //func tab Bar action
+        setupTabBarText()
         
         userImageView.layer.cornerRadius = userImageView.frame.width / 2
         userImageView.layer.masksToBounds = true
@@ -35,6 +52,8 @@ class ProfileVC: UIViewController {
         
         fetchUserProfile()
 //        loginViewModel.performLogin(username: "your_username", password: "your_password")
+        
+        
     }
     
     func fetchUserProfile() {
@@ -70,6 +89,13 @@ class ProfileVC: UIViewController {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    @IBAction func editProfileBtn(_ sender: UIButton) {
+        let editProdilCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editProfileVC") as! editProfileVC
+        editProdilCtrl.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(editProdilCtrl, animated: true)
+    }
+    
 }
 
 extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

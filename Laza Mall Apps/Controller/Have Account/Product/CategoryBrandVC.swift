@@ -9,11 +9,12 @@ import UIKit
 
 class CategoryBrandVC: UIViewController {
     
-    
+    @IBOutlet weak var brandNameView: UILabel!
     @IBOutlet weak var categoryFilterCollectView: UICollectionView!
-    
-    var brandId : Int = 0
-    var modelBrand = [brandEntry]()
+    @IBOutlet weak var totalItems: UILabel!
+    //    var brandId : Int = 0
+    var brandName: String = ""
+    var modelBrand = [prodByIdBrandEntry]()
     var categoryBrandViewModel = CategoryBrandViewModel()
     
     //Back Button
@@ -49,16 +50,26 @@ class CategoryBrandVC: UIViewController {
     }
     
     func getBrandProductById() {
-        categoryBrandViewModel.getDataBrandProductApi(id: brandId) { brandIndexId in
-            guard let response = brandIndexId else { return }
-            self.modelBrand.append(response.data) // Append a single BrandEntry object
+        
+        categoryBrandViewModel.getDataBrandProductApi(name: brandName) { response in
+            let name = self.brandName
+            self.brandNameView.text = name.uppercased()
+            print(name)
             DispatchQueue.main.async {
-                self.categoryFilterCollectView.reloadData()
+                if let responseData = response?.data {
+                    self.modelBrand.append(contentsOf: responseData)
+                    self.totalItems.text = "\(responseData.count)" // Display total count of items
+                    self.categoryFilterCollectView.reloadData()
+                } else {
+                    print("Response data is nil")
+                }
             }
         }
     }
 
+    
 }
+
 extension CategoryBrandVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -67,7 +78,7 @@ extension CategoryBrandVC: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 400)
+        return CGSize(width: 160, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -81,7 +92,11 @@ extension CategoryBrandVC: UICollectionViewDelegate, UICollectionViewDataSource,
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailProVC") as? DetailProVC {
+            detailViewController.productId = modelBrand[indexPath.item].id
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
     }
     
     

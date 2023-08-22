@@ -31,7 +31,10 @@ class DetailProVC: UIViewController {
     var detailProductViewModel = DetailProductViewModel()
     var sizeProduct = [Size]()
     var reviewProduct = [Review]()
-    var whishlistModel: [likeProductWhishlist] = []
+    var modelUpdateWishlist: UpdateWishlist?
+    var whishlistModel: [WishlistProductIndex] = []
+    var wishlistViewModel = WishlistViewModel()
+    var imageName: String = ""
     
     
     //Back Button
@@ -53,39 +56,72 @@ class DetailProVC: UIViewController {
     private lazy var likeBtn : UIButton = {
         //call back button
         let likeBtn = UIButton.init(type: .custom)
-        likeBtn.setImage(UIImage(named:"Whislist-Menu"), for: .normal)
+        likeBtn.tintColor = .black
+        likeBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         likeBtn.addTarget(self, action: #selector(likeBtnAct), for: .touchUpInside)
-        likeBtn.frame = CGRect(x: 330, y: 0, width: 45, height: 45)
+        likeBtn.frame = CGRect(x: 330, y: 0, width: 70, height: 70)
         return likeBtn
     }()
     
-    
-    //Like Button
+    //like objc
     @objc func likeBtnAct(){
-        guard let imageProduct = self.product?.imageURL else {return}
-        guard let titleProduct = self.product?.name else {return}
-        guard let priceProduct = self.product?.price else {return}
-        
-        let newLikedProduct = likeProductWhishlist(imageWhishlistProd: imageProduct, titleWhishlistProd: titleProduct, priceWhislistProd: Int16(Int(priceProduct)))
-        
-        // Pastikan produk belum ada di dalam daftar sebelum menambahkannya
-        if !whishlistModel.contains(newLikedProduct) {
-            whishlistModel.append(newLikedProduct)
-            
-            // Ubah array menjadi Data dan simpan ke UserDefaults
-            do {
-                let encoder = JSONEncoder()
-                let data = try encoder.encode(whishlistModel)
-                UserDefaults.standard.set(data, forKey: "whishlistModelKey")
-                print("Wishlist tersimpan \(whishlistModel)")
-            } catch {
-                print("Terjadi kesalahan saat menyimpan data: \(error)")
+        updateWishlist()
+    }
+    
+    func isProductInWishlists(productId: Int, completion: @escaping (Bool) -> Void) {
+        wishlistViewModel.getWishlistUser { result in
+            switch result {
+            case .success(let wishlistIndex):
+                if let products = wishlistIndex.data?.products {
+                    let isInWishlist = products.contains { product in
+                        return product.id == productId
+                    }
+                    completion(isInWishlist)
+                } else {
+                    completion(false) // No wishlist data available
+                }
+            case .failure:
+                completion(false) // Error fetching wishlist data
             }
         }
-        
-        // Update tampilan tombol 'Like' (jika diperlukan)
-        likeBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
     }
+    
+    
+    func updateWishlist(){
+        detailProductViewModel.putWishlistUser(productId: productId) { result in
+            var message: String = "" // Inisialisasi pesan di sini
+            
+            switch result {
+            case .success:
+                self.detailProductViewModel.apiAlertDetailProduct = { status, data in
+                    DispatchQueue.main.async {
+                        print(data)
+                        if data.contains("added") {
+                            self.imageName = "heart.fill"
+                        } else {
+                            self.imageName = "heart"
+                        }
+                        
+                        // Update the button image
+                        let image = UIImage(systemName: self.imageName)
+                        self.likeBtn.setImage(image, for: .normal) // Update the button image here
+                        message = data // Menangkap pesan di sini
+                        ShowAlert.addReview(on: self, title: status, message: message)
+                    }
+                }
+            case .failure(let error):
+                self.detailProductViewModel.apiAlertDetailProduct = { status, data in
+                    DispatchQueue.main.async {
+                        self.navigationController?.popViewController(animated: true)
+                        message = data // Menangkap pesan di sini
+                        ShowAlert.addReview(on: self, title: status, message: data)
+                    }
+                }
+                print("API update wishlist Error: \(error)")
+            }
+        }
+    }
+    
     
     
     
@@ -106,6 +142,20 @@ class DetailProVC: UIViewController {
         sizeCollectView.dataSource = self
         sizeCollectView.delegate = self
         sizeCollectView.register(sizeCollectCell.nib(), forCellWithReuseIdentifier: sizeCollectCell.identifier)
+        
+        
+        isProductInWishlists(productId: productId) { isInWishlist in
+            if isInWishlist {
+                self.imageName = "heart.fill"
+            } else {
+                self.imageName = "heart"
+            }
+            DispatchQueue.main.async {
+                // Update the button image
+                let image = UIImage(systemName: self.imageName)
+                self.likeBtn.setImage(image, for: .normal)
+            }
+        }
         
     }
     
@@ -161,6 +211,20 @@ class DetailProVC: UIViewController {
             }
         }
     }
+    
+    
+    
+    @IBAction func likeButtonTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        let imageName = sender.isSelected ? "heart.fill" : "heart"
+        let image = UIImage(systemName: imageName)
+        sender.setImage(image, for: .normal)
+        
+        // You can also update the wishlist status here based on the `sender.isSelected` value
+        // For example, you can call a function to update the wishlist status in the ViewModel.
+        // wishlistViewModel.updateWishlistStatus(isWishlisted: sender.isSelected)
+    }
+    
     
     
     @IBAction func reviewViewAll(_ sender: Any) {

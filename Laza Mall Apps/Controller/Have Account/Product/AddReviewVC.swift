@@ -81,7 +81,7 @@ class AddReviewVC: UIViewController {
                 case .success(let data):
                     self.addReviewViewModel.apiAlertAddreview = { status in
                         DispatchQueue.main.async {
-                            self.reviewAllController()
+                            self.navigationController?.popViewController(animated: true)
                             ShowAlert.addReview(on: self, title: status, message: "successfully add review in this product")
                         }
                     }

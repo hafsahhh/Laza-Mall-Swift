@@ -23,11 +23,11 @@ class CategoryFilterCollectCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    func configure(data :  brandEntry){
-        let imgURL = URL(string: "\(data.logo_url)")
+    func configure(data :  prodByIdBrandEntry){
+        let imgURL = URL(string: "\(data.imageURL)")
         self.categoryImageView.sd_setImage(with: imgURL)
         categoryTitleView.text = data.name
-//        categoryPriceTitle.text = String("$ \(data.)")
+        categoryPriceTitle.text = String("$ \(data.price)")
     }
 
     

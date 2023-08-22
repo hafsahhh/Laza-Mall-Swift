@@ -172,3 +172,10 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+
+extension UIImageView {
+    func setImageWithPlugin(url: String) {
+        let urlImage = URL(string: url)
+        self.sd_setImage(with: urlImage)
+    }
+}

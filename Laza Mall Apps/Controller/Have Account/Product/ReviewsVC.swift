@@ -10,16 +10,17 @@ import Cosmos
 
 
 class ReviewsVC: UIViewController {
-
+    
     @IBOutlet weak var userReviewTable: UITableView!
     @IBOutlet weak var reviewRating: CosmosView!
     @IBOutlet weak var emptyDataReview: UILabel!
-    
+    @IBOutlet weak var totalReviews: UILabel!
     
     let modelReview =  cellUserReviews()
     var reviewId : Int!
     let reviewViewModel = ReviewViewModel()
     var reviewProduct = [ReviewAllProduct]()
+    private var refreshControl = UIRefreshControl()
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -44,14 +45,15 @@ class ReviewsVC: UIViewController {
         
         reviewAllByProductIdApi()
         
-//        //rating
-//        reviewRating.rating = 2
-//        reviewRating.text = " "
-        
         // Register the xib for tableview cell product
         userReviewTable.delegate = self
         userReviewTable.dataSource = self
         userReviewTable.register(UINib(nibName: "ReviewsTableCell", bundle: nil), forCellReuseIdentifier: "ReviewsTableCell")
+        
+        // Add refresh control to the table view
+        userReviewTable.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
     }
     
     // MARK: - Navigation
@@ -60,6 +62,8 @@ class ReviewsVC: UIViewController {
             DispatchQueue.main.async {
                 if let product = productDetail?.data {
                     self?.reviewProduct = product.reviews
+                    self?.totalReviews.text = String(product.total)
+                    self?.reviewRating.rating = product.ratingAvrg
                     self?.userReviewTable.reloadData()
                     print("review ada\(product)")
                 } else {
@@ -68,6 +72,18 @@ class ReviewsVC: UIViewController {
             }
         }
     }
+    
+    @objc func refreshData() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            // Perform your data fetching here
+            self.reviewAllByProductIdApi()
+            self.userReviewTable.reloadData()
+            
+            // End refreshing
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
     @IBAction func addReviewBtn(_ sender: Any) {
         let addReviewCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddReviewVC") as! AddReviewVC
         addReviewCtrl.addReviewId = reviewId
@@ -106,7 +122,7 @@ extension ReviewsVC: UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
-         return cell
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

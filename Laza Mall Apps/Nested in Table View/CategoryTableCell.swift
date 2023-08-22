@@ -62,13 +62,15 @@ class CategoryTableCell: UITableViewCell {
 extension CategoryTableCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let catagoryCell =  collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionCell.identifier, for: indexPath) as? CategoryCollectionCell else { return UICollectionViewCell() }
-        catagoryCell.configure(data: modelCat[indexPath.item])
-        print("data yang ini",modelCat[indexPath.row])
+        if indexPath.row < modelCat.count{
+              let cellCat = modelCat[indexPath.item]
+            catagoryCell.configure(data: cellCat)
+          }
         return catagoryCell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modelCat.count
+        return min(6, modelCat.count)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150, height: 50 )
