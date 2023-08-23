@@ -35,8 +35,11 @@ class DetailProVC: UIViewController {
     var whishlistModel: [WishlistProductIndex] = []
     var wishlistViewModel = WishlistViewModel()
     var imageName: String = ""
+    var idSizeProductSelected: Int!
+    var selectedSizeIndexPath: IndexPath?
     
     
+    // MARK: - Button back using programmaticly
     //Back Button
     private lazy var backBtn : UIButton = {
         //call back button
@@ -52,6 +55,7 @@ class DetailProVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - Button Like using programmaticly
     //like Button
     private lazy var likeBtn : UIButton = {
         //call back button
@@ -68,6 +72,7 @@ class DetailProVC: UIViewController {
         updateWishlist()
     }
     
+    // MARK: - Func for button like stay in filled button
     func isProductInWishlists(productId: Int, completion: @escaping (Bool) -> Void) {
         wishlistViewModel.getWishlistUser { result in
             switch result {
@@ -86,7 +91,7 @@ class DetailProVC: UIViewController {
         }
     }
     
-    
+    // MARK: - Func Update Wishlist
     func updateWishlist(){
         detailProductViewModel.putWishlistUser(productId: productId) { result in
             var message: String = "" // Inisialisasi pesan di sini
@@ -122,7 +127,30 @@ class DetailProVC: UIViewController {
         }
     }
     
-    
+    func addCarts(){
+        guard let idSize = self.idSizeProductSelected else {
+            print("id for size is nil")
+            self.alertShowApi(title: "Sorry!", message: "Please choose your size product")
+            return
+        }
+        detailProductViewModel.addCarts(idProduct: productId, idSize: idSize) { result in
+            print("inii carts\(String(describing: self.productId))")
+            switch result {
+            case . success(let data):
+                DispatchQueue.main.async {
+                    ShowAlert.performAlertApi(on: self, title: "Carts Notification", message: "Successfully Add New Product to Cart")
+                }
+                print("API Response Data Carts: \(String(describing: data))")
+            case .failure(let error):
+                self.detailProductViewModel.apiAlertDetailProduct = { status, data in
+                    DispatchQueue.main.async {
+                        ShowAlert.performAlertApi(on: self, title: status, message: data)
+                    }
+                }
+                print("API add to carts Error: \(error.localizedDescription)")
+            }
+        }
+    }
     
     
     // MARK: - ViewDidLoad
@@ -159,6 +187,13 @@ class DetailProVC: UIViewController {
         
     }
     
+    // MARK: - View Will Appear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+    // MARK: - Func Detail Product
     func detailProductApi() {
         detailProductViewModel.getDataDetailProduct(id: productId) { [weak self] productDetail in
             DispatchQueue.main.async {
@@ -213,24 +248,16 @@ class DetailProVC: UIViewController {
     }
     
     
-    
-    @IBAction func likeButtonTapped(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        let imageName = sender.isSelected ? "heart.fill" : "heart"
-        let image = UIImage(systemName: imageName)
-        sender.setImage(image, for: .normal)
-        
-        // You can also update the wishlist status here based on the `sender.isSelected` value
-        // For example, you can call a function to update the wishlist status in the ViewModel.
-        // wishlistViewModel.updateWishlistStatus(isWishlisted: sender.isSelected)
-    }
-    
-    
-    
+    // MARK: - Review All
     @IBAction func reviewViewAll(_ sender: Any) {
         let reviewViewAllBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReviewsVC") as! ReviewsVC
         reviewViewAllBtn.reviewId = productId
         self.navigationController?.pushViewController(reviewViewAllBtn, animated: true)
+    }
+    
+    
+    @IBAction func addToCartBtn(_ sender: UIButton) {
+        addCarts()
     }
     
 }
@@ -257,8 +284,22 @@ extension DetailProVC: UICollectionViewDelegate, UICollectionViewDataSource {
         guard let sizeCell =  collectionView.dequeueReusableCell(withReuseIdentifier: sizeCollectCell.identifier, for: indexPath) as? sizeCollectCell else { return UICollectionViewCell() }
         
         sizeCell.sizeLabel.text = sizeProduct[indexPath.row].size
+        if indexPath == selectedSizeIndexPath {
+            sizeCell.bgSizeView.backgroundColor = UIColor(named: "ColorBg")
+            sizeCell.sizeLabel.textColor = UIColor(named: "ColorWhite")
+        } else {
+            sizeCell.bgSizeView.backgroundColor = UIColor(named: "colorbrand")
+            sizeCell.sizeLabel.textColor = UIColor(named: "ColorBlack")
+        }
         return sizeCell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedSizeIndexPath = indexPath
+        let selectedProduct = sizeProduct[indexPath.row]
+        
+        self.idSizeProductSelected = selectedProduct.id
+        print("Index Id Size", String(idSizeProductSelected!))
+        collectionView.reloadData()
+    }
 }

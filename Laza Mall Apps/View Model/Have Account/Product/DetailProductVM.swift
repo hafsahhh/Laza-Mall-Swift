@@ -9,6 +9,7 @@ import Foundation
 class DetailProductViewModel {
     
     var apiAlertDetailProduct: ((String, String) -> Void)?
+    var apiAlertMessage: ((String) -> Void)?
     
     func getDataDetailProduct(id: Int, completion:@escaping (ProductDetailIndex) -> ()) {
         print("producrId: \(id)")
@@ -31,15 +32,15 @@ class DetailProductViewModel {
         }.resume()
     }
     
+    // MARK: - Func PUT Wihslist using API
     func putWishlistUser(productId: Int, completion: @escaping (Result<UpdateWishlist, Error>) -> Void) {
-        
         guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
               let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
             // Jika token tidak tersedia atau gagal di-decode, kirim error
             completion(.failure(LoginError.Error))
             return
         }
-        guard var components = URLComponents(string: "https://lazaapp.shop/wishlists?ProductId=\(productId)") else {
+        guard let components = URLComponents(string: "https://lazaapp.shop/wishlists?ProductId=\(productId)") else {
             print("Invalid URL.")
             return
         }
@@ -96,6 +97,52 @@ class DetailProductViewModel {
                         }
                     }
                     
+                }
+            }
+        }.resume()
+        
+    }
+    
+    // MARK: - Func Add Cart using API
+    func addCarts(idProduct:Int, idSize: Int, completion: @escaping (Result<Data?, Error>) -> Void) {
+        
+        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
+              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
+            return
+        }
+        
+        guard let url = URL(string: Endpoints.Gets.addCarts(idProduct: idProduct, idSize: idSize).url) else
+        {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                // Jika terjadi error, kirim error melalui completion handler
+                completion(.failure(error))
+                print("error")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 201 {
+                    // Jika status code tidak 200, coba mengekstrak informasi dari response
+                    if let data = data,
+                       let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let data = jsonResponse["data"] as? String,
+                       let status = jsonResponse["status"] as? String {
+                        DispatchQueue.main.async {
+                            // Memanggil alert API
+                            self.apiAlertDetailProduct?(status, data)
+                        }
+                        print("INI ERROR\(jsonResponse)")
+                        return
+                    }
+                    completion(.success(data))
                 }
             }
         }.resume()

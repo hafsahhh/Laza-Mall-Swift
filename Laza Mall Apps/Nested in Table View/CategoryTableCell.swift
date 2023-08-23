@@ -18,10 +18,12 @@ class CategoryTableCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var viewAllBtnOutlet: UIButton!
     @IBOutlet weak var categoryCollectView: UICollectionView!
+    @IBOutlet weak var viewAllCat: UIButton!
     
     var modelCat = [brandAllEntry]()
     var reloadTable: (() -> Void)?
     var delegateBrand: categoryTableCellProtocol?
+    var homeViewModel =  HomeViewModel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,18 +32,9 @@ class CategoryTableCell: UITableViewCell {
         categoryCollectView.delegate = self
         categoryCollectView.register(CategoryCollectionCell.nib(), forCellWithReuseIdentifier: CategoryCollectionCell.identifier)
         
-//        AllCategoryApi().getData { category in
-//            guard let catResponses = category else { return }
-//            self.modelCat.append(contentsOf: catResponses.data)
-//            self.categoryCollectView.reloadData()
-//            for category in self.modelCat{
-//                print("helo \(category.name)")
-//            }
-//            self.reloadTable?()
-//        }
         
         //panggil AllCategoryApi
-        AllCategoryApi().getData { categoryIndex in
+        homeViewModel.getBrandAllData() { categoryIndex in
             guard let response = categoryIndex else { return }
             self.modelCat.append(contentsOf: response.description)
             self.categoryCollectView.reloadData()
@@ -56,6 +49,17 @@ class CategoryTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    
+    @IBAction func viewAllBtn(_ sender: UIButton) {
+        if let categoryAllVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewAllVC") as? ViewAllVC {
+            categoryAllVC.modalPresentationStyle = .fullScreen
+            categoryAllVC.labelProdOrBrand = "Brand"
+            if let navigationController = self.window?.rootViewController as? UINavigationController {
+                navigationController.pushViewController(categoryAllVC, animated: false)
+            }
+        }
     }
     
 }

@@ -40,4 +40,21 @@ class HomeViewModel{
         }.resume()
     }
     
+    func getBrandAllData(completion:@escaping (brandAllIndex) -> ()) {
+        guard let url = URL(string: "https://lazaapp.shop/brand") else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            
+            do {
+                let catList = try JSONDecoder().decode(brandAllIndex.self, from: data)
+                DispatchQueue.main.async {
+                    completion(catList)
+                }
+            } catch {
+                print("Error decoding data category: \(error)")
+            }
+        }.resume()
+    }
+    
 }

@@ -28,6 +28,7 @@ class ProductTableCell: UITableViewCell {
     var delegateProductDetail: productTableCellProtocol?
     var searchTextActive: Bool = false
     var filterProduct: [ProductEntry] = []
+    var homeViewModel = HomeViewModel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,15 +39,14 @@ class ProductTableCell: UITableViewCell {
         
         
         //panggil AllProductApi
-        AllProductApi().getData { ProductIndex in
+        homeViewModel.getData { ProductIndex in
             guard let response = ProductIndex else { return }
             self.modelProduct.append(contentsOf: response.data)
             self.productCollectView.reloadData()
-//            for product in self.modelProduct{
-//                print("helo \(product.name)")
-//            }
             self.reloadTable?()
         }
+        
+        
         
     }
     
@@ -55,6 +55,17 @@ class ProductTableCell: UITableViewCell {
     //
     //        // Configure the view for the selected state
     //    }
+    
+    
+    @IBAction func viewAllBtn(_ sender: UIButton) {
+        if let productAllVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewAllVC") as? ViewAllVC {
+            productAllVC.modalPresentationStyle = .fullScreen
+            productAllVC.labelProdOrBrand = "Product"
+            if let navigationController = self.window?.rootViewController as? UINavigationController {
+                navigationController.pushViewController(productAllVC, animated: false)
+            }
+        }
+    }
     
 }
 extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

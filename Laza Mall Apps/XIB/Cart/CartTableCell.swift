@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol deleteProductInCartProtocol: AnyObject {
+    func deleteProductCart(cell: CartTableCell)
+}
+
 class CartTableCell: UITableViewCell {
     
     static let identifier = "CartTableCell"
@@ -27,14 +31,12 @@ class CartTableCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var imageProductView: UIView!
-    
+    @IBOutlet weak var brandProductView: UILabel!
+    @IBOutlet weak var imageProductView: UIImageView!
     @IBOutlet weak var titleProductView: UILabel!
-    
     @IBOutlet weak var priceProductView: UILabel!
-    
     @IBOutlet weak var quantityProductView: UILabel!
-
+    @IBOutlet weak var sizeProduct: UILabel!
     @IBOutlet weak var arrowDown: UIButton!{
         didSet{
             arrowDown.layer.cornerRadius = 0.5 * arrowDown.bounds.size.width
@@ -69,6 +71,8 @@ class CartTableCell: UITableViewCell {
     }
     
     var quantityProduct = 0
+    weak var delegate: deleteProductInCartProtocol?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -81,11 +85,7 @@ class CartTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func configure(data :  CartElement){
-        titleProductView.text = String("\(data.products)")
-//        quantityProductView.text = String("\(data.products)")
-    }
-    
+
     @IBAction func arrowDownBtn(_ sender: Any) {
         if quantityProduct > 0{
             quantityProduct -= 1
@@ -97,6 +97,11 @@ class CartTableCell: UITableViewCell {
     @IBAction func arrowUpBtn(_ sender: Any) {
         quantityProduct += 1
         updateQuantityLabel()
+    }
+    
+    @IBAction func deleteBtn(_ sender: Any) {
+        delegate?.deleteProductCart(cell: self)
+        print("helo woy")
     }
     
 }

@@ -24,6 +24,7 @@ struct brandEntry: Codable {
 
 
 
+
 // MARK: - Product by ID Brand
 typealias productByIdBrandIndex = prudctByIdBrandResponse?
 struct prudctByIdBrandResponse: Codable {

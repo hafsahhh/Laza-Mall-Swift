@@ -41,6 +41,9 @@
                                         </fragment>
                                     </attributedString>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="viewAllBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tsd-AP-0Hn"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xGk-sP-6uz">
                                 <rect key="frame" x="20" y="54" width="280" height="36"/>
@@ -78,6 +81,7 @@
                 <outlet property="categoryCollectView" destination="xGk-sP-6uz" id="BmK-b7-vX6"/>
                 <outlet property="categoryLabel" destination="xKR-t6-OwW" id="cAV-Dw-g7v"/>
                 <outlet property="viewAllBtnOutlet" destination="wgf-tC-5gZ" id="WqU-sT-6uP"/>
+                <outlet property="viewAllCat" destination="wgf-tC-5gZ" id="mWW-tH-cjF"/>
             </connections>
             <point key="canvasLocation" x="37.404580152671755" y="42.253521126760567"/>
         </tableViewCell>

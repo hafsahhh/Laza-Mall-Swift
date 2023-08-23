@@ -16,6 +16,7 @@ class sizeCollectCell: UICollectionViewCell {
     
     @IBOutlet weak var sizeLabel: UILabel!
     
+    @IBOutlet weak var bgSizeView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
