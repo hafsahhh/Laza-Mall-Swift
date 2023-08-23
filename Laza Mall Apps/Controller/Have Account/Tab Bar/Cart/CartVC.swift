@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CartVC: UIViewController {
+class CartVC: UIViewController{
     
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var emptyDataCart: UILabel!
@@ -45,18 +45,18 @@ class CartVC: UIViewController {
         cartTableView.delegate = self
         cartTableView.register(CartTableCell.nib(), forCellReuseIdentifier: CartTableCell.identifier)
         
-        getUserWishlist()
+        getUserCarts()
         getSizeAll()
         cartTableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getUserWishlist()
+        getUserCarts()
         cartTableView.reloadData()
     }
     
-    func getUserWishlist() {
+    func getUserCarts() {
         cartsViewModel.getCarts() { result in
             DispatchQueue.main.async {
                 switch result {
@@ -128,7 +128,6 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
             cartCell.priceProductView.text = String(cellCarts.price)
         }
         cartCell.delegate = self
-        print("hihihi")
         return cartCell
     }
     
@@ -138,11 +137,9 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension CartVC: deleteProductInCartProtocol {
+extension CartVC: productInCartProtocol {
     func deleteProductCart(cell: CartTableCell) {
-        print("hohoho")
         guard let indexPath = cartTableView.indexPath(for: cell) else {
-            print("hahaha")
             return }
         if let cartData = cartModel?.data.products[indexPath.row]
     
@@ -180,21 +177,40 @@ extension CartVC: deleteProductInCartProtocol {
             }
         }
     }
+    
+    func arrowDownProductCart(cell: CartTableCell, newQuantity: Int) {
+        guard let indexPath = cartTableView.indexPath(for: cell) else {
+            print("popo")
+            return
+        }
+        
+        if let cartData = cartModel?.data.products[indexPath.row] {
+            var sizeId = -1
+            guard let allSizeData = allSize?.data else { return }
+            for index in 0..<allSizeData.count {
+                print("ini index:", index)
+                if allSizeData[index].size == cartData.size {
+                    print("ini ke2 index:", allSizeData[index].size)
+                    print("ini ke 3 index", cartData.size)
+                    sizeId = allSizeData[index].id
+                    break
+                }
+            }
+            
+            // Menggunakan data produk untuk memanggil metode API updateCarts
+            cartsViewModel.updateCarts(idProduct: cartData.id, idSize: sizeId, quantityProd: newQuantity) { result in
+                switch result {
+                case .success(let data):
+                    // Implementasi aksi yang sesuai setelah berhasil mengupdate kuantitas produk
+                    
+                    // Misalnya, Anda bisa memperbarui tampilan atau melakukan panggilan API lainnya
+                    
+                    print("Successfully updated product quantity: \(String(describing: data))")
+                case .failure(let error):
+                    // Handle error appropriately
+                    print("Failed to update product quantity: \(error)")
+                }
+            }
+        }
+    }
 }
-
-//cartsViewModel.deleteCarts(idProduct: cartData.id, idSize: sizeId) { result in
-//    switch result {
-//    case . success(let data):
-//        DispatchQueue.main.async {
-//            ShowAlert.performAlertApi(on: self, title: "Carts Notification", message: "Successfully Add New Product to Cart")
-//        }
-//        print("API Response Data Carts: \(String(describing: data))")
-//    case .failure(let error):
-//        self.cartsViewModel.apiCarts = { status, data in
-//            DispatchQueue.main.async {
-//                ShowAlert.performAlertApi(on: self, title: status, message: data)
-//            }
-//        }
-//        print("API add to carts Error: \(error.localizedDescription)")
-//    }
-//}

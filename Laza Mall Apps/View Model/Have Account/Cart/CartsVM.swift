@@ -108,6 +108,62 @@ class CartsViewModel{
         
     }
     
+    // MARK: - Func Delete Cart using API
+    func updateCarts(idProduct:Int, idSize: Int, quantityProd: Int, completion: @escaping (Result<Data?, Error>) -> Void) {
+        print("Update Data carts")
+        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
+              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
+            return
+        }
+        
+        guard let url = URL(string: Endpoints.Gets.updateCarts(idProduct: idProduct, idSize: idSize).url) else
+        {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "PUT"
+        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                // Jika terjadi error, kirim error melalui completion handler
+                completion(.failure(error))
+                print("error")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 200 {
+                    // Jika status code tidak 200, coba mengekstrak informasi dari response
+                    if let data = data,
+                       let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let data = jsonResponse["data"] as? String,
+                       let status = jsonResponse["status"] as? String {
+                        DispatchQueue.main.async {
+                            // Memanggil alert API
+                            self.apiCarts?(status, data)
+                        }
+                        print("INI ERROR Update\(jsonResponse)")
+                        return
+                    }
+                    if let data = data,
+                       let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                       let data = jsonResponse["data"] as? String,
+                       let status = jsonResponse["status"] as? String {
+                        DispatchQueue.main.async {
+                            // Memanggil alert API
+                            self.apiCarts?(status, data)
+                        }
+                        print("Succesfully update product\(jsonResponse)")
+                    }
+                    completion(.success(data))
+                }
+            }
+        }.resume()
+        
+    }
+    
     // MARK: - Func Get All Size
     func getSizeAll(completion:@escaping (AllSize) -> ()) {
         guard let url = URL(string: Endpoints.Gets.sizeAll.url) else {return}

@@ -7,8 +7,9 @@
 
 import UIKit
 
-protocol deleteProductInCartProtocol: AnyObject {
+protocol productInCartProtocol: AnyObject {
     func deleteProductCart(cell: CartTableCell)
+    func arrowDownProductCart(cell: CartTableCell, newQuantity: Int)
 }
 
 class CartTableCell: UITableViewCell {
@@ -71,7 +72,7 @@ class CartTableCell: UITableViewCell {
     }
     
     var quantityProduct = 0
-    weak var delegate: deleteProductInCartProtocol?
+    weak var delegate: productInCartProtocol?
     
     
     override func awakeFromNib() {
@@ -87,10 +88,15 @@ class CartTableCell: UITableViewCell {
     }
 
     @IBAction func arrowDownBtn(_ sender: Any) {
-        if quantityProduct > 0{
-            quantityProduct -= 1
-        }
-        updateQuantityLabel()
+        // Memanggil delegat dengan fungsi arrowDownProductCart
+         delegate?.arrowDownProductCart(cell: self, newQuantity: quantityProduct)
+         
+         if quantityProduct > 0 {
+             quantityProduct -= 1
+         }
+         updateQuantityLabel()
+         print("Delegate arrowDownProductCart called")
+         print("juju")
     }
     
     
@@ -101,7 +107,6 @@ class CartTableCell: UITableViewCell {
     
     @IBAction func deleteBtn(_ sender: Any) {
         delegate?.deleteProductCart(cell: self)
-        print("helo woy")
     }
     
 }

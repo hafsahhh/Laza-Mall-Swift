@@ -23,6 +23,7 @@ enum Endpoints {
         case codeForgot
         case newPassword(email: String, code: String)
         case profile
+        case updateProfile
         case productAll
         case producDetail(id: Int)
         case riview(id: Int)
@@ -33,6 +34,7 @@ enum Endpoints {
         case cartsAll
         case addCarts(idProduct: Int, idSize: Int)
         case deleteCarts(idProduct: Int, idSize: Int)
+        case updateCarts(idProduct: Int, idSize: Int)
         case sizeAll
         public var url: String {
             switch self {
@@ -48,6 +50,8 @@ enum Endpoints {
                 return "\(API.baseUrl)auth/recover/password?email=\(email)&code=\(code)"
             case .profile:
                 return "\(API.baseUrl)user/profile"
+            case .updateProfile:
+                return "\(API.baseUrl)user/update"
             case .producDetail(id: let id):
                 return "\(API.baseUrl)products/\(id)"
             case .productAll:
@@ -70,6 +74,8 @@ enum Endpoints {
                 return "\(API.baseUrl)carts?ProductId=\(idProduct)&SizeId=\(idSize)"
             case .sizeAll:
                 return "\(API.baseUrl)size"
+            case .updateCarts(idProduct: let idProduct, idSize: let idSize):
+                return "\(API.baseUrl)carts?ProductId=\(idProduct)&SizeId=\(idSize)"
             }
         }
     }

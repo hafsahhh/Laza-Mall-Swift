@@ -19,23 +19,23 @@ struct EditProfileResponse: Codable {
 // MARK: - DataClass
 struct EditProfile: Codable {
     let id: Int
-       let fullName: String
-       let username: String
-       let email: String
-       let imageUrl: String
-       let isVerified: Bool
-       let createdAt: String
-       let updatedAt: String
-
-       enum CodingKeys: String, CodingKey {
-           case id
-           case fullName = "full_name"
-           case username, email
-           case imageUrl = "image_url"
-           case isVerified = "is_verified"
-           case createdAt = "created_at"
-           case updatedAt = "updated_at"
-       }
+    let fullName: String
+    let username: String
+    let email: String
+    let imageUrl: String
+    let isVerified: Bool
+    let createdAt: String
+    let updatedAt: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case fullName = "full_name"
+        case username, email
+        case imageUrl = "image_url"
+        case isVerified = "is_verified"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
 }
 
 typealias Parameters = [String: String]

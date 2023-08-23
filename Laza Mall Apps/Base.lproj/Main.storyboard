@@ -3551,6 +3551,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="camera.fill" catalog="system">
                                             <attributedString key="attributedTitle"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="editPhotoBtn:" destination="btK-NS-nmT" eventType="touchUpInside" id="Ccq-S3-B1t"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fw2-5f-C2n">
                                         <rect key="frame" x="20" y="56.000000000000007" width="353" height="20.333333333333336"/>
