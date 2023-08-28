@@ -7,9 +7,11 @@
 
 import UIKit
 import SafariServices
+import GoogleSignIn
 
 class CreateAccountVC: UIViewController {
     
+    @IBOutlet weak var labelGetStarted: UILabel!
     
     @IBOutlet weak var facebookBtnOutlet: UIButton!{
         didSet{
@@ -36,12 +38,12 @@ class CreateAccountVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        // untuk stay ketika sudah login di awal, jadi user defaultnya sudah tersimpan
-//        if UserDefaults.standard.bool(forKey: loginTrue){
-//            let tabbarVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
-//            tabbarVC.navigationItem.hidesBackButton = true
-//            self.navigationController?.pushViewController(tabbarVC, animated: true)
-//        }
+        //        // untuk stay ketika sudah login di awal, jadi user defaultnya sudah tersimpan
+        //        if UserDefaults.standard.bool(forKey: loginTrue){
+        //            let tabbarVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
+        //            tabbarVC.navigationItem.hidesBackButton = true
+        //            self.navigationController?.pushViewController(tabbarVC, animated: true)
+        //        }
         
         // untuk stay ketika sudah login di awal, jadi user defaultnya sudah tersimpan
         if UserDefaults.standard.bool(forKey: "loginTrue"){
@@ -49,17 +51,19 @@ class CreateAccountVC: UIViewController {
             tabbarVC.navigationItem.hidesBackButton = true
             self.navigationController?.pushViewController(tabbarVC, animated: true)
         }
+        
+        
     }
     
     
-
+    
     
     
     @IBAction func facebookBtnAct(_ sender: Any) {
         if let url = URL(string: "https://www.facebook.com/login/") {
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = true
-
+            
             let vc = SFSafariViewController(url: url, configuration: config)
             present(vc, animated: true)
         }
@@ -78,13 +82,15 @@ class CreateAccountVC: UIViewController {
     }
     
     @IBAction func googleBtnAct(_ sender: Any) {
-        if let urlGoogle = URL(string: "https://accounts.google.com/InteractiveLogin/signinchooser?"){
-            let config = SFSafariViewController.Configuration()
-            config.entersReaderIfAvailable = true
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+            guard error == nil else { return }
+            guard let signInResult = signInResult else { return }
             
-            let googleVC = SFSafariViewController(url: urlGoogle, configuration: config)
-            present(googleVC, animated: true)
+            // If sign in succeeded, display the app's main content View.
+            print("Sign in success: \(String(describing: signInResult.user.profile?.email))")
+            
         }
+        updateScreen()
     }
     
     
@@ -103,5 +109,25 @@ class CreateAccountVC: UIViewController {
         
     }
     
-
+    private func updateScreen() {
+        
+        if let user = GIDSignIn.sharedInstance.currentUser {
+            // User signed in
+            
+            // Show greeting message
+            guard let userName = user.profile?.name else {return}
+            labelGetStarted.text = "Hello \(userName)"
+            
+            // Hide sign in button
+            googleBtnOutlet.isHidden = true
+    
+            
+        } else {
+             
+             // Show sign in button
+            googleBtnOutlet.isHidden = false
+        }
+    }
+    
+    
 }

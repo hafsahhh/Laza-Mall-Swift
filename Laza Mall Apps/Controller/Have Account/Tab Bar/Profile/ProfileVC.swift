@@ -56,6 +56,11 @@ class ProfileVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchUserProfile()
+    }
+    
     func fetchUserProfile() {
         profileViewModel.getUserProfile { result in
             switch result {
@@ -76,6 +81,8 @@ class ProfileVC: UIViewController {
                 self.fullnameProfileView.text = userProfile.fullName
                 self.usernameProfileView.text = userProfile.username
                 self.emailProfileView.text = userProfile.email
+                let imgURl = URL(string: "\(userProfile.image_url )")
+                self.userImageView.sd_setImage(with: imgURl)
             }
         } else {
             // Failed to get user profile
@@ -91,9 +98,12 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func editProfileBtn(_ sender: UIButton) {
-        let editProdilCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editProfileVC") as! editProfileVC
-        editProdilCtrl.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(editProdilCtrl, animated: true)
+        let editProfileCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editProfileVC") as! editProfileVC
+        editProfileCtrl.email = emailProfileView.text!
+        editProfileCtrl.name = fullnameProfileView.text!
+        editProfileCtrl.userName = usernameProfileView.text!
+        
+        self.navigationController?.pushViewController(editProfileCtrl, animated: true)
     }
     
 }

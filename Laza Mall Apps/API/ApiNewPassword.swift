@@ -46,7 +46,7 @@ class ApiNewPassword {
            if let statusCode = httpResponse?.statusCode, statusCode != 200 {
                // Error
                print("respon verify email Api \(statusCode)")
-               completion(.failure(newPasswordError.Error))
+               completion(.failure(ErrorInfo.Error))
                return
            }
            // Success

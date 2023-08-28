@@ -36,8 +36,6 @@ class DetailProductViewModel {
     func putWishlistUser(productId: Int, completion: @escaping (Result<UpdateWishlist, Error>) -> Void) {
         guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
               let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            // Jika token tidak tersedia atau gagal di-decode, kirim error
-            completion(.failure(LoginError.Error))
             return
         }
         guard let components = URLComponents(string: "https://lazaapp.shop/wishlists?ProductId=\(productId)") else {
@@ -75,7 +73,7 @@ class DetailProductViewModel {
                         print("Update Wishlist\(jsonResponse)")
                     }
                     // Jika terjadi error saat login, kirim error melalui completion handler
-                    completion(.failure(LoginError.Error))
+                    completion(.failure(ErrorInfo.Error))
                 } else {
                     if let data = data {
                         if let putWishlistResponse = try? JSONDecoder().decode(UpdateWishlist.self, from: data),
@@ -93,7 +91,7 @@ class DetailProductViewModel {
                             completion(.success(putWishlistResponse))
                         } else {
                             // Jika terjadi error saat login, kirim error melalui completion handler
-                            completion(.failure(LoginError.Error))
+                            completion(.failure(ErrorInfo.Error))
                         }
                     }
                     

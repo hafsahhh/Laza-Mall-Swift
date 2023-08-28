@@ -43,7 +43,7 @@ class ApiForgotPassword  {
            if let statusCode = httpResponse?.statusCode, statusCode != 200 {
                // Error
                print("respon forgot password Api \(statusCode)")
-               completion(.failure(ForgotPassError.Error))
+               completion(.failure(ErrorInfo.Error))
                return
            }
            // Success

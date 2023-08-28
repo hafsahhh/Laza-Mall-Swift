@@ -13,8 +13,14 @@ class ForgotPasswordViewModel  {
     func getPassEmail(email: String,
                       completion: @escaping (Result<Data?, Error>) -> Void)//closure atau blok kode yang dapat dilewatkan ke fungsi sebagai parameter
    {
-       let urlString = "https://lazaapp.shop/auth/forgotpassword"
-       guard let url = URL(string: urlString) else { return }
+
+       // Membuat URL untuk endpoint forgot password
+       guard let url = URL(string: Endpoints.Gets.forgotPassword.url) else {
+           completion(.failure(ErrorInfo.Error))
+           return
+       }
+       
+       
        var request = URLRequest(url: url)
        request.httpMethod = "POST"
        request.httpBody = ApiService.getHttpBodyRaw(param: [
@@ -39,7 +45,7 @@ class ForgotPasswordViewModel  {
                        self.failedApiAlertForgotPassword?(description)
                    }
                }
-               completion(.failure(signUpError.Error))
+               completion(.failure(ErrorInfo.Error))
             }
            // Success
            if let data = data,
@@ -55,6 +61,3 @@ class ForgotPasswordViewModel  {
    }
 }
 
-enum ForgotPassError: Error {
-    case Error
-}

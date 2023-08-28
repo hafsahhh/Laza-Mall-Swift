@@ -19,6 +19,7 @@ enum Endpoints {
     enum Gets: Endpoint {
         case login
         case register
+        case verifyEmail
         case forgotPassword
         case codeForgot
         case newPassword(email: String, code: String)
@@ -36,12 +37,18 @@ enum Endpoints {
         case deleteCarts(idProduct: Int, idSize: Int)
         case updateCarts(idProduct: Int, idSize: Int)
         case sizeAll
+        case addressAll
+        case addAddress
+        case updateAddresss(idAddress: Int)
+        case deleteAddress(idAddress: Int)
         public var url: String {
             switch self {
             case .login:
                 return "\(API.baseUrl)login"
             case .register:
                 return "\(API.baseUrl)register"
+            case .verifyEmail:
+                return "\(API.baseUrl)auth/confirm/resend"
             case .forgotPassword:
                 return "\(API.baseUrl)auth/forgotpassword"
             case .codeForgot:
@@ -76,6 +83,14 @@ enum Endpoints {
                 return "\(API.baseUrl)size"
             case .updateCarts(idProduct: let idProduct, idSize: let idSize):
                 return "\(API.baseUrl)carts?ProductId=\(idProduct)&SizeId=\(idSize)"
+            case .addressAll:
+                return "\(API.baseUrl)address"
+            case .addAddress:
+                return "\(API.baseUrl)address"
+            case .updateAddresss (idAddress: let idAddress):
+                return "\(API.baseUrl)address/\(idAddress)"
+            case .deleteAddress (idAddress: let idAddress):
+                return "\(API.baseUrl)address/\(idAddress)"
             }
         }
     }

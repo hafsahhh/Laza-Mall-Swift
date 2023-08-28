@@ -12,7 +12,7 @@ class ProfileViewModel {
     var token: String?
     
     func updateProfile(fullName: String, username: String, email: String, media: Media?,
-                    completion: @escaping (String) -> Void, onError: @escaping(String) -> Void) {
+                       completion: @escaping (String) -> Void, onError: @escaping(String) -> Void) {
         
         guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
               let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
@@ -37,37 +37,25 @@ class ProfileViewModel {
             boundary: boundary)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let httpRespon = response as? HTTPURLResponse else { return }
+            guard let httpRespon = response as? HTTPURLResponse else { return}
             guard let data = data else { return }
             print(httpRespon.statusCode)
-            
-            do {
-                let serializedJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                print(serializedJson)
-                
-                if httpRespon.statusCode == 200,
-                   let jsonResponse = serializedJson as? [String: Any],
-                   let description = jsonResponse["description"] as? String,
-                   let status = jsonResponse["status"] as? String {
-                    DispatchQueue.main.async {
-                        // Memanggil alert API
-                        self.apiAlertProfile?(status, description)
-                    }
-                    print("INI PROFILE\(jsonResponse)")
-                } else {
-                    print("Error: \(httpRespon.statusCode)")
-                    if let jsonResponse = serializedJson as? [String: Any],
-                       let description = jsonResponse["description"] as? String,
-                       let status = jsonResponse["status"] as? String {
-                        DispatchQueue.main.async {
-                            // Memanggil alert API
-                            self.apiAlertProfile?(status, description)
-                        }
-                        print("INI PROFILE\(jsonResponse)")
-                    }
+            if httpRespon.statusCode == 200 {
+                do {
+                    //untuk liat bentuk JSON
+                    let serializedJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+                    print(serializedJson)
+                    let result = try JSONDecoder().decode(ResponFailed.self, from: data)
+                    completion(result.status)
+                    print("Helowoy")
+                } catch {
+                    print(error)
                 }
-            } catch {
-                print(error)
+            }  else {
+                print("Error: \(httpRespon.statusCode)")
+                guard let getFailed = try? JSONDecoder().decode(ResponFailed.self, from: data) else { return }
+                onError(getFailed.description)
+                print(getFailed.description)
             }
         }
         task.resume()

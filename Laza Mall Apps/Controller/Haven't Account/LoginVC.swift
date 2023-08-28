@@ -135,7 +135,7 @@ class LoginVC: UIViewController {
                             self.tabBarController(userProfile: userProfile)
                         }
                     case .failure(let error):
-                        print("Error getting user profile: \(error)")
+                        print("Error getting user profile: \(error.localizedDescription)")
                         // Panggil fungsi untuk menampilkan alert login gagal
                         self.loginViewModel.apiAlertLogin?("Error", "Login failed")
                     }
@@ -143,10 +143,25 @@ class LoginVC: UIViewController {
             case .failure(let error):
                 self.loginViewModel.apiAlertLogin = { status, description in
                     DispatchQueue.main.async {
-                        ShowAlert.signUpApi(on: self, title: "Notification \(status)", message: description)
+                        if description == "please verify your account" {
+                            print("ini verify email \(description)")
+                            let refreshAlert = UIAlertController(title: "Failed Login", message: "\(description), Send Again Verification Account", preferredStyle: UIAlertController.Style.alert)
+                            
+                            refreshAlert.addAction(UIAlertAction(title: "Send", style: .default, handler: { (action: UIAlertAction!) in
+                                let sendEmailVC = self.storyboard?.instantiateViewController(withIdentifier: "VerifyEmailVC") as! VerifyEmailVC
+                                self.navigationController?.pushViewController(sendEmailVC, animated: true)
+                            }))
+                            refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                                refreshAlert .dismiss(animated: true, completion: nil)
+                            }))
+                            
+                            self.present(refreshAlert, animated: true, completion: nil)
+                        } else {
+                            ShowAlert.signUpApi(on: self, title: "Notification \(status)", message: description)
+                        }
+                        print("JSON Login Error: \(error)")
                     }
                 }
-                print("JSON Login Error: \(error)")
             }
         }
     }

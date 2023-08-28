@@ -22,7 +22,7 @@ class AddReviewViewModel{
         guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
               let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
             // Jika token tidak tersedia atau gagal di-decode, kirim error
-            completion(.failure(LoginError.Error))
+            completion(.failure(ErrorInfo.Error))
             return
         }
         
@@ -59,7 +59,7 @@ class AddReviewViewModel{
                             self.apiAlertAddreview?(status)
                         }
                     }
-                    completion(.failure(signUpError.Error))
+                    completion(.failure(ErrorInfo.Error))
                 } else {
                     if let data = data,
                        let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],

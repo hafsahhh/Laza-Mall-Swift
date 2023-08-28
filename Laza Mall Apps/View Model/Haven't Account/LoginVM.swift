@@ -10,16 +10,16 @@ import Foundation
 class LoginViewModel{
     var apiAlertLogin: ((String, String) -> Void)?
     var apiAlertProfile : ((String) -> Void)?
-    var token: String?
+//    var token: String?
     
     func getDataLogin(username: String,
                       password: String,
                       completion: @escaping (Result<Data?, Error>) -> Void) {
-        let urlString = "https://lazaapp.shop/login"
         
-        // Mengecek apakah URL valid
-        guard let url = URL(string: urlString) else {
-            // Jika URL tidak valid, keluar dari fungsi
+        
+        // Membuat URL untuk endpoint login
+        guard let url = URL(string: Endpoints.Gets.login.url) else {
+            completion(.failure(ErrorInfo.Error))
             return
         }
         
@@ -51,7 +51,7 @@ class LoginViewModel{
                         }
                     }
                     // Jika terjadi error saat login, kirim error melalui completion handler
-                    completion(.failure(LoginError.Error))
+                    completion(.failure(ErrorInfo.Error))
                 } else {
                     if let data = data,
                        let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data),
@@ -67,12 +67,13 @@ class LoginViewModel{
                         completion(.success(data))
                     } else {
                         // Jika terjadi error saat login, kirim error melalui completion handler
-                        completion(.failure(LoginError.Error))
+                        completion(.failure(ErrorInfo.Error))
                     }
                 }
             }
         }.resume()
     }
+    
     
     
     func getUserProfile(completion: @escaping (Result<DataUseProfile?, Error>) -> Void) {
@@ -89,7 +90,7 @@ class LoginViewModel{
         // Memastikan URL valid
         guard let url = URL(string: urlString) else {
             // Jika URL tidak valid, kirim error
-            completion(.failure(LoginError.Error))
+            completion(.failure(ErrorInfo.Error))
             return
         }
         
@@ -110,7 +111,7 @@ class LoginViewModel{
                   httpResponse.statusCode == 200,
                   let data = data else {
                 // Jika respons tidak valid, kirim error
-                completion(.failure(LoginError.Error))
+                completion(.failure(ErrorInfo.Error))
                 return
             }
             
@@ -129,7 +130,4 @@ class LoginViewModel{
     
 }
 
-enum LoginError: Error {
-    case Error
-}
 

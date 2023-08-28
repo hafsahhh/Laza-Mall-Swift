@@ -9,23 +9,19 @@ import Foundation
 
 
 class WishlistViewModel {
+    
     func getWishlistUser(completion: @escaping (Result<wishlistIndex, Error>) -> Void) {
         // Memastikan token autentikasi tersedia dalam UserDefaults
         
         guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
               let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
             // Jika token tidak tersedia atau gagal di-decode, kirim error
-            completion(.failure(WishlistError.authenticationError))
+            completion(.failure(ErrorInfo.Error))
             return
         }
         
-        // URL endpoint untuk mengambil wishlist user pengguna
-        let urlString = "https://lazaapp.shop/wishlists"
-        
-        // Memastikan URL valid
-        guard let url = URL(string: urlString) else {
-            // Jika URL tidak valid, kirim error
-            completion(.failure(WishlistError.invalidURL))
+        guard let url = URL(string: Endpoints.Gets.wishlistAll.url) else {
+            completion(.failure(ErrorInfo.Error))
             return
         }
         
@@ -46,7 +42,7 @@ class WishlistViewModel {
                   httpResponse.statusCode == 200,
                   let data = data else {
                 // Jika respons tidak valid, kirim error
-                completion(.failure(WishlistError.invalidResponse))
+                completion(.failure(ErrorInfo.Error))
                 return
             }
             
@@ -54,18 +50,8 @@ class WishlistViewModel {
                 let userWishlist = try JSONDecoder().decode(wishlistIndex.self, from: data)
                 completion(.success(userWishlist))
             } catch {
-                completion(.failure(WishlistError.decodingError))
+                completion(.failure(ErrorInfo.Error))
             }
         }.resume()
     }
-}
-
-
-
-enum WishlistError: Error {
-    case authenticationError
-    case invalidURL
-    case invalidResponse
-    case decodingError
-    case requestFailed
 }

@@ -12,7 +12,9 @@ class ListAddressVC: UIViewController {
     @IBOutlet weak var listAddressTableView: UITableView!
     @IBOutlet weak var emptyDataView: UILabel!
     
-    let modelAddress = cellListAddressUser()
+    var modelAddress: ResponseAllAddress?
+    var addressViewModel = ListAddressViewModel()
+    var addressUserData = [DataAllAddress]()
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -40,8 +42,105 @@ class ListAddressVC: UIViewController {
         listAddressTableView.delegate = self
         listAddressTableView.dataSource = self
         listAddressTableView.register(ListAddressCellTable.nib(), forCellReuseIdentifier: ListAddressCellTable.identifier)
+        
+        getAllAddress()
+        listAddressTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getAllAddress()
+        listAddressTableView.reloadData()
+    }
+    
+    // MARK: - Func All Address
+    func getAllAddress() {
+        addressViewModel.getAddressUser() { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let userAddress):
+                    if let userAddress = userAddress { // Safely unwrap the optional
+                        self.modelAddress = userAddress
+                    }
+                    self.listAddressTableView.reloadData()
+                    print("ini address all user")
+                case .failure(let error):
+                    // Handle the error appropriately
+                    print("Error fetching user carts: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    // MARK: - handleMoveToTrash
+    func handleMoveToTrash(indexPath: IndexPath) {
+        if let addressData = modelAddress?.data?[indexPath.row] {
+            addressViewModel.deleteAddress(idAddress: addressData.id) { result in
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        ShowAlert.performAlertApi(on: self, title: "Notification", message: "Successfully delete Address")
+                        self.getAllAddress()
+                    }
+                    print("API Response delete address successs")
+                case .failure(let error):
+                    self.addressViewModel.apiAddressAlert = { data in
+                        DispatchQueue.main.async {
+                            ShowAlert.performAlertApi(on: self, title: "Notification", message: data)
+                        }
+                    }
+                    print("API delete address Error: \(error.localizedDescription)")
+                }
+            }
+        }
+            
+        print("Moved to trash")
+    }
+    
+    // MARK: - handleEditAddress
+    func handleEditAddress(indexPath: IndexPath) {
+        guard let editAddress = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EditAddressVC") as? EditAddressVC else {
+            print("Error creating EditAddressVC")
+            return
+        }
+        editAddress.userAddress = modelAddress?.data?[indexPath.row]
+        if let addressData = modelAddress?.data?[indexPath.row] {
+            editAddress.name = addressData.receiverName
+            editAddress.country = addressData.country
+            editAddress.addres = addressData.city
+            editAddress.phone = addressData.phoneNumber
+        }
+        print("id ini adalah\(String(describing: modelAddress?.data?[indexPath.row]))")
+        self.navigationController?.pushViewController(editAddress, animated: true)
     }
 
+    
+    func editAddress(){
+        let addNewAddress = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddressVC")
+        self.navigationController?.pushViewController(addNewAddress, animated: true)
+    }
+    
+    // MARK: - trailingSwipeActionsConfigurationForRowAt
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let trash = UIContextualAction(style: .destructive,
+                                       title: "Delete") { [weak self] (action, view, completionHandler) in
+            self?.handleMoveToTrash(indexPath: indexPath)
+            completionHandler(true)
+        }
+        trash.backgroundColor = .systemRed
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completionHandler) in
+            
+            self?.handleEditAddress(indexPath: indexPath)
+            
+            completionHandler(true)
+        }
+        editAction.backgroundColor = .systemGreen
+        
+        let configuration = UISwipeActionsConfiguration(actions: [trash, editAction])
+        return configuration
+    }
+    
     @IBAction func addNewAddressBtn(_ sender: Any) {
         let addNewAddress = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddressVC")
         self.navigationController?.pushViewController(addNewAddress, animated: true)
@@ -51,18 +150,24 @@ class ListAddressVC: UIViewController {
 
 extension ListAddressVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if modelAddress.count == 0 {
+        if modelAddress?.data?.count == 0 {
             emptyDataView.isHidden = false
         } else {
             emptyDataView.isHidden = true
         }
-        return modelAddress.count
+        return modelAddress?.data?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListAddressCellTable.identifier, for: indexPath) as? ListAddressCellTable
+        guard let cell = listAddressTableView.dequeueReusableCell(withIdentifier: ListAddressCellTable.identifier, for: indexPath) as? ListAddressCellTable
         else {return UITableViewCell()}
+        
+        if let address = modelAddress?.data?[indexPath.row] {
+            cell.nameAddressView.text = "\(address.receiverName) | \(address.phoneNumber)"
+            cell.fullAddressView.text = "\(address.city) , \(address.country)"
+        }
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

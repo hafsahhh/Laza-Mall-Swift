@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,34 +17,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="116"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Siti Hafsah || 08521279121" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lnp-IV-Gra">
-                        <rect key="frame" x="20" y="20" width="280" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jl. Mawar Nomer 50 Rt: 100 Rw: 30, Jakarta, Indonesia, 1721" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQN-P5-joD">
-                        <rect key="frame" x="20" y="46" width="280" height="40.666666666666657"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpu-Uh-qxA">
+                        <rect key="frame" x="5" y="5" width="310" height="106"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Siti Hafsah || 08521279121" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUw-fi-cwr">
+                                <rect key="frame" x="10" y="10" width="290" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jl. Mawar Nomer 50 Rt: 100 Rw: 30, Jakarta, Indonesia, 1721" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZS-Xp-Gqz">
+                                <rect key="frame" x="10" y="36" width="290" height="40.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="ColorValid"/>
+                        <constraints>
+                            <constraint firstItem="qUw-fi-cwr" firstAttribute="top" secondItem="lpu-Uh-qxA" secondAttribute="top" constant="10" id="4gk-bj-zHl"/>
+                            <constraint firstItem="qUw-fi-cwr" firstAttribute="leading" secondItem="lpu-Uh-qxA" secondAttribute="leading" constant="10" id="GOG-fw-rUc"/>
+                            <constraint firstItem="0ZS-Xp-Gqz" firstAttribute="leading" secondItem="lpu-Uh-qxA" secondAttribute="leading" constant="10" id="gDL-mu-vI9"/>
+                            <constraint firstAttribute="trailing" secondItem="0ZS-Xp-Gqz" secondAttribute="trailing" constant="10" id="hj7-FZ-2JO"/>
+                            <constraint firstItem="0ZS-Xp-Gqz" firstAttribute="top" secondItem="qUw-fi-cwr" secondAttribute="bottom" constant="5" id="qkd-8U-mbt"/>
+                            <constraint firstAttribute="trailing" secondItem="qUw-fi-cwr" secondAttribute="trailing" constant="10" id="sw5-BF-XCn"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="yQN-P5-joD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="GSx-H2-mKR"/>
-                    <constraint firstItem="Lnp-IV-Gra" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="JUX-aR-orT"/>
-                    <constraint firstItem="Lnp-IV-Gra" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="SSJ-ad-cii"/>
-                    <constraint firstAttribute="trailing" secondItem="Lnp-IV-Gra" secondAttribute="trailing" constant="20" id="Wda-YZ-Pcy"/>
-                    <constraint firstAttribute="trailing" secondItem="yQN-P5-joD" secondAttribute="trailing" constant="20" id="ePc-0g-Uqk"/>
-                    <constraint firstItem="yQN-P5-joD" firstAttribute="top" secondItem="Lnp-IV-Gra" secondAttribute="bottom" constant="5" id="oyn-cs-dqI"/>
+                    <constraint firstItem="lpu-Uh-qxA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="1FK-hp-Rym"/>
+                    <constraint firstAttribute="trailing" secondItem="lpu-Uh-qxA" secondAttribute="trailing" constant="5" id="G1d-Cd-ohf"/>
+                    <constraint firstAttribute="bottom" secondItem="lpu-Uh-qxA" secondAttribute="bottom" constant="5" id="l0f-4b-5u2"/>
+                    <constraint firstItem="lpu-Uh-qxA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="lFF-jY-30c"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="fullAddressView" destination="yQN-P5-joD" id="IKs-am-DW6"/>
-                <outlet property="nameAddressView" destination="Lnp-IV-Gra" id="zSx-8E-zR2"/>
+                <outlet property="fullAddressView" destination="0ZS-Xp-Gqz" id="mk0-cw-i9t"/>
+                <outlet property="nameAddressView" destination="qUw-fi-cwr" id="Fgw-it-TgP"/>
             </connections>
             <point key="canvasLocation" x="129.7709923664122" y="12.67605633802817"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="ColorValid">
+            <color red="0.96100002527236938" green="0.9649999737739563" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

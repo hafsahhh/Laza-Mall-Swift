@@ -22,9 +22,21 @@ class editProfileVC: UIViewController {
         }
     }
     @IBOutlet weak var imageEditBtn: UIButton!
-    @IBOutlet weak var editNameView: UITextField!
-    @IBOutlet weak var editUsernameView: UITextField!
-    @IBOutlet weak var editEmailView: UITextField!
+    @IBOutlet weak var editNameView: UITextField! {
+        didSet{
+            editNameView.text = name
+        }
+    }
+    @IBOutlet weak var editUsernameView: UITextField! {
+        didSet{
+            editUsernameView.text = userName
+        }
+    }
+    @IBOutlet weak var editEmailView: UITextField! {
+        didSet{
+            editEmailView.text = email
+        }
+    }
     @IBOutlet weak var saveProfileBtnView: UIButton!
     
     
@@ -32,11 +44,35 @@ class editProfileVC: UIViewController {
     var media: Media?
     weak var delegate: EditProfileDelegate?
     private let imagePicker = UIImagePickerController()
+    var email: String = ""
+    var name: String = ""
+    var userName: String = ""
+    
+    // MARK: - Button back using programmaticly
+    //Back Button
+    private lazy var backBtn : UIButton = {
+        //call back button
+        let backBtn = UIButton.init(type: .custom)
+        backBtn.setImage(UIImage(named:"Back"), for: .normal)
+        backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
+        backBtn.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
+        return backBtn
+    }()
+    
+    //Back Button
+    @objc func backBtnAct(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //back button
+        let backBarBtn = UIBarButtonItem(customView: backBtn)
+        self.navigationItem.leftBarButtonItem  = backBarBtn
         
         setupView()
     }
@@ -51,38 +87,29 @@ class editProfileVC: UIViewController {
     }
     
     func updateProfileUser(){
-        
         let fullname = editNameView.text ?? ""
         let username = editUsernameView.text ?? ""
         let email = editEmailView.text ?? ""
         if let image = editImageView.image {
             media = Media(withImage: image, forKey: "image")
         }
-//        guard let token = ApiService().token else {
-//            print("belum ada token")
-//            return }
-        print(fullname, username, email)
-
         
         if username != "" && fullname != "" && email != "" {
+            print("lolo")
             editProfileViewModel.updateProfile(fullName: fullname, username: username, email: email, media: media) { update in
-                    print("move")
-                    let updateVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
-                    self.navigationController?.pushViewController(updateVC, animated: true)
+                print("ini wweee \(update)")
+                DispatchQueue.main.async {
+                    ShowAlert.performAlertApi(on: self, title: "Success", message: "Successfully ")
+                    print("Alert profile")
+                }
                 
             } onError: { error in
-                self.editProfileViewModel.apiAlertProfile = { status, description in
-                    DispatchQueue.main.async {
-                        ShowAlert.performAlertApi(on: self, title: status, message: description)
-                    }
-                }
+                ShowAlert.performAlertApi(on: self, title: "Warning!", message: "Error")
             }
-
-        } else {
-            self.editProfileViewModel.apiAlertProfile = { status, description in
-                DispatchQueue.main.async {
-                    ShowAlert.performAlertApi(on: self, title: status, message: description)
-                }
+        }
+        else {
+            DispatchQueue.main.async {
+                ShowAlert.performAlertApi(on: self, title: "Warning!", message: "Please filled all the form")
             }
         }
     }
@@ -110,7 +137,7 @@ extension editProfileVC: UIImagePickerControllerDelegate, UINavigationController
         if let result = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.editImageView.contentMode = .scaleToFill
             self.editImageView.image = result
-//            titleButton.isEnabled = true
+            //            titleButton.isEnabled = true
             dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Failed", message: "Image can't be loaded.", preferredStyle: .actionSheet)

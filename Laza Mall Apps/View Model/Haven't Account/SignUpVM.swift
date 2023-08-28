@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 class SignUpViewModel {
     
@@ -20,14 +19,16 @@ class SignUpViewModel {
     //untuk menampilkan alert
     var apiAlertSIgnUp: ((String, String) -> Void)?
     
-    // MARK: - Func signUpUserAPI
-    func signUpUserAPI(username: String,
-                       email: String,
-                       password: String,
-                       completion: @escaping (Result<Data?, Error>) -> Void)//closure atau blok kode yang dapat dilewatkan ke fungsi sebagai parameter
-    {
-        let urlString = "https://lazaapp.shop/register"
-        guard let url = URL(string: urlString) else { return }
+    // MARK: - Fungsi untuk mendaftarkan pengguna melalui API
+    func signUpUserAPI(username: String, email: String, password: String, completion: @escaping (Result<Data?, Error>) -> Void) {
+        
+        // Membuat URL untuk endpoint pendaftaran
+        guard let url = URL(string: Endpoints.Gets.register.url) else {
+            completion(.failure(ErrorInfo.Error))
+            return
+        }
+        
+        // Membuat permintaan URLRequest dengan metode HTTP POST dan data yang dibutuhkan
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = ApiService.getHttpBodyRaw(param: [
@@ -37,35 +38,39 @@ class SignUpViewModel {
             "password": password
         ])
         
+        // Melakukan permintaan HTTP untuk mendaftarkan pengguna
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
                 return
             }
+            
             if let httpResponse = response as? HTTPURLResponse {
                 let statusCode = httpResponse.statusCode
                 if statusCode != 201 {
-                    // Error
-                    print("Response Status Code: \(statusCode)")
+                    // Error: Menangani respons dengan status code yang tidak berhasil
+                    print("Kode Status Respons: \(statusCode)")
                     if let data = data,
                        let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                        let description = jsonResponse["description"] as? String,
-                       let status = jsonResponse["status"] as? String{
+                       let status = jsonResponse["status"] as? String {
                         
                         DispatchQueue.main.async {
+                            // Memanggil penanganan respons API
                             self.apiAlertSIgnUp?(status, description)
                         }
                     }
-                    completion(.failure(signUpError.Error))
+                    completion(.failure(ErrorInfo.Error))
                 } else {
-                    print("Sukses signUp")
-                    // Success
+                    // Sukses: Menangani respons berhasil
+                    print("Berhasil mendaftar")
                     completion(.success(data))
                 }
             }
         }.resume()
     }
-
+    
+    
     // MARK: - Func Userdefault
     //fungsi userdefault untuk menyimpan textfield yang sudah terisi
     func saveUserDefault(_ userDetail: allUser){
@@ -93,7 +98,4 @@ class SignUpViewModel {
     }
 }
 
-enum signUpError: Error {
-    case Error
-}
-    
+

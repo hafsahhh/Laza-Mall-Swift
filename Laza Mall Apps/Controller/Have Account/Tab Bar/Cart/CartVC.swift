@@ -53,6 +53,7 @@ class CartVC: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getUserCarts()
+        getSizeAll()
         cartTableView.reloadData()
     }
     
@@ -66,11 +67,12 @@ class CartVC: UIViewController{
                         self.subTotalView.text = String(userCarts.data.orderInfo.subTotal)
                         self.shippingTotalView.text = String(userCarts.data.orderInfo.shippingCost)
                         self.totalView.text = String(userCarts.data.orderInfo.total)
-                        self.cartTableView.reloadData()
                     }
+                    self.cartTableView.reloadData()
+                    print("ini keranjabg")
                 case .failure(let error):
                     // Handle the error appropriately
-                    print("Error fetching user carts: \(error)")
+                    print("Error fetching user carts: \(error.localizedDescription)")
                 }
             }
         }
@@ -82,6 +84,17 @@ class CartVC: UIViewController{
                 self?.allSize = allSize
             }
         }
+    }
+    func getSizeId(forSize size: String) -> Int{
+        var sizeId = -1
+        guard let allSizeData = allSize?.data else { return sizeId }
+        for index in 0..<allSizeData.count {
+            if allSizeData[index].size == size {
+                sizeId = allSizeData[index].id
+                break
+            }
+        }
+        return sizeId
     }
     
     
@@ -138,77 +151,85 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension CartVC: productInCartProtocol {
+    
+    func updateCountProduct(cell: CartTableCell, completion: @escaping (Int) -> Void) {
+        guard let indexPath = cartTableView.indexPath(for: cell) else { return }
+        if let cartData = cartModel?.data.products[indexPath.row] {
+            completion(cartData.quantity)
+        }
+    }
+    
     func deleteProductCart(cell: CartTableCell) {
         guard let indexPath = cartTableView.indexPath(for: cell) else {
             return }
         if let cartData = cartModel?.data.products[indexPath.row]
-    
         {
-            var sizeId = -1
-            guard let allSizeData = allSize?.data else { return }
-            for index in 0..<allSizeData.count {
-                print("ini index:", index)
-                if allSizeData[index].size == cartData.size {
-                    print("ini ke2 index:", allSizeData[index].size)
-                    print("ini ke 3 index", cartData.size)
-                    sizeId = allSizeData[index].id
-                    break
-                }
-            }
-            print(sizeId)
-            print(cartData)
-            cartsViewModel.deleteCarts(idProduct: cartData.id, idSize: sizeId) { result in
+            let getSizeId = getSizeId(forSize: cartData.size)
+            cartsViewModel.deleteCarts(idProduct: cartData.id, idSize: getSizeId) { result in
                 switch result {
                 case . success(let data):
-                    self.cartsViewModel.apiCarts = { status, data in
-                        DispatchQueue.main.async {
-                            ShowAlert.performAlertApi(on: self, title: status, message: data)
-                        }
+                    self.getUserCarts()
+                    DispatchQueue.main.async {
+                        ShowAlert.performAlertApi(on: self, title: "Carts Notification", message: "Successfully delete product")
                     }
-                    print("API Response Data Carts: \(String(describing: data))")
+                    print("API Response delete Carts: \(String(describing: data))")
                 case .failure(let error):
                     self.cartsViewModel.apiCarts = { status, data in
                         DispatchQueue.main.async {
                             ShowAlert.performAlertApi(on: self, title: status, message: data)
                         }
                     }
-                    print("API add to carts Error: \(error.localizedDescription)")
+                    print("API add to delete Error: \(error.localizedDescription)")
+                }
+            }
+        } else {
+            print("hello ini delete")
+        }
+    }
+    
+    func arrowDownProductCart(cell: CartTableCell, completion: @escaping (Int) -> Void) {
+        guard let indexPath = cartTableView.indexPath(for: cell) else {
+            return }
+        if let cartData = cartModel?.data.products[indexPath.row]
+        {
+            let getSizeId = getSizeId(forSize: cartData.size)
+            cartsViewModel.updateCarts(idProduct: cartData.id, idSize: getSizeId) { result in
+                switch result {
+                case . success(let data):
+                    self.getUserCarts()
+                    completion(cartData.quantity)
+                    print("API Response deacrese Data Carts: \(String(describing: data))")
+                case .failure(let error):
+                    self.cartsViewModel.apiCarts = { status, data in
+                        DispatchQueue.main.async {
+                            ShowAlert.performAlertApi(on: self, title: status, message: data)
+                        }
+                    }
+                    print("API deacrese to carts Error: \(error.localizedDescription)")
                 }
             }
         }
     }
     
-    func arrowDownProductCart(cell: CartTableCell, newQuantity: Int) {
+    func arrowUpProductCart(cell: CartTableCell, completion: @escaping (Int) -> Void) {
         guard let indexPath = cartTableView.indexPath(for: cell) else {
-            print("popo")
-            return
-        }
-        
-        if let cartData = cartModel?.data.products[indexPath.row] {
-            var sizeId = -1
-            guard let allSizeData = allSize?.data else { return }
-            for index in 0..<allSizeData.count {
-                print("ini index:", index)
-                if allSizeData[index].size == cartData.size {
-                    print("ini ke2 index:", allSizeData[index].size)
-                    print("ini ke 3 index", cartData.size)
-                    sizeId = allSizeData[index].id
-                    break
-                }
-            }
-            
-            // Menggunakan data produk untuk memanggil metode API updateCarts
-            cartsViewModel.updateCarts(idProduct: cartData.id, idSize: sizeId, quantityProd: newQuantity) { result in
+            return }
+        if let cartData = cartModel?.data.products[indexPath.row]
+        {
+            let getSizeId = getSizeId(forSize: cartData.size)
+            cartsViewModel.arrowUpQuantityCart(idProduct: cartData.id, idSize: getSizeId) { result in
                 switch result {
-                case .success(let data):
-                    // Implementasi aksi yang sesuai setelah berhasil mengupdate kuantitas produk
-                    
-                    // Misalnya, Anda bisa memperbarui tampilan atau melakukan panggilan API lainnya
-                    
-                    print("Successfully updated product quantity: \(String(describing: data))")
+                case . success(let data):
+                    self.getUserCarts()
+                    completion(cartData.quantity)
+                    print("API Response increase Data Carts: \(String(describing: data))")
                 case .failure(let error):
-                    // Handle error appropriately
-                    print("Failed to update product quantity: \(error)")
+                    self.cartsViewModel.apiCarts = { status, data in
+                        DispatchQueue.main.async {
+                            ShowAlert.performAlertApi(on: self, title: status, message: data)
+                        }
+                    }
+                    print("API increase to carts Error: \(error.localizedDescription)")
                 }
             }
         }

@@ -1,32 +1,30 @@
 //
-//  VerifyPasswordVM.swift
+//  VerifyEmailVM.swift
 //  Laza Mall Apps
 //
-//  Created by Siti Hafsah on 17/08/23.
+//  Created by Siti Hafsah on 28/08/23.
 //
 
 import Foundation
 
-class VerifyPasswordViewModel {
+class VerifyEmailViewModel{
+    var apiVerifyEmail : ((String) -> Void)?
+//    var token: String?
     
-    var apiVerifyPassAlert: ((String) -> Void)?
-    
-    func getCodeVerify(email: String, code: String,
-                       completion: @escaping (Result<Data?, Error>) -> Void)//closure atau blok kode yang dapat dilewatkan ke fungsi sebagai parameter
-    {
+    func sendVeifyEmail(email: String,
+                      completion: @escaping (Result<Data?, Error>) -> Void) {
         
-        // Membuat URL untuk endpoint code for verify
-        guard let url = URL(string: Endpoints.Gets.codeForgot.url) else {
+        
+        // Membuat URL untuk endpoint login
+        guard let url = URL(string: Endpoints.Gets.verifyEmail.url) else {
             completion(.failure(ErrorInfo.Error))
             return
         }
         
-        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = ApiService.getHttpBodyRaw(param: [
-            "email" : email,
-            "code": code
+            "email": email
         ])
         
         URLSession.shared.dataTask(with: request){
@@ -41,10 +39,11 @@ class VerifyPasswordViewModel {
                 print("Response Status Code: \(statusCode)")
                 if let data = data,
                    let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let description = jsonResponse["description"] as? String{
+                   let data = jsonResponse["data"] as? [String: String],
+                   let description = data["description"] {
                     
                     DispatchQueue.main.async {
-                        self.apiVerifyPassAlert?(description)
+                        self.apiVerifyEmail?(description)
                     }
                 }
                 completion(.failure(ErrorInfo.Error))
@@ -54,4 +53,3 @@ class VerifyPasswordViewModel {
         }.resume()
     }
 }
-

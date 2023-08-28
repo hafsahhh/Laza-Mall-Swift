@@ -69,13 +69,14 @@ struct profileUser: Codable {
 struct DataUseProfile: Codable {
     let id: Int
     let fullName, username, email: String
+    let image_url: String
     let isVerified: Bool
     let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
         case id
         case fullName = "full_name"
-        case username, email
+        case username, email, image_url
         case isVerified = "is_verified"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
@@ -93,6 +94,10 @@ struct AuthData: Codable {
 //    let refresh_token: String
 }
 
+struct ResponFailed : Codable {
+    let status: String
+    let description: String
+}
 
 // MARK: - User
 typealias UserIndex = [allUser]
@@ -205,3 +210,6 @@ struct creditCard {
     var user_id: Int
 }
 
+enum ErrorInfo: Error {
+    case Error
+}

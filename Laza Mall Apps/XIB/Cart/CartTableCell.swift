@@ -9,7 +9,9 @@ import UIKit
 
 protocol productInCartProtocol: AnyObject {
     func deleteProductCart(cell: CartTableCell)
-    func arrowDownProductCart(cell: CartTableCell, newQuantity: Int)
+    func arrowDownProductCart(cell: CartTableCell, completion: @escaping (Int) -> Void)
+    func arrowUpProductCart(cell: CartTableCell, completion: @escaping (Int) -> Void)
+    func updateCountProduct(cell: CartTableCell, completion: @escaping (Int) -> Void)
 }
 
 class CartTableCell: UITableViewCell {
@@ -71,7 +73,7 @@ class CartTableCell: UITableViewCell {
         quantityLabel.text = String(quantityProduct)
     }
     
-    var quantityProduct = 0
+    var quantityProduct: Int = 0
     weak var delegate: productInCartProtocol?
     
     
@@ -86,15 +88,24 @@ class CartTableCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    //MARK: FUNCTION
+    func updateLabelQuantityProduct() {
+        delegate?.updateCountProduct(cell: self, completion: { currentTotalProd in
+            self.quantityProduct = currentTotalProd
+        })
+        quantityProductView.text = "\(quantityProduct)"
+    }
 
     @IBAction func arrowDownBtn(_ sender: Any) {
-        // Memanggil delegat dengan fungsi arrowDownProductCart
-         delegate?.arrowDownProductCart(cell: self, newQuantity: quantityProduct)
-         
          if quantityProduct > 0 {
              quantityProduct -= 1
          }
-         updateQuantityLabel()
+        updateLabelQuantityProduct()
+        // Memanggil delegat dengan fungsi arrowDownProductCart
+        delegate?.arrowDownProductCart(cell: self,  completion: { currentTotalProd in
+            self.quantityProduct = currentTotalProd
+        })
          print("Delegate arrowDownProductCart called")
          print("juju")
     }
@@ -103,6 +114,13 @@ class CartTableCell: UITableViewCell {
     @IBAction func arrowUpBtn(_ sender: Any) {
         quantityProduct += 1
         updateQuantityLabel()
+        updateLabelQuantityProduct()
+        // Memanggil delegat dengan fungsi arrowDownProductCart
+        delegate?.arrowUpProductCart(cell: self,  completion: { currentTotalProd in
+            self.quantityProduct = currentTotalProd
+        })
+         print("Delegate arrowUpProductCart called")
+         print("jeje")
     }
     
     @IBAction func deleteBtn(_ sender: Any) {

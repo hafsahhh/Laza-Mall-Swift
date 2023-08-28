@@ -62,8 +62,8 @@ class ForgotPasswordVC: UIViewController {
     }
     
     
-    // MARK: - Func getData dari kelas UserAllApi
-    // Panggil fungsi getData dari kelas UserAllApi
+    // MARK: - Func getPassEmail
+    // Panggil Func getPassEmail
     func forgotPasswordApi() {
         let email = emailOutlet.text ?? ""
         forgotPassViewModel.getPassEmail(email: email) { result in

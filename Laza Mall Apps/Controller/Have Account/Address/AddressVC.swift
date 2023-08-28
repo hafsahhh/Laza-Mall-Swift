@@ -8,7 +8,18 @@
 import UIKit
 
 class AddressVC: UIViewController {
-
+    
+    
+    @IBOutlet weak var nameView: UITextField!
+    @IBOutlet weak var countryView: UITextField!
+    @IBOutlet weak var cityView: UITextField!
+    @IBOutlet weak var phoneNumberView: UITextField!
+    @IBOutlet weak var addressView: UITextField!
+    @IBOutlet weak var savePrimaryAddressView: UISwitch!
+    
+    let addressViewModel = AddressViewModel()
+    var updateAddress: Bool?
+    
     //Back Button
     private lazy var backBtn : UIButton = {
         //call back button
@@ -31,4 +42,43 @@ class AddressVC: UIViewController {
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
     }
+    // MARK: - Func for add new user using API
+    func addNewAddressApi() {
+        let name = nameView.text ?? ""
+        let country = countryView.text ?? ""
+        let city = cityView.text ?? ""
+        let phone = phoneNumberView.text ?? ""
+        let address = addressView.text ?? ""
+        let isSwitchOn = savePrimaryAddressView.isOn
+        
+        addressViewModel.addAddressUser(country: country, city: city, receiverName: name, phoneNumber: phone, isPrimary: isSwitchOn ){ result in
+            switch result {
+            case .success(let json):
+                // Panggil metode untuk berpindah ke view controller selanjutnya
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                    ShowAlert.performAlertApi(on: self, title: "Notification", message: "Successfully add new address")
+                }
+                print("Response JSON New Address User: \(String(describing: json))")
+            case .failure(let error):
+                self.addressViewModel.apiAddress = { status, description in
+                    DispatchQueue.main.async {
+                        ShowAlert.performAlertApi(on: self, title: status, message: description)
+                    }
+                }
+                print("JSON add new address error: \(error)")
+            }
+        }
+    }
+    
+
+    
+    
+    @IBAction func saveNewAddressBtn(_ sender: Any) {
+        addNewAddressApi()
+    }
+    
+    @IBAction func saveAddressSwitchBtn(_ sender: Any) {
+    }
+    
 }

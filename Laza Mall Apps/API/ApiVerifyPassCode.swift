@@ -44,7 +44,7 @@ class ApiVerifyPassCode {
            if let statusCode = httpResponse?.statusCode, statusCode != 202 {
                // Error
                print("respon forgot password Api \(statusCode)")
-               completion(.failure(verifyCodePassError.Error))
+               completion(.failure(ErrorInfo.Error))
                return
            }
            // Success
