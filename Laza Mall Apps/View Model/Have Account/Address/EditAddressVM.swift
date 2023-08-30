@@ -58,17 +58,12 @@ class EditAddressViewModel {
                         print("error update address \(jsonResponse)")
                         return
                     }
-                    if let data = data,
-                       let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                       let data = jsonResponse["data"] as? String {
-                        DispatchQueue.main.async {
-                            // Memanggil penanganan API
-                            self.apiAddressAlert?(data)
-                        }
-                    }
+                } else {
                     print("success update address")
-                    completion(.success(data))
                 }
+                    
+            completion(.success(data))
+                
             }
         }.resume()
     }

@@ -12,10 +12,21 @@ class CategoryBrandVC: UIViewController {
     @IBOutlet weak var brandNameView: UILabel!
     @IBOutlet weak var categoryFilterCollectView: UICollectionView!
     @IBOutlet weak var totalItems: UILabel!
+    @IBOutlet weak var sortItemView: UIButton!{
+        didSet{
+            sortItemView.setImage(UIImage(systemName: " "), for: .normal)
+            sortItemView.setTitle("Sort", for: .normal)
+        }
+    }
+    
+    
+    
     //    var brandId : Int = 0
     var brandName: String = ""
     var modelBrand = [prodByIdBrandEntry]()
     var categoryBrandViewModel = CategoryBrandViewModel()
+    var ascSort = true
+    
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -46,6 +57,7 @@ class CategoryBrandVC: UIViewController {
         
         //get the API
         getBrandProductById()
+        sortProduct()
         
     }
     
@@ -66,7 +78,32 @@ class CategoryBrandVC: UIViewController {
             }
         }
     }
-
+    
+    func sortProduct(){
+        ascSort.toggle()
+        sortProData()
+    }
+    func sortProData(){
+        if sortItemView.currentImage == UIImage(systemName: ""){
+            sortItemView.setTitle("Sort", for: .normal)
+            sortItemView.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
+        }else if ascSort {
+            modelBrand.sort { $0.name < $1.name }
+            sortItemView.setTitle("A-Z", for: .normal)
+            sortItemView.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+        } else if !ascSort {
+            modelBrand.sort { $0.name > $1.name }
+            sortItemView.setTitle("Z-A", for: .normal)
+            sortItemView.setImage(UIImage(systemName: "arrow.down"), for: .normal)
+        }
+        categoryFilterCollectView.reloadData()
+    }
+    
+    
+    @IBAction func sortActBtn(_ sender: Any) {
+        sortProduct()
+    }
+    
     
 }
 

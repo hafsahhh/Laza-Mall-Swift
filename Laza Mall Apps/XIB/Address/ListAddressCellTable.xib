@@ -32,11 +32,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="tD4-NL-8AI">
+                                <rect key="frame" x="269" y="0.0" width="33" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="aNM-Lv-3Ef"/>
+                                    <constraint firstAttribute="height" constant="31" id="tUz-X3-xle"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="ColorValid"/>
                         <constraints>
                             <constraint firstItem="qUw-fi-cwr" firstAttribute="top" secondItem="lpu-Uh-qxA" secondAttribute="top" constant="10" id="4gk-bj-zHl"/>
+                            <constraint firstItem="tD4-NL-8AI" firstAttribute="top" secondItem="lpu-Uh-qxA" secondAttribute="top" id="DKq-qK-hcI"/>
                             <constraint firstItem="qUw-fi-cwr" firstAttribute="leading" secondItem="lpu-Uh-qxA" secondAttribute="leading" constant="10" id="GOG-fw-rUc"/>
+                            <constraint firstAttribute="trailing" secondItem="tD4-NL-8AI" secondAttribute="trailing" constant="8" id="Q9B-rx-OJn"/>
                             <constraint firstItem="0ZS-Xp-Gqz" firstAttribute="leading" secondItem="lpu-Uh-qxA" secondAttribute="leading" constant="10" id="gDL-mu-vI9"/>
                             <constraint firstAttribute="trailing" secondItem="0ZS-Xp-Gqz" secondAttribute="trailing" constant="10" id="hj7-FZ-2JO"/>
                             <constraint firstItem="0ZS-Xp-Gqz" firstAttribute="top" secondItem="qUw-fi-cwr" secondAttribute="bottom" constant="5" id="qkd-8U-mbt"/>
@@ -53,6 +62,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="checklistPrimary" destination="tD4-NL-8AI" id="kGL-C7-I0I"/>
                 <outlet property="fullAddressView" destination="0ZS-Xp-Gqz" id="mk0-cw-i9t"/>
                 <outlet property="nameAddressView" destination="qUw-fi-cwr" id="Fgw-it-TgP"/>
             </connections>
@@ -60,6 +70,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="check" width="20" height="20"/>
         <namedColor name="ColorValid">
             <color red="0.96100002527236938" green="0.9649999737739563" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

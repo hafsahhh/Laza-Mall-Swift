@@ -14,11 +14,19 @@ class CartVC: UIViewController{
     @IBOutlet weak var subTotalView: UILabel!
     @IBOutlet weak var shippingTotalView: UILabel!
     @IBOutlet weak var totalView: UILabel!
+    @IBOutlet weak var deliveryAddressView: UILabel!
+    @IBOutlet weak var cityAddress: UILabel!
     
     
     var cartModel: CartResponse?
     var cartsViewModel = CartsViewModel()
+    var cartAddressViewModel = ListAddressViewModel()
     var allSize: AllSize?
+    var modelAddress: ResponseAllAddress?
+    var selectedAddress: String = ""
+    var selectedCountry: String = ""
+
+    
     
     //wishlist tab bar
     private func setupTabBarText() {
@@ -54,6 +62,7 @@ class CartVC: UIViewController{
         super.viewWillAppear(animated)
         getUserCarts()
         getSizeAll()
+        getAllAddress() 
         cartTableView.reloadData()
     }
     
@@ -64,9 +73,9 @@ class CartVC: UIViewController{
                 case .success(let userCarts):
                     if let userCarts = userCarts { // Safely unwrap the optional
                         self.cartModel = userCarts
-                        self.subTotalView.text = String(userCarts.data.orderInfo.subTotal)
-                        self.shippingTotalView.text = String(userCarts.data.orderInfo.shippingCost)
-                        self.totalView.text = String(userCarts.data.orderInfo.total)
+                        self.subTotalView.text = "$ \(userCarts.data.orderInfo.subTotal)"
+                        self.shippingTotalView.text = "$ \(userCarts.data.orderInfo.shippingCost)"
+                        self.totalView.text = "$ \(userCarts.data.orderInfo.total)"
                     }
                     self.cartTableView.reloadData()
                     print("ini keranjabg")
@@ -78,6 +87,39 @@ class CartVC: UIViewController{
         }
     }
     
+    // MARK: - Func All Address
+    func getAllAddress() {
+        cartAddressViewModel.getAddressUser() { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let userAddress):
+                    self.modelAddress = userAddress
+                    self.updatePrimaryAddress()
+                    print("address user primary")
+                case .failure(let error):
+                    // Handle the error appropriately
+                    print("Error fetching address user: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    func updatePrimaryAddress() {
+        if !selectedAddress.isEmpty && !selectedCountry.isEmpty {
+            // Gunakan alamat yang dipilih melalui protocol jika ada
+            self.deliveryAddressView.text = selectedCountry
+            self.cityAddress.text = selectedAddress
+        } else if let primaryAddress = modelAddress?.data?.first(where: { $0.isPrimary == true }) {
+            // Gunakan alamat utama jika alamat yang dipilih tidak ada
+            self.deliveryAddressView.text = primaryAddress.country.capitalized
+            self.cityAddress.text = primaryAddress.city.capitalized
+        } else {
+            print("Tidak ada alamat utama atau alamat yang dipilih")
+        }
+    }
+
+
+    
     func getSizeAll(){
         cartsViewModel.getSizeAll { allSize in
             DispatchQueue.main.async { [weak self] in
@@ -85,6 +127,7 @@ class CartVC: UIViewController{
             }
         }
     }
+    
     func getSizeId(forSize size: String) -> Int{
         var sizeId = -1
         guard let allSizeData = allSize?.data else { return sizeId }
@@ -101,6 +144,7 @@ class CartVC: UIViewController{
     
     @IBAction func addressBtn(_ sender: Any) {
         let listAddress = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ListAddressVC") as! ListAddressVC
+        listAddress.delegate = self
         self.navigationController?.pushViewController(listAddress, animated: true)
     }
     
@@ -138,7 +182,7 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
             cartCell.brandProductView.text = cellCarts.brandName
             cartCell.quantityLabel.text = String(cellCarts.quantity)
             cartCell.titleProductView.text = cellCarts.productName
-            cartCell.priceProductView.text = String(cellCarts.price)
+            cartCell.priceProductView.text = "$ \(cellCarts.price)"
         }
         cartCell.delegate = self
         return cartCell
@@ -150,7 +194,19 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension CartVC: productInCartProtocol {
+extension CartVC: productInCartProtocol, chooseAddressProtocol {
+    
+    func delegateAddress(country: String, address: String) {
+        deliveryAddressView.text = address
+        selectedAddress = address
+        
+        cityAddress.text = country
+        selectedCountry = country
+    }
+//    if let firstAddress = modelAddress?.data?.first {
+//        self.deliveryAddressView.text = firstAddress.country
+//        self.cityAddress.text = firstAddress.city
+//    }
     
     func updateCountProduct(cell: CartTableCell, completion: @escaping (Int) -> Void) {
         guard let indexPath = cartTableView.indexPath(for: cell) else { return }

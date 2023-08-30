@@ -25,6 +25,7 @@ class ProfileVC: UIViewController {
     
     let imagePicker = UIImagePickerController()
     let profileViewModel = LoginViewModel()
+    var linkImage: String = ""
     
     //Profile
     private func setupTabBarText() {
@@ -81,6 +82,7 @@ class ProfileVC: UIViewController {
                 self.fullnameProfileView.text = userProfile.fullName
                 self.usernameProfileView.text = userProfile.username
                 self.emailProfileView.text = userProfile.email
+                self.linkImage = "\(userProfile.image_url )"
                 let imgURl = URL(string: "\(userProfile.image_url )")
                 self.userImageView.sd_setImage(with: imgURl)
             }
@@ -102,6 +104,7 @@ class ProfileVC: UIViewController {
         editProfileCtrl.email = emailProfileView.text!
         editProfileCtrl.name = fullnameProfileView.text!
         editProfileCtrl.userName = usernameProfileView.text!
+//        editProfileCtrl.image = linkImage
         
         self.navigationController?.pushViewController(editProfileCtrl, animated: true)
     }

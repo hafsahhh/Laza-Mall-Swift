@@ -134,12 +134,12 @@ class DetailProVC: UIViewController {
             return
         }
         detailProductViewModel.addCarts(idProduct: productId, idSize: idSize) { result in
-//            print("inii carts\(String(describing: self.productId))")
+            print("inii carts\(String(describing: self.productId))")
             switch result {
             case . success(let data):
-//                DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     ShowAlert.performAlertApi(on: self, title: "Carts Notification", message: "Successfully Add New Product to Cart")
-//                }
+                }
                 print("API Response Data Carts: \(String(describing: data))")
             case .failure(let error):
                 self.detailProductViewModel.apiAlertDetailProduct = { status, data in

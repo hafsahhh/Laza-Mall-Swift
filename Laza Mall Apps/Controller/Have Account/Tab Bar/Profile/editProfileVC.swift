@@ -19,6 +19,7 @@ class editProfileVC: UIViewController {
             editImageView.layer.cornerRadius = editImageView.frame.width / 2
             editImageView.layer.masksToBounds = true
             editImageView.contentMode = .scaleToFill
+//            editImageView.image = image
         }
     }
     @IBOutlet weak var imageEditBtn: UIButton!
@@ -47,6 +48,7 @@ class editProfileVC: UIViewController {
     var email: String = ""
     var name: String = ""
     var userName: String = ""
+    var image: String = ""
     
     // MARK: - Button back using programmaticly
     //Back Button
@@ -63,9 +65,6 @@ class editProfileVC: UIViewController {
     @objc func backBtnAct(){
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

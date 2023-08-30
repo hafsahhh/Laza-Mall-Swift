@@ -83,17 +83,16 @@ class EditAddressVC: UIViewController {
         
         editAddressViewModel.updateAddress(idAddress: addressId, country: country, city: address, receiverName: name, phoneNumber: phone, isPrimary: isSwitchOn) { result in
             switch result {
-            case .success:
+            case .success :
                 print("sukses edit address")
-                // Panggil metode untuk berpindah ke view controller selanjutnya
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
-                    ShowAlert.performAlertApi(on: self, title: "Notification", message: "Successfully edit address")
+                    ShowAlert.performAlertApi(on: self, title: "Notification", message: "Successfully Edit Address")
                 }
             case .failure(let error):
-                self.editAddressViewModel.apiAddressAlert = { data in
+                self.editAddressViewModel.apiAddressAlert = { description in
                     DispatchQueue.main.async {
-                        ShowAlert.performAlertApi(on: self, title: "status", message: data)
+                        ShowAlert.performAlertApi(on: self, title: "Notification", message: description)
                     }
                 }
                 print("JSON edit address error: \(error)")

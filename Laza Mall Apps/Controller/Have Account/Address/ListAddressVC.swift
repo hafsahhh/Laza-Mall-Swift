@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol chooseAddressProtocol: AnyObject{
+    func delegateAddress(country: String, address:String)
+}
+
 class ListAddressVC: UIViewController {
 
     @IBOutlet weak var listAddressTableView: UITableView!
@@ -15,6 +19,8 @@ class ListAddressVC: UIViewController {
     var modelAddress: ResponseAllAddress?
     var addressViewModel = ListAddressViewModel()
     var addressUserData = [DataAllAddress]()
+    weak var delegate: chooseAddressProtocol?
+    var primaryAddress = false
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -105,9 +111,9 @@ class ListAddressVC: UIViewController {
         }
         editAddress.userAddress = modelAddress?.data?[indexPath.row]
         if let addressData = modelAddress?.data?[indexPath.row] {
-            editAddress.name = addressData.receiverName
-            editAddress.country = addressData.country
-            editAddress.addres = addressData.city
+            editAddress.name = addressData.receiverName.capitalized
+            editAddress.country = addressData.country.capitalized
+            editAddress.addres = addressData.city.capitalized
             editAddress.phone = addressData.phoneNumber
         }
         print("id ini adalah\(String(describing: modelAddress?.data?[indexPath.row]))")
@@ -163,11 +169,21 @@ extension ListAddressVC: UITableViewDataSource, UITableViewDelegate {
         else {return UITableViewCell()}
         
         if let address = modelAddress?.data?[indexPath.row] {
-            cell.nameAddressView.text = "\(address.receiverName) | \(address.phoneNumber)"
-            cell.fullAddressView.text = "\(address.city) , \(address.country)"
+            cell.nameAddressView.text = "\(address.receiverName.capitalized) | \(address.phoneNumber)"
+            cell.fullAddressView.text = "\(address.city.capitalized) , \(address.country.capitalized)"
+            if address.isPrimary == true {
+                cell.checklistPrimary.isHidden = false
+            } else {
+                cell.checklistPrimary.isHidden = true
+            }
         }
         return cell
         
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let address = modelAddress?.data?[indexPath.row]{
+            delegate?.delegateAddress(country:address.country , address: address.city)}
+        self.navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

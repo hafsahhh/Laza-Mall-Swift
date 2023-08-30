@@ -231,7 +231,7 @@ class LoginVC: UIViewController {
             // Call the function here passing the user details to be saved
             let userDetail = allUser(username: usernameOutlet.text ?? "", email: "", password: passwordOutlet.text ?? "")
             saveUserDefault(userDetail)
-            UserDefaults.standard.set(true, forKey: loginTrue)
+            UserDefaults.standard.set(true, forKey: saveDataLogin)
         } else {
             // If the switch is turned off, you can decide what to do here.
             // You might want to remove user data from UserDefaults as you do in the saveUserDefault function.

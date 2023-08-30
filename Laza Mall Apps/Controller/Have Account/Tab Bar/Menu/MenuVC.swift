@@ -14,6 +14,7 @@ class MenuVC: UIViewController {
     let userLoginTrue = "loginTrue"
     let menuViewModel = LoginViewModel()
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var logoutBtnOutlet: UIButton!
     @IBOutlet weak var backMenu: UIButton!
@@ -31,17 +32,6 @@ class MenuVC: UIViewController {
     //        updateUsername()
     //    }
     
-    // MARK: - update username label
-    func updateUsername(){
-        if let username = UserDefaults.standard.data(forKey: saveDataLogin) {
-            let decoder = JSONDecoder()
-            if let userDetail = try? decoder.decode(allUser.self, from: username) {
-                usernameLabel.text = "Hello \(userDetail.username)"
-            }
-        } else {
-            usernameLabel.text = "Hello, Guest"
-        }
-    }
     func fetchUserProfile() {
         menuViewModel.getUserProfile { result in
             switch result {
@@ -60,6 +50,8 @@ class MenuVC: UIViewController {
             DispatchQueue.main.async {
                 // Mengisi IBOutlets dengan data profil pengguna
                 self.usernameLabel.text = userProfile.username
+                let imgURl = URL(string: "\(userProfile.image_url )")
+                self.imageView.sd_setImage(with: imgURl)
             }
         } else {
             // Failed to get user profile
@@ -91,14 +83,20 @@ class MenuVC: UIViewController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc: UITabBarController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
         vc.selectedIndex = 1 // index tabBar
-        self.navigationController?.view.window?.windowScene?.keyWindow?.rootViewController = vc
+//        self.present(vc, animated:true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationItem.hidesBackButton = true
+//        self.navigationController?.view.window?.windowScene?.keyWindow?.rootViewController = vc
     }
     
     @IBAction func cardsMenuBtn(_ sender: Any) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc: UITabBarController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
         vc.selectedIndex = 3 // index tabBar
-        self.navigationController?.view.window?.windowScene?.keyWindow?.rootViewController = vc
+        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationItem.hidesBackButton = true
+//        self.present(vc, animated:true, completion: nil)
+//        self.navigationController?.view.window?.windowScene?.keyWindow?.rootViewController = vc
     }
     
 }

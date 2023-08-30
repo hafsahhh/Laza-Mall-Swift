@@ -15,6 +15,12 @@ class ListAddressCellTable: UITableViewCell {
     
     @IBOutlet weak var nameAddressView: UILabel!
     @IBOutlet weak var fullAddressView: UILabel!
+    @IBOutlet weak var checklistPrimary: UIImageView!{
+        didSet {
+            checklistPrimary.isHidden = true
+        }
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

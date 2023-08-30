@@ -45,6 +45,8 @@ class CreateAccountVC: UIViewController {
         //            self.navigationController?.pushViewController(tabbarVC, animated: true)
         //        }
         
+        navigationItem.hidesBackButton = true
+        
         // untuk stay ketika sudah login di awal, jadi user defaultnya sudah tersimpan
         if UserDefaults.standard.bool(forKey: "loginTrue"){
             let tabbarVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC

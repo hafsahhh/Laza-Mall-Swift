@@ -119,8 +119,6 @@ class CartTableCell: UITableViewCell {
         delegate?.arrowUpProductCart(cell: self,  completion: { currentTotalProd in
             self.quantityProduct = currentTotalProd
         })
-         print("Delegate arrowUpProductCart called")
-         print("jeje")
     }
     
     @IBAction func deleteBtn(_ sender: Any) {

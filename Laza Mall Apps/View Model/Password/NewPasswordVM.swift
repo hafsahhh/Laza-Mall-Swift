@@ -10,8 +10,9 @@ class NewPasswordViewModel {
     func getCodeVerify(newPassword: String, rePassword: String, email: String, code: String,
                       completion: @escaping (Result<Data?, Error>) -> Void)//closure atau blok kode yang dapat dilewatkan ke fungsi sebagai parameter
    {
-       let urlString = "https://lazaapp.shop/auth/recover/password?email=\(email)&code=\(code)"
-       guard let url = URL(string: urlString) else { return }
+
+       guard let url = URL(string: Endpoints.Gets.newPassword(email: email, code: code).url) else {return}
+       
        var request = URLRequest(url: url)
        request.httpMethod = "POST"
        request.httpBody = ApiService.getHttpBodyRaw(param: [

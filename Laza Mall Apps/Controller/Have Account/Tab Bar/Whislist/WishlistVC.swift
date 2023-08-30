@@ -84,7 +84,7 @@ extension WishlistVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 300)
+        return CGSize(width: 160, height: 330)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -95,7 +95,7 @@ extension WishlistVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         if let cellWishlist = modelWhishlist??.data?.products[indexPath.row] {
             wishlistCell.imageView.setImageWithPlugin(url: cellWishlist.imageURL)
             wishlistCell.titleView.text = cellWishlist.name
-            wishlistCell.priceView.text = String(cellWishlist.price)
+            wishlistCell.priceView.text = "$ \(cellWishlist.price)"
         }
         return wishlistCell
     }

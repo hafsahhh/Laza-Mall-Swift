@@ -60,14 +60,14 @@ class CartsViewModel{
                 // Mendekode JSON respons menjadi model CartResponse
                 let productList = try JSONDecoder().decode(CartResponse.self, from: data)
                 completion(.success(productList))
-
+                
             } catch {
                 print("Kesalahan dalam mendekode data: \(error)")
                 completion(.failure(error))
             }
         }.resume()
     }
-
+    
     
     // MARK: - Fungsi untuk menghapus keranjang menggunakan API
     func deleteCarts(idProduct: Int, idSize: Int, completion: @escaping (Result<Data?, Error>) -> Void) {
@@ -113,6 +113,7 @@ class CartsViewModel{
                         print("INI ERROR \(jsonResponse)")
                         return
                     }
+                } else {
                     if let data = data,
                        let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                        let data = jsonResponse["data"] as? String,
@@ -128,7 +129,7 @@ class CartsViewModel{
             }
         }.resume()
     }
-
+    
     
     // MARK: - Func Delete Cart using API
     func updateCarts(idProduct:Int, idSize: Int, completion: @escaping (Result<Data?, Error>) -> Void) {
@@ -169,6 +170,7 @@ class CartsViewModel{
                         print("ERROR Update\(jsonResponse)")
                         return
                     }
+                }else{
                     if let data = data,
                        let jsonResponse = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                        let data = jsonResponse["data"] as? String,

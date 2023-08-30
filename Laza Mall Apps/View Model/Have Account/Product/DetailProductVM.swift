@@ -140,8 +140,8 @@ class DetailProductViewModel {
                         print("INI ERROR\(jsonResponse)")
                         return
                     }
-                    completion(.success(data))
                 }
+                completion(.success(data))
             }
         }.resume()
         

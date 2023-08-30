@@ -7,8 +7,13 @@
 
 import Foundation
 
+
 struct API {
-    static let baseUrl = "https://lazaapp.shop/"
+    static func APIAddress(isMockApi: Bool) -> String {
+        let baseUrl = isMockApi ? "http://localhost:3002/" : "https://lazaapp.shop/"
+        return baseUrl
+    }
+//    static let baseUrl = "https://lazaapp.shop/"
 }
 
 protocol Endpoint {
@@ -44,53 +49,53 @@ enum Endpoints {
         public var url: String {
             switch self {
             case .login:
-                return "\(API.baseUrl)login"
+                return "\(API.APIAddress(isMockApi: false))login"
             case .register:
-                return "\(API.baseUrl)register"
+                return "\(API.APIAddress(isMockApi: false))register"
             case .verifyEmail:
-                return "\(API.baseUrl)auth/confirm/resend"
+                return "\(API.APIAddress(isMockApi: false))auth/confirm/resend"
             case .forgotPassword:
-                return "\(API.baseUrl)auth/forgotpassword"
+                return "\(API.APIAddress(isMockApi: false))auth/forgotpassword"
             case .codeForgot:
-                return "\(API.baseUrl)auth/recover/code"
+                return "\(API.APIAddress(isMockApi: false))auth/recover/code"
             case .newPassword(email: let email, code: let code):
-                return "\(API.baseUrl)auth/recover/password?email=\(email)&code=\(code)"
+                return "\(API.APIAddress(isMockApi: false))auth/recover/password?email=\(email)&code=\(code)"
             case .profile:
-                return "\(API.baseUrl)user/profile"
+                return "\(API.APIAddress(isMockApi: true))user/profile"
             case .updateProfile:
-                return "\(API.baseUrl)user/update"
+                return "\(API.APIAddress(isMockApi: false))user/update"
             case .producDetail(id: let id):
-                return "\(API.baseUrl)products/\(id)"
+                return "\(API.APIAddress(isMockApi: false))products/\(id)"
             case .productAll:
-                return"\(API.baseUrl)products"
+                return"\(API.APIAddress(isMockApi: false))products"
             case .brandAll:
-                return"\(API.baseUrl)brand"
+                return"\(API.APIAddress(isMockApi: false))brand"
             case .riview(id: let id):
-                return "\(API.baseUrl)products/\(id)/reviews"
+                return "\(API.APIAddress(isMockApi: false))products/\(id)/reviews"
             case .brandProduct(nameBrand: let nameBrand):
-                return "\(API.baseUrl)products/brand?name=\(nameBrand)"
+                return "\(API.APIAddress(isMockApi: false))products/brand?name=\(nameBrand)"
             case .addWishList(idProduct: let idProduct):
-                return "\(API.baseUrl)wishlists?ProductId=\(idProduct)"
+                return "\(API.APIAddress(isMockApi: false))wishlists?ProductId=\(idProduct)"
             case .wishlistAll:
-                return"\(API.baseUrl)wishlists"
+                return"\(API.APIAddress(isMockApi: false))wishlists"
             case .cartsAll:
-                return"\(API.baseUrl)carts"
+                return"\(API.APIAddress(isMockApi: false))carts"
             case .addCarts(idProduct: let idProduct, idSize: let idSize):
-                return "\(API.baseUrl)carts?ProductId=\(idProduct)&SizeId=\(idSize)"
+                return "\(API.APIAddress(isMockApi: false))carts?ProductId=\(idProduct)&SizeId=\(idSize)"
             case .deleteCarts(idProduct: let idProduct, idSize: let idSize):
-                return "\(API.baseUrl)carts?ProductId=\(idProduct)&SizeId=\(idSize)"
+                return "\(API.APIAddress(isMockApi: false))carts?ProductId=\(idProduct)&SizeId=\(idSize)"
             case .sizeAll:
-                return "\(API.baseUrl)size"
+                return "\(API.APIAddress(isMockApi: false))size"
             case .updateCarts(idProduct: let idProduct, idSize: let idSize):
-                return "\(API.baseUrl)carts?ProductId=\(idProduct)&SizeId=\(idSize)"
+                return "\(API.APIAddress(isMockApi: false))carts?ProductId=\(idProduct)&SizeId=\(idSize)"
             case .addressAll:
-                return "\(API.baseUrl)address"
+                return "\(API.APIAddress(isMockApi: false))address"
             case .addAddress:
-                return "\(API.baseUrl)address"
+                return "\(API.APIAddress(isMockApi: false))address"
             case .updateAddresss (idAddress: let idAddress):
-                return "\(API.baseUrl)address/\(idAddress)"
+                return "\(API.APIAddress(isMockApi: false))address/\(idAddress)"
             case .deleteAddress (idAddress: let idAddress):
-                return "\(API.baseUrl)address/\(idAddress)"
+                return "\(API.APIAddress(isMockApi: false))address/\(idAddress)"
             }
         }
     }

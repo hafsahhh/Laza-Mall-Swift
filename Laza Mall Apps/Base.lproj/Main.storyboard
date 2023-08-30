@@ -513,6 +513,8 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="cartTableView" destination="sfJ-hn-Xic" id="UEy-et-dHm"/>
+                        <outlet property="cityAddress" destination="S0g-6P-7wg" id="Xaz-bM-nXe"/>
+                        <outlet property="deliveryAddressView" destination="lWJ-9d-hH7" id="m2v-zN-rTB"/>
                         <outlet property="emptyDataCart" destination="z56-Wd-PCV" id="hqg-P2-ZuX"/>
                         <outlet property="shippingTotalView" destination="eki-6p-Az9" id="EiB-uS-dbH"/>
                         <outlet property="subTotalView" destination="kCf-2N-P6n" id="mR7-jO-MBn"/>
@@ -784,9 +786,10 @@
                                     <action selector="menuCloseBtn:" destination="BK8-zH-Z0T" eventType="touchUpInside" id="dGj-g5-msH"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="FrameMenu" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-1l-Xn3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="FrameMenu" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-1l-Xn3">
                                 <rect key="frame" x="40" y="154" width="45" height="45"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="2JU-Ve-A1H"/>
                                     <constraint firstAttribute="width" constant="45" id="7wJ-u0-vPw"/>
                                 </constraints>
                             </imageView>
@@ -995,7 +998,6 @@
                             <constraint firstItem="oA9-UZ-1jd" firstAttribute="top" secondItem="oEQ-tm-B6s" secondAttribute="bottom" id="MfV-o0-cAM"/>
                             <constraint firstItem="hoo-Sl-v3G" firstAttribute="leading" secondItem="Ee3-1l-Xn3" secondAttribute="trailing" constant="10" id="MuY-Fy-ktj"/>
                             <constraint firstItem="Y8G-YK-DvM" firstAttribute="top" secondItem="QVc-cA-a6D" secondAttribute="top" constant="100" id="OIA-pn-Ryd"/>
-                            <constraint firstItem="Ah6-6K-hHQ" firstAttribute="top" secondItem="Ee3-1l-Xn3" secondAttribute="bottom" constant="32" id="PLb-Sv-DJ6"/>
                             <constraint firstItem="6HU-gk-n3P" firstAttribute="leading" secondItem="QVc-cA-a6D" secondAttribute="leading" constant="20" id="RDU-um-Dia"/>
                             <constraint firstItem="QVc-cA-a6D" firstAttribute="trailing" secondItem="1Bv-Zf-E9d" secondAttribute="trailing" constant="20" id="Rjy-1S-AY1"/>
                             <constraint firstItem="6HU-gk-n3P" firstAttribute="top" secondItem="Ah6-6K-hHQ" secondAttribute="bottom" id="TjO-Xf-ayp"/>
@@ -1008,6 +1010,7 @@
                             <constraint firstItem="QVc-cA-a6D" firstAttribute="trailing" secondItem="6HU-gk-n3P" secondAttribute="trailing" constant="20" id="d6N-3p-Hcy"/>
                             <constraint firstItem="EoT-zW-J7g" firstAttribute="centerX" secondItem="hnq-51-rCV" secondAttribute="centerX" id="dEE-1y-Rib"/>
                             <constraint firstItem="1Bv-Zf-E9d" firstAttribute="top" secondItem="LJb-Cu-5MS" secondAttribute="bottom" id="dEZ-IY-NLY"/>
+                            <constraint firstItem="Ah6-6K-hHQ" firstAttribute="top" secondItem="hoo-Sl-v3G" secondAttribute="bottom" constant="30" id="dtE-HZ-ojI"/>
                             <constraint firstItem="bKk-E7-Gwf" firstAttribute="top" secondItem="QVc-cA-a6D" secondAttribute="top" constant="129" id="dw4-Tg-Xq2"/>
                             <constraint firstItem="iab-ZK-wbQ" firstAttribute="top" secondItem="oA9-UZ-1jd" secondAttribute="bottom" id="fFh-9K-hbX"/>
                             <constraint firstItem="QVc-cA-a6D" firstAttribute="trailing" secondItem="iab-ZK-wbQ" secondAttribute="trailing" constant="20" id="fI2-mk-cku"/>
@@ -1028,6 +1031,7 @@
                     <size key="freeformSize" width="320" height="832"/>
                     <connections>
                         <outlet property="backMenu" destination="DSj-oa-H5a" id="Jgl-mu-iq6"/>
+                        <outlet property="imageView" destination="Ee3-1l-Xn3" id="kWb-7v-NVu"/>
                         <outlet property="logoutBtnOutlet" destination="EoT-zW-J7g" id="sUL-3H-Eav"/>
                         <outlet property="usernameLabel" destination="VOg-d9-RoA" id="bhv-On-tJF"/>
                     </connections>
@@ -1045,8 +1049,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let’s Get Started" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvX-k2-ftc">
-                                <rect key="frame" x="75" y="105" width="242" height="18"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <rect key="frame" x="75" y="105" width="242" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1084,7 +1088,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7C-8x-gLH">
-                                <rect key="frame" x="20" y="385.33333333333331" width="353" height="50"/>
+                                <rect key="frame" x="20" y="401" width="353" height="50"/>
                                 <color key="backgroundColor" red="0.91764705882352937" green="0.2627450980392157" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JN1-35-Cay"/>
@@ -3471,6 +3475,12 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColorTextField">
                                         <color key="value" name="ColorBtn"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backGroundColorTextField">
+                                        <color key="value" name="ColorDarkValid"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backGroundColorFilledTextField">
+                                        <color key="value" name="ColorDarkValid"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -3497,6 +3507,7 @@
                     <connections>
                         <outlet property="codeVerificText" destination="BeB-So-yP7" id="Tbt-Vh-sWR"/>
                         <outlet property="confirmCodeView" destination="DkR-LU-YWh" id="S9d-Pz-j0v"/>
+                        <outlet property="timerView" destination="TpB-Wp-pKD" id="6Da-zU-k2L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPC-a4-mVw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3687,7 +3698,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ogN-Hj-g6q">
-                                <rect key="frame" x="20" y="172.33333333333331" width="353" height="645.66666666666674"/>
+                                <rect key="frame" x="20" y="162" width="353" height="656"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mtm-H1-8l8">
                                     <size key="itemSize" width="128" height="128"/>
@@ -3723,12 +3734,21 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1B-X0-lqE">
-                                <rect key="frame" x="302" y="117.99999999999999" width="71" height="34.333333333333329"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1B-X0-lqE">
+                                <rect key="frame" x="293" y="118" width="80" height="24"/>
                                 <color key="backgroundColor" name="ColorDarkValid"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="2UU-w4-Ey2"/>
+                                    <constraint firstAttribute="width" constant="80" id="ntK-4x-gSA"/>
+                                </constraints>
                                 <color key="tintColor" name="ColorBlack"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="sort" title="Sort"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Sort" image="line.3.horizontal" catalog="system">
+                                    <color key="titleColor" name="ColorBlack"/>
+                                </state>
+                                <connections>
+                                    <action selector="sortActBtn:" destination="OhN-nO-cn1" eventType="touchUpInside" id="u3v-H3-HGL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L6i-Bl-MQq"/>
@@ -3745,7 +3765,6 @@
                             <constraint firstItem="ogN-Hj-g6q" firstAttribute="leading" secondItem="L6i-Bl-MQq" secondAttribute="leading" constant="20" id="rbd-Ns-Xi2"/>
                             <constraint firstItem="ogN-Hj-g6q" firstAttribute="top" secondItem="t1B-X0-lqE" secondAttribute="bottom" constant="20" id="s1j-C1-102"/>
                             <constraint firstAttribute="trailing" secondItem="SDp-tT-LZS" secondAttribute="trailing" constant="150" id="tPI-0a-HUB"/>
-                            <constraint firstItem="t1B-X0-lqE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wFo-06-CKM" secondAttribute="trailing" constant="8" symbolic="YES" id="x4r-wq-K44"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="heart" catalog="system" selectedImage="heart" id="rkT-nm-HPv">
@@ -3754,6 +3773,7 @@
                     <connections>
                         <outlet property="brandNameView" destination="AOI-d5-BJj" id="9r3-OZ-ous"/>
                         <outlet property="categoryFilterCollectView" destination="ogN-Hj-g6q" id="wEd-h7-LH2"/>
+                        <outlet property="sortItemView" destination="t1B-X0-lqE" id="4ri-Cu-2TH"/>
                         <outlet property="totalItems" destination="9pq-vg-BwY" id="L8k-oJ-PU2"/>
                     </connections>
                 </viewController>
@@ -4114,12 +4134,12 @@
         <image name="google" width="84" height="22"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <image name="mic" catalog="system" width="110" height="128"/>
         <image name="pencil.circle" catalog="system" width="128" height="123"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="sort" width="15" height="15"/>
         <image name="sun" width="25" height="25"/>
         <image name="visa" width="30" height="30"/>
         <namedColor name="ColorBg">

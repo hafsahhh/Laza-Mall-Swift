@@ -85,14 +85,8 @@ class LoginViewModel{
         }
         
         // URL endpoint untuk mengambil profil pengguna
-        let urlString = "https://lazaapp.shop/user/profile"
-        
-        // Memastikan URL valid
-        guard let url = URL(string: urlString) else {
-            // Jika URL tidak valid, kirim error
-            completion(.failure(ErrorInfo.Error))
-            return
-        }
+        guard let url = URL(string: Endpoints.Gets.profile.url) else {return}
+
         
         // Membuat permintaan URLRequest dengan menambahkan token ke header
         var request = URLRequest(url: url)
