@@ -10,24 +10,18 @@ class EditAddressViewModel {
     var apiAddressAlert: ((String) -> Void)?
     
     func updateAddress(idAddress: Int, country: String, city: String, receiverName: String, phoneNumber: String, isPrimary: Bool, completion: @escaping (Result<Data?, Error>) -> Void){
-        print("update Data Address User")
-        
-        // Mengecek apakah token otentikasi pengguna tersedia dalam UserDefaults
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            return
-        }
         
         // Membuat URL untuk menghapus alamat dengan menggunakan endpoint yang sesuai
         guard let url = URL(string: Endpoints.Gets.updateAddresss(idAddress: idAddress).url) else {
             return
         }
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         
         // Menyiapkan permintaan dengan metode HTTP DELETE dan token otentikasi
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
        
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         request.httpBody = ApiService.getHttpBodyRaw(param: [
             "country": country,
             "city": city,

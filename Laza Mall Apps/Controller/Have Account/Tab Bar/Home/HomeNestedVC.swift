@@ -95,17 +95,6 @@ class HomeNestedVC: UIViewController {
         //hide back button
         navigationItem.hidesBackButton = true
         
-//        // datasource and delegate
-//        self.homeTableView.dataSource = self
-//        self.homeTableView.delegate = self
-//
-//        // Register the xib for tableview cell category
-//        let cellCatNib = UINib(nibName: "CategoryTableCell", bundle: nil)
-//        self.homeTableView.register(cellCatNib, forCellReuseIdentifier: "CategoryTableCell")
-//
-//        // Register the xib for tableview cell product
-//        homeTableView.register(ProductTableCell.nib(), forCellReuseIdentifier: ProductTableCell.identifier)
-        
         callTableView()
         
         // Inisialisasi indikator pemuatan

@@ -13,21 +13,14 @@ class WishlistViewModel {
     func getWishlistUser(completion: @escaping (Result<wishlistIndex, Error>) -> Void) {
         // Memastikan token autentikasi tersedia dalam UserDefaults
         
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            // Jika token tidak tersedia atau gagal di-decode, kirim error
-            completion(.failure(ErrorInfo.Error))
-            return
-        }
-        
         guard let url = URL(string: Endpoints.Gets.wishlistAll.url) else {
             completion(.failure(ErrorInfo.Error))
             return
         }
         
-        // Membuat permintaan URLRequest dengan menambahkan token ke header
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         // Memulai permintaan HTTP untuk mengambil wishlist pengguna
         URLSession.shared.dataTask(with: request) { (data, response, error) in

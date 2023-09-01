@@ -9,8 +9,8 @@ import Foundation
 class ReviewViewModel {
     
     func getDataReviewProduct(id: Int, completion:@escaping (ReviewAll) -> ()) {
-        print("product id review: \(id)")
-        guard let url = URL(string: "https://lazaapp.shop/products/\(id)/reviews") else { return }
+        
+        guard let url = URL(string: Endpoints.Gets.riview(id: id).url) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }

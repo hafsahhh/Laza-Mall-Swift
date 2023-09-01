@@ -14,21 +14,14 @@ class ListAddressViewModel {
     func getAddressUser(completion: @escaping (Result<ResponseAllAddress?, Error>) -> Void) {
         // Memastikan token autentikasi tersedia dalam UserDefaults
         
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            // Jika token tidak tersedia atau gagal di-decode, kirim error
-            completion(.failure(ErrorInfo.Error))
-            return
-        }
-        
         guard let url = URL(string: Endpoints.Gets.addressAll.url) else {
             completion(.failure(ErrorInfo.Error))
             return
         }
-        
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         // Membuat permintaan URLRequest dengan menambahkan token ke header
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         // Memulai permintaan HTTP untuk mengambil address pengguna
         URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -58,23 +51,16 @@ class ListAddressViewModel {
     
     
     func deleteAddress(idAddress: Int, completion: @escaping (Result<Data?, Error>) -> Void){
-        print("Menghapus Data Address User")
-        
-        // Mengecek apakah token otentikasi pengguna tersedia dalam UserDefaults
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            return
-        }
         
         // Membuat URL untuk menghapus alamat dengan menggunakan endpoint yang sesuai
         guard let url = URL(string: Endpoints.Gets.deleteAddress(idAddress: idAddress).url) else {
             return
         }
-        
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         // Menyiapkan permintaan dengan metode HTTP DELETE dan token otentikasi
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         // Memulai permintaan HTTP untuk menghapus keranjang
         URLSession.shared.dataTask(with: request) { (data, response, error) in

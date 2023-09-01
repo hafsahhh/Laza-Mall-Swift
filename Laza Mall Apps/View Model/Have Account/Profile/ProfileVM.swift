@@ -14,15 +14,11 @@ class ProfileViewModel {
     func updateProfile(fullName: String, username: String, email: String, media: Media?,
                        completion: @escaping (String) -> Void, onError: @escaping(String) -> Void) {
         
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            return
-        }
-        
         guard let url = URL(string: Endpoints.Gets.updateProfile.url) else {return}
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         
         let boundary = ApiService.getBoundary()

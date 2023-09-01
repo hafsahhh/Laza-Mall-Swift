@@ -81,15 +81,7 @@ class LoginViewModel{
     func getUserProfile(completion: @escaping (Result<DataUseProfile?, Error>) -> Void) {
         // Memastikan token autentikasi tersedia dalam UserDefaults
         print("ini prfile")
-//        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-//              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-//            return
-//        }
 
-//        let accessToken = authToken.access_token
-        // Use the access token as needed
-
-//        print("token profile \(authToken)")
         guard let url = URL(string: Endpoints.Gets.profile.url) else {return}
         
         // Membuat permintaan URLRequest dengan menambahkan token ke header

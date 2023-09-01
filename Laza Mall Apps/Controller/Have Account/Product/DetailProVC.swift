@@ -167,8 +167,7 @@ class DetailProVC: UIViewController {
         self.navigationItem.rightBarButtonItem  = likeBtn
         
         detailProductApi()
-        
-        
+        callCollectView()
         
         isProductInWishlists(productId: productId) { isInWishlist in
             if isInWishlist {

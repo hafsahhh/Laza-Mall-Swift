@@ -18,23 +18,13 @@ class AddReviewViewModel{
                        id: Int,
                        completion: @escaping (Result<Data?, Error>) -> Void)//closure atau blok kode yang dapat dilewatkan ke fungsi sebagai parameter
     {
-        print("Id add review: \(id)")
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            // Jika token tidak tersedia atau gagal di-decode, kirim error
-            completion(.failure(ErrorInfo.Error))
-            return
-        }
         
-        let urlString = "https://lazaapp.shop/products/\(id)/reviews"
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL")
-            return
-        }
+        guard let url = URL(string: Endpoints.Gets.riview(id: id).url) else {return}
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         var request = URLRequest(url: url)
         
         // Membuat permintaan URLRequest dengan menambahkan token ke header
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         request.httpMethod = "POST"
         request.httpBody = ApiService.getHttpBodyRaw(param: [
             "comment": comment,

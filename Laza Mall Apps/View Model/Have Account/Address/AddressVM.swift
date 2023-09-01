@@ -15,23 +15,16 @@ class AddressViewModel {
     func addAddressUser(country: String, city: String, receiverName: String, phoneNumber: String, isPrimary: Bool,completion: @escaping (Result<Data?, Error>) -> Void)
     
     {
-        // Memastikan token autentikasi tersedia dalam UserDefaults
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            // Jika token tidak tersedia atau gagal di-decode, kirim error
-            completion(.failure(ErrorInfo.Error))
-            return
-        }
-        
         // Membuat URL untuk menambahkan alamat baru
         guard let url = URL(string: Endpoints.Gets.addAddress.url) else {
             completion(.failure(ErrorInfo.Error))
             return
         }
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         
         // Mempersiapkan permintaan dengan metode HTTP POST dan body data
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         request.httpMethod = "POST"
         request.httpBody = ApiService.getHttpBodyRaw(param: [
             "country": country,

@@ -13,7 +13,8 @@ class DetailProductViewModel {
     
     func getDataDetailProduct(id: Int, completion:@escaping (ProductDetailIndex) -> ()) {
         print("producrId: \(id)")
-        guard let url = URL(string: "https://lazaapp.shop/products/\(id)") else { return }
+        
+        guard let url = URL(string: Endpoints.Gets.producDetail(id: id).url) else {return}
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
@@ -34,22 +35,13 @@ class DetailProductViewModel {
     
     // MARK: - Func PUT Wihslist using API
     func putWishlistUser(productId: Int, completion: @escaping (Result<UpdateWishlist, Error>) -> Void) {
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            return
-        }
-        guard let components = URLComponents(string: "https://lazaapp.shop/wishlists?ProductId=\(productId)") else {
-            print("Invalid URL.")
-            return
-        }
+
+        guard let url = URL(string: Endpoints.Gets.addWishList(idProduct: productId).url) else {return}
         
-        guard let url = components.url else {
-            print("Invalid URL components.")
-            return
-        }
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
-        request.addValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.addValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -104,18 +96,15 @@ class DetailProductViewModel {
     // MARK: - Func Add Cart using API
     func addCarts(idProduct:Int, idSize: Int, completion: @escaping (Result<Data?, Error>) -> Void) {
         
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            return
-        }
-        
         guard let url = URL(string: Endpoints.Gets.addCarts(idProduct: idProduct, idSize: idSize).url) else
         {return}
+        
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         
         var request = URLRequest(url: url)
         
         request.httpMethod = "POST"
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {

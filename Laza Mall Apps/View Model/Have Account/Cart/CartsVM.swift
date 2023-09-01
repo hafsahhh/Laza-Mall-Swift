@@ -13,22 +13,15 @@ class CartsViewModel{
     
     // MARK: - Fungsi untuk mengambil semua keranjang pengguna menggunakan API
     func getCarts(completion: @escaping(Result<CartResponse?, Error>) -> Void) {
-        
-        // Mendapatkan dan mendekode token otentikasi pengguna dari UserDefaults
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            return
-        }
-        
         // Membuat URL untuk mendapatkan semua keranjang
         guard let url = URL(string: Endpoints.Gets.cartsAll.url) else {
             completion(.failure(ErrorInfo.Error))
             return
         }
         
-        // Menyiapkan permintaan dengan token otentikasi
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         // Memulai permintaan HTTP untuk mengambil keranjang pengguna
         URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -73,21 +66,15 @@ class CartsViewModel{
     func deleteCarts(idProduct: Int, idSize: Int, completion: @escaping (Result<Data?, Error>) -> Void) {
         print("Menghapus Data keranjang")
         
-        // Mengecek apakah token otentikasi pengguna tersedia dalam UserDefaults
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            return
-        }
-        
         // Membuat URL untuk menghapus keranjang dengan menggunakan endpoint yang sesuai
         guard let url = URL(string: Endpoints.Gets.deleteCarts(idProduct: idProduct, idSize: idSize).url) else {
             return
         }
         
-        // Menyiapkan permintaan dengan metode HTTP DELETE dan token otentikasi
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         // Memulai permintaan HTTP untuk menghapus keranjang
         URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -133,19 +120,14 @@ class CartsViewModel{
     
     // MARK: - Func Delete Cart using API
     func updateCarts(idProduct:Int, idSize: Int, completion: @escaping (Result<Data?, Error>) -> Void) {
-        print("Update Data carts")
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            return
-        }
-        
+
         guard let url = URL(string: Endpoints.Gets.updateCarts(idProduct: idProduct, idSize: idSize).url) else
         {return}
         
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         var request = URLRequest(url: url)
-        
         request.httpMethod = "PUT"
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -191,19 +173,13 @@ class CartsViewModel{
     
     // MARK: - Func ArrowUp
     func arrowUpQuantityCart(idProduct: Int, idSize: Int,completion: @escaping (Result<Data?, Error>) -> Void) {
-        print("add one arrow Data carts")
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            return
-        }
-        
         guard let url = URL(string: Endpoints.Gets.addCarts(idProduct: idProduct, idSize: idSize).url) else
         {return}
         
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         var request = URLRequest(url: url)
-        
         request.httpMethod = "POST"
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
