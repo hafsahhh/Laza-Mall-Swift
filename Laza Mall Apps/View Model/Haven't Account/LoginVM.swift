@@ -58,10 +58,11 @@ class LoginViewModel{
                        loginResponse.status == "OK",
                        !loginResponse.isError {
                         // Jika login berhasil, menyimpan token ke UserDefaults
-                        let authToken: AuthToken = AuthData(access_token: loginResponse.data.access_token)
+                        let authToken: AuthToken = AuthData(access_token: loginResponse.data.access_token, refresh_token: loginResponse.data.refresh_token)
                         if let encodedToken = try? JSONEncoder().encode(authToken) {
                             UserDefaults.standard.set(encodedToken, forKey: "auth_token")
                             print("Access Token: \(loginResponse.data.access_token)") // Menampilkan access token
+                            print("refresh Token: \(loginResponse.data.refresh_token)")
                         }
                         // Menyampaikan hasil berhasil melalui completion handler
                         completion(.success(data))
@@ -81,12 +82,15 @@ class LoginViewModel{
         
         guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
               let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
+            // Handle if the token is not available in UserDefaults
             return
         }
-        
-        // URL endpoint untuk mengambil profil pengguna
-        guard let url = URL(string: Endpoints.Gets.profile.url) else {return}
 
+        let accessToken = authToken.access_token
+        // Use the access token as needed
+
+//        print("token profile \(authToken)")
+        guard let url = URL(string: Endpoints.Gets.profile.url) else {return}
         
         // Membuat permintaan URLRequest dengan menambahkan token ke header
         var request = URLRequest(url: url)
@@ -124,4 +128,11 @@ class LoginViewModel{
     
 }
 
+//// Jika login berhasil, menyimpan token ke UserDefaults
+//let authToken: AuthToken = AuthData(access_token: loginResponse.data.access_token, refresh_token: loginResponse.data.refresh_token)
+//if let encodedToken = try? JSONEncoder().encode(authToken) {
+//    UserDefaults.standard.set(encodedToken, forKey: "auth_token")
+//    print("Access Token: \(loginResponse.data.access_token)") // Menampilkan access token
+////                            print("refresh Token: \(loginResponse.data.refresh_token)")
+//}
 

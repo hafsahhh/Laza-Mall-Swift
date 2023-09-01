@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import JWTDecode
+
 
 class HomepageVC: UIViewController, UICollectionViewDataSource {
     
@@ -16,6 +18,7 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
     var productModel = [ProductEntry]()
     var productFilter: [ProductEntry] = []
     var searchActive : Bool = false
+    var isValidToken = false
     
     
     private func setupTabBarText() {
@@ -90,15 +93,12 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
         productCollectCellView.collectionViewLayout = UICollectionViewFlowLayout()
         productCollectCellView.register(UINib(nibName: "ProductHomeCollectCell", bundle: nil), forCellWithReuseIdentifier: "ProductHomeCollectCell")
         
-        //MARK: BENTUK DARI MENGECEK API DATA JIKA MUNCUL KALAU PAKAI COMPLETION
-        //AllCategoryApi().getData { _ in
-        //
-        //}
-        
-//        AllCategoryApi().getData { [weak self] category in
-//            self?.catModel.append(contentsOf: category)
-//            self?.catagoryBrand.reloadData()
-//        }
+
+        //Token expired
+        jwtExpired()
+        if isValidToken{
+            
+        }
         
         //panggil AllProductApi
         AllProductApi().getData { ProductIndex in
@@ -113,6 +113,28 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
 
     }
     
+    func jwtExpired() {
+        let token = UserDefaults.standard.string(forKey: "auth_token")
+        do {
+            let jwt = try decode(jwt: token!)
+            if jwt.expired {
+                isValidToken = false
+                alertShowApi(title: "Warning", message: "Token is expired, please re-login"){
+                    // Menghapus data dari UserDefaults
+                    UserDefaults.standard.removeObject(forKey: "auth_token")
+                    UserDefaults.standard.removeObject(forKey: "loginTrue")
+                    
+                    // Mengarahkan pengguna kembali ke root view controller
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            } else {
+                isValidToken = true
+            }
+            
+        } catch {
+            print("ini gagal")
+        }
+    }
     
 }
 

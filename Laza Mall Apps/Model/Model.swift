@@ -88,10 +88,11 @@ struct LoginResponse: Codable {
     let isError: Bool
     let data: AuthData
 }
+
 typealias AuthToken = AuthData?
 struct AuthData: Codable {
     let access_token: String
-//    let refresh_token: String
+    let refresh_token: String
 }
 
 struct ResponFailed : Codable {

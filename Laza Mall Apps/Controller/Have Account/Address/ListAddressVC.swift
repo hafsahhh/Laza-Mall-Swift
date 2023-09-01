@@ -21,6 +21,7 @@ class ListAddressVC: UIViewController {
     var addressUserData = [DataAllAddress]()
     weak var delegate: chooseAddressProtocol?
     var primaryAddress = false
+    var isValidToken = false
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -67,6 +68,7 @@ class ListAddressVC: UIViewController {
                 case .success(let userAddress):
                     if let userAddress = userAddress { // Safely unwrap the optional
                         self.modelAddress = userAddress
+                        self.modelAddress?.data?.reverse()
                     }
                     self.listAddressTableView.reloadData()
                     print("ini address all user")
@@ -90,11 +92,11 @@ class ListAddressVC: UIViewController {
                     }
                     print("API Response delete address successs")
                 case .failure(let error):
-                    self.addressViewModel.apiAddressAlert = { data in
-                        DispatchQueue.main.async {
-                            ShowAlert.performAlertApi(on: self, title: "Notification", message: data)
-                        }
-                    }
+//                    self.addressViewModel.apiAddressAlert = { data in
+//                        DispatchQueue.main.async {
+//                            ShowAlert.performAlertApi(on: self, title: "Notification", message: data)
+//                        }
+//                    }
                     print("API delete address Error: \(error.localizedDescription)")
                 }
             }
@@ -115,6 +117,7 @@ class ListAddressVC: UIViewController {
             editAddress.country = addressData.country.capitalized
             editAddress.addres = addressData.city.capitalized
             editAddress.phone = addressData.phoneNumber
+            editAddress.switchPrimary = addressData.isPrimary
         }
         print("id ini adalah\(String(describing: modelAddress?.data?[indexPath.row]))")
         self.navigationController?.pushViewController(editAddress, animated: true)

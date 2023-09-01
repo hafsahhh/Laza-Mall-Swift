@@ -46,6 +46,7 @@ enum Endpoints {
         case addAddress
         case updateAddresss(idAddress: Int)
         case deleteAddress(idAddress: Int)
+        case chnagePassword
         public var url: String {
             switch self {
             case .login:
@@ -61,7 +62,7 @@ enum Endpoints {
             case .newPassword(email: let email, code: let code):
                 return "\(API.APIAddress(isMockApi: false))auth/recover/password?email=\(email)&code=\(code)"
             case .profile:
-                return "\(API.APIAddress(isMockApi: true))user/profile"
+                return "\(API.APIAddress(isMockApi: false))user/profile"
             case .updateProfile:
                 return "\(API.APIAddress(isMockApi: false))user/update"
             case .producDetail(id: let id):
@@ -96,6 +97,8 @@ enum Endpoints {
                 return "\(API.APIAddress(isMockApi: false))address/\(idAddress)"
             case .deleteAddress (idAddress: let idAddress):
                 return "\(API.APIAddress(isMockApi: false))address/\(idAddress)"
+            case .chnagePassword:
+                return "\(API.APIAddress(isMockApi: false))user/change-password"
             }
         }
     }

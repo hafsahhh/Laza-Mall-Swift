@@ -71,6 +71,7 @@ class SignUpVC: UIViewController {
     var isUsernameValid = false
     var isPasswordValid = false
     var isConfirmPassValid = false
+    var activityIndicator: UIActivityIndicatorView!
     
     
     //Back Button
@@ -96,6 +97,16 @@ class SignUpVC: UIViewController {
         passwordOutlet.isSecureTextEntry = true
         confirmPassOutlet.isSecureTextEntry = true
         
+        // Initialize activity indicator
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
+        // Configure constraints for the activity indicator
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
         
         // Tambahkan target untuk text field untuk melakukan validasi saat text berubah
         usernameOutlet.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -169,6 +180,19 @@ class SignUpVC: UIViewController {
         }
     }
     
+    private func startLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+            self.view.backgroundColor = UIColor.lightGray
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.view.backgroundColor = UIColor.white
+        }
+    }
     
     // MARK: - Func for add new user using API
     func signUpUserWithAPI() {
@@ -177,6 +201,7 @@ class SignUpVC: UIViewController {
         let password = passwordOutlet.text ?? ""
         
         signUpViewModel.signUpUserAPI(username: username, email: email, password: password) { result in
+            self.stopLoading()
             switch result {
             case .success(let json):
                 // Panggil metode untuk berpindah ke view controller selanjutnya
@@ -205,7 +230,7 @@ class SignUpVC: UIViewController {
     
     // MARK: - Sign Up Button
     @IBAction func signUpBtnAct(_ sender: Any) {
-//        signUpValidate()
+        startLoading()
         //signUp with API
         signUpUserWithAPI()
     }

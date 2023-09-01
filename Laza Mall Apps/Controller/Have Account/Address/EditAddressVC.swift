@@ -29,7 +29,17 @@ class EditAddressVC: UIViewController {
             addressView.text = addres
         }
     }
-    @IBOutlet weak var editAddressSwitchView: UISwitch!
+    @IBOutlet weak var editAddressSwitchView: UISwitch!{
+        didSet{
+//            editAddressSwitchView.isOn = switchPrimary
+            let isPrimary = switchPrimary
+            if isPrimary == nil {
+                editAddressSwitchView.isOn = false
+            } else {
+                editAddressSwitchView.isOn = true
+            }
+        }
+    }
     
     let editAddressViewModel = EditAddressViewModel()
     var userAddress: DataAllAddress?
@@ -38,6 +48,7 @@ class EditAddressVC: UIViewController {
     var country: String = ""
     var phone: String = ""
     var addres: String = ""
+    var switchPrimary: Bool?
     
     
     // MARK: - Button back using programmaticly
@@ -67,7 +78,6 @@ class EditAddressVC: UIViewController {
 
     }
     // MARK: - Func for edit address using API
-    // Di dalam fungsi editAddressApi() di view controller
     func editAddressApi() {
         let name = nameView.text ?? ""
         let country = countryView.text ?? ""
@@ -79,7 +89,7 @@ class EditAddressVC: UIViewController {
             print("userAddress is nil, cannot proceed with API call")
             return
         }
-        print("Ini adalah address Id \(addressId)")
+//        print("Ini adalah address Id \(addressId)")
         
         editAddressViewModel.updateAddress(idAddress: addressId, country: country, city: address, receiverName: name, phoneNumber: phone, isPrimary: isSwitchOn) { result in
             switch result {
@@ -90,11 +100,11 @@ class EditAddressVC: UIViewController {
                     ShowAlert.performAlertApi(on: self, title: "Notification", message: "Successfully Edit Address")
                 }
             case .failure(let error):
-                self.editAddressViewModel.apiAddressAlert = { description in
-                    DispatchQueue.main.async {
-                        ShowAlert.performAlertApi(on: self, title: "Notification", message: description)
-                    }
-                }
+//                self.editAddressViewModel.apiAddressAlert = { description in
+//                    DispatchQueue.main.async {
+//                        ShowAlert.performAlertApi(on: self, title: "Notification", message: description)
+//                    }
+//                }
                 print("JSON edit address error: \(error)")
             }
         }

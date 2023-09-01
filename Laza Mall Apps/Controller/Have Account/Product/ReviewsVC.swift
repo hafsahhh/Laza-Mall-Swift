@@ -49,11 +49,18 @@ class ReviewsVC: UIViewController {
         userReviewTable.delegate = self
         userReviewTable.dataSource = self
         userReviewTable.register(UINib(nibName: "ReviewsTableCell", bundle: nil), forCellReuseIdentifier: "ReviewsTableCell")
+        userReviewTable.reloadData()
         
         // Add refresh control to the table view
         userReviewTable.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reviewAllByProductIdApi()
+        userReviewTable.reloadData()
     }
     
     // MARK: - Navigation

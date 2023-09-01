@@ -12,20 +12,16 @@ import GoogleSignIn
 class CreateAccountVC: UIViewController {
     
     @IBOutlet weak var labelGetStarted: UILabel!
-    
     @IBOutlet weak var facebookBtnOutlet: UIButton!{
         didSet{
             facebookBtnOutlet.layer.cornerRadius = 10
         }
     }
-    
     @IBOutlet weak var twitterBtnOutlet: UIButton!{
         didSet{
             twitterBtnOutlet.layer.cornerRadius = 10
         }
     }
-    
-    
     @IBOutlet weak var googleBtnOutlet: UIButton!{
         didSet{
             googleBtnOutlet.layer.cornerRadius = 10
@@ -34,6 +30,19 @@ class CreateAccountVC: UIViewController {
     
     let loginTrue = "loginTrue"
     let signUpTrue = "signUpTrue"
+    var activityIndicator: UIActivityIndicatorView!
+    
+    private func startLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +54,18 @@ class CreateAccountVC: UIViewController {
         //            self.navigationController?.pushViewController(tabbarVC, animated: true)
         //        }
         
+        // Initialize activity indicator
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
+        // Configure constraints for the activity indicator
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        //hide back button
         navigationItem.hidesBackButton = true
         
         // untuk stay ketika sudah login di awal, jadi user defaultnya sudah tersimpan
@@ -56,11 +77,7 @@ class CreateAccountVC: UIViewController {
         
         
     }
-    
-    
-    
-    
-    
+
     @IBAction func facebookBtnAct(_ sender: Any) {
         if let url = URL(string: "https://www.facebook.com/login/") {
             let config = SFSafariViewController.Configuration()
@@ -84,7 +101,11 @@ class CreateAccountVC: UIViewController {
     }
     
     @IBAction func googleBtnAct(_ sender: Any) {
+        startLoading()
+        
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+            self.stopLoading()
+            
             guard error == nil else { return }
             guard let signInResult = signInResult else { return }
             

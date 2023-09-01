@@ -14,7 +14,6 @@ class AddressVC: UIViewController {
     @IBOutlet weak var countryView: UITextField!
     @IBOutlet weak var cityView: UITextField!
     @IBOutlet weak var phoneNumberView: UITextField!
-    @IBOutlet weak var addressView: UITextField!
     @IBOutlet weak var savePrimaryAddressView: UISwitch!
     
     let addressViewModel = AddressViewModel()
@@ -48,7 +47,6 @@ class AddressVC: UIViewController {
         let country = countryView.text ?? ""
         let city = cityView.text ?? ""
         let phone = phoneNumberView.text ?? ""
-        let address = addressView.text ?? ""
         let isSwitchOn = savePrimaryAddressView.isOn
         
         addressViewModel.addAddressUser(country: country, city: city, receiverName: name, phoneNumber: phone, isPrimary: isSwitchOn ){ result in

@@ -3,4 +3,54 @@
    uuid = "C346E5C7-3DB2-46F5-A4A6-0803FA94C696"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2168A0AA-6A25-486D-9039-293C8DAE6361"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Laza Mall Apps/Controller/Haven&apos;t Account/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "tabBarController(userProfile:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2168A0AA-6A25-486D-9039-293C8DAE6361 - c853361b10ed8bdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Laza_Mall_Apps.LoginVC.tabBarController(userProfile: Swift.Optional&lt;Laza_Mall_Apps.DataUseProfile&gt;) -&gt; ()"
+                  moduleName = "Laza Mall Apps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sitihafsah/Documents/Phincon%20IOS/Laza%20Mall%20Apps/Laza%20Mall%20Apps/Controller/Haven&apos;t%20Account/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "2168A0AA-6A25-486D-9039-293C8DAE6361 - c853361b10ed8bdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Laza_Mall_Apps.LoginVC.tabBarController(userProfile: Swift.Optional&lt;Laza_Mall_Apps.DataUseProfile&gt;) -&gt; ()"
+                  moduleName = "Laza Mall Apps"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sitihafsah/Documents/Phincon%20IOS/Laza%20Mall%20Apps/Laza%20Mall%20Apps/Controller/Haven&apos;t%20Account/LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "199"
+                  endingLineNumber = "199"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

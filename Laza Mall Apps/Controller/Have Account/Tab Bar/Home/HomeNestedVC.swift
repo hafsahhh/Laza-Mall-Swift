@@ -8,6 +8,7 @@
 import UIKit
 import SideMenu
 import SnackBar
+import JWTDecode
 
 //protocol untuk search bar
 protocol searchProductHomeProtocol: AnyObject {
@@ -22,6 +23,7 @@ class HomeNestedVC: UIViewController {
     
     var blurEffectView: UIVisualEffectView?
     var isMenuClicked: Bool = false
+    var isValidToken = false
     var searchTextActive: Bool = false
     //weak var delegateSearch : searchProductHomeProtocol?
     var viewModel = HomeViewModel()
@@ -76,6 +78,8 @@ class HomeNestedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         searchHome.delegate = self
         AppSnackBar.make(in: self.view, message: "Welcome to LAZA MALL", duration: .lengthLong).show()
         //func tab Bar action
@@ -90,6 +94,36 @@ class HomeNestedVC: UIViewController {
         let menuBtn = UIBarButtonItem(customView: menuBtn)
         self.navigationItem.leftBarButtonItem  = menuBtn
         
+//        // datasource and delegate
+//        self.homeTableView.dataSource = self
+//        self.homeTableView.delegate = self
+//
+//        // Register the xib for tableview cell category
+//        let cellCatNib = UINib(nibName: "CategoryTableCell", bundle: nil)
+//        self.homeTableView.register(cellCatNib, forCellReuseIdentifier: "CategoryTableCell")
+//
+//        // Register the xib for tableview cell product
+//        homeTableView.register(ProductTableCell.nib(), forCellReuseIdentifier: ProductTableCell.identifier)
+        
+        callTableView()
+        
+        // Inisialisasi indikator pemuatan
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.color = .gray
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        jwtExpired()
+        if isValidToken {
+            callTableView()
+        }
+ 
+    }
+    
+    func callTableView(){
         // datasource and delegate
         self.homeTableView.dataSource = self
         self.homeTableView.delegate = self
@@ -100,16 +134,34 @@ class HomeNestedVC: UIViewController {
     
         // Register the xib for tableview cell product
         homeTableView.register(ProductTableCell.nib(), forCellReuseIdentifier: ProductTableCell.identifier)
-        
-        // Inisialisasi indikator pemuatan
-        activityIndicator = UIActivityIndicatorView(style: .medium)
-        activityIndicator.color = .gray
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
+    
+    func jwtExpired() {
+        
+        guard let token = UserDefaults.standard.data(forKey: "auth_token"),
+            let authToken = try? JSONDecoder().decode(AuthToken.self, from: token) else {
+            return }
+
+        do {
+            let jwt = try decode(jwt: authToken.access_token)
+            print("token\(token)")
+            if jwt.expired {
+                isValidToken = false
+                alertShowApi(title: "Warning", message: "Token is expired, please re-login"){
+                    // Menghapus data dari UserDefaults
+                    UserDefaults.standard.removeObject(forKey: "auth_token")
+                    // Mengarahkan pengguna kembali ke root view controller
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            } else {
+                isValidToken = true
+            }
+            
+        } catch {
+            print("ini gagal")
+        }
+    }
+    
 }
 
 extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTableCellProtocol, categoryTableCellProtocol {
@@ -183,3 +235,43 @@ extension HomeNestedVC: UISearchBarDelegate{
         homeTableView.reloadData()
     }
 }
+
+//func jwtExpired() {
+//    guard let tokenData = UserDefaults.standard.data(forKey: "auth_token"),
+//        let authToken = try? JSONDecoder().decode(AuthToken.self, from: tokenData) else {
+//        return
+//    }
+//    
+//    do {
+//        let jwt = try decode(jwt: authToken.access_token)
+//        
+//        if jwt.expired {
+//            guard let refreshTokenData = UserDefaults.standard.data(forKey: "refresh_token"),
+//                let refreshToken = try? JSONDecoder().decode(String.self, from: refreshTokenData) else {
+//                return
+//            }
+//            print("refresh Token\(refreshToken)")
+//            
+//            // Lakukan proses pembaruan access token dengan menggunakan refresh token
+//            // Contoh: buat request ke server untuk mendapatkan access token baru menggunakan refresh token
+//            
+//            // Setelah mendapatkan access token baru, simpan ke UserDefaults
+//            let newAccessToken = "new_access_token_here" // Gantikan dengan access token baru yang didapatkan
+//            UserDefaults.standard.set(newAccessToken, forKey: "auth_token")
+//            
+//            // Lanjutkan dengan validasi token yang baru saja diperbarui
+//            let newJwt = try decode(jwt: newAccessToken)
+//            if newJwt.expired {
+//                isValidToken = false
+//                // Handle jika token baru juga kedaluwarsa setelah diperbarui
+//            } else {
+//                isValidToken = true
+//            }
+//        } else {
+//            isValidToken = true
+//        }
+//        
+//    } catch {
+//        print("Error decoding token")
+//    }
+//}

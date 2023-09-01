@@ -42,6 +42,8 @@ class LoginVC: UIViewController {
     var iconClick = true
     var isUsernameValid = false
     var isPasswordValid = false
+    var activityIndicator: UIActivityIndicatorView!
+    
     
     
     //Back Button
@@ -65,6 +67,17 @@ class LoginVC: UIViewController {
         
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
+        
+        // Initialize activity indicator
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        
+        // Configure constraints for the activity indicator
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
         
         passwordOutlet.isSecureTextEntry = true
         
@@ -111,8 +124,23 @@ class LoginVC: UIViewController {
         }
     }
     
+    private func startLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+            self.view.backgroundColor = UIColor.lightGray
+        }
+    }
+
+    private func stopLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.view.backgroundColor = UIColor.white
+        }
+    }
+    
     // MARK: - Login Button
     @IBAction func loginBtnAct(_ sender: UIButton) {
+        startLoading()
         loginAndGetData()
     }
     
@@ -123,6 +151,7 @@ class LoginVC: UIViewController {
         let password = passwordOutlet.text ?? ""
         
         loginViewModel.getDataLogin(username: username, password: password) { result in
+            self.stopLoading()
             switch result {
             case .success:
                 // Login berhasil, panggil getUserProfile untuk mendapatkan profil pengguna

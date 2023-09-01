@@ -14,6 +14,8 @@
 		1A041A8D2A83852A00737C0A /* ListAddressTableCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A041A8B2A83852A00737C0A /* ListAddressTableCellTableViewCell.xib */; };
 		1A041A902A8394B700737C0A /* ListAddressCellTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A041A8E2A8394B700737C0A /* ListAddressCellTable.swift */; };
 		1A041A912A8394B700737C0A /* ListAddressCellTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A041A8F2A8394B700737C0A /* ListAddressCellTable.xib */; };
+		1A0560F62AA07C22000B04B0 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0560F52AA07C22000B04B0 /* JWTDecode */; };
+		1A0560F82AA0C525000B04B0 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0560F72AA0C525000B04B0 /* ChangePasswordVC.swift */; };
 		1A0671ED2A7B58CE0079B97F /* sizeCollectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671EB2A7B58CE0079B97F /* sizeCollectCell.swift */; };
 		1A0671EE2A7B58CE0079B97F /* sizeCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0671EC2A7B58CE0079B97F /* sizeCollectCell.xib */; };
 		1A0671F12A7B883C0079B97F /* DataDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F02A7B883C0079B97F /* DataDummy.swift */; };
@@ -157,6 +159,7 @@
 		1A041A8B2A83852A00737C0A /* ListAddressTableCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListAddressTableCellTableViewCell.xib; sourceTree = "<group>"; };
 		1A041A8E2A8394B700737C0A /* ListAddressCellTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAddressCellTable.swift; sourceTree = "<group>"; };
 		1A041A8F2A8394B700737C0A /* ListAddressCellTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListAddressCellTable.xib; sourceTree = "<group>"; };
+		1A0560F72AA0C525000B04B0 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		1A0671EB2A7B58CE0079B97F /* sizeCollectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sizeCollectCell.swift; sourceTree = "<group>"; };
 		1A0671EC2A7B58CE0079B97F /* sizeCollectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = sizeCollectCell.xib; sourceTree = "<group>"; };
 		1A0671F02A7B883C0079B97F /* DataDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDummy.swift; sourceTree = "<group>"; };
@@ -292,6 +295,7 @@
 				1A53A8012A84E352001886C6 /* SnackBar in Frameworks */,
 				1A2D5C5E2A860F84000F51DD /* Cosmos in Frameworks */,
 				1A8C3D682A81E4A900ADE799 /* StripeIdentity in Frameworks */,
+				1A0560F62AA07C22000B04B0 /* JWTDecode in Frameworks */,
 				1A57D1512A8B3AF4002CDAE6 /* DPOTPView in Frameworks */,
 				56380A5DEEEC949634732607 /* Pods_Laza_Mall_Apps.framework in Frameworks */,
 				1A8C3D642A81E4A900ADE799 /* StripeCardScan in Frameworks */,
@@ -615,6 +619,7 @@
 			isa = PBXGroup;
 			children = (
 				1A91598C2A793F3500139480 /* MenuVC.swift */,
+				1A0560F72AA0C525000B04B0 /* ChangePasswordVC.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -846,6 +851,7 @@
 				1A2D5C5D2A860F84000F51DD /* Cosmos */,
 				1A57D1502A8B3AF4002CDAE6 /* DPOTPView */,
 				1A3A74192A96F30600B7D008 /* GoogleSignIn */,
+				1A0560F52AA07C22000B04B0 /* JWTDecode */,
 			);
 			productName = "Laza Mall Apps";
 			productReference = 1ACBD6362A6FD02C002C12A2 /* Laza Mall Apps.app */;
@@ -929,6 +935,7 @@
 				1A2D5C5C2A860F84000F51DD /* XCRemoteSwiftPackageReference "Cosmos" */,
 				1A57D14F2A8B3AF4002CDAE6 /* XCRemoteSwiftPackageReference "DPOTPView" */,
 				1A3A74182A96F30600B7D008 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				1A0560F42AA07C21000B04B0 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 			);
 			productRefGroup = 1ACBD6372A6FD02C002C12A2 /* Products */;
 			projectDirPath = "";
@@ -1119,6 +1126,7 @@
 				1A3A741D2A9733BE00B7D008 /* AddressVM.swift in Sources */,
 				1A53A8032A84E37A001886C6 /* Snack Bar.swift in Sources */,
 				1A2D5C5B2A8608D5000F51DD /* HomeViewModel.swift in Sources */,
+				1A0560F82AA0C525000B04B0 /* ChangePasswordVC.swift in Sources */,
 				1A0992942A8F0B95006F1175 /* DetailProductVM.swift in Sources */,
 				1A2B36432A70F7C40050671E /* MainTabBarVC.swift in Sources */,
 				1AD4AC962A95F6270010E833 /* ViewAllVC.swift in Sources */,
@@ -1525,6 +1533,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1A0560F42AA07C21000B04B0 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		1A2D5C5C2A860F84000F51DD /* XCRemoteSwiftPackageReference "Cosmos" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
@@ -1576,6 +1592,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1A0560F52AA07C22000B04B0 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0560F42AA07C21000B04B0 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
+		};
 		1A2D5C5D2A860F84000F51DD /* Cosmos */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1A2D5C5C2A860F84000F51DD /* XCRemoteSwiftPackageReference "Cosmos" */;

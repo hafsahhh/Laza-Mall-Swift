@@ -50,6 +50,12 @@ class WishlistVC: UIViewController {
         wishlistCollectView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getUserWishlist()
+        wishlistCollectView.reloadData()
+    }
+    
     func getUserWishlist() {
         wishlistViewModel.getWishlistUser { result in
             DispatchQueue.main.async {

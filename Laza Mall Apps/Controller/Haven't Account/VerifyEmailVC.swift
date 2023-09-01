@@ -13,6 +13,7 @@ class VerifyEmailVC: UIViewController {
     @IBOutlet weak var verifyEmailBtnView: UIButton!
     
     let verifyEmailViewModel = VerifyEmailViewModel()
+    var activityIndicator: UIActivityIndicatorView!
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -38,8 +39,19 @@ class VerifyEmailVC: UIViewController {
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
         
-        verifyEmailBtnView.isEnabled = false
+        // Initialize activity indicator
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
         
+        // Configure constraints for the activity indicator
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        
+        verifyEmailBtnView.isEnabled = false
         emailAddressView.addTarget(self, action:  #selector(cekValidasi),  for:.editingChanged )
         
     }
@@ -62,11 +74,28 @@ class VerifyEmailVC: UIViewController {
         }
     }
     
+    // MARK: - Func Start Loading
+    private func startLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+            self.view.backgroundColor = UIColor.lightGray
+        }
+    }
+
+    // MARK: - Func Stop Loading
+    private func stopLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.view.backgroundColor = UIColor.white
+        }
+    }
+    
     // MARK: - Func getPassEmail
     // Panggil Func getPassEmail
     func verifyEmailApi() {
         let email = emailAddressView.text ?? ""
         verifyEmailViewModel.sendVeifyEmail (email: email) { result in
+            self.stopLoading()
             switch result {
             case .success :
                 DispatchQueue.main.async {
@@ -95,7 +124,7 @@ class VerifyEmailVC: UIViewController {
     }
     
     @IBAction func verifyEmailBtn(_ sender: UIButton) {
-        
+        startLoading()
         verifyEmailApi()
     }
     

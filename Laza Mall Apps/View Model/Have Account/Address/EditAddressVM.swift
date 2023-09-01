@@ -26,6 +26,7 @@ class EditAddressViewModel {
         // Menyiapkan permintaan dengan metode HTTP DELETE dan token otentikasi
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
+       
         request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
         request.httpBody = ApiService.getHttpBodyRaw(param: [
             "country": country,

@@ -114,6 +114,9 @@ class CartVC: UIViewController{
             self.deliveryAddressView.text = primaryAddress.country.capitalized
             self.cityAddress.text = primaryAddress.city.capitalized
         } else {
+            // Gunakan alamat utama jika alamat yang dipilih tidak ada
+            self.deliveryAddressView.text = "None"
+            self.cityAddress.text = "None"
             print("Tidak ada alamat utama atau alamat yang dipilih")
         }
     }
@@ -166,7 +169,7 @@ class CartVC: UIViewController{
 
 extension CartVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if cartModel?.data.products.count == 0 {
+        if cartModel?.data.products.count == nil {
             emptyDataCart.isHidden = false
         } else {
             emptyDataCart.isHidden = true

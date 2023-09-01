@@ -99,4 +99,10 @@ class MenuVC: UIViewController {
 //        self.navigationController?.view.window?.windowScene?.keyWindow?.rootViewController = vc
     }
     
+
+    @IBAction func passwordMenuBtn(_ sender: Any) {
+        let passwordBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChangePasswordVC")as! ChangePasswordVC
+        self.navigationController?.pushViewController(passwordBtn, animated: true)
+    }
+    
 }
