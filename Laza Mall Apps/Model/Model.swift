@@ -100,6 +100,22 @@ struct ResponFailed : Codable {
     let description: String
 }
 
+// MARK: - refreshTokenResponse
+
+struct refreshTokenResponse: Codable {
+    let status: String
+    let isError: Bool
+    let data: RefreshToken
+}
+
+// MARK: - RefreshToken
+typealias AuthRefreshToken = RefreshToken?
+struct RefreshToken: Codable {
+    let access_token: String
+    let refresh_token: String
+}
+
+
 // MARK: - User
 typealias UserIndex = [allUser]
 struct userIndex : Codable{

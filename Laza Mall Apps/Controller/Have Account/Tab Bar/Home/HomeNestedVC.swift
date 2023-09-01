@@ -77,9 +77,7 @@ class HomeNestedVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+
         searchHome.delegate = self
         AppSnackBar.make(in: self.view, message: "Welcome to LAZA MALL", duration: .lengthLong).show()
         //func tab Bar action
@@ -93,6 +91,9 @@ class HomeNestedVC: UIViewController {
         //menu button
         let menuBtn = UIBarButtonItem(customView: menuBtn)
         self.navigationItem.leftBarButtonItem  = menuBtn
+        
+        //hide back button
+        navigationItem.hidesBackButton = true
         
 //        // datasource and delegate
 //        self.homeTableView.dataSource = self
@@ -137,22 +138,16 @@ class HomeNestedVC: UIViewController {
     }
     
     func jwtExpired() {
-        
-        guard let token = UserDefaults.standard.data(forKey: "auth_token"),
-            let authToken = try? JSONDecoder().decode(AuthToken.self, from: token) else {
-            return }
-
         do {
-            let jwt = try decode(jwt: authToken.access_token)
-            print("token\(token)")
-            if jwt.expired {
+            guard let tokenData = KeychainManager.shared.getAccessToken() else {
+                print("token data kosong")
+                self.navigationController?.popToRootViewController(animated: false)
+                return }
+            let jwt = try decode(jwt: tokenData)
+            if true {
+//            if jwt.expired {
                 isValidToken = false
-                alertShowApi(title: "Warning", message: "Token is expired, please re-login"){
-                    // Menghapus data dari UserDefaults
-                    UserDefaults.standard.removeObject(forKey: "auth_token")
-                    // Mengarahkan pengguna kembali ke root view controller
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
+                updateToken()
             } else {
                 isValidToken = true
             }
@@ -162,6 +157,20 @@ class HomeNestedVC: UIViewController {
         }
     }
     
+    func updateToken() {
+        ApiRefreshToken().apiRefreshToken(){ result in
+            switch result {
+            case .success(let json):
+                print("Response JSON: \(String(describing: json))")
+            case .failure(let error):
+                print("Error update token: \(error)")
+                // Handle error appropriately
+            }
+        }
+        
+    }
+    
+
 }
 
 extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTableCellProtocol, categoryTableCellProtocol {
@@ -241,24 +250,24 @@ extension HomeNestedVC: UISearchBarDelegate{
 //        let authToken = try? JSONDecoder().decode(AuthToken.self, from: tokenData) else {
 //        return
 //    }
-//    
+//
 //    do {
 //        let jwt = try decode(jwt: authToken.access_token)
-//        
+//
 //        if jwt.expired {
 //            guard let refreshTokenData = UserDefaults.standard.data(forKey: "refresh_token"),
 //                let refreshToken = try? JSONDecoder().decode(String.self, from: refreshTokenData) else {
 //                return
 //            }
 //            print("refresh Token\(refreshToken)")
-//            
+//
 //            // Lakukan proses pembaruan access token dengan menggunakan refresh token
 //            // Contoh: buat request ke server untuk mendapatkan access token baru menggunakan refresh token
-//            
+//
 //            // Setelah mendapatkan access token baru, simpan ke UserDefaults
 //            let newAccessToken = "new_access_token_here" // Gantikan dengan access token baru yang didapatkan
 //            UserDefaults.standard.set(newAccessToken, forKey: "auth_token")
-//            
+//
 //            // Lanjutkan dengan validasi token yang baru saja diperbarui
 //            let newJwt = try decode(jwt: newAccessToken)
 //            if newJwt.expired {
@@ -270,7 +279,7 @@ extension HomeNestedVC: UISearchBarDelegate{
 //        } else {
 //            isValidToken = true
 //        }
-//        
+//
 //    } catch {
 //        print("Error decoding token")
 //    }

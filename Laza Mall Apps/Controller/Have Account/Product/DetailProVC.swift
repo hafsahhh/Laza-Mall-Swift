@@ -7,6 +7,7 @@
 
 import UIKit
 import Cosmos
+import JWTDecode
 
 class DetailProVC: UIViewController {
     
@@ -37,6 +38,7 @@ class DetailProVC: UIViewController {
     var imageName: String = ""
     var idSizeProductSelected: Int!
     var selectedSizeIndexPath: IndexPath?
+    var isValidToken = false
     
     
     // MARK: - Button back using programmaticly
@@ -166,10 +168,6 @@ class DetailProVC: UIViewController {
         
         detailProductApi()
         
-        //category collection
-        sizeCollectView.dataSource = self
-        sizeCollectView.delegate = self
-        sizeCollectView.register(sizeCollectCell.nib(), forCellWithReuseIdentifier: sizeCollectCell.identifier)
         
         
         isProductInWishlists(productId: productId) { isInWishlist in
@@ -185,14 +183,22 @@ class DetailProVC: UIViewController {
             }
         }
         
+
+        
     }
-    
+
     // MARK: - View Will Appear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
     }
     
+    func callCollectView(){
+        //category collection
+        sizeCollectView.dataSource = self
+        sizeCollectView.delegate = self
+        sizeCollectView.register(sizeCollectCell.nib(), forCellWithReuseIdentifier: sizeCollectCell.identifier)
+    }
     // MARK: - Func Detail Product
     func detailProductApi() {
         detailProductViewModel.getDataDetailProduct(id: productId) { [weak self] productDetail in
@@ -247,6 +253,7 @@ class DetailProVC: UIViewController {
         }
     }
     
+
     
     // MARK: - Review All
     @IBAction func reviewViewAll(_ sender: Any) {

@@ -57,13 +57,14 @@ class LoginViewModel{
                        let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data),
                        loginResponse.status == "OK",
                        !loginResponse.isError {
-                        // Jika login berhasil, menyimpan token ke UserDefaults
-                        let authToken: AuthToken = AuthData(access_token: loginResponse.data.access_token, refresh_token: loginResponse.data.refresh_token)
-                        if let encodedToken = try? JSONEncoder().encode(authToken) {
-                            UserDefaults.standard.set(encodedToken, forKey: "auth_token")
-                            print("Access Token: \(loginResponse.data.access_token)") // Menampilkan access token
-                            print("refresh Token: \(loginResponse.data.refresh_token)")
-                        }
+
+                        KeychainManager.shared.saveAccessToken(token: loginResponse.data.access_token)
+                        KeychainManager.shared.saveRefreshToken(token: loginResponse.data.refresh_token)
+                        print("Access Token: \(loginResponse.data.access_token)") // Menampilkan access token
+                        print("refresh Token: \(loginResponse.data.refresh_token)")
+
+                        
+                        
                         // Menyampaikan hasil berhasil melalui completion handler
                         completion(.success(data))
                     } else {
@@ -79,22 +80,22 @@ class LoginViewModel{
     
     func getUserProfile(completion: @escaping (Result<DataUseProfile?, Error>) -> Void) {
         // Memastikan token autentikasi tersedia dalam UserDefaults
-        
-        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
-              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
-            // Handle if the token is not available in UserDefaults
-            return
-        }
+        print("ini prfile")
+//        guard let encodedToken = UserDefaults.standard.data(forKey: "auth_token"),
+//              let authToken = try? JSONDecoder().decode(AuthToken.self, from: encodedToken) else {
+//            return
+//        }
 
-        let accessToken = authToken.access_token
+//        let accessToken = authToken.access_token
         // Use the access token as needed
 
 //        print("token profile \(authToken)")
         guard let url = URL(string: Endpoints.Gets.profile.url) else {return}
         
         // Membuat permintaan URLRequest dengan menambahkan token ke header
+        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
         var request = URLRequest(url: url)
-        request.setValue("Bearer \(authToken.access_token)", forHTTPHeaderField: "X-Auth-Token")
+        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
         
         // Memulai permintaan HTTP untuk mengambil profil pengguna
         URLSession.shared.dataTask(with: request) { (data, response, error) in

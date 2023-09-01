@@ -56,6 +56,9 @@ class CartVC: UIViewController{
         getUserCarts()
         getSizeAll()
         cartTableView.reloadData()
+        
+        //hide back button
+        navigationItem.hidesBackButton = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

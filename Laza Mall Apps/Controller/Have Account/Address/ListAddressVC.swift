@@ -68,7 +68,10 @@ class ListAddressVC: UIViewController {
                 case .success(let userAddress):
                     if let userAddress = userAddress { // Safely unwrap the optional
                         self.modelAddress = userAddress
-                        self.modelAddress?.data?.reverse()
+                        let primaryAddress = userAddress.data?.filter { $0.isPrimary != nil} ?? []
+                        let nonPrimaryAddress = userAddress.data?.filter { $0.isPrimary == nil} ?? []
+                        let allTypeAddress = primaryAddress + nonPrimaryAddress
+                        self.modelAddress?.data = allTypeAddress
                     }
                     self.listAddressTableView.reloadData()
                     print("ini address all user")

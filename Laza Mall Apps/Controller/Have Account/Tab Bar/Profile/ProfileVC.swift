@@ -43,6 +43,8 @@ class ProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //hide back button
+        navigationItem.hidesBackButton = true
         
         //func tab Bar action
         setupTabBarText()

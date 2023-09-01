@@ -49,6 +49,7 @@
 		1A2B364A2A70FEE10050671E /* ApiAllProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36492A70FEE10050671E /* ApiAllProduct.swift */; };
 		1A2D5C5B2A8608D5000F51DD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D5C5A2A8608D5000F51DD /* HomeViewModel.swift */; };
 		1A2D5C5E2A860F84000F51DD /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2D5C5D2A860F84000F51DD /* Cosmos */; };
+		1A2E7D7B2AA17E8700AD9311 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D7A2AA17E8700AD9311 /* TokenManager.swift */; };
 		1A3A741A2A96F30600B7D008 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 1A3A74192A96F30600B7D008 /* GoogleSignIn */; };
 		1A3A741D2A9733BE00B7D008 /* AddressVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A741C2A9733BE00B7D008 /* AddressVM.swift */; };
 		1A3A741F2A97374200B7D008 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A741E2A97374200B7D008 /* AddressModel.swift */; };
@@ -201,6 +202,7 @@
 		1A2B36452A70F9030050671E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1A2B36492A70FEE10050671E /* ApiAllProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAllProduct.swift; sourceTree = "<group>"; };
 		1A2D5C5A2A8608D5000F51DD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		1A2E7D7A2AA17E8700AD9311 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		1A3A741C2A9733BE00B7D008 /* AddressVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVM.swift; sourceTree = "<group>"; };
 		1A3A741E2A97374200B7D008 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		1A3A74222A9741AA00B7D008 /* ListAddressVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAddressVM.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				1A0992972A8F6252006F1175 /* Date Time.swift */,
 				1AA41A8B2A92378E00018676 /* KeyChainManage.swift */,
 				1AD4AC8A2A9595BF0010E833 /* ApiCall.swift */,
+				1A2E7D7A2AA17E8700AD9311 /* TokenManager.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1132,6 +1135,7 @@
 				1AD4AC962A95F6270010E833 /* ViewAllVC.swift in Sources */,
 				1AAF92502A7F4649005BBB68 /* AddressVC.swift in Sources */,
 				1A69B8F02A80AE070059EB85 /* PaymentVC.swift in Sources */,
+				1A2E7D7B2AA17E8700AD9311 /* TokenManager.swift in Sources */,
 				1A0992982A8F6252006F1175 /* Date Time.swift in Sources */,
 				1A9986902A9C83C3008048C3 /* EditAddressVM.swift in Sources */,
 				1A69B8F22A80E7620059EB85 /* AddCardVC.swift in Sources */,
