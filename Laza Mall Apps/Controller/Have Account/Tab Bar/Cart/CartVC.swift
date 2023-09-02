@@ -117,15 +117,13 @@ class CartVC: UIViewController{
             self.deliveryAddressView.text = primaryAddress.country.capitalized
             self.cityAddress.text = primaryAddress.city.capitalized
         } else {
-            // Gunakan alamat utama jika alamat yang dipilih tidak ada
-            self.deliveryAddressView.text = "None"
-            self.cityAddress.text = "None"
+            // Tampilkan teks "No Address" jika tidak ada alamat utama atau alamat yang dipilih
+            self.deliveryAddressView.text = "No Address"
+            self.cityAddress.text = "No Address"
             print("Tidak ada alamat utama atau alamat yang dipilih")
         }
     }
 
-
-    
     func getSizeAll(){
         cartsViewModel.getSizeAll { allSize in
             DispatchQueue.main.async { [weak self] in
@@ -156,7 +154,7 @@ class CartVC: UIViewController{
     
     
     @IBAction func paymentBtn(_ sender: Any) {
-        let payemntBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChoosePaymentVC") as! ChoosePaymentVC
+        let payemntBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
         self.navigationController?.pushViewController(payemntBtn, animated: true)
     }
     

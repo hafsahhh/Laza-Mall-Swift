@@ -113,16 +113,16 @@ class HomeNestedVC: UIViewController {
  
     }
     
-    func callTableView(){
-        // datasource and delegate
+    func callTableView() {
+        // Data source dan delegate
         self.homeTableView.dataSource = self
         self.homeTableView.delegate = self
         
-        // Register the xib for tableview cell category
+        // Daftarkan xib untuk sel tabel kategori
         let cellCatNib = UINib(nibName: "CategoryTableCell", bundle: nil)
         self.homeTableView.register(cellCatNib, forCellReuseIdentifier: "CategoryTableCell")
     
-        // Register the xib for tableview cell product
+        // Daftarkan xib untuk sel tabel produk
         homeTableView.register(ProductTableCell.nib(), forCellReuseIdentifier: ProductTableCell.identifier)
     }
     
@@ -137,8 +137,8 @@ class HomeNestedVC: UIViewController {
 //            if jwt.expired {
                 isValidToken = false
                 updateToken()
-            } else {
-                isValidToken = true
+//            } else {
+//                isValidToken = true
             }
             
         } catch {
@@ -146,17 +146,17 @@ class HomeNestedVC: UIViewController {
         }
     }
     
+    
     func updateToken() {
-        ApiRefreshToken().apiRefreshToken(){ result in
+        ApiRefreshToken().apiRefreshToken() { result in
             switch result {
             case .success(let json):
                 print("Response JSON: \(String(describing: json))")
             case .failure(let error):
                 print("Error update token: \(error)")
-                // Handle error appropriately
+                // Tangani error dengan benar
             }
         }
-        
     }
     
 
@@ -234,42 +234,3 @@ extension HomeNestedVC: UISearchBarDelegate{
     }
 }
 
-//func jwtExpired() {
-//    guard let tokenData = UserDefaults.standard.data(forKey: "auth_token"),
-//        let authToken = try? JSONDecoder().decode(AuthToken.self, from: tokenData) else {
-//        return
-//    }
-//
-//    do {
-//        let jwt = try decode(jwt: authToken.access_token)
-//
-//        if jwt.expired {
-//            guard let refreshTokenData = UserDefaults.standard.data(forKey: "refresh_token"),
-//                let refreshToken = try? JSONDecoder().decode(String.self, from: refreshTokenData) else {
-//                return
-//            }
-//            print("refresh Token\(refreshToken)")
-//
-//            // Lakukan proses pembaruan access token dengan menggunakan refresh token
-//            // Contoh: buat request ke server untuk mendapatkan access token baru menggunakan refresh token
-//
-//            // Setelah mendapatkan access token baru, simpan ke UserDefaults
-//            let newAccessToken = "new_access_token_here" // Gantikan dengan access token baru yang didapatkan
-//            UserDefaults.standard.set(newAccessToken, forKey: "auth_token")
-//
-//            // Lanjutkan dengan validasi token yang baru saja diperbarui
-//            let newJwt = try decode(jwt: newAccessToken)
-//            if newJwt.expired {
-//                isValidToken = false
-//                // Handle jika token baru juga kedaluwarsa setelah diperbarui
-//            } else {
-//                isValidToken = true
-//            }
-//        } else {
-//            isValidToken = true
-//        }
-//
-//    } catch {
-//        print("Error decoding token")
-//    }
-//}

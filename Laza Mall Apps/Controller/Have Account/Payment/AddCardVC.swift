@@ -18,6 +18,7 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     
     private var cardParams: STPPaymentMethodCardParams!
     weak var delegatePayment: PaymentCardTextFieldDelegate?
+    let paymentTextField = STPPaymentCardTextField()
     
     @IBOutlet weak var cardNumberText: STPPaymentCardTextField!
     {
@@ -25,7 +26,16 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
             cardNumberText.delegate = self
         }
     }
+
+    @IBOutlet weak var cardNameText: UITextField!{
+        didSet {
+            cardNameText.addTarget(self, action: #selector(cardNameTextChanged(_:)), for: .editingChanged)
+        }
+    }
     
+    @objc func cardNameTextChanged(_ textField: UITextField) {
+        creditCardView.cardHolderString = textField.text ?? ""
+    }
     
     
     @IBOutlet weak var creditCardView: CreditCardFormView!
@@ -55,13 +65,9 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
         self.navigationItem.leftBarButtonItem  = backBarBtn
 
         cardNumberText.postalCodeEntryEnabled = false
-
-        
+//        creditCardView.cardHolderString = cardNameText!.text ?? ""
+        paymentTextField.delegate = self
         cardParams = STPPaymentMethodCardParams()
-        cardParams.number = cardNumberText.cardNumber
-        cardParams.expMonth = 03
-        cardParams.expYear = 23
-//        cardParams.cvc = "1234"
         self.cardNumberText.paymentMethodParams.card = cardParams
 
     }
@@ -71,6 +77,7 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
         
         // load saved card params
         creditCardView.paymentCardTextFieldDidChange(cardNumber: cardParams.number, expirationYear: cardParams.expYear as? UInt, expirationMonth: cardParams.expMonth as? UInt)
+        
         
     }
 
@@ -105,5 +112,16 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
         self.navigationController?.pushViewController(addCard, animated: true)
     }
     
+
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == cardNameText {
+            textField.resignFirstResponder()
+            paymentTextField.becomeFirstResponder()
+        } else if textField == cardNameText  {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 }
 

@@ -95,11 +95,6 @@ class ListAddressVC: UIViewController {
                     }
                     print("API Response delete address successs")
                 case .failure(let error):
-//                    self.addressViewModel.apiAddressAlert = { data in
-//                        DispatchQueue.main.async {
-//                            ShowAlert.performAlertApi(on: self, title: "Notification", message: data)
-//                        }
-//                    }
                     print("API delete address Error: \(error.localizedDescription)")
                 }
             }

@@ -11,6 +11,7 @@ class PaymentVC: UIViewController {
 
     
     @IBOutlet weak var cardPaymentCollect: UICollectionView!
+    
     //Back Button
     private lazy var backBtn : UIButton = {
         //call back button
@@ -28,12 +29,44 @@ class PaymentVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+//    //Add new Card Button
+//    private lazy var addCardBtn : UIButton = {
+//        //call back button
+//        let backBtn = UIButton.init(type: .custom)
+//        backBtn.setImage(UIImage(named:"Back"), for: .normal)
+//        backBtn.addTarget(self, action: #selector(addCardBtnAct), for: .touchUpInside)
+//        backBtn.frame = CGRect(x: 330, y: 0, width: 70, height: 70)
+//
+//        return backBtn
+//    }()
+
+    //Add Card Button
+    @objc func addCardBtnAct(){
+        let addCardBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddCardVC") as! AddCardVC
+        self.navigationController?.pushViewController(addCardBtn, animated: true)
+    }
+    
+    // MARK: - Button Like using programmaticly
+    //like Button
+    private lazy var addCardBtn : UIButton = {
+        //call back button
+        let addCardBtn = UIButton.init(type: .custom)
+        addCardBtn.setImage(UIImage(named:"PlusBtn"), for: .normal)
+        addCardBtn.addTarget(self, action: #selector(addCardBtnAct), for: .touchUpInside)
+        addCardBtn.frame = CGRect(x: 300, y: 0, width: 70, height: 70)
+        return addCardBtn
+    }()
+    
+    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
+        //cart button
+        let addCardBarBtn = UIBarButtonItem(customView: addCardBtn)
+        self.navigationItem.rightBarButtonItem  = addCardBarBtn
         
         cardPaymentCollect.dataSource = self
         cardPaymentCollect.delegate = self

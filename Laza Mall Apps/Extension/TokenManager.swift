@@ -6,17 +6,19 @@
 //
 
 import Foundation
+
 class ApiRefreshToken {
     
     func apiRefreshToken(completion: @escaping (Result<Data?, Error>) -> Void) {
         // Memastikan token autentikasi tersedia dalam UserDefaults
         
         guard let refreshToken = KeychainManager.shared.getRefreshToken() else {
-            print("kosong")
-            return }
+            print("kosong") // Cetak pesan "kosong" jika refreshToken tidak tersedia
+            return
+        }
         
         guard let url = URL(string: Endpoints.Gets.refreshToken.url) else {
-            completion(.failure(ErrorInfo.Error))
+            completion(.failure(ErrorInfo.Error)) // Jika URL tidak valid, kirim error melalui completion handler
             return
         }
         
@@ -36,7 +38,7 @@ class ApiRefreshToken {
             let statusCode = httpResponse.statusCode
             if statusCode != 200 {
                 // Jika status code tidak 200, coba mengekstrak informasi dari response
-                print("error \(statusCode)")
+                print("error \(statusCode)") // Cetak kode status error
                 // Jika terjadi error saat refreshToken, kirim error melalui completion handler
                 completion(.failure(ErrorInfo.Error))
                 return
