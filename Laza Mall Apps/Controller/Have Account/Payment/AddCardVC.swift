@@ -9,16 +9,13 @@ import UIKit
 import CreditCardForm
 import Stripe
 
-protocol PaymentCardTextFieldDelegate: AnyObject {
-    func paymentCardDidChange(cardNumber: String, expirationYear: UInt?, expirationMonth: UInt?)
-}
-
 
 class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     
     private var cardParams: STPPaymentMethodCardParams!
-    weak var delegatePayment: PaymentCardTextFieldDelegate?
     let paymentTextField = STPPaymentCardTextField()
+    var cardModels = [CreditCard]()
+    var coredataManage = CoreDataManage()
     
     @IBOutlet weak var cardNumberText: STPPaymentCardTextField!
     {
@@ -57,6 +54,7 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - View Didload
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,10 +63,10 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
         self.navigationItem.leftBarButtonItem  = backBarBtn
 
         cardNumberText.postalCodeEntryEnabled = false
-//        creditCardView.cardHolderString = cardNameText!.text ?? ""
         paymentTextField.delegate = self
         cardParams = STPPaymentMethodCardParams()
         self.cardNumberText.paymentMethodParams.card = cardParams
+        
 
     }
     
@@ -108,7 +106,10 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     
     @IBAction func addNewCard(_ sender: UIButton) {
         savedCard()
+        saveCardModelToCoreData()
+        checkIfCardIsSaved()
         let addCard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentVC
+        addCard.cardModels = cardModels
         self.navigationController?.pushViewController(addCard, animated: true)
     }
     
@@ -123,5 +124,40 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
         }
         return true
     }
-}
 
+    func saveCardModelToCoreData() {
+        let cardOwner = cardNameText.text ?? ""
+        let cardNumber = cardNumberText.cardNumber ?? ""
+        let cardExp = " \(cardNumberText.expirationMonth) / \(cardNumberText.expirationYear)"
+        let cardCvv = cardNumberText.cvc ?? ""
+        
+        let newCard = CreditCard(
+            cardOwner: cardOwner,
+            carNumber: cardNumber,
+            cardExp: cardExp,
+            cardCvv: cardCvv
+        )
+        coredataManage.create(newCard) // Save the new card to Core Data
+            
+            // Menambahkan kartu baru ke dalam array
+            cardModels.append(newCard)
+            
+            print("Sukses menyimpan kartu ke Core Data")
+    }
+
+    
+    func checkIfCardIsSaved() {
+        // Memanggil metode retrieve dari CoreDataManage untuk mengambil data dari Core Data
+        let savedCards = coredataManage.retrieve()
+
+        // Anda dapat memeriksa apakah kartu yang baru saja disimpan ada dalam daftar savedCards
+        // Misalnya, dengan memeriksa apakah cardOwner-nya ada dalam daftar savedCards
+        let cardOwnerToCheck = cardNameText.text
+
+        if savedCards.contains(where: { $0.cardOwner == cardOwnerToCheck }) {
+            print("Kartu sudah tersimpan di Core Data")
+        } else {
+            print("Kartu belum tersimpan di Core Data")
+        }
+    }
+}

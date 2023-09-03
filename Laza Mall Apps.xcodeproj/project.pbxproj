@@ -47,6 +47,7 @@
 		1A2B36432A70F7C40050671E /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36422A70F7C40050671E /* MainTabBarVC.swift */; };
 		1A2B36462A70F9030050671E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36452A70F9030050671E /* Model.swift */; };
 		1A2B364A2A70FEE10050671E /* ApiAllProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B36492A70FEE10050671E /* ApiAllProduct.swift */; };
+		1A2D0A582AA40C57002C1159 /* ChangePasswordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D0A572AA40C57002C1159 /* ChangePasswordVM.swift */; };
 		1A2D5C5B2A8608D5000F51DD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2D5C5A2A8608D5000F51DD /* HomeViewModel.swift */; };
 		1A2D5C5E2A860F84000F51DD /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2D5C5D2A860F84000F51DD /* Cosmos */; };
 		1A2E7D7B2AA17E8700AD9311 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D7A2AA17E8700AD9311 /* TokenManager.swift */; };
@@ -130,6 +131,9 @@
 		1AF3808E2A7F258A00A31FC6 /* CartTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AF3808C2A7F258A00A31FC6 /* CartTableCell.xib */; };
 		1AF380902A7F2ACD00A31FC6 /* ApiAllCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF3808F2A7F2ACD00A31FC6 /* ApiAllCart.swift */; };
 		1AF8145A2AA3154A00D35C32 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF814592AA3154A00D35C32 /* PaymentModel.swift */; };
+		1AF8145E2AA35FC800D35C32 /* CoreDataLaza.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8145C2AA35FC700D35C32 /* CoreDataLaza.xcdatamodeld */; };
+		1AF814602AA361C400D35C32 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF8145F2AA361C400D35C32 /* CoreDataManager.swift */; };
+		1AF814632AA366F600D35C32 /* CardPayemntVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF814622AA366F600D35C32 /* CardPayemntVM.swift */; };
 		56380A5DEEEC949634732607 /* Pods_Laza_Mall_Apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C592FC0A93E2E3000B7BC4BD /* Pods_Laza_Mall_Apps.framework */; };
 		769472CC08A4F183FBF02C0F /* Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8128A43794B2D80F40D4DD40 /* Pods_Laza_Mall_Apps_Laza_Mall_AppsUITests.framework */; };
 		D37F379CB3A5A65F258A124D /* Pods_Laza_Mall_AppsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED84E7319BA563EE0FA3F6D4 /* Pods_Laza_Mall_AppsTests.framework */; };
@@ -202,6 +206,7 @@
 		1A2B36422A70F7C40050671E /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
 		1A2B36452A70F9030050671E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1A2B36492A70FEE10050671E /* ApiAllProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAllProduct.swift; sourceTree = "<group>"; };
+		1A2D0A572AA40C57002C1159 /* ChangePasswordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVM.swift; sourceTree = "<group>"; };
 		1A2D5C5A2A8608D5000F51DD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1A2E7D7A2AA17E8700AD9311 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		1A3A741C2A9733BE00B7D008 /* AddressVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVM.swift; sourceTree = "<group>"; };
@@ -276,6 +281,9 @@
 		1AF3808C2A7F258A00A31FC6 /* CartTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableCell.xib; sourceTree = "<group>"; };
 		1AF3808F2A7F2ACD00A31FC6 /* ApiAllCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiAllCart.swift; sourceTree = "<group>"; };
 		1AF814592AA3154A00D35C32 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		1AF8145D2AA35FC800D35C32 /* CoreDataLaza.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataLaza.xcdatamodel; sourceTree = "<group>"; };
+		1AF8145F2AA361C400D35C32 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		1AF814622AA366F600D35C32 /* CardPayemntVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPayemntVM.swift; sourceTree = "<group>"; };
 		2F5E43070E35D62F25DF064F /* Pods-Laza Mall Apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza Mall Apps.release.xcconfig"; path = "Target Support Files/Pods-Laza Mall Apps/Pods-Laza Mall Apps.release.xcconfig"; sourceTree = "<group>"; };
 		50EFF30AA52DE4DAC95E03C3 /* Pods-Laza Mall AppsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza Mall AppsTests.release.xcconfig"; path = "Target Support Files/Pods-Laza Mall AppsTests/Pods-Laza Mall AppsTests.release.xcconfig"; sourceTree = "<group>"; };
 		77C9A6C93833B58F4F11160D /* Pods-Laza Mall AppsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Laza Mall AppsTests.debug.xcconfig"; path = "Target Support Files/Pods-Laza Mall AppsTests/Pods-Laza Mall AppsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -379,6 +387,8 @@
 		1A0992992A8F6F35006F1175 /* Have Account */ = {
 			isa = PBXGroup;
 			children = (
+				1A2D0A562AA40C43002C1159 /* Change Password */,
+				1AF814612AA366E000D35C32 /* Payment */,
 				1A3A741B2A9733A800B7D008 /* Address */,
 				1AD4AC872A958EE40010E833 /* Cart */,
 				1A4CC3C92A93B8D800100439 /* Wishlist */,
@@ -519,6 +529,14 @@
 				1AF814592AA3154A00D35C32 /* PaymentModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1A2D0A562AA40C43002C1159 /* Change Password */ = {
+			isa = PBXGroup;
+			children = (
+				1A2D0A572AA40C57002C1159 /* ChangePasswordVM.swift */,
+			);
+			path = "Change Password";
 			sourceTree = "<group>";
 		};
 		1A2D5C592A8608AE000F51DD /* View Model */ = {
@@ -738,6 +756,7 @@
 		1ACBD6382A6FD02C002C12A2 /* Laza Mall Apps */ = {
 			isa = PBXGroup;
 			children = (
+				1AF8145B2AA35F7B00D35C32 /* Core Data */,
 				1A2D5C592A8608AE000F51DD /* View Model */,
 				1A29A8B32A7C884F00FA25AA /* fonts */,
 				1A0671EF2A7B88270079B97F /* Data Dummy */,
@@ -800,6 +819,23 @@
 				1AF3808C2A7F258A00A31FC6 /* CartTableCell.xib */,
 			);
 			path = Cart;
+			sourceTree = "<group>";
+		};
+		1AF8145B2AA35F7B00D35C32 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				1AF8145C2AA35FC700D35C32 /* CoreDataLaza.xcdatamodeld */,
+				1AF8145F2AA361C400D35C32 /* CoreDataManager.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		1AF814612AA366E000D35C32 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				1AF814622AA366F600D35C32 /* CardPayemntVM.swift */,
+			);
+			path = Payment;
 			sourceTree = "<group>";
 		};
 		8B4B3D084DFB1D1DB974FCF2 /* Frameworks */ = {
@@ -1118,6 +1154,7 @@
 				1A561E542A7A03B30024FF29 /* IntrinsicTableView.swift in Sources */,
 				1A2B363E2A70DE700050671E /* NewPasswordVC.swift in Sources */,
 				1A4F61D12A77F298004D4C7E /* WishlistVC.swift in Sources */,
+				1AF814632AA366F600D35C32 /* CardPayemntVM.swift in Sources */,
 				1A2B364A2A70FEE10050671E /* ApiAllProduct.swift in Sources */,
 				1A11841A2A8867F400D2CAC9 /* SignUpVM.swift in Sources */,
 				1A0671F82A7B8B360079B97F /* ReviewsVC.swift in Sources */,
@@ -1133,6 +1170,7 @@
 				1A53A8032A84E37A001886C6 /* Snack Bar.swift in Sources */,
 				1A2D5C5B2A8608D5000F51DD /* HomeViewModel.swift in Sources */,
 				1A0560F82AA0C525000B04B0 /* ChangePasswordVC.swift in Sources */,
+				1AF8145E2AA35FC800D35C32 /* CoreDataLaza.xcdatamodeld in Sources */,
 				1A0992942A8F0B95006F1175 /* DetailProductVM.swift in Sources */,
 				1A2B36432A70F7C40050671E /* MainTabBarVC.swift in Sources */,
 				1AD4AC962A95F6270010E833 /* ViewAllVC.swift in Sources */,
@@ -1142,6 +1180,7 @@
 				1A0992982A8F6252006F1175 /* Date Time.swift in Sources */,
 				1A9986902A9C83C3008048C3 /* EditAddressVM.swift in Sources */,
 				1A69B8F22A80E7620059EB85 /* AddCardVC.swift in Sources */,
+				1AF814602AA361C400D35C32 /* CoreDataManager.swift in Sources */,
 				1A24CEA02A789396008F693F /* CategoryCollectionCell.swift in Sources */,
 				1ACBD63E2A6FD02C002C12A2 /* ViewController.swift in Sources */,
 				1ACBD6712A700FA3002C12A2 /* LoginVC.swift in Sources */,
@@ -1175,6 +1214,7 @@
 				1ACBD66F2A7009E5002C12A2 /* SignUpVC.swift in Sources */,
 				1A0992962A8F0BE4006F1175 /* DetailProdModel.swift in Sources */,
 				1A041A8C2A83852A00737C0A /* ListAddressTableCell.swift in Sources */,
+				1A2D0A582AA40C57002C1159 /* ChangePasswordVM.swift in Sources */,
 				1ACBD6732A7012A7002C12A2 /* ForgotPasswordVC.swift in Sources */,
 				1AF380902A7F2ACD00A31FC6 /* ApiAllCart.swift in Sources */,
 				1A0671FC2A7BEB370079B97F /* VerificationCodeVC.swift in Sources */,
@@ -1671,6 +1711,19 @@
 			productName = StripePaymentsUI;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		1AF8145C2AA35FC700D35C32 /* CoreDataLaza.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1AF8145D2AA35FC800D35C32 /* CoreDataLaza.xcdatamodel */,
+			);
+			currentVersion = 1AF8145D2AA35FC800D35C32 /* CoreDataLaza.xcdatamodel */;
+			path = CoreDataLaza.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1ACBD62E2A6FD02C002C12A2 /* Project object */;
 }

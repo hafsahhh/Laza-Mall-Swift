@@ -3274,6 +3274,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cardCvvView" destination="6tb-9X-ss1" id="mVT-ud-Qls"/>
+                        <outlet property="cardExpiredView" destination="nIX-QP-3pg" id="Coh-ie-goy"/>
+                        <outlet property="cardNumberView" destination="QG1-LT-jA2" id="IJO-wU-o3d"/>
+                        <outlet property="cardOwnerView" destination="hdG-Zc-3v2" id="lhV-jz-g7s"/>
                         <outlet property="cardPaymentCollect" destination="P3g-rh-rHn" id="10W-TO-biu"/>
                     </connections>
                 </viewController>
@@ -4105,7 +4109,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nX5-gw-Itk">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nX5-gw-Itk">
                                 <rect key="frame" x="20" y="439" width="353" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="vwl-S3-5v3"/>
@@ -4114,7 +4118,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dj-8w-EVi">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dj-8w-EVi">
                                 <rect key="frame" x="20" y="525" width="353" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="qu8-IL-SW8"/>
@@ -4221,9 +4225,9 @@
                     </view>
                     <connections>
                         <outlet property="changePassView" destination="HAP-r5-MPx" id="qyg-F1-b93"/>
-                        <outlet property="confirmPassView" destination="4dj-8w-EVi" id="nIc-wd-q1w"/>
-                        <outlet property="newPassView" destination="nX5-gw-Itk" id="Hoe-h0-w3B"/>
-                        <outlet property="oldPassView" destination="k1f-hB-dMB" id="7Md-3K-xoN"/>
+                        <outlet property="confirmPassView" destination="4dj-8w-EVi" id="yxD-Y2-6X2"/>
+                        <outlet property="newPassView" destination="nX5-gw-Itk" id="0LK-ac-8tK"/>
+                        <outlet property="oldPassView" destination="k1f-hB-dMB" id="ech-Zp-MKh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzp-Za-YkH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

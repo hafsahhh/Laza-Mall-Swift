@@ -18,11 +18,30 @@ class PaymentCollectCell: UICollectionViewCell {
     
     @IBOutlet weak var listCardPayment: CreditCardFormView!
     
+    var cardModel: [CreditCard] = []
+    var coreDataManage = CoreDataManage()
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
 
+    func fillCardDataFromCoreData(card: CreditCard) {
+        let cardOwner = card.cardOwner
+        print("Card Owner \(cardOwner)")
+        let cardNumber = card.carNumber
+        print("Nomer kartu \(cardNumber)")
+        let expirationDate = card.cardExp
+        print("expirationDate \(expirationDate)")
+        let cvc = card.cardCvv
+
+        // Memanggil metode paymentCardTextFieldDidChange untuk mengatur kartu kredit
+        listCardPayment.paymentCardTextFieldDidChange(cardNumber: cardNumber, expirationYear: nil, expirationMonth: nil, cvc: cvc)
+        listCardPayment.cardHolderString = cardOwner
+    }
+
+    
     // MARK: - Func Credit Card
     func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
         listCardPayment.paymentCardTextFieldDidChange(cardNumber: textField.cardNumber, expirationYear: UInt(textField.expirationYear), expirationMonth: UInt(textField.expirationMonth), cvc: textField.cvc)

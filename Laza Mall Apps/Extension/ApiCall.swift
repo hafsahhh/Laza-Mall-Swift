@@ -46,7 +46,7 @@ enum Endpoints {
         case addAddress
         case updateAddresss(idAddress: Int)
         case deleteAddress(idAddress: Int)
-        case chnagePassword
+        case changePassword
         case refreshToken
         public var url: String {
             switch self {
@@ -98,7 +98,7 @@ enum Endpoints {
                 return "\(API.APIAddress(isMockApi: false))address/\(idAddress)"
             case .deleteAddress (idAddress: let idAddress):
                 return "\(API.APIAddress(isMockApi: false))address/\(idAddress)"
-            case .chnagePassword:
+            case .changePassword:
                 return "\(API.APIAddress(isMockApi: false))user/change-password"
             case .refreshToken:
                 return "\(API.APIAddress(isMockApi: false))auth/refresh"

@@ -9,8 +9,33 @@ import UIKit
 
 class PaymentVC: UIViewController {
 
-    
     @IBOutlet weak var cardPaymentCollect: UICollectionView!
+    @IBOutlet weak var cardOwnerView: UITextField!{
+        didSet{
+            cardOwnerView.isEnabled = false
+        }
+    }
+    
+    @IBOutlet weak var cardNumberView: UITextField!{
+        didSet{
+            cardNumberView.isEnabled = false
+        }
+    }
+    
+    @IBOutlet weak var cardExpiredView: UITextField!{
+        didSet{
+            cardExpiredView.isEnabled = false
+        }
+    }
+    
+    @IBOutlet weak var cardCvvView: UITextField!{
+        didSet {
+            cardCvvView.isEnabled = false
+        }
+    }
+    
+    var cardModels = [CreditCard]()
+    var coreDataManage = CoreDataManage()
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -29,16 +54,6 @@ class PaymentVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-//    //Add new Card Button
-//    private lazy var addCardBtn : UIButton = {
-//        //call back button
-//        let backBtn = UIButton.init(type: .custom)
-//        backBtn.setImage(UIImage(named:"Back"), for: .normal)
-//        backBtn.addTarget(self, action: #selector(addCardBtnAct), for: .touchUpInside)
-//        backBtn.frame = CGRect(x: 330, y: 0, width: 70, height: 70)
-//
-//        return backBtn
-//    }()
 
     //Add Card Button
     @objc func addCardBtnAct(){
@@ -46,8 +61,8 @@ class PaymentVC: UIViewController {
         self.navigationController?.pushViewController(addCardBtn, animated: true)
     }
     
-    // MARK: - Button Like using programmaticly
-    //like Button
+    // MARK: - Button Add New Card using programmaticly
+    // Add new card Button
     private lazy var addCardBtn : UIButton = {
         //call back button
         let addCardBtn = UIButton.init(type: .custom)
@@ -71,7 +86,18 @@ class PaymentVC: UIViewController {
         cardPaymentCollect.dataSource = self
         cardPaymentCollect.delegate = self
         cardPaymentCollect.register(PaymentCollectCell.nib(), forCellWithReuseIdentifier: PaymentCollectCell.identifier)
+
+        cardPaymentCollect.reloadData()
+
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        cardModels = coreDataManage.retrieve()
+        cardPaymentCollect.reloadData()
+    }
+
     
     @IBAction func addNewCartBtn(_ sender: Any) {
         let addCardBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddCardVC") as! AddCardVC
@@ -82,8 +108,10 @@ class PaymentVC: UIViewController {
 
 extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        print("total card \(cardModels.count)")
+        return cardModels.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 300, height: 200)
     }
@@ -92,6 +120,10 @@ extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         else {
             return UICollectionViewCell()
         }
+        
+        let card = cardModels[indexPath.item]
+        
+        listPayCell.fillCardDataFromCoreData(card: card)
         return listPayCell
         
     }
@@ -103,13 +135,7 @@ extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
+    
 }
 
 
-//extension PaymentVC: PaymentCardTextFieldDelegate {
-//    func paymentCardDidChange(cardNumber: String, expirationYear: UInt?, expirationMonth: UInt?) {
-//        <#code#>
-//    }
-
-    
-//}

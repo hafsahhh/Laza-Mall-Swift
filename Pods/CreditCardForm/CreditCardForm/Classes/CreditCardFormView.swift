@@ -527,6 +527,18 @@ public class CreditCardFormView : UIView {
         }
     }
     
+    
+    //Func tambahan
+    public func clear() {
+        cardNumber.text = ""
+        cardHolder.text = ""
+        expireDate.text = "MM/YY"
+        cvc.text = ""
+        amexCVC.text = ""
+        brandImageView.image = nil
+        setType(colors: [defaultCardColor, defaultCardColor], alpha: 0.5, back: defaultCardColor)
+    }
+
 }
 
 //: CardColors

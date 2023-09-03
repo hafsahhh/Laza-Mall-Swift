@@ -46,9 +46,9 @@ class CartsViewModel{
                 }
                 
                 print("Kode status respons: \(httpResponse.statusCode)")
-                print("Data yang Diserialisasi")
-                let serializedJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-                print(serializedJson)
+//                print("Data yang Diserialisasi")
+//                let serializedJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
+//                print(serializedJson)
                 
                 // Mendekode JSON respons menjadi model CartResponse
                 let productList = try JSONDecoder().decode(CartResponse.self, from: data)
