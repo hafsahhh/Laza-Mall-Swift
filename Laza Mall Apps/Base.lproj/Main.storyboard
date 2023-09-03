@@ -3214,9 +3214,6 @@
                                         <color key="tintColor" name="ColorBg"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="updateCard"/>
-                                        <connections>
-                                            <action selector="addNewCartBtn:" destination="v3S-Np-9oD" eventType="touchUpInside" id="Lps-Tm-7RR"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOQ-uU-ocg">
                                         <rect key="frame" x="184" y="0.0" width="189" height="64"/>
@@ -3224,7 +3221,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="deleteCard"/>
                                         <connections>
-                                            <action selector="addNewCartBtn:" destination="v3S-Np-9oD" eventType="touchUpInside" id="w5e-2m-bv5"/>
+                                            <action selector="deleteCardBtn:" destination="v3S-Np-9oD" eventType="touchUpInside" id="UXt-Ly-rNA"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -71,6 +71,9 @@ class MenuVC: UIViewController {
     }
     
     @IBAction func logoutBtn(_ sender: Any) {
+        // Menghapus data dari KeyChain
+        KeychainManager.shared.deleteAccessToken()
+        KeychainManager.shared.deleteRefreshToken()
         UserDefaults.standard.removeObject(forKey: "auth_token")
         UserDefaults.standard.removeObject(forKey: "loginTrue")
 //        UserDefaults.standard.removeObject(forKey: userLoginTrue)

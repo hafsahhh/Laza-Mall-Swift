@@ -23,13 +23,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Siti Hafsah || 08521279121" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUw-fi-cwr">
                                 <rect key="frame" x="10" y="10" width="290" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="ColorBlack"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jl. Mawar Nomer 50 Rt: 100 Rw: 30, Jakarta, Indonesia, 1721" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZS-Xp-Gqz">
                                 <rect key="frame" x="10" y="36" width="290" height="40.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="ColorBlack"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Primary" translatesAutoresizingMaskIntoConstraints="NO" id="iN3-YC-s7w">
@@ -40,7 +40,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="ColorValid"/>
+                        <color key="backgroundColor" name="ColorDarkValid"/>
                         <constraints>
                             <constraint firstItem="qUw-fi-cwr" firstAttribute="top" secondItem="lpu-Uh-qxA" secondAttribute="top" constant="10" id="4gk-bj-zHl"/>
                             <constraint firstItem="qUw-fi-cwr" firstAttribute="leading" secondItem="lpu-Uh-qxA" secondAttribute="leading" constant="10" id="GOG-fw-rUc"/>
@@ -71,7 +71,10 @@
     </objects>
     <resources>
         <image name="Primary" width="76" height="29"/>
-        <namedColor name="ColorValid">
+        <namedColor name="ColorBlack">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorDarkValid">
             <color red="0.96100002527236938" green="0.9649999737739563" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -29,15 +29,19 @@ class PaymentCollectCell: UICollectionViewCell {
 
     func fillCardDataFromCoreData(card: CreditCard) {
         let cardOwner = card.cardOwner
-        print("Card Owner \(cardOwner)")
-        let cardNumber = card.carNumber
-        print("Nomer kartu \(cardNumber)")
-        let expirationDate = card.cardExp
-        print("expirationDate \(expirationDate)")
+        let cardNumber = card.cardNumber
+        let cardExpMonth = card.cardExpMonth
+        let cardExpYear = card.cardExpYear
+//        print("expirationDate \(expirationDate)")
         let cvc = card.cardCvv
 
+        print("Card Owner \(cardOwner)")
+        print("Nomer kartu \(cardNumber)")
+        print("epired month \(cardExpMonth)")
+        print("expired year \(cardExpYear)")
+        
         // Memanggil metode paymentCardTextFieldDidChange untuk mengatur kartu kredit
-        listCardPayment.paymentCardTextFieldDidChange(cardNumber: cardNumber, expirationYear: nil, expirationMonth: nil, cvc: cvc)
+        listCardPayment.paymentCardTextFieldDidChange(cardNumber: cardNumber, expirationYear: UInt(cardExpYear), expirationMonth: UInt(cardExpMonth), cvc: cvc)
         listCardPayment.cardHolderString = cardOwner
     }
 

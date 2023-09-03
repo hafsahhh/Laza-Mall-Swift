@@ -8,7 +8,9 @@
 import Foundation
 struct CreditCard : Codable {
     var cardOwner : String = ""
-    var carNumber : String = ""
-    var cardExp : String = ""
+    var cardNumber : String = ""
+//    var cardExp : String = ""
+    var cardExpMonth : String = ""
+    var cardExpYear : String = ""
     var cardCvv : String = ""
 }

@@ -128,15 +128,20 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     func saveCardModelToCoreData() {
         let cardOwner = cardNameText.text ?? ""
         let cardNumber = cardNumberText.cardNumber ?? ""
-        let cardExp = " \(cardNumberText.expirationMonth) / \(cardNumberText.expirationYear)"
+        let cardExpMonth = " \(cardNumberText.expirationMonth)"
+        let cardYear = " \(cardNumberText.expirationYear)"
+//        let cardExp = " \(cardNumberText.expirationMonth) / \(cardNumberText.expirationYear)"
         let cardCvv = cardNumberText.cvc ?? ""
         
         let newCard = CreditCard(
             cardOwner: cardOwner,
-            carNumber: cardNumber,
-            cardExp: cardExp,
+            cardNumber: cardNumber,
+//            cardExp: cardExp,
+            cardExpMonth: cardExpMonth,
+            cardExpYear: cardYear,
             cardCvv: cardCvv
         )
+        print("list new card\(newCard)")
         coredataManage.create(newCard) // Save the new card to Core Data
             
             // Menambahkan kartu baru ke dalam array
@@ -149,9 +154,6 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     func checkIfCardIsSaved() {
         // Memanggil metode retrieve dari CoreDataManage untuk mengambil data dari Core Data
         let savedCards = coredataManage.retrieve()
-
-        // Anda dapat memeriksa apakah kartu yang baru saja disimpan ada dalam daftar savedCards
-        // Misalnya, dengan memeriksa apakah cardOwner-nya ada dalam daftar savedCards
         let cardOwnerToCheck = cardNameText.text
 
         if savedCards.contains(where: { $0.cardOwner == cardOwnerToCheck }) {

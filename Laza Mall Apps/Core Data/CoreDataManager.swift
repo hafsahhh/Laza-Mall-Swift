@@ -16,12 +16,14 @@ class CoreDataManage {
     func create(_ creditCard: CreditCard) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
 
-        let creditCardEntity = NSEntityDescription.entity(forEntityName: "LazaCoreData", in: managedContext)
+        let creditCardEntity = NSEntityDescription.entity(forEntityName: "LazaEntitiesCoredata", in: managedContext)
 
         let insert = NSManagedObject(entity: creditCardEntity!, insertInto: managedContext)
         insert.setValue(creditCard.cardOwner, forKey: "cardOwner")
-        insert.setValue(creditCard.carNumber, forKey: "carNumber")
-        insert.setValue(creditCard.cardExp, forKey: "cardExp")
+        insert.setValue(creditCard.cardNumber, forKey: "cardNumber")
+//        insert.setValue(creditCard.cardExp, forKey: "cardExp")
+        insert.setValue(creditCard.cardExpMonth, forKey: "cardExpMonth")
+        insert.setValue(creditCard.cardExpYear, forKey: "cardExpYear")
         insert.setValue(creditCard.cardCvv, forKey: "cardCvv")
 
         do {
@@ -36,18 +38,21 @@ class CoreDataManage {
     func retrieve() -> [CreditCard] {
         var creditCards = [CreditCard]()
         let managedContext = appDelegate?.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LazaCoreData")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LazaEntitiesCoredata")
 
         do {
             let result = try managedContext?.fetch(fetchRequest)
 
             result?.forEach { creditCardData in
                 let cardOwner = creditCardData.value(forKey: "cardOwner") as! String
-                let carNumber = creditCardData.value(forKey: "carNumber") as! String
-                let cardExp = creditCardData.value(forKey: "cardExp") as! String
+                let cardNumber = creditCardData.value(forKey: "cardNumber") as! String
+//                let cardExp = creditCardData.value(forKey: "cardExp") as! String
+                let cardExpMonth = creditCardData.value(forKey: "cardExpMonth") as! String
+                let cardExpYear = creditCardData.value(forKey: "cardExpYear") as! String
                 let cardCvv = creditCardData.value(forKey: "cardCvv") as! String
 
-                let creditCard = CreditCard(cardOwner: cardOwner, carNumber: carNumber, cardExp: cardExp, cardCvv: cardCvv)
+                let creditCard = CreditCard(cardOwner: cardOwner, cardNumber: cardNumber,
+                                            cardExpMonth: cardExpMonth, cardExpYear: cardExpYear, cardCvv: cardCvv)
                 creditCards.append(creditCard)
             }
         } catch let error {
@@ -62,7 +67,7 @@ class CoreDataManage {
 
         let managedContext = appDelegate.persistentContainer.viewContext
 
-        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "LazaCoreData")
+        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "LazaEntitiesCoredata")
         fetchRequest.predicate = NSPredicate(format: "cardOwner = %@", creditCard.cardOwner)
 
         do {
@@ -89,7 +94,7 @@ class CoreDataManage {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
 
         // Fetch data to delete
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CoreDataLaza")
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "LazaEntitiesCoredata")
         fetchRequest.predicate = NSPredicate(format: "cardOwner = %@", creditCard.cardOwner)
 
         do {

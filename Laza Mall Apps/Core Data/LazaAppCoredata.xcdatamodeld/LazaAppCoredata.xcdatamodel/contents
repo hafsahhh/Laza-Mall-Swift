@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LazaEntitiesCoredata" representedClassName="LazaEntitiesCoredata" syncable="YES" codeGenerationType="class">
+        <attribute name="cardCvv" optional="YES" attributeType="String"/>
+        <attribute name="cardExpMonth" optional="YES" attributeType="String"/>
+        <attribute name="cardExpYear" optional="YES" attributeType="String"/>
+        <attribute name="cardNumber" optional="YES" attributeType="String"/>
+        <attribute name="cardOwner" optional="YES" attributeType="String"/>
+    </entity>
+</model>

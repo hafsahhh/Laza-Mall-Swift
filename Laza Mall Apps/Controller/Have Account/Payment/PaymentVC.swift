@@ -36,6 +36,8 @@ class PaymentVC: UIViewController {
     
     var cardModels = [CreditCard]()
     var coreDataManage = CoreDataManage()
+    var selectedCellIndex = 0
+    
     
     //Back Button
     private lazy var backBtn : UIButton = {
@@ -86,7 +88,7 @@ class PaymentVC: UIViewController {
         cardPaymentCollect.dataSource = self
         cardPaymentCollect.delegate = self
         cardPaymentCollect.register(PaymentCollectCell.nib(), forCellWithReuseIdentifier: PaymentCollectCell.identifier)
-
+        
         cardPaymentCollect.reloadData()
 
     }
@@ -97,16 +99,36 @@ class PaymentVC: UIViewController {
         cardModels = coreDataManage.retrieve()
         cardPaymentCollect.reloadData()
     }
-
     
-    @IBAction func addNewCartBtn(_ sender: Any) {
-        let addCardBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddCardVC") as! AddCardVC
-        self.navigationController?.pushViewController(addCardBtn, animated: true)
+    func deleteCard(indexPath: IndexPath) {
+        let card = cardModels[indexPath.row]
+        coreDataManage.delete(card) { [weak self] in
+            DispatchQueue.main.async {
+                self?.cardModels.remove(at: indexPath.row)
+                self?.cardPaymentCollect.deleteItems(at: [indexPath])
+            }
+        }
+        print("successfully delete card")
     }
+    
+    @IBAction func deleteCardBtn(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Confirmation", message: "Are you sure want to delete this cards?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
+                let indexPathToDelete = IndexPath(item: self?.selectedCellIndex ?? 0, section: 0)
+                self?.deleteCard(indexPath: indexPathToDelete)
+            }
+            alertController.addAction(okAction)
+            
+            present(alertController, animated: true, completion: nil)
+
+    }
+    
     
 }
 
-extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("total card \(cardModels.count)")
         return cardModels.count
@@ -132,9 +154,64 @@ extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCellIndex = indexPath.item
+        cardPaymentCollect.scrollToItem(
+            at: IndexPath(item: selectedCellIndex, section: 0),
+            at: .centeredHorizontally,
+            animated: true)
+        
+        // Mendapatkan objek CreditCard yang sesuai
+        let selectedCard = cardModels[selectedCellIndex]
+        print("selected card: \(selectedCard)")
+        // Mengisi UITextField dengan nilai-nilai dari objek CreditCard
+        cardOwnerView.text = selectedCard.cardOwner
+        print("ini card owner: \(String(describing: cardOwnerView.text))")
+        cardNumberView.text = selectedCard.cardNumber
+        cardExpiredView.text = "\(selectedCard.cardExpMonth)/\(selectedCard.cardExpYear)"
+        cardCvvView.text = selectedCard.cardCvv
+        
+        // Memastikan tampilan terbaru ditampilkan
+        cardPaymentCollect.reloadData()
     }
+  
+    // Metode ini akan dipanggil ketika user mulai melepas geserannya dan koleksi sedang dalam proses berhenti bergerak (decelerating).
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        let itemWidth = cardPaymentCollect.bounds.width
+        let offset = scrollView.contentOffset.x
+        setSelectedCellOnEndSwipe(scrollViewOffset: offset, cellWidth: itemWidth)
+    }
+
+    // Metode ini akan dipanggil setelah user selesai menggeser dan koleksi berhenti bergerak (decelerating).
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // Menghitung indeks terpilih yang diperbarui setelah pengguna melakukan geseran.
+        let currentIndex = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
+        
+        if selectedCellIndex != currentIndex {
+            selectedCellIndex = currentIndex
+            print("Indeks terpilih setelah berhenti: \(selectedCellIndex)")
+        }
+    }
+
+    
+    func setSelectedCellOnEndSwipe(scrollViewOffset: CGFloat, cellWidth: CGFloat) {
+        if scrollViewOffset > cellWidth * CGFloat(selectedCellIndex + 1) {
+            // Geser ke kanan
+            selectedCellIndex += 1
+        } else if scrollViewOffset < cellWidth * CGFloat(selectedCellIndex) {
+            // Geser ke kiri
+            selectedCellIndex = max(selectedCellIndex - 1, 0)
+        }
+
+        // Geser ke sel yang sesuai
+        cardPaymentCollect.scrollToItem(
+            at: IndexPath(item: selectedCellIndex, section: 0),
+            at: .centeredHorizontally,
+            animated: true)
+
+        print("selected index: \(selectedCellIndex)")
+    }
+
     
 }
 
