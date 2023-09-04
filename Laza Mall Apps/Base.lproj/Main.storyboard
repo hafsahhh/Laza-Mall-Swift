@@ -988,7 +988,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oS4-Mi-au7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1683.9694656488548" y="2305.6338028169016"/>
+            <point key="canvasLocation" x="-1574" y="2241"/>
         </scene>
         <!--Create AccountVC-->
         <scene sceneID="hOP-Ei-W6U">
@@ -2418,7 +2418,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3u-Qe-vZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-967" y="2306"/>
+            <point key="canvasLocation" x="-967" y="2249"/>
         </scene>
         <!--Verification CodeVC-->
         <scene sceneID="dFt-eU-cyn">
@@ -3177,7 +3177,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Choose Card"/>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P3g-rh-rHn">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P3g-rh-rHn">
                                 <rect key="frame" x="0.0" y="98.333333333333314" width="393" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -3214,6 +3214,9 @@
                                         <color key="tintColor" name="ColorBg"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="updateCard"/>
+                                        <connections>
+                                            <action selector="editCardBtn:" destination="v3S-Np-9oD" eventType="touchUpInside" id="SVx-Vu-zGU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOQ-uU-ocg">
                                         <rect key="frame" x="184" y="0.0" width="189" height="64"/>
@@ -4230,6 +4233,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzp-Za-YkH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2302" y="2306"/>
+        </scene>
+        <!--Edit CradVC-->
+        <scene sceneID="PZd-Jr-Ows">
+            <objects>
+                <viewController storyboardIdentifier="EditCradVC" id="9dU-dy-e33" customClass="EditCradVC" customModule="Laza_Mall_Apps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N42-3R-HJx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Edit Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sS-wg-Xum">
+                                <rect key="frame" x="20" y="57.999999999999993" width="353" height="20.666666666666664"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Card Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ah8-wD-nUI">
+                                <rect key="frame" x="20" y="318.66666666666669" width="353" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7p-RE-R2B">
+                                <rect key="frame" x="0.0" y="777" width="393" height="75"/>
+                                <color key="backgroundColor" name="ColorBg"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="pgJ-F1-Jjc"/>
+                                </constraints>
+                                <color key="tintColor" name="ColorWhite"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add Card"/>
+                                <connections>
+                                    <action selector="updateCard:" destination="9dU-dy-e33" eventType="touchUpInside" id="iDA-nF-mc0"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMc-SM-93Y" customClass="CreditCardFormView" customModule="CreditCardForm">
+                                <rect key="frame" x="46.666666666666657" y="98.666666666666686" width="300" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="mzO-QU-cfM"/>
+                                    <constraint firstAttribute="width" constant="300" id="ul4-XM-jpq"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZkE-My-pqa" customClass="STPPaymentCardTextField" customModule="StripePaymentsUI">
+                                <rect key="frame" x="20" y="445.66666666666669" width="353" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="mIq-CE-i84"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GRg-vX-hd2">
+                                <rect key="frame" x="20" y="344.66666666666669" width="353" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="d7G-Yb-LV8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Card Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opz-gh-Z4y">
+                                <rect key="frame" x="20" y="414.66666666666669" width="353" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="t8o-zf-vxu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="opz-gh-Z4y" firstAttribute="leading" secondItem="t8o-zf-vxu" secondAttribute="leading" constant="20" id="459-rD-I2h"/>
+                            <constraint firstItem="t8o-zf-vxu" firstAttribute="trailing" secondItem="tMc-SM-93Y" secondAttribute="trailing" constant="46.329999999999998" id="4SC-aN-i8N"/>
+                            <constraint firstItem="ah8-wD-nUI" firstAttribute="leading" secondItem="t8o-zf-vxu" secondAttribute="leading" constant="20" id="5F8-Cr-rCB"/>
+                            <constraint firstItem="5sS-wg-Xum" firstAttribute="top" secondItem="N42-3R-HJx" secondAttribute="top" constant="58" id="5Qt-li-XNb"/>
+                            <constraint firstItem="5sS-wg-Xum" firstAttribute="leading" secondItem="t8o-zf-vxu" secondAttribute="leading" constant="20" id="830-m3-F0I"/>
+                            <constraint firstItem="ZkE-My-pqa" firstAttribute="top" secondItem="opz-gh-Z4y" secondAttribute="bottom" constant="10" id="9h2-hj-2XJ"/>
+                            <constraint firstItem="tMc-SM-93Y" firstAttribute="leading" secondItem="t8o-zf-vxu" secondAttribute="leading" constant="46.670000000000002" id="B0h-hu-r6G"/>
+                            <constraint firstItem="o7p-RE-R2B" firstAttribute="leading" secondItem="t8o-zf-vxu" secondAttribute="leading" id="CDw-uc-FfZ"/>
+                            <constraint firstItem="t8o-zf-vxu" firstAttribute="trailing" secondItem="5sS-wg-Xum" secondAttribute="trailing" constant="20" id="GYg-KA-jRj"/>
+                            <constraint firstItem="GRg-vX-hd2" firstAttribute="top" secondItem="ah8-wD-nUI" secondAttribute="bottom" constant="5" id="Gqy-I0-k4K"/>
+                            <constraint firstItem="opz-gh-Z4y" firstAttribute="top" secondItem="GRg-vX-hd2" secondAttribute="bottom" constant="20" id="Hje-b5-pB7"/>
+                            <constraint firstItem="t8o-zf-vxu" firstAttribute="trailing" secondItem="GRg-vX-hd2" secondAttribute="trailing" constant="20" id="Ljs-Ac-7PW"/>
+                            <constraint firstItem="o7p-RE-R2B" firstAttribute="bottom" secondItem="N42-3R-HJx" secondAttribute="bottom" id="Mi5-bv-EzH"/>
+                            <constraint firstItem="t8o-zf-vxu" firstAttribute="trailing" secondItem="ah8-wD-nUI" secondAttribute="trailing" constant="20" id="Pvk-Ls-b7L"/>
+                            <constraint firstItem="ah8-wD-nUI" firstAttribute="top" secondItem="tMc-SM-93Y" secondAttribute="bottom" constant="20" id="R5X-9n-yCS"/>
+                            <constraint firstItem="t8o-zf-vxu" firstAttribute="trailing" secondItem="opz-gh-Z4y" secondAttribute="trailing" constant="20" id="bZa-PZ-U7n"/>
+                            <constraint firstItem="t8o-zf-vxu" firstAttribute="trailing" secondItem="o7p-RE-R2B" secondAttribute="trailing" id="dpl-2C-rgu"/>
+                            <constraint firstItem="GRg-vX-hd2" firstAttribute="leading" secondItem="t8o-zf-vxu" secondAttribute="leading" constant="20" id="hRB-VV-J1g"/>
+                            <constraint firstItem="t8o-zf-vxu" firstAttribute="trailing" secondItem="ZkE-My-pqa" secondAttribute="trailing" constant="20" id="jPJ-Vb-kSz"/>
+                            <constraint firstItem="tMc-SM-93Y" firstAttribute="top" secondItem="5sS-wg-Xum" secondAttribute="bottom" constant="20" id="lJH-Tv-6Um"/>
+                            <constraint firstItem="ZkE-My-pqa" firstAttribute="leading" secondItem="t8o-zf-vxu" secondAttribute="leading" constant="20" id="xKa-nK-NRh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardNameText" destination="GRg-vX-hd2" id="MzW-nd-NIK"/>
+                        <outlet property="cardNumberText" destination="ZkE-My-pqa" id="1Ep-G1-drO"/>
+                        <outlet property="creditCardView" destination="tMc-SM-93Y" id="eFi-b0-uEd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CKi-Dx-tLh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-772" y="2925"/>
         </scene>
     </scenes>
     <designables>

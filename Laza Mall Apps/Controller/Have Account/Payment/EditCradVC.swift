@@ -1,21 +1,24 @@
 //
-//  AddCardVC.swift
+//  EditCradVC.swift
 //  Laza Mall Apps
 //
-//  Created by Siti Hafsah on 07/08/23.
+//  Created by Siti Hafsah on 04/09/23.
 //
 
 import UIKit
 import CreditCardForm
 import Stripe
 
+class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
 
-class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
-    
     private var cardParams: STPPaymentMethodCardParams!
     let paymentTextField = STPPaymentCardTextField()
     var cardModels = [CreditCard]()
     var coredataManage = CoreDataManage()
+    var indexPathCardNumber: String?
+    var editCardOwner: String  = ""
+    var editCardNumber: String  = ""
+    
     
     @IBOutlet weak var cardNumberText: STPPaymentCardTextField!
     {
@@ -27,6 +30,7 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     @IBOutlet weak var cardNameText: UITextField!{
         didSet {
             cardNameText.addTarget(self, action: #selector(cardNameTextChanged(_:)), for: .editingChanged)
+            cardNameText.text = editCardOwner
         }
     }
     
@@ -53,7 +57,6 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     @objc func backBtnAct(){
 //        let backToPayment = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
 //        self.navigationController?.pushViewController(backToPayment, animated: true)
-        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -107,10 +110,9 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     }
     
     
-    @IBAction func addNewCard(_ sender: UIButton) {
+    @IBAction func updateCard(_ sender: UIButton) {
         savedCard()
-        saveCardModelToCoreData()
-//        checkIfCardIsSaved()
+        updateCardModelToCoreData()
         let addCard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentVC
         addCard.cardModels = cardModels
         self.navigationController?.pushViewController(addCard, animated: true)
@@ -128,41 +130,30 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
         return true
     }
 
-    func saveCardModelToCoreData() {
+    func updateCardModelToCoreData() {
+        guard let creditCardNumber = indexPathCardNumber else { print("kosong")
+            return
+        }
         let cardOwner = cardNameText.text ?? ""
         let cardNumber = cardNumberText.cardNumber ?? ""
         let cardExpMonth = " \(cardNumberText.expirationMonth)"
         let cardYear = " \(cardNumberText.expirationYear)"
-//        let cardExp = " \(cardNumberText.expirationMonth) / \(cardNumberText.expirationYear)"
         let cardCvv = cardNumberText.cvc ?? ""
         
-        let newCard = CreditCard(
+        let editCard = CreditCard(
             cardOwner: cardOwner,
             cardNumber: cardNumber,
-//            cardExp: cardExp,
             cardExpMonth: cardExpMonth,
             cardExpYear: cardYear,
             cardCvv: cardCvv
         )
-        print("list new card\(newCard)")
-        coredataManage.create(newCard) // Save the new card to Core Data
+        print("list update card\(editCard)")
+        coredataManage.update(editCard, cardNumber: creditCardNumber) // Save the new card to Core Data
             
             // Menambahkan kartu baru ke dalam array
-            cardModels.append(newCard)
+            cardModels.append(editCard)
             
-            print("Sukses menyimpan kartu ke Core Data")
+            print("Sukses update kartu ke Core Data")
     }
 
-    
-//    func checkIfCardIsSaved() {
-//        // Memanggil metode retrieve dari CoreDataManage untuk mengambil data dari Core Data
-//        let savedCards = coredataManage.retrieve()
-//        let cardOwnerToCheck = cardNameText.text
-//
-//        if savedCards.contains(where: { $0.cardOwner == cardOwnerToCheck }) {
-//            print("Kartu sudah tersimpan di Core Data")
-//        } else {
-//            print("Kartu belum tersimpan di Core Data")
-//        }
-//    }
 }
