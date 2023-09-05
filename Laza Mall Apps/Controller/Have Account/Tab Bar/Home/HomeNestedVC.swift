@@ -15,7 +15,7 @@ protocol searchProductHomeProtocol: AnyObject {
     func searchProdFetch(isActive: Bool, textString: String)
 }
 
-class HomeNestedVC: UIViewController {
+class HomeNestedVC: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var homeTableView: UITableView!
     @IBOutlet weak var searchHome: UISearchBar!
@@ -70,13 +70,27 @@ class HomeNestedVC: UIViewController {
         } else {
             isMenuClicked = true
             parentBlurView.isHidden = false
-            performSegue(withIdentifier: "SideMenuNavigationController" , sender: nil)
+            sideMenuClicked()
+//            performSegue(withIdentifier: "SideMenuNavigationController" , sender: nil)
         }
     }
     
+    private func sideMenuClicked() {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let vc = storyboard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
+      let sideMenu = SideMenuNavigationController(rootViewController: vc)
+      vc.delegate = self
+      sideMenu.delegate = self
+      sideMenu.presentationStyle = .menuSlideIn
+      sideMenu.leftSide = true
+      sideMenu.menuWidth = 330
+      present(sideMenu, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.tabBar.isHidden = false
 
         searchHome.delegate = self
         AppSnackBar.make(in: self.view, message: "Welcome to LAZA MALL", duration: .lengthLong).show()
@@ -111,6 +125,12 @@ class HomeNestedVC: UIViewController {
             callTableView()
         }
  
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+      self.tabBarController?.tabBar.isHidden = false
+        homeTableView.reloadData()
+        callTableView()
     }
     
     func callTableView() {
@@ -189,7 +209,6 @@ extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTable
                 prodCell.delegateProductDetail = self
                 self?.viewModel.delegateSearch = prodCell
             }
-//                    tableView.dequeueReusableCell(withIdentifier: "ProductTableCell") as? CategoryTableCell else {return UITableViewCell()}
             return prodCell
         }
     }
@@ -214,7 +233,6 @@ extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTable
         let catBrandVc = UIStoryboard(name: "Main", bundle: nil)
         if let brandViewController = catBrandVc.instantiateViewController(withIdentifier: "CategoryBrandVC") as? CategoryBrandVC {
             brandViewController.brandName = brand.name
-            print("IDBrand \(brand.id)")
             self.navigationItem.hidesBackButton = true
             navigationController?.pushViewController(brandViewController, animated: true)
         }
@@ -231,6 +249,38 @@ extension HomeNestedVC: UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.performSearch(with: searchText)
         homeTableView.reloadData()
+    }
+}
+
+extension HomeNestedVC: protocolTabBarDelegate {
+    
+    func protocolGoToCart() {
+        self.tabBarController?.selectedIndex = 2
+        print("berhasil go to cart")
+    }
+    
+    func protocolGoToProfile() {
+        self.tabBarController?.selectedIndex = 3
+        print("berhasil go to profile")
+    }
+    
+    func protocolGoToChangePassword() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ChangePasswordVC") as? ChangePasswordVC else { return }
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func protocolGoToWishlist() {
+        self.tabBarController?.selectedIndex = 1
+        print("berhasil go to whislist")
+    }
+    
+}
+extension HomeNestedVC: accessSideMenuDelegate {
+    func accessSideMenu() {
+        sideMenuClicked()
     }
 }
 

@@ -104,7 +104,6 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
         AllProductApi().getData { ProductIndex in
             guard let response = ProductIndex else { return }
             self.productModel.append(contentsOf: response.data)
-//            self.productModel.append(contentsOf: ProductIndex)
             self.productCollectCellView.reloadData()
             for product in self.productModel{
                 print(product.name)
@@ -140,10 +139,6 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
 
 extension HomepageVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-//        if collectionView == catagoryBrand {
-//            return catModel.count
-//        }
         return productModel.count
     }
 

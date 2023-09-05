@@ -80,7 +80,6 @@ class LoginViewModel{
     
     func getUserProfile(completion: @escaping (Result<DataUseProfile?, Error>) -> Void) {
         // Memastikan token autentikasi tersedia dalam UserDefaults
-        print("ini prfile")
 
         guard let url = URL(string: Endpoints.Gets.profile.url) else {return}
         

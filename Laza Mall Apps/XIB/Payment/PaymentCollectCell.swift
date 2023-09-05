@@ -18,21 +18,46 @@ class PaymentCollectCell: UICollectionViewCell {
     
     @IBOutlet weak var listCardPayment: CreditCardFormView!
     
+    private let creditCard: CreditCardFormView = {
+        let card = CreditCardFormView()
+        card.translatesAutoresizingMaskIntoConstraints = false
+        return card
+    }()
+    
     var cardModel: [CreditCard] = []
     var coreDataManage = CoreDataManage()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupCard()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupCard()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        print(listCardPayment.frame.width, listCardPayment.frame.height, separator: " : ")
     }
 
+    private func setupCard() {
+        contentView.addSubview(creditCard)
+        NSLayoutConstraint.activate([
+            creditCard.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            creditCard.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            creditCard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            creditCard.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+        ])
+    }
+    
     func fillCardDataFromCoreData(card: CreditCard) {
         let cardOwner = card.cardOwner
         let cardNumber = card.cardNumber
         let cardExpMonth = card.cardExpMonth
         let cardExpYear = card.cardExpYear
-//        print("expirationDate \(expirationDate)")
         let cvc = card.cardCvv
 
         print("Card Owner \(cardOwner)")
@@ -40,27 +65,7 @@ class PaymentCollectCell: UICollectionViewCell {
         print("epired month \(cardExpMonth)")
         print("expired year \(cardExpYear)")
         
-        // Memanggil metode paymentCardTextFieldDidChange untuk mengatur kartu kredit
-        listCardPayment.paymentCardTextFieldDidChange(cardNumber: cardNumber, expirationYear: UInt(cardExpYear), expirationMonth: UInt(cardExpMonth), cvc: cvc)
-        listCardPayment.cardHolderString = cardOwner
-    }
-
-    
-    // MARK: - Func Credit Card
-    func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
-        listCardPayment.paymentCardTextFieldDidChange(cardNumber: textField.cardNumber, expirationYear: UInt(textField.expirationYear), expirationMonth: UInt(textField.expirationMonth), cvc: textField.cvc)
-        
-    }
-    
-    func paymentCardTextFieldDidEndEditingExpiration(_ textField: STPPaymentCardTextField) {
-        listCardPayment.paymentCardTextFieldDidEndEditingExpiration(expirationYear: UInt(textField.expirationYear))
-    }
-    
-    func paymentCardTextFieldDidBeginEditingCVC(_ textField: STPPaymentCardTextField) {
-        listCardPayment.paymentCardTextFieldDidBeginEditingCVC()
-    }
-    
-    func paymentCardTextFieldDidEndEditingCVC(_ textField: STPPaymentCardTextField) {
-        listCardPayment.paymentCardTextFieldDidEndEditingCVC()
+        creditCard.paymentCardTextFieldDidChange(cardNumber: cardNumber, expirationYear: UInt(cardExpYear), expirationMonth: UInt(cardExpMonth), cvc: String(cvc))
+        creditCard.cardHolderString = cardOwner
     }
 }

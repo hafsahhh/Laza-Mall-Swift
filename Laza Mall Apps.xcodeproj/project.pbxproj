@@ -35,6 +35,8 @@
 		1A11841C2A88803600D2CAC9 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A11841B2A88803600D2CAC9 /* LoginVM.swift */; };
 		1A11841E2A88EF6500D2CAC9 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A11841D2A88EF6500D2CAC9 /* Slider.swift */; };
 		1A145F842AA56BF80027E029 /* EditCradVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A145F832AA56BF80027E029 /* EditCradVC.swift */; };
+		1A145F862AA5B8790027E029 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A145F852AA5B8790027E029 /* OrderModel.swift */; };
+		1A145F892AA60DBB0027E029 /* CheckoutVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A145F882AA60DBB0027E029 /* CheckoutVM.swift */; };
 		1A1D5B672A90F2BF0077F7C2 /* AddReviewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1D5B662A90F2BF0077F7C2 /* AddReviewVM.swift */; };
 		1A24CEA02A789396008F693F /* CategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A24CE9E2A789396008F693F /* CategoryCollectionCell.swift */; };
 		1A24CEA12A789396008F693F /* CategoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A24CE9F2A789396008F693F /* CategoryCollectionCell.xib */; };
@@ -186,6 +188,8 @@
 		1A11841B2A88803600D2CAC9 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		1A11841D2A88EF6500D2CAC9 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		1A145F832AA56BF80027E029 /* EditCradVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCradVC.swift; sourceTree = "<group>"; };
+		1A145F852AA5B8790027E029 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		1A145F882AA60DBB0027E029 /* CheckoutVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutVM.swift; sourceTree = "<group>"; };
 		1A1D5B662A90F2BF0077F7C2 /* AddReviewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewVM.swift; sourceTree = "<group>"; };
 		1A24CE9E2A789396008F693F /* CategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionCell.swift; sourceTree = "<group>"; };
 		1A24CE9F2A789396008F693F /* CategoryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionCell.xib; sourceTree = "<group>"; };
@@ -389,6 +393,7 @@
 		1A0992992A8F6F35006F1175 /* Have Account */ = {
 			isa = PBXGroup;
 			children = (
+				1A145F872AA60DA90027E029 /* Order */,
 				1A2D0A562AA40C43002C1159 /* Change Password */,
 				1AF814612AA366E000D35C32 /* Payment */,
 				1A3A741B2A9733A800B7D008 /* Address */,
@@ -443,6 +448,14 @@
 				1A99868B2A9C3903008048C3 /* VerifyEmailVM.swift */,
 			);
 			path = "Haven't Account";
+			sourceTree = "<group>";
+		};
+		1A145F872AA60DA90027E029 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				1A145F882AA60DBB0027E029 /* CheckoutVM.swift */,
+			);
+			path = Order;
 			sourceTree = "<group>";
 		};
 		1A24CEA22A78A881008F693F /* Nested in Table View */ = {
@@ -529,6 +542,7 @@
 				1AD4AC8C2A9596390010E833 /* cartsModel.swift */,
 				1A3A741E2A97374200B7D008 /* AddressModel.swift */,
 				1AF814592AA3154A00D35C32 /* PaymentModel.swift */,
+				1A145F852AA5B8790027E029 /* OrderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1143,6 +1157,7 @@
 				1A1D5B672A90F2BF0077F7C2 /* AddReviewVM.swift in Sources */,
 				1A69B8E22A80948B0059EB85 /* CategoryBrandVC.swift in Sources */,
 				1A6D95322A724AF800BAC168 /* ApiAllCategory.swift in Sources */,
+				1A145F862AA5B8790027E029 /* OrderModel.swift in Sources */,
 				1A561E522A79DD6A0024FF29 /* DetailProVC.swift in Sources */,
 				1A09929B2A8F6F64006F1175 /* RevieModel.swift in Sources */,
 				1A2B36392A70A37E0050671E /* Extension.swift in Sources */,
@@ -1193,6 +1208,7 @@
 				1A8C3D722A8235CD00ADE799 /* PaymentCollectCell.swift in Sources */,
 				1A4F61D72A77F460004D4C7E /* HomepageVC.swift in Sources */,
 				1ACBD63A2A6FD02C002C12A2 /* AppDelegate.swift in Sources */,
+				1A145F892AA60DBB0027E029 /* CheckoutVM.swift in Sources */,
 				1AD4AC8B2A9595BF0010E833 /* ApiCall.swift in Sources */,
 				1A4F61D52A77F2E7004D4C7E /* CardVC.swift in Sources */,
 				1A57D14C2A8B2551002CDAE6 /* ApiVerifyPassCode.swift in Sources */,

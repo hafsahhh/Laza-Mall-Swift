@@ -45,17 +45,14 @@ class CartsViewModel{
                     return
                 }
                 
-                print("Kode status respons: \(httpResponse.statusCode)")
-//                print("Data yang Diserialisasi")
-//                let serializedJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-//                print(serializedJson)
+//                print("Kode status respons: \(httpResponse.statusCode)")
                 
                 // Mendekode JSON respons menjadi model CartResponse
                 let productList = try JSONDecoder().decode(CartResponse.self, from: data)
                 completion(.success(productList))
                 
             } catch {
-                print("Kesalahan dalam mendekode data: \(error)")
+//                print("Kesalahan dalam mendekode data: \(error)")
                 completion(.failure(error))
             }
         }.resume()
@@ -64,7 +61,7 @@ class CartsViewModel{
     
     // MARK: - Fungsi untuk menghapus keranjang menggunakan API
     func deleteCarts(idProduct: Int, idSize: Int, completion: @escaping (Result<Data?, Error>) -> Void) {
-        print("Menghapus Data keranjang")
+//        print("Menghapus Data keranjang")
         
         // Membuat URL untuk menghapus keranjang dengan menggunakan endpoint yang sesuai
         guard let url = URL(string: Endpoints.Gets.deleteCarts(idProduct: idProduct, idSize: idSize).url) else {
@@ -237,4 +234,64 @@ class CartsViewModel{
         }.resume()
     }
     
+    
+    // MARK: - Func Post For Checkout Order
+    func postDataOrder(products: [[String: Any]], addressId: Int, bank: String, completion: @escaping (Result<ResponseOrder?, Error>) -> Void) {
+
+        // Membuat URL untuk endpoint order
+        guard let url = URL(string: Endpoints.Gets.order.url) else {
+            completion(.failure(ErrorInfo.Error))
+            return
+        }
+
+        // Mengambil access token dari Keychain
+        guard let accessToken = KeychainManager.shared.getAccessToken() else { return }
+
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "X-Auth-Token")
+        request.httpMethod = "POST"
+
+        // Membuat dictionary untuk data order
+        let orderData: [String: Any] = [
+            "products": products,
+            "address_id": addressId,
+            "bank": bank
+        ]
+
+        // Mengkonversi dictionary ke format JSON
+        if let jsonData = try? JSONSerialization.data(withJSONObject: orderData) {
+            request.httpBody = jsonData
+        } else {
+            completion(.failure(ErrorInfo.Error))
+            return
+        }
+
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 201 {
+                    // Handle error response here
+                    completion(.failure(ErrorInfo.Error))
+                } else {
+                    // Handle success response here
+                    if let responseData = data {
+                        do {
+                            let responseOrder = try JSONDecoder().decode(ResponseOrder.self, from: responseData)
+                            completion(.success(responseOrder))
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    } else {
+                        //success(nil) untuk menandakan bahwa operasi berhasil tetapi tidak ada data yang diterima
+                        completion(.success(nil))
+                    }
+                }
+            }
+        }.resume()
+    }
 }

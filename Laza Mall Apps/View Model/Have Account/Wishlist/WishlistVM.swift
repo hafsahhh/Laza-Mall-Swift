@@ -11,7 +11,6 @@ import Foundation
 class WishlistViewModel {
     
     func getWishlistUser(completion: @escaping (Result<wishlistIndex, Error>) -> Void) {
-        // Memastikan token autentikasi tersedia dalam UserDefaults
         
         guard let url = URL(string: Endpoints.Gets.wishlistAll.url) else {
             completion(.failure(ErrorInfo.Error))

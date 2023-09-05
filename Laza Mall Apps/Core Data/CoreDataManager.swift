@@ -47,9 +47,9 @@ class CoreDataManage {
                     let card = CreditCard(
                         cardOwner: creditCardData.value(forKey: "cardOwner") as! String,
                         cardNumber: creditCardData.value(forKey: "cardNumber") as! String,
-                        cardExpMonth: creditCardData.value(forKey: "cardExpMonth") as! String,
-                        cardExpYear: creditCardData.value(forKey: "cardExpYear") as! String,
-                        cardCvv: creditCardData.value(forKey: "cardCvv") as! String
+                        cardExpMonth: creditCardData.value(forKey: "cardExpMonth") as! Int16,
+                        cardExpYear: creditCardData.value(forKey: "cardExpYear") as! Int16,
+                        cardCvv: creditCardData.value(forKey: "cardCvv") as! Int16
                     )
                     creditCard.append(card)
                 }
@@ -60,31 +60,7 @@ class CoreDataManage {
                 print("Failed to fetch data", error)
             }
         }
-//    func retrieve(completion: @escaping ([CreditCard])-> Void) {
-//        var creditCards = [CreditCard]()
-//        let managedContext = appDelegate?.persistentContainer.viewContext
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LazaEntitiesCoredata")
-//
-//        do {
-//            let result = try managedContext?.fetch(fetchRequest)
-//
-//            result?.forEach { creditCardData in
-//                let cardOwner = creditCardData.value(forKey: "cardOwner") as! String
-//                let cardNumber = creditCardData.value(forKey: "cardNumber") as! String
-////                let cardExp = creditCardData.value(forKey: "cardExp") as! String
-//                let cardExpMonth = creditCardData.value(forKey: "cardExpMonth") as! String
-//                let cardExpYear = creditCardData.value(forKey: "cardExpYear") as! String
-//                let cardCvv = creditCardData.value(forKey: "cardCvv") as! String
-//
-//                let creditCard = CreditCard(cardOwner: cardOwner, cardNumber: cardNumber,
-//                                            cardExpMonth: cardExpMonth, cardExpYear: cardExpYear, cardCvv: cardCvv)
-//                creditCards.append(creditCard)
-//            }
-//        } catch let error {
-//            print("Failed to fetch data", error)
-//        }
-////        return creditCards
-//    }
+
 
     // UPDATE DATA IN CORE DATA
     func update(_ creditCard: CreditCard, cardNumber: String ) {

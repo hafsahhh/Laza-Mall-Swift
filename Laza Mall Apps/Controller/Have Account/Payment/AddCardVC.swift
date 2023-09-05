@@ -131,18 +131,17 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     func saveCardModelToCoreData() {
         let cardOwner = cardNameText.text ?? ""
         let cardNumber = cardNumberText.cardNumber ?? ""
-        let cardExpMonth = " \(cardNumberText.expirationMonth)"
-        let cardYear = " \(cardNumberText.expirationYear)"
+        let cardExpMonth = cardNumberText.expirationMonth
+        let cardYear = cardNumberText.expirationYear
 //        let cardExp = " \(cardNumberText.expirationMonth) / \(cardNumberText.expirationYear)"
-        let cardCvv = cardNumberText.cvc ?? ""
+        let cardCvv = Int(cardNumberText.cvc ?? "123") ?? 133
         
         let newCard = CreditCard(
             cardOwner: cardOwner,
             cardNumber: cardNumber,
-//            cardExp: cardExp,
-            cardExpMonth: cardExpMonth,
-            cardExpYear: cardYear,
-            cardCvv: cardCvv
+            cardExpMonth: Int16(cardExpMonth),
+            cardExpYear: Int16(cardYear),
+            cardCvv: Int16(cardCvv)
         )
         print("list new card\(newCard)")
         coredataManage.create(newCard) // Save the new card to Core Data

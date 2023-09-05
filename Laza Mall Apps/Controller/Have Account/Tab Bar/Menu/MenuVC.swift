@@ -7,12 +7,20 @@
 
 import UIKit
 
+protocol protocolTabBarDelegate: AnyObject {
+  func protocolGoToWishlist()
+  func protocolGoToCart()
+  func protocolGoToProfile()
+  func protocolGoToChangePassword()
+}
+
 class MenuVC: UIViewController {
     
     let userDefault = UserDefaults.standard
     let saveDataLogin = "saveDataLogin"
     let userLoginTrue = "loginTrue"
     let menuViewModel = LoginViewModel()
+    weak var delegate: protocolTabBarDelegate?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -83,29 +91,26 @@ class MenuVC: UIViewController {
     }
     
     @IBAction func wishlistBtn(_ sender: Any) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc: UITabBarController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
-        vc.selectedIndex = 1 // index tabBar
-//        self.present(vc, animated:true, completion: nil)
-        self.navigationController?.pushViewController(vc, animated: true)
-        self.navigationItem.hidesBackButton = true
-//        self.navigationController?.view.window?.windowScene?.keyWindow?.rootViewController = vc
+        self.dismiss(animated: true)
+        delegate?.protocolGoToWishlist()
     }
     
-    @IBAction func cardsMenuBtn(_ sender: Any) {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc: UITabBarController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBarVC") as! UITabBarController
-        vc.selectedIndex = 3 // index tabBar
-        self.navigationController?.pushViewController(vc, animated: true)
-        self.navigationItem.hidesBackButton = true
-//        self.present(vc, animated:true, completion: nil)
-//        self.navigationController?.view.window?.windowScene?.keyWindow?.rootViewController = vc
+    @IBAction func profileMenuBtn(_ sender: Any) {
+        self.dismiss(animated: true)
+        delegate?.protocolGoToProfile()
+
     }
     
 
     @IBAction func passwordMenuBtn(_ sender: Any) {
-        let passwordBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChangePasswordVC")as! ChangePasswordVC
-        self.navigationController?.pushViewController(passwordBtn, animated: true)
+        self.dismiss(animated: true)
+        delegate?.protocolGoToChangePassword()
+    }
+    
+    
+    @IBAction func cartMenuBtn(_ sender: Any) {
+        self.dismiss(animated: true)
+        delegate?.protocolGoToCart()
     }
     
 }

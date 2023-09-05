@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol accessSideMenuDelegate: AnyObject {
+  func accessSideMenu()
+}
+
 class ChangePasswordVC: UIViewController {
 
 
@@ -33,6 +37,7 @@ class ChangePasswordVC: UIViewController {
     var isNewPassValid = false
     var isConfirmPassValid = false
     let changePasswordViewModel = ChangePasswordViewModel()
+    weak var delegate: accessSideMenuDelegate?
     
     //Back Button
     private lazy var backBtn : UIButton = {

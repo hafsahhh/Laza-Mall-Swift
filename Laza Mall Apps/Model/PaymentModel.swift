@@ -9,8 +9,7 @@ import Foundation
 struct CreditCard : Codable {
     var cardOwner : String = ""
     var cardNumber : String = ""
-//    var cardExp : String = ""
-    var cardExpMonth : String = ""
-    var cardExpYear : String = ""
-    var cardCvv : String = ""
+    var cardExpMonth : Int16 = 0
+    var cardExpYear : Int16 = 0
+    var cardCvv : Int16 = 0
 }

@@ -136,16 +136,16 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
         }
         let cardOwner = cardNameText.text ?? ""
         let cardNumber = cardNumberText.cardNumber ?? ""
-        let cardExpMonth = " \(cardNumberText.expirationMonth)"
-        let cardYear = " \(cardNumberText.expirationYear)"
-        let cardCvv = cardNumberText.cvc ?? ""
+        let cardExpMonth = cardNumberText.expirationMonth
+        let cardYear = cardNumberText.expirationYear
+        let cardCvv = Int(cardNumberText.cvc ?? "123") ?? 133
         
         let editCard = CreditCard(
             cardOwner: cardOwner,
             cardNumber: cardNumber,
-            cardExpMonth: cardExpMonth,
-            cardExpYear: cardYear,
-            cardCvv: cardCvv
+            cardExpMonth: Int16(cardExpMonth),
+            cardExpYear: Int16(cardYear),
+            cardCvv: Int16(cardCvv)
         )
         print("list update card\(editCard)")
         coredataManage.update(editCard, cardNumber: creditCardNumber) // Save the new card to Core Data

@@ -102,10 +102,13 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func editProfileBtn(_ sender: UIButton) {
+        guard let emailProfile = emailProfileView.text else {return}
+        guard let nameProfile = fullnameProfileView.text else {return}
+        guard let usernameProfile = usernameProfileView.text else {return}
         let editProfileCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editProfileVC") as! editProfileVC
-        editProfileCtrl.email = emailProfileView.text!
-        editProfileCtrl.name = fullnameProfileView.text!
-        editProfileCtrl.userName = usernameProfileView.text!
+        editProfileCtrl.email = emailProfile
+        editProfileCtrl.name = nameProfile
+        editProfileCtrl.userName = nameProfile 
 //        editProfileCtrl.image = linkImage
         
         self.navigationController?.pushViewController(editProfileCtrl, animated: true)

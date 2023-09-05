@@ -16,6 +16,8 @@ class CartVC: UIViewController{
     @IBOutlet weak var totalView: UILabel!
     @IBOutlet weak var deliveryAddressView: UILabel!
     @IBOutlet weak var cityAddress: UILabel!
+    @IBOutlet weak var cardNumberPayemntLabel: UILabel!
+    @IBOutlet weak var bankNameLabel: UILabel!
     
     
     var cartModel: CartResponse?
@@ -25,8 +27,12 @@ class CartVC: UIViewController{
     var modelAddress: ResponseAllAddress?
     var selectedAddress: String = ""
     var selectedCountry: String = ""
-
-    
+    var chooseCard: String = ""
+    var addressId: Int = 0
+    var productId: Int = 0  // Declare productId here with a default value
+    var productQuantity: Int = 0  // Declare productQuantity here with a default value
+    var prodIndexpath: IndexPath?
+    var resultsProductOrder = [ResponseAllAddress]()
     
     //wishlist tab bar
     private func setupTabBarText() {
@@ -53,9 +59,9 @@ class CartVC: UIViewController{
         cartTableView.delegate = self
         cartTableView.register(CartTableCell.nib(), forCellReuseIdentifier: CartTableCell.identifier)
         
-        getUserCarts()
-        getSizeAll()
-        cartTableView.reloadData()
+//        getUserCarts()
+//        getSizeAll()
+//        cartTableView.reloadData()
         
         //hide back button
         navigationItem.hidesBackButton = true
@@ -67,6 +73,7 @@ class CartVC: UIViewController{
         getSizeAll()
         getAllAddress() 
         cartTableView.reloadData()
+        
     }
     
     func getUserCarts() {
@@ -79,9 +86,10 @@ class CartVC: UIViewController{
                         self.subTotalView.text = "$ \(userCarts.data.orderInfo.subTotal)"
                         self.shippingTotalView.text = "$ \(userCarts.data.orderInfo.shippingCost)"
                         self.totalView.text = "$ \(userCarts.data.orderInfo.total)"
+//                        self.resultsProductOrder = userCarts.data.products.map { [$0.id, $0.quantity]} as! [ResponseAllAddress]
                     }
                     self.cartTableView.reloadData()
-                    print("ini keranjabg")
+                    print("ini keranjang")
                 case .failure(let error):
                     // Handle the error appropriately
                     print("Error fetching user carts: \(error.localizedDescription)")
@@ -89,6 +97,19 @@ class CartVC: UIViewController{
             }
         }
     }
+    
+//    func  loadProductChart(completion: @escaping (() -> Void)) {
+//            getAllChart { result in
+//                DispatchQueue.main.async {
+//                    self.resultProductChart = (result?.data.products.reversed())!
+//                    self.resultOrderInfo = result!.data.order_info
+//                    self.resultzproductOrder = result?.data.products.map { [$0.id, $0.quantity]} as! [DataProduct]
+//                }
+//                completion()
+//            } onError: { erorr in
+//                print(erorr)
+//            }
+//        }
     
     // MARK: - Func All Address
     func getAllAddress() {
@@ -107,6 +128,7 @@ class CartVC: UIViewController{
         }
     }
     
+    // MARK: - Func Update Primary Address
     func updatePrimaryAddress() {
         if !selectedAddress.isEmpty && !selectedCountry.isEmpty {
             // Gunakan alamat yang dipilih melalui protocol jika ada
@@ -124,6 +146,7 @@ class CartVC: UIViewController{
         }
     }
 
+    // MARK: - Func Get All Size
     func getSizeAll(){
         cartsViewModel.getSizeAll { allSize in
             DispatchQueue.main.async { [weak self] in
@@ -144,6 +167,56 @@ class CartVC: UIViewController{
         return sizeId
     }
     
+    func postOrder() {
+//        if let indexPath = prodIndexpath,
+//            let cartData = cartModel?.data.products[indexPath.row]
+//        {
+//            productId = cartData.id
+//            productQuantity = cartData.quantity
+//            print("Ordered product with ID: \(productId)")
+//            print("Ordered product with quantity: \(productQuantity)")
+//        }
+        let productList = self.resultsProductOrder
+        let addressId = self.addressId
+        let bank = "BNI"
+        print("Order Result All Cart: \(productList)")
+        print("Order ID Address: \(addressId)")
+        print("Order bank: \(bank)")
+        
+        // Buat objek produk sesuai dengan format yang diperlukan
+        let product: [String: Any] = [
+            "id": productId,
+            "quantity": productQuantity
+            // Tambahkan properti lain sesuai kebutuhan
+        ]
+        
+        // Buat array produk
+        let products: [[String: Any]] = [product]
+
+        cartsViewModel.postDataOrder(products: products, addressId: addressId, bank: bank)
+        { result in
+                switch result {
+                case .success :
+                    DispatchQueue.main.async {
+                        ShowAlert.performAlertApi(on: self, title: "Order Notification", message: "Successfully Checkout")
+                        self.checkoutBtn()
+                    }
+                    print("Sukses Cekout")
+                case .failure(let error):
+                    // Handle the error appropriately
+                    ShowAlert.performAlertApi(on: self, title: "Order Notification", message: "Failed checkout")
+                    print("Error fetching order user: \(error.localizedDescription)")
+                }
+            
+        }
+    }
+
+    
+    func checkoutBtn(){
+        let checkoutBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "CheckoutVC") as! CheckoutVC
+        checkoutBtn.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(checkoutBtn, animated: true)
+    }
     
     
     @IBAction func addressBtn(_ sender: Any) {
@@ -155,13 +228,12 @@ class CartVC: UIViewController{
     
     @IBAction func paymentBtn(_ sender: Any) {
         let payemntBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
+        payemntBtn.delegate = self
         self.navigationController?.pushViewController(payemntBtn, animated: true)
     }
     
     @IBAction func checkoutBtn(_ sender: Any) {
-        let checkoutBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "CheckoutVC") as! CheckoutVC
-        checkoutBtn.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(checkoutBtn, animated: true)
+        postOrder()
     }
     
 }
@@ -189,6 +261,7 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
             cartCell.priceProductView.text = "$ \(cellCarts.price)"
         }
         cartCell.delegate = self
+        prodIndexpath = indexPath
         return cartCell
     }
     
@@ -197,20 +270,35 @@ extension CartVC: UITableViewDelegate, UITableViewDataSource {
         
     }
 }
+extension CartVC : choosePaymentProtocol{
+    func delegatCardPayment(cardNumber: String, bankName: String) {
+        cardNumberPayemntLabel.text = cardNumber
+        bankNameLabel.text = bankName
+        print("Sudah ada delegate \(cardNumber)")
+    }
+}
+
 
 extension CartVC: productInCartProtocol, chooseAddressProtocol {
-    
+
     func delegateAddress(country: String, address: String) {
         deliveryAddressView.text = address
         selectedAddress = address
         
         cityAddress.text = country
         selectedCountry = country
+        
+        // Cari alamat yang sesuai dengan yang dipilih
+        if let selectedAddress = modelAddress?.data?.first(where: { $0.country.capitalized == selectedCountry && $0.city.capitalized == selectedAddress }) {
+            addressId = selectedAddress.id
+        } else {
+            // Jika tidak ada alamat yang sesuai, atur ke nilai default (misalnya, 0)
+            addressId = 0
+        }
+        
+        // Sekarang, addressId telah diperbarui sesuai dengan alamat yang terpilih atau disetel ke nilai default jika tidak ada yang sesuai.
+        print("Updated Address ID: \(addressId)")
     }
-//    if let firstAddress = modelAddress?.data?.first {
-//        self.deliveryAddressView.text = firstAddress.country
-//        self.cityAddress.text = firstAddress.city
-//    }
     
     func updateCountProduct(cell: CartTableCell, completion: @escaping (Int) -> Void) {
         guard let indexPath = cartTableView.indexPath(for: cell) else { return }

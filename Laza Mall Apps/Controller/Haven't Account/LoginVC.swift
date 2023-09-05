@@ -90,6 +90,13 @@ class LoginVC: UIViewController {
         
         //load user default
         loadUserData()
+        
+        // untuk stay ketika sudah login di awal, jadi user defaultnya sudah tersimpan
+        if UserDefaults.standard.bool(forKey: "loginTrue"){
+            let tabbarVC = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
+            tabbarVC.navigationItem.hidesBackButton = true
+            self.navigationController?.pushViewController(tabbarVC, animated: true)
+        }
     }
     
     
