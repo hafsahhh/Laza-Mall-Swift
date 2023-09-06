@@ -23,6 +23,13 @@ class DetailProVC: UIViewController {
     @IBOutlet weak var dateReviewView: UILabel!
     @IBOutlet weak var ratingProView: CosmosView!
     @IBOutlet weak var imageReviewView: UIImageView!
+    {
+        didSet{
+            imageReviewView.layer.cornerRadius = imageReviewView.frame.width / 2
+            imageReviewView.layer.masksToBounds = true
+            imageReviewView.contentMode = .scaleToFill
+        }
+    }
     @IBOutlet weak var ratingUserReview: UILabel!
     
     
@@ -165,8 +172,6 @@ class DetailProVC: UIViewController {
         //cart button
         let likeBtn = UIBarButtonItem(customView: likeBtn)
         self.navigationItem.rightBarButtonItem  = likeBtn
-        
-        detailProductApi()
         callCollectView()
         
         isProductInWishlists(productId: productId) { isInWishlist in
@@ -190,6 +195,12 @@ class DetailProVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.tabBar.isHidden = false
+        ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
+            self?.detailProductApi()
+        } onError: { errorMessage in
+            print(errorMessage)
+        }
     }
     
     func callCollectView(){

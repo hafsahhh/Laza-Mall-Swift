@@ -69,7 +69,7 @@ struct profileUser: Codable {
 struct DataUseProfile: Codable {
     let id: Int
     let fullName, username, email: String
-    let image_url: String
+    let image_url: String?
     let isVerified: Bool
     let createdAt, updatedAt: String
 

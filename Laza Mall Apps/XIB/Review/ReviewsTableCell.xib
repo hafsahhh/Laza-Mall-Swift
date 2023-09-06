@@ -116,12 +116,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dateView" destination="dbM-Mq-X0c" id="Ivf-XE-e4E"/>
-                <outlet property="imageUser" destination="L0y-OK-Ycb" id="FgS-IF-Lhh"/>
+                <outlet property="dateLabelOutlet" destination="dbM-Mq-X0c" id="85r-IG-2ah"/>
+                <outlet property="imageUiviewOutlet" destination="L0y-OK-Ycb" id="awe-pj-Qe3"/>
                 <outlet property="ratingFromUser" destination="g2e-tV-kZ6" id="Yap-i7-zkD"/>
-                <outlet property="ratingView" destination="ggf-8b-bQi" id="M00-xC-hfh"/>
-                <outlet property="reviewView" destination="h43-Ne-iKI" id="fAn-j7-WKV"/>
-                <outlet property="usernameView" destination="AGo-ex-pBV" id="Itr-EE-UXX"/>
+                <outlet property="ratingLabelOutlet" destination="ggf-8b-bQi" id="ZKe-0Z-lWB"/>
+                <outlet property="reviewLabelOutlet" destination="h43-Ne-iKI" id="m9q-6z-8Ls"/>
+                <outlet property="usernameLabelOutlet" destination="AGo-ex-pBV" id="bSc-p7-OUD"/>
             </connections>
             <point key="canvasLocation" x="52.671755725190835" y="21.47887323943662"/>
         </tableViewCell>

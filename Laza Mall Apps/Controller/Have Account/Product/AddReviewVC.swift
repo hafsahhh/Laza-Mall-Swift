@@ -124,6 +124,12 @@ class AddReviewVC: UIViewController {
     
     
     @IBAction func submitRevieBtn(_ sender: UIButton) {
-        addReviewProductByApi()
+        
+        self.tabBarController?.tabBar.isHidden = false
+        ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
+            self?.addReviewProductByApi()
+        } onError: { errorMessage in
+            print(errorMessage)
+        }
     }
 }

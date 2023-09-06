@@ -61,7 +61,14 @@ class ProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchUserProfile()
+        
+        self.tabBarController?.tabBar.isHidden = false
+        ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
+            self?.fetchUserProfile()
+        } onError: { errorMessage in
+            print(errorMessage)
+        }
+//        fetchUserProfile()
     }
     
     func fetchUserProfile() {
@@ -84,8 +91,8 @@ class ProfileVC: UIViewController {
                 self.fullnameProfileView.text = userProfile.fullName
                 self.usernameProfileView.text = userProfile.username
                 self.emailProfileView.text = userProfile.email
-                self.linkImage = "\(userProfile.image_url )"
-                let imgURl = URL(string: "\(userProfile.image_url )")
+                self.linkImage = String(userProfile.image_url ?? "")
+                let imgURl = URL(string: userProfile.image_url ?? "")
                 self.userImageView.sd_setImage(with: imgURl)
             }
         } else {

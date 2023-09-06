@@ -52,7 +52,13 @@ class WishlistVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getUserWishlist()
+        
+        self.tabBarController?.tabBar.isHidden = false
+        ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
+            self?.getUserWishlist()
+        } onError: { errorMessage in
+            print(errorMessage)
+        }
         wishlistCollectView.reloadData()
     }
     

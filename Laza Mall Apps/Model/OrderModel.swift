@@ -62,3 +62,20 @@ struct PaymentMethod: Codable {
         case expiryTime = "expiry_time"
     }
 }
+
+struct CheckoutBody: Codable {
+    let products: [DataProduct]
+    let addressId: Int
+    let bank: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case products = "products"
+        case addressId = "address_id"
+        case bank = "bank"
+    }
+}
+
+struct DataProduct: Codable {
+    let id: Int
+    let quantity: Int
+}

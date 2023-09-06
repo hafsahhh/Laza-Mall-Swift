@@ -7,14 +7,21 @@
 
 import UIKit
 
-class CheckoutVC: UIViewController {
+protocol checkoutProtocol: AnyObject {
+    func goTohome()
+    func goToCart()
+}
 
+
+class CheckoutVC: UIViewController {
     
     @IBOutlet weak var goToOrder: UIButton!{
         didSet{
             goToOrder.layer.cornerRadius = 5
         }
     }
+    
+    weak var delegate: checkoutProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +30,7 @@ class CheckoutVC: UIViewController {
     }
     
     @IBAction func goToOrderBtn(_ sender: Any) {
+        self.dismiss(animated: true)
       let goToOrderCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartVC") as! CartVC
         goToOrderCtrl.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(goToOrderCtrl, animated: true)
@@ -30,8 +38,7 @@ class CheckoutVC: UIViewController {
     
     
     @IBAction func continueShopBtn(_ sender: Any) {
-        let continueShopCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNestedVC") as! HomeNestedVC
-        continueShopCtrl.navigationItem.hidesBackButton = true
-          self.navigationController?.pushViewController(continueShopCtrl, animated: true)
+        self.navigationController?.popViewController(animated: true)
+        delegate?.goTohome()
     }
 }

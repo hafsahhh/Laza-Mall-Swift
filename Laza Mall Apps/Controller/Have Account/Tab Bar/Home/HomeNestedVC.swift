@@ -15,6 +15,7 @@ protocol searchProductHomeProtocol: AnyObject {
     func searchProdFetch(isActive: Bool, textString: String)
 }
 
+
 class HomeNestedVC: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var homeTableView: UITableView!
@@ -86,6 +87,10 @@ class HomeNestedVC: UIViewController, UINavigationControllerDelegate {
       sideMenu.menuWidth = 330
       present(sideMenu, animated: true)
     }
+    
+ 
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,12 +124,7 @@ class HomeNestedVC: UIViewController, UINavigationControllerDelegate {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
-        jwtExpired()
-        if isValidToken {
-            callTableView()
-        }
- 
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,40 +146,6 @@ class HomeNestedVC: UIViewController, UINavigationControllerDelegate {
         homeTableView.register(ProductTableCell.nib(), forCellReuseIdentifier: ProductTableCell.identifier)
     }
     
-    func jwtExpired() {
-        do {
-            guard let tokenData = KeychainManager.shared.getAccessToken() else {
-                print("token data kosong")
-                self.navigationController?.popToRootViewController(animated: false)
-                return }
-            let jwt = try decode(jwt: tokenData)
-            if true {
-//            if jwt.expired {
-                isValidToken = false
-                updateToken()
-//            } else {
-//                isValidToken = true
-            }
-            
-        } catch {
-            print("ini gagal")
-        }
-    }
-    
-    
-    func updateToken() {
-        ApiRefreshToken().apiRefreshToken() { result in
-            switch result {
-            case .success(let json):
-                print("Response JSON: \(String(describing: json))")
-            case .failure(let error):
-                print("Error update token: \(error)")
-                // Tangani error dengan benar
-            }
-        }
-    }
-    
-
 }
 
 extension HomeNestedVC: UITableViewDelegate, UITableViewDataSource, productTableCellProtocol, categoryTableCellProtocol {
@@ -256,12 +222,10 @@ extension HomeNestedVC: protocolTabBarDelegate {
     
     func protocolGoToCart() {
         self.tabBarController?.selectedIndex = 2
-        print("berhasil go to cart")
     }
     
     func protocolGoToProfile() {
         self.tabBarController?.selectedIndex = 3
-        print("berhasil go to profile")
     }
     
     func protocolGoToChangePassword() {
@@ -283,4 +247,6 @@ extension HomeNestedVC: accessSideMenuDelegate {
         sideMenuClicked()
     }
 }
+
+
 

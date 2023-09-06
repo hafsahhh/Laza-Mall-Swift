@@ -59,8 +59,14 @@ class ReviewsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reviewAllByProductIdApi()
-        userReviewTable.reloadData()
+        
+        self.tabBarController?.tabBar.isHidden = false
+        ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
+            self?.reviewAllByProductIdApi()
+            self?.userReviewTable.reloadData()
+        } onError: { errorMessage in
+            print(errorMessage)
+        }
     }
     
     // MARK: - Navigation
@@ -113,18 +119,18 @@ extension ReviewsVC: UITableViewDataSource, UITableViewDelegate {
         else {return UITableViewCell()}
         let review = reviewProduct[indexPath.row]
         let ratingString = String(review.rating)
-        cell.usernameView.text = review.fullName
-        cell.reviewView.text = reviewProduct[indexPath.row].comment
+        cell.usernameLabelOutlet.text = review.fullName
+        cell.reviewLabelOutlet.text = reviewProduct[indexPath.row].comment
         cell.ratingFromUser.rating = reviewProduct[indexPath.row].rating
-        cell.ratingView.text = ratingString
-        cell.dateView.text = DateTimeUtils.shared.formatReview(date: review.createdAt)
+        cell.ratingLabelOutlet.text = ratingString
+        cell.dateLabelOutlet.text = DateTimeUtils.shared.formatReview(date: review.createdAt)
         // Load the image asynchronously from the URL
         if let imageUrl = URL(string: review.imageURL) {
             DispatchQueue.global().async {
                 if let imageData = try? Data(contentsOf: imageUrl) {
                     DispatchQueue.main.async {
                         // Create a UIImage from the loaded image data and assign it to the UIImageView
-                        cell.imageUser.image = UIImage(data: imageData)
+                        cell.imageUiviewOutlet.image = UIImage(data: imageData)
                     }
                 }
             }

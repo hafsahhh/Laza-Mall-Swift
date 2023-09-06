@@ -32,7 +32,7 @@ class CartVC: UIViewController{
     var productId: Int = 0  // Declare productId here with a default value
     var productQuantity: Int = 0  // Declare productQuantity here with a default value
     var prodIndexpath: IndexPath?
-    var resultsProductOrder = [ResponseAllAddress]()
+    var resultsProductOrder = [DataProduct]()
     
     //wishlist tab bar
     private func setupTabBarText() {
@@ -86,7 +86,11 @@ class CartVC: UIViewController{
                         self.subTotalView.text = "$ \(userCarts.data.orderInfo.subTotal)"
                         self.shippingTotalView.text = "$ \(userCarts.data.orderInfo.shippingCost)"
                         self.totalView.text = "$ \(userCarts.data.orderInfo.total)"
-//                        self.resultsProductOrder = userCarts.data.products.map { [$0.id, $0.quantity]} as! [ResponseAllAddress]
+                        self.resultsProductOrder.removeAll()
+                        userCarts.data.products.forEach { productChart in
+                            let dataProduct = DataProduct(id: productChart.id, quantity: productChart.quantity)
+                            self.resultsProductOrder.append(dataProduct)
+                        }
                     }
                     self.cartTableView.reloadData()
                     print("ini keranjang")
@@ -97,19 +101,7 @@ class CartVC: UIViewController{
             }
         }
     }
-    
-//    func  loadProductChart(completion: @escaping (() -> Void)) {
-//            getAllChart { result in
-//                DispatchQueue.main.async {
-//                    self.resultProductChart = (result?.data.products.reversed())!
-//                    self.resultOrderInfo = result!.data.order_info
-//                    self.resultzproductOrder = result?.data.products.map { [$0.id, $0.quantity]} as! [DataProduct]
-//                }
-//                completion()
-//            } onError: { erorr in
-//                print(erorr)
-//            }
-//        }
+
     
     // MARK: - Func All Address
     func getAllAddress() {
@@ -168,32 +160,14 @@ class CartVC: UIViewController{
     }
     
     func postOrder() {
-//        if let indexPath = prodIndexpath,
-//            let cartData = cartModel?.data.products[indexPath.row]
-//        {
-//            productId = cartData.id
-//            productQuantity = cartData.quantity
-//            print("Ordered product with ID: \(productId)")
-//            print("Ordered product with quantity: \(productQuantity)")
-//        }
         let productList = self.resultsProductOrder
         let addressId = self.addressId
         let bank = "BNI"
         print("Order Result All Cart: \(productList)")
         print("Order ID Address: \(addressId)")
         print("Order bank: \(bank)")
-        
-        // Buat objek produk sesuai dengan format yang diperlukan
-        let product: [String: Any] = [
-            "id": productId,
-            "quantity": productQuantity
-            // Tambahkan properti lain sesuai kebutuhan
-        ]
-        
-        // Buat array produk
-        let products: [[String: Any]] = [product]
 
-        cartsViewModel.postDataOrder(products: products, addressId: addressId, bank: bank)
+        cartsViewModel.postDataOrder(product: productList, address_id: addressId, bank: bank)
         { result in
                 switch result {
                 case .success :
@@ -204,7 +178,11 @@ class CartVC: UIViewController{
                     print("Sukses Cekout")
                 case .failure(let error):
                     // Handle the error appropriately
-                    ShowAlert.performAlertApi(on: self, title: "Order Notification", message: "Failed checkout")
+                    self.cartsViewModel.apiCarts = { status, data in
+                        DispatchQueue.main.async {
+                            ShowAlert.performAlertApi(on: self, title: status, message: data)
+                        }
+                    }
                     print("Error fetching order user: \(error.localizedDescription)")
                 }
             
@@ -215,6 +193,7 @@ class CartVC: UIViewController{
     func checkoutBtn(){
         let checkoutBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "CheckoutVC") as! CheckoutVC
         checkoutBtn.navigationItem.hidesBackButton = true
+        checkoutBtn.delegate = self
         self.navigationController?.pushViewController(checkoutBtn, animated: true)
     }
     
@@ -382,4 +361,17 @@ extension CartVC: productInCartProtocol, chooseAddressProtocol {
             }
         }
     }
+}
+
+extension CartVC: checkoutProtocol {
+    func goTohome() {
+        print("goToHome")
+        self.tabBarController?.selectedIndex = 0
+    }
+    
+    func goToCart() {
+        self.tabBarController?.selectedIndex = 2
+    }
+    
+    
 }

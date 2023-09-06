@@ -10,8 +10,6 @@
 		1A041A842A83339D00737C0A /* ChoosePaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A041A832A83339D00737C0A /* ChoosePaymentVC.swift */; };
 		1A041A862A837E8300737C0A /* GopayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A041A852A837E8300737C0A /* GopayVC.swift */; };
 		1A041A882A83818800737C0A /* ListAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A041A872A83818800737C0A /* ListAddressVC.swift */; };
-		1A041A8C2A83852A00737C0A /* ListAddressTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A041A8A2A83852A00737C0A /* ListAddressTableCell.swift */; };
-		1A041A8D2A83852A00737C0A /* ListAddressTableCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A041A8B2A83852A00737C0A /* ListAddressTableCellTableViewCell.xib */; };
 		1A041A902A8394B700737C0A /* ListAddressCellTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A041A8E2A8394B700737C0A /* ListAddressCellTable.swift */; };
 		1A041A912A8394B700737C0A /* ListAddressCellTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A041A8F2A8394B700737C0A /* ListAddressCellTable.xib */; };
 		1A0560F62AA07C22000B04B0 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0560F52AA07C22000B04B0 /* JWTDecode */; };
@@ -164,8 +162,6 @@
 		1A041A832A83339D00737C0A /* ChoosePaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePaymentVC.swift; sourceTree = "<group>"; };
 		1A041A852A837E8300737C0A /* GopayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GopayVC.swift; sourceTree = "<group>"; };
 		1A041A872A83818800737C0A /* ListAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAddressVC.swift; sourceTree = "<group>"; };
-		1A041A8A2A83852A00737C0A /* ListAddressTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAddressTableCell.swift; sourceTree = "<group>"; };
-		1A041A8B2A83852A00737C0A /* ListAddressTableCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListAddressTableCellTableViewCell.xib; sourceTree = "<group>"; };
 		1A041A8E2A8394B700737C0A /* ListAddressCellTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAddressCellTable.swift; sourceTree = "<group>"; };
 		1A041A8F2A8394B700737C0A /* ListAddressCellTable.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListAddressCellTable.xib; sourceTree = "<group>"; };
 		1A0560F72AA0C525000B04B0 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
@@ -345,8 +341,6 @@
 		1A041A892A8384FB00737C0A /* Address */ = {
 			isa = PBXGroup;
 			children = (
-				1A041A8A2A83852A00737C0A /* ListAddressTableCell.swift */,
-				1A041A8B2A83852A00737C0A /* ListAddressTableCellTableViewCell.xib */,
 				1A041A8E2A8394B700737C0A /* ListAddressCellTable.swift */,
 				1A041A8F2A8394B700737C0A /* ListAddressCellTable.xib */,
 			);
@@ -1024,7 +1018,6 @@
 				1AAF92552A7F4EB6005BBB68 /* WishlistCollectCell.xib in Resources */,
 				1A8C3D732A8235CD00ADE799 /* PaymentCollectCell.xib in Resources */,
 				1A24CEA12A789396008F693F /* CategoryCollectionCell.xib in Resources */,
-				1A041A8D2A83852A00737C0A /* ListAddressTableCellTableViewCell.xib in Resources */,
 				1AF3808E2A7F258A00A31FC6 /* CartTableCell.xib in Resources */,
 				1A0671F62A7B8B150079B97F /* ReviewsTableCell.xib in Resources */,
 			);
@@ -1233,7 +1226,6 @@
 				1A0671ED2A7B58CE0079B97F /* sizeCollectCell.swift in Sources */,
 				1ACBD66F2A7009E5002C12A2 /* SignUpVC.swift in Sources */,
 				1A0992962A8F0BE4006F1175 /* DetailProdModel.swift in Sources */,
-				1A041A8C2A83852A00737C0A /* ListAddressTableCell.swift in Sources */,
 				1A2D0A582AA40C57002C1159 /* ChangePasswordVM.swift in Sources */,
 				1ACBD6732A7012A7002C12A2 /* ForgotPasswordVC.swift in Sources */,
 				1AF380902A7F2ACD00A31FC6 /* ApiAllCart.swift in Sources */,

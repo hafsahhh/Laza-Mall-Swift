@@ -22,23 +22,37 @@ class MenuVC: UIViewController {
     let menuViewModel = LoginViewModel()
     weak var delegate: protocolTabBarDelegate?
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageUiviewOutlet: UIImageView!
+    {
+        didSet{
+            imageUiviewOutlet.layer.cornerRadius = imageUiviewOutlet.frame.width / 2
+            imageUiviewOutlet.layer.masksToBounds = true
+            imageUiviewOutlet.contentMode = .scaleToFill
+        }
+    }
+    
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var logoutBtnOutlet: UIButton!
     @IBOutlet weak var backMenu: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchUserProfile()
     }
     
     @IBAction func menuCloseBtn(_ sender: UIButton) {
         
     }
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        super.viewWillAppear(animated)
-    //        updateUsername()
-    //    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
+        ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
+            self?.fetchUserProfile()
+        } onError: { errorMessage in
+            print(errorMessage)
+        }
+        
+    }
     
     func fetchUserProfile() {
         menuViewModel.getUserProfile { result in
@@ -58,8 +72,8 @@ class MenuVC: UIViewController {
             DispatchQueue.main.async {
                 // Mengisi IBOutlets dengan data profil pengguna
                 self.usernameLabel.text = userProfile.username
-                let imgURl = URL(string: "\(userProfile.image_url )")
-                self.imageView.sd_setImage(with: imgURl)
+                let imgURl = URL(string: userProfile.image_url ?? "")
+                self.imageUiviewOutlet.sd_setImage(with: imgURl)
             }
         } else {
             // Failed to get user profile
@@ -84,7 +98,6 @@ class MenuVC: UIViewController {
         KeychainManager.shared.deleteRefreshToken()
         UserDefaults.standard.removeObject(forKey: "auth_token")
         UserDefaults.standard.removeObject(forKey: "loginTrue")
-//        UserDefaults.standard.removeObject(forKey: userLoginTrue)
         let signInBtnAct = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateAccountVC") as! CreateAccountVC
         signInBtnAct.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(signInBtnAct, animated: true)

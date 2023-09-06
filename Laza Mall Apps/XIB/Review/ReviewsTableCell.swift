@@ -15,11 +15,18 @@ class ReviewsTableCell: UITableViewCell {
         return UINib(nibName: "ReviewsTableCell", bundle: nil)
     }
     
-    @IBOutlet weak var imageUser: UIImageView!
-    @IBOutlet weak var usernameView: UILabel!
-    @IBOutlet weak var ratingView: UILabel!
-    @IBOutlet weak var reviewView: UILabel!
-    @IBOutlet weak var dateView: UILabel!
+    @IBOutlet weak var imageUiviewOutlet: UIImageView!
+    {
+        didSet{
+            imageUiviewOutlet.layer.cornerRadius = imageUiviewOutlet.frame.width / 2
+            imageUiviewOutlet.layer.masksToBounds = true
+            imageUiviewOutlet.contentMode = .scaleToFill
+        }
+    }
+    @IBOutlet weak var usernameLabelOutlet: UILabel!
+    @IBOutlet weak var ratingLabelOutlet: UILabel!
+    @IBOutlet weak var reviewLabelOutlet: UILabel!
+    @IBOutlet weak var dateLabelOutlet: UILabel!
     @IBOutlet weak var ratingFromUser: CosmosView!
     
     override func awakeFromNib() {

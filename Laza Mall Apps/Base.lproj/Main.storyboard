@@ -320,7 +320,7 @@
                                         </constraints>
                                         <standardMapConfiguration key="preferredConfiguration"/>
                                     </mapView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chhatak, Sunamgonj 12/8AB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWJ-9d-hH7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWJ-9d-hH7">
                                         <rect key="frame" x="65" y="0.0" width="288" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -333,7 +333,7 @@
                                             <constraint firstAttribute="width" constant="25" id="fxj-GX-1Zj"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sylhet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0g-6P-7wg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0g-6P-7wg">
                                         <rect key="frame" x="65" y="25.333333333333375" width="288" height="15.666666666666668"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -359,13 +359,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wG5-pd-Jlr">
                                 <rect key="frame" x="20" y="527.66666666666663" width="353" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chhatak, Sunamgonj 12/8AB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7w-hb-laA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7w-hb-laA">
                                         <rect key="frame" x="65" y="0.0" width="288" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sylhet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc1-Vn-toA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc1-Vn-toA">
                                         <rect key="frame" x="65" y="25.333333333333375" width="288" height="15.666666666666668"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -986,7 +986,7 @@
                     <size key="freeformSize" width="320" height="820"/>
                     <connections>
                         <outlet property="backMenu" destination="DSj-oa-H5a" id="Jgl-mu-iq6"/>
-                        <outlet property="imageView" destination="Ee3-1l-Xn3" id="kWb-7v-NVu"/>
+                        <outlet property="imageUiviewOutlet" destination="Ee3-1l-Xn3" id="pu2-Ez-dlK"/>
                         <outlet property="logoutBtnOutlet" destination="EoT-zW-J7g" id="sUL-3H-Eav"/>
                         <outlet property="usernameLabel" destination="VOg-d9-RoA" id="bhv-On-tJF"/>
                     </connections>
@@ -3363,6 +3363,7 @@
                             <constraint firstItem="Aol-Vt-B0B" firstAttribute="trailing" secondItem="D4U-Af-44j" secondAttribute="trailing" constant="69" id="xyN-7Y-kxi"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="E5V-Mv-WzW"/>
                     <connections>
                         <outlet property="goToOrder" destination="WXr-gN-haq" id="T6c-2c-ck1"/>
                     </connections>
@@ -3370,7 +3371,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blc-d6-P9g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="sAH-Dk-cYC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1181" y="3613"/>
+            <point key="canvasLocation" x="-2647" y="1594"/>
         </scene>
         <!--Verify CodeVC-->
         <scene sceneID="iW0-WT-fJ4">

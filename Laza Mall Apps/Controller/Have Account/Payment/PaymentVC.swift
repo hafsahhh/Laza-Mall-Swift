@@ -170,7 +170,7 @@ class PaymentVC: UIViewController {
         guard let chooseCardNumber = cardNumberTf.text else {return}
         let chooseBank = bank
         print("protocol payment ini nomer kartu: \(chooseCardNumber), \(chooseBank)")
-        self.delegate?.delegatCardPayment(cardNumber: "Helow", bankName: chooseBank)
+        self.delegate?.delegatCardPayment(cardNumber: chooseCardNumber, bankName: chooseBank)
     self.navigationController?.popViewController(animated: true)
     }
     
