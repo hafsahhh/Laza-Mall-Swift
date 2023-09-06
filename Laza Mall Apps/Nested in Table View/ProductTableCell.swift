@@ -78,15 +78,15 @@ extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 400)
+        return CGSize(width: 160, height: 300)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let productCell =  collectionView.dequeueReusableCell(withReuseIdentifier: ProductHomeCollectCell.identifier, for: indexPath) as? ProductHomeCollectCell {
@@ -116,7 +116,9 @@ extension ProductTableCell: UICollectionViewDelegate, UICollectionViewDataSource
 extension ProductTableCell: searchProductHomeProtocol {
     func searchProdFetch(isActive: Bool, textString: String) {
         searchTextActive = isActive
-        filterProduct = modelProduct.filter{$0.name.contains(textString)}
+        filterProduct = modelProduct.filter { product in
+            return product.name.localizedCaseInsensitiveContains(textString)
+        }
         self.productCollectView.reloadData()
     }
 }

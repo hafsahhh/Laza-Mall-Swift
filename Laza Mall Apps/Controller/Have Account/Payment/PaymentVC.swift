@@ -64,9 +64,14 @@ class PaymentVC: UIViewController {
 //        self.navigationController?.popViewController(animated: true)
         
         
-        let backToCart = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartVC") as! CartVC
-        backToCart.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(backToCart, animated: true)
+//        let backToCart = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartVC") as! CartVC
+//        backToCart.navigationItem.hidesBackButton = true
+//        self.navigationController?.pushViewController(backToCart, animated: true)
+        let TabViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
+        TabViewController.selectedIndex = 2
+        
+        
+        
     }
     
 

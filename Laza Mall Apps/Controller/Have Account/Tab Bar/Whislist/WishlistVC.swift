@@ -45,9 +45,6 @@ class WishlistVC: UIViewController {
         self.wishlistCollectView.dataSource = self
         self.wishlistCollectView.delegate = self
         wishlistCollectView.register(ProductHomeCollectCell.nib(), forCellWithReuseIdentifier: ProductHomeCollectCell.identifier)
-        
-        getUserWishlist()
-        wishlistCollectView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,10 +56,11 @@ class WishlistVC: UIViewController {
         } onError: { errorMessage in
             print(errorMessage)
         }
-        wishlistCollectView.reloadData()
+//        wishlistCollectView.reloadData()
     }
     
     func getUserWishlist() {
+        
         wishlistViewModel.getWishlistUser { result in
             DispatchQueue.main.async {
                 switch result {
@@ -87,7 +85,7 @@ extension WishlistVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("model wislist\(String(describing: modelWhishlist??.data?.products.count))")
-        if modelWhishlist??.data?.products.count == 0 {
+        if modelWhishlist??.data?.products.count == nil {
             emptyDataWishlist.isHidden = false
         } else {
             emptyDataWishlist.isHidden = true

@@ -70,11 +70,12 @@ class ListAddressVC: UIViewController {
                 case .success(let userAddress):
                     if let userAddress = userAddress { // Safely unwrap the optional
                         self.modelAddress = userAddress
-                        let primaryAddress = userAddress.data.filter { $0.isPrimary != nil} ?? []
-                        let nonPrimaryAddress = userAddress.data.filter { $0.isPrimary == nil} ?? []
+                        let primaryAddress = userAddress.data.filter { $0.isPrimary != nil}
+                        let nonPrimaryAddress = userAddress.data.filter { $0.isPrimary == nil}
                         let allTypeAddress = primaryAddress + nonPrimaryAddress
 //                        self.modelAddress?.data = allTypeAddress
                         self.addressUserData = userAddress.data
+                        self.addressUserData = allTypeAddress
                     }
                     
                 case .failure(let error):

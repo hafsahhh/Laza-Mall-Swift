@@ -49,7 +49,8 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //hide back button
+        navigationItem.hidesBackButton = true
         
         // Initialize activity indicator
         activityIndicator = UIActivityIndicatorView(style: .medium)
