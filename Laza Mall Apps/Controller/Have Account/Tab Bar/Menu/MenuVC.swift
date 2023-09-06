@@ -98,7 +98,7 @@ class MenuVC: UIViewController {
         KeychainManager.shared.deleteRefreshToken()
         UserDefaults.standard.removeObject(forKey: "auth_token")
         UserDefaults.standard.removeObject(forKey: "loginTrue")
-        let signInBtnAct = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateAccountVC") as! CreateAccountVC
+        let signInBtnAct = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
         signInBtnAct.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(signInBtnAct, animated: true)
     }

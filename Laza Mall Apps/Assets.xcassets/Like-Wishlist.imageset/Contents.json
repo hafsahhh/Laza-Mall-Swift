@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "heart_18pt_3x.png",
+      "filename" : "Like-Wishlist.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "light"
         }
       ],
-      "filename" : "heart_18pt_3x 1.png",
+      "filename" : "Like-Wishlist 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -23,7 +23,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Untitled_design-2-removebg-preview.png",
+      "filename" : "Cart-5.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

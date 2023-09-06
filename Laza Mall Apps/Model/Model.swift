@@ -123,9 +123,7 @@ struct userIndex : Codable{
 }
 
 struct allUser : Codable {
-//    var full_name : String
     var username : String
-    var email : String
     var password : String
 
 }

@@ -115,7 +115,7 @@ class ProfileVC: UIViewController {
         let editProfileCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editProfileVC") as! editProfileVC
         editProfileCtrl.email = emailProfile
         editProfileCtrl.name = nameProfile
-        editProfileCtrl.userName = nameProfile 
+        editProfileCtrl.userName = usernameProfile
 //        editProfileCtrl.image = linkImage
         
         self.navigationController?.pushViewController(editProfileCtrl, animated: true)

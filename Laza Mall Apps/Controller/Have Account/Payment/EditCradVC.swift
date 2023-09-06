@@ -115,6 +115,7 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
         updateCardModelToCoreData()
         let addCard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentVC
         addCard.cardModels = cardModels
+        addCard.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(addCard, animated: true)
     }
     

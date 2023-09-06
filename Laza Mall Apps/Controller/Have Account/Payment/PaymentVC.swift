@@ -60,9 +60,13 @@ class PaymentVC: UIViewController {
 
     //Back Button
     @objc func backBtnAct(){
-        self.navigationController?.popViewController(animated: true)
-//        let backToCart = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartVC") as! CartVC
-//        self.navigationController?.pushViewController(backToCart, animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        
+        
+        let backToCart = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartVC") as! CartVC
+        backToCart.navigationItem.hidesBackButton = true
+        self.navigationController?.pushViewController(backToCart, animated: true)
     }
     
 
@@ -162,6 +166,7 @@ class PaymentVC: UIViewController {
         editCardBtn.editCardOwner = nameCard
         editCardBtn.editCardNumber = numberCard
         editCardBtn.indexPathCardNumber = self.numberCardChoose
+        editCardBtn.navigationItem.hidesBackButton = true
         self.navigationController?.pushViewController(editCardBtn, animated: true)
     }
     

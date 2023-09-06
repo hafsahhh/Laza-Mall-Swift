@@ -70,7 +70,7 @@ class DetailProVC: UIViewController {
         //call back button
         let likeBtn = UIButton.init(type: .custom)
         likeBtn.tintColor = .black
-        likeBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+        likeBtn.setImage(UIImage(named: "Like-Wishlist"), for: .normal)
         likeBtn.addTarget(self, action: #selector(likeBtnAct), for: .touchUpInside)
         likeBtn.frame = CGRect(x: 330, y: 0, width: 70, height: 70)
         return likeBtn
@@ -111,13 +111,13 @@ class DetailProVC: UIViewController {
                     DispatchQueue.main.async {
                         print(data)
                         if data.contains("added") {
-                            self.imageName = "heart.fill"
+                            self.imageName = "Like-Wishlist-Filled"
                         } else {
-                            self.imageName = "heart"
+                            self.imageName = "Like-Wishlist"
                         }
                         
                         // Update the button image
-                        let image = UIImage(systemName: self.imageName)
+                        let image = UIImage(named: self.imageName)
                         self.likeBtn.setImage(image, for: .normal) // Update the button image here
                         message = data // Menangkap pesan di sini
                         ShowAlert.addReview(on: self, title: status, message: message)
@@ -169,20 +169,23 @@ class DetailProVC: UIViewController {
         //back button
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
+        
         //cart button
         let likeBtn = UIBarButtonItem(customView: likeBtn)
         self.navigationItem.rightBarButtonItem  = likeBtn
+        
+        
         callCollectView()
         
         isProductInWishlists(productId: productId) { isInWishlist in
             if isInWishlist {
-                self.imageName = "heart.fill"
+                self.imageName = "Like-Wishlist-Filled"
             } else {
-                self.imageName = "heart"
+                self.imageName = "Like-Wishlist"
             }
             DispatchQueue.main.async {
                 // Update the button image
-                let image = UIImage(systemName: self.imageName)
+                let image = UIImage(named: self.imageName)
                 self.likeBtn.setImage(image, for: .normal)
             }
         }

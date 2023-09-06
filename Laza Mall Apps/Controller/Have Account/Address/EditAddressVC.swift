@@ -11,22 +11,22 @@ class EditAddressVC: UIViewController {
 
     @IBOutlet weak var nameView: UITextField!{
         didSet{
-            nameView.text = name
+            nameView.text = userAddress?.receiverName
         }
     }
     @IBOutlet weak var countryView: UITextField!{
         didSet{
-            countryView.text = country
+            countryView.text = userAddress?.country
         }
     }
     @IBOutlet weak var phoneView: UITextField!{
         didSet{
-            phoneView.text = phone
+            phoneView.text = userAddress?.phoneNumber
         }
     }
     @IBOutlet weak var addressView: UITextField!{
         didSet{
-            addressView.text = addres
+            addressView.text = userAddress?.city
         }
     }
     @IBOutlet weak var editAddressSwitchView: UISwitch!{
@@ -44,10 +44,10 @@ class EditAddressVC: UIViewController {
     let editAddressViewModel = EditAddressViewModel()
     var userAddress: DataAllAddress?
     var idAddress: Int = 0
-    var name: String = ""
-    var country: String = ""
-    var phone: String = ""
-    var addres: String = ""
+//    var name: String = ""
+//    var country: String = ""
+//    var phone: String = ""
+//    var addres: String = ""
     var switchPrimary: Bool?
     
     

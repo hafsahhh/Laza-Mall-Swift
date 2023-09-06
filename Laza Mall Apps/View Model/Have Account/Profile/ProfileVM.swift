@@ -41,9 +41,8 @@ class ProfileViewModel {
                     //untuk liat bentuk JSON
                     let serializedJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
                     print(serializedJson)
-                    let result = try JSONDecoder().decode(ResponFailed.self, from: data)
-                    completion(result.status)
-                    print("Helowoy")
+                    guard let getSuccess = try? JSONDecoder().decode(EditProfileResponse.self, from: data) else { return }
+                    completion(getSuccess.status)
                 } catch {
                     print(error)
                 }

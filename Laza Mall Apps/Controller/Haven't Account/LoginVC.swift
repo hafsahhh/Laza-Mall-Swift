@@ -46,27 +46,10 @@ class LoginVC: UIViewController {
     
     
     
-    //Back Button
-    private lazy var backBtn : UIButton = {
-        //call back button
-        let backBtn = UIButton.init(type: .custom)
-        backBtn.setImage(UIImage(named:"Back"), for: .normal)
-        backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
-        backBtn.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
-        return backBtn
-    }()
-    
-    //Back Button
-    @objc func backBtnAct(){
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let backBarBtn = UIBarButtonItem(customView: backBtn)
-        self.navigationItem.leftBarButtonItem  = backBarBtn
+
         
         // Initialize activity indicator
         activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -88,8 +71,9 @@ class LoginVC: UIViewController {
         // Call the textFieldDidChange function manually once to set the initial state of the button.
         textFieldDidChange()
         
-        //load user default
-        loadUserData()
+        
+        //Show userdefault
+        getSaveInfo()
         
         // untuk stay ketika sudah login di awal, jadi user defaultnya sudah tersimpan
         if UserDefaults.standard.bool(forKey: "loginTrue"){
@@ -230,17 +214,16 @@ class LoginVC: UIViewController {
         
     }
     
-    //Fungsi untuk membaca user default yang ada di textfield
-    func loadUserData() {
-        if let savedData = UserDefaults.standard.data(forKey: saveDataLogin) {
-            let decoder = JSONDecoder()
-            if let userDetail = try? decoder.decode(allUser.self, from: savedData) {
-                usernameOutlet.text = userDetail.username
-                passwordOutlet.text = userDetail.password
-            }
+    
+    // Fungsi untuk mengambil data pengguna dari UserDefaults
+    func getSaveInfo(){
+        if let savedUsername = UserDefaults.standard.string(forKey: "username"),
+           let savedPassword = KeychainManager.shared.getPassword()
+        {
+            usernameOutlet.text = savedUsername
+            passwordOutlet.text = savedPassword
         }
     }
-    
     
     // MARK: - eye Password Button
     @IBAction func eyePassBtn(_ sender: Any) {
@@ -263,17 +246,23 @@ class LoginVC: UIViewController {
     
     // MARK: - Switch Button untuk save di userdefault
     @IBAction func saveDataLoginSwitch(_ sender: Any) {
+        guard let username = usernameOutlet.text else { return }
+        guard let password = passwordOutlet.text else { return }
+        
         if (sender as AnyObject).isOn {
-            // Call the function here passing the user details to be saved
-            let userDetail = allUser(username: usernameOutlet.text ?? "", email: "", password: passwordOutlet.text ?? "")
-            saveUserDefault(userDetail)
-            UserDefaults.standard.set(true, forKey: saveDataLogin)
+            UserDefaults.standard.set(username, forKey: "username")
+            KeychainManager.shared.savePassword(token: password)
         } else {
-            // If the switch is turned off, you can decide what to do here.
-            // You might want to remove user data from UserDefaults as you do in the saveUserDefault function.
-            UserDefaults.standard.removeObject(forKey: saveDataLogin)
+            UserDefaults.standard.removeObject(forKey: "username")
+            KeychainManager.shared.deletePassword()
             print("User data removed from UserDefaults.")
         }
     }
+    
+    @IBAction func signUpBtn(_ sender: Any) {
+        let createAccountBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
+        self.navigationController?.pushViewController(createAccountBtn, animated: true)
+    }
+    
     
 }

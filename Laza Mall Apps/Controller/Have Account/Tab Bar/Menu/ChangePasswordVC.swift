@@ -66,8 +66,21 @@ class ChangePasswordVC: UIViewController {
         newPassView.isSecureTextEntry = true
         confirmPassView.isSecureTextEntry = true
         
-        newPassView.addTarget(self, action: #selector(validasiUpdatePass), for: .editingChanged)
-        confirmPassView.addTarget(self, action: #selector(validasiUpdatePass), for: .editingChanged)
+        newPassView.addTarget(self, action: #selector(changeBackgroundTextField), for: .editingChanged)
+        confirmPassView.addTarget(self, action: #selector(changeBackgroundTextField), for: .editingChanged)
+    }
+    
+    @objc func changeBackgroundTextField(){
+        isNewPassValid = newPassView.validPassword(newPassView.text ?? "")
+        isConfirmPassValid = confirmPassView.validPassword(confirmPassView.text ?? "")
+        if isNewPassValid && isConfirmPassValid && !confirmPassView.text!.isEmpty {
+            changePassView.isEnabled = true
+            changePassView.backgroundColor = UIColor(named: "ColorBg" )
+            changePassView.tintColor = UIColor(named: "ColorWhite")
+        } else {
+            changePassView.isEnabled = false
+            changePassView.backgroundColor = UIColor(named: "ColorDarkValid" )
+        }
     }
     
     // MARK: - Func Validasi Update Pass
@@ -81,12 +94,9 @@ class ChangePasswordVC: UIViewController {
             if newPassView.text == confirmPassView.text {
                 // Jika kedua kata sandi valid dan sesuai, aktifkan tombol
                 changePassView.isEnabled = true
-                changePassView.backgroundColor = UIColor(named: "ColorBg" )
-                changePassView.tintColor = UIColor(named: "ColorWhite")
             } else {
                 // Jika kata sandi tidak sesuai, nonaktifkan tombol dan tampilkan pesan kesalahan
                 changePassView.isEnabled = false
-                changePassView.backgroundColor = UIColor(named: "ColorDarkValid" )
                 print("Passwords do not match")
                 // create the alert
                 let alert = UIAlertController(title: "Passwords Don't Match", message: "New password and confirm password must match.", preferredStyle: .alert)
@@ -170,6 +180,7 @@ class ChangePasswordVC: UIViewController {
     
     @IBAction func changePassBtn(_ sender: UIButton) {
         putChangePassword()
+        validasiUpdatePass()
     }
     
     

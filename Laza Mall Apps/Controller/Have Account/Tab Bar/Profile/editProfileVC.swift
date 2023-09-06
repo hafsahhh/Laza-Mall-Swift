@@ -94,12 +94,11 @@ class editProfileVC: UIViewController {
         }
         
         if username != "" && fullname != "" && email != "" {
-            print("lolo")
             editProfileViewModel.updateProfile(fullName: fullname, username: username, email: email, media: media) { update in
-                print("ini wweee \(update)")
                 DispatchQueue.main.async {
                     ShowAlert.performAlertApi(on: self, title: "Success", message: "Successfully ")
                     print("Alert profile")
+                    self.navigationController?.popViewController(animated: true)
                 }
                 
             } onError: { error in

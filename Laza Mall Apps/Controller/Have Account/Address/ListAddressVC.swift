@@ -8,7 +8,7 @@
 import UIKit
 
 protocol chooseAddressProtocol: AnyObject{
-    func delegateAddress(country: String, address:String)
+    func delegateAddress(addressModel: DataAllAddress?)
 }
 
 class ListAddressVC: UIViewController {
@@ -62,30 +62,33 @@ class ListAddressVC: UIViewController {
     
     // MARK: - Func All Address
     func getAllAddress() {
+        self.addressUserData.removeAll()
+        
         addressViewModel.getAddressUser() { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let userAddress):
                     if let userAddress = userAddress { // Safely unwrap the optional
                         self.modelAddress = userAddress
-                        let primaryAddress = userAddress.data?.filter { $0.isPrimary != nil} ?? []
-                        let nonPrimaryAddress = userAddress.data?.filter { $0.isPrimary == nil} ?? []
+                        let primaryAddress = userAddress.data.filter { $0.isPrimary != nil} ?? []
+                        let nonPrimaryAddress = userAddress.data.filter { $0.isPrimary == nil} ?? []
                         let allTypeAddress = primaryAddress + nonPrimaryAddress
-                        self.modelAddress?.data = allTypeAddress
+//                        self.modelAddress?.data = allTypeAddress
+                        self.addressUserData = userAddress.data
                     }
-                    self.listAddressTableView.reloadData()
-                    print("ini address all user")
+                    
                 case .failure(let error):
                     // Handle the error appropriately
                     print("Error fetching user carts: \(error.localizedDescription)")
                 }
+                self.listAddressTableView.reloadData()
             }
         }
     }
     
     // MARK: - handleMoveToTrash
     func handleMoveToTrash(indexPath: IndexPath) {
-        if let addressData = modelAddress?.data?[indexPath.row] {
+        if let addressData = modelAddress?.data[indexPath.row] {
             addressViewModel.deleteAddress(idAddress: addressData.id) { result in
                 switch result {
                 case .success:
@@ -109,15 +112,15 @@ class ListAddressVC: UIViewController {
             print("Error creating EditAddressVC")
             return
         }
-        editAddress.userAddress = modelAddress?.data?[indexPath.row]
-        if let addressData = modelAddress?.data?[indexPath.row] {
-            editAddress.name = addressData.receiverName.capitalized
-            editAddress.country = addressData.country.capitalized
-            editAddress.addres = addressData.city.capitalized
-            editAddress.phone = addressData.phoneNumber
-            editAddress.switchPrimary = addressData.isPrimary
-        }
-        print("id ini adalah\(String(describing: modelAddress?.data?[indexPath.row]))")
+        editAddress.userAddress = addressUserData[indexPath.row]
+//        if let addressData = modelAddress?.data?[indexPath.row] {
+//            editAddress.name = addressData.receiverName.capitalized
+//            editAddress.country = addressData.country.capitalized
+//            editAddress.addres = addressData.city.capitalized
+//            editAddress.phone = addressData.phoneNumber
+//            editAddress.switchPrimary = addressData.isPrimary
+//        }
+      
         self.navigationController?.pushViewController(editAddress, animated: true)
     }
 
@@ -157,33 +160,33 @@ class ListAddressVC: UIViewController {
 
 extension ListAddressVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if modelAddress?.data?.count == 0 {
+        if addressUserData.count == 0 {
             emptyDataView.isHidden = false
         } else {
             emptyDataView.isHidden = true
         }
-        return modelAddress?.data?.count ?? 0
+        return addressUserData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = listAddressTableView.dequeueReusableCell(withIdentifier: ListAddressCellTable.identifier, for: indexPath) as? ListAddressCellTable
         else {return UITableViewCell()}
         
-        if let address = modelAddress?.data?[indexPath.row] {
-            cell.nameAddressView.text = "\(address.receiverName.capitalized) | \(address.phoneNumber)"
-            cell.fullAddressView.text = "\(address.city.capitalized) , \(address.country.capitalized)"
-            if address.isPrimary == true {
-                cell.checklistPrimary.isHidden = false
-            } else {
-                cell.checklistPrimary.isHidden = true
-            }
+        let address = addressUserData[indexPath.row]
+        cell.nameAddressView.text = "\(address.receiverName.capitalized) | \(address.phoneNumber)"
+        cell.fullAddressView.text = "\(address.city.capitalized) , \(address.country.capitalized)"
+        if address.isPrimary == true {
+            cell.checklistPrimary.isHidden = false
+        } else {
+            cell.checklistPrimary.isHidden = true
         }
+        
         return cell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let address = modelAddress?.data?[indexPath.row]{
-            delegate?.delegateAddress(country:address.country , address: address.city)}
+        let address = addressUserData[indexPath.row]
+        delegate?.delegateAddress(addressModel: address)
         self.navigationController?.popViewController(animated: true)
     }
     
