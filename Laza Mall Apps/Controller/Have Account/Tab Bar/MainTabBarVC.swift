@@ -12,8 +12,8 @@ class MainTabBarVC: UITabBarController {
     var userProfile: DataUseProfile? 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        // Do any additional setup after loading the view.
     }
     
 

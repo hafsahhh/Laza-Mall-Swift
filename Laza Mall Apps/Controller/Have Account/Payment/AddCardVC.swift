@@ -16,6 +16,7 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     let paymentTextField = STPPaymentCardTextField()
     var cardModels = [CreditCard]()
     var coredataManage = CoreDataManage()
+    var modelProfile : DataUseProfile?
     
     @IBOutlet weak var cardNumberText: STPPaymentCardTextField!
     {
@@ -110,10 +111,27 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     @IBAction func addNewCard(_ sender: UIButton) {
         savedCard()
         saveCardModelToCoreData()
-//        checkIfCardIsSaved()
-        let addCard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentVC
-        addCard.cardModels = cardModels
-        self.navigationController?.pushViewController(addCard, animated: true)
+        // Cek apakah ada instance PaymentViewController yang sudah ada dalam navigation stack
+        var foundCardViewController: PaymentVC?
+        if let viewControllers = self.navigationController?.viewControllers {
+            for viewController in viewControllers {
+                if let cardViewController = viewController as? PaymentVC {
+                    foundCardViewController = cardViewController
+                    break
+                }
+            }
+        }
+
+        if let existingCardViewController = foundCardViewController {
+            // Jika sudah ada, tinggal perbarui data kartu dan kembali ke tampilan tersebut
+            existingCardViewController.cardModels = cardModels
+            self.navigationController?.popToViewController(existingCardViewController, animated: false)
+        } else {
+            // Jika belum ada, buat instance baru dan tambahkan ke navigation stack
+            let addCard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentVC
+            addCard.cardModels = cardModels
+            self.navigationController?.pushViewController(addCard, animated: false)
+        }
     }
     
 
@@ -129,11 +147,15 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
     }
 
     func saveCardModelToCoreData() {
+        
+        guard let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
+           let profile = try? JSONDecoder().decode(profileUser.self, from: data) else { return }
+        let userID = profile.data.id
+        
         let cardOwner = cardNameText.text ?? ""
         let cardNumber = cardNumberText.cardNumber ?? ""
         let cardExpMonth = cardNumberText.expirationMonth
         let cardYear = cardNumberText.expirationYear
-//        let cardExp = " \(cardNumberText.expirationMonth) / \(cardNumberText.expirationYear)"
         let cardCvv = Int(cardNumberText.cvc ?? "123") ?? 133
         
         let newCard = CreditCard(
@@ -141,7 +163,8 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
             cardNumber: cardNumber,
             cardExpMonth: Int16(cardExpMonth),
             cardExpYear: Int16(cardYear),
-            cardCvv: Int16(cardCvv)
+            cardCvv: Int16(cardCvv),
+            userId: Int32(userID)
         )
         print("list new card\(newCard)")
         coredataManage.create(newCard) // Save the new card to Core Data
@@ -151,17 +174,4 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
             
             print("Sukses menyimpan kartu ke Core Data")
     }
-
-    
-//    func checkIfCardIsSaved() {
-//        // Memanggil metode retrieve dari CoreDataManage untuk mengambil data dari Core Data
-//        let savedCards = coredataManage.retrieve()
-//        let cardOwnerToCheck = cardNameText.text
-//
-//        if savedCards.contains(where: { $0.cardOwner == cardOwnerToCheck }) {
-//            print("Kartu sudah tersimpan di Core Data")
-//        } else {
-//            print("Kartu belum tersimpan di Core Data")
-//        }
-//    }
 }

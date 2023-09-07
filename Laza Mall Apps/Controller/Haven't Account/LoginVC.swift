@@ -150,6 +150,12 @@ class LoginVC: UIViewController {
                 self.loginViewModel.getUserProfile { result in
                     switch result {
                     case .success(let userProfile):
+                        print("User ID: \(String(describing: userProfile?.id))")
+                        
+                        //save id into coredata
+                        guard let unwrappedUserProfile = userProfile else { return }
+//                        KeychainManager.shared.setCurrentProfile(profile: unwrappedUserProfile)
+                        
                         // Panggil metode untuk berpindah ke view controller selanjutnya
                         DispatchQueue.main.async {
                             UserDefaults.standard.set(true, forKey: "loginTrue")

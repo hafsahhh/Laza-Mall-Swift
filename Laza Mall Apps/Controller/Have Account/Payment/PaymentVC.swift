@@ -13,7 +13,7 @@ protocol choosePaymentProtocol: AnyObject{
 }
 
 class PaymentVC: UIViewController {
-
+    
     @IBOutlet weak var cardPaymentCollect: UICollectionView!
     @IBOutlet weak var cardOwnerTf: UITextField!{
         didSet{
@@ -54,27 +54,16 @@ class PaymentVC: UIViewController {
         backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         backBtn.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         
-
+        
         return backBtn
     }()
-
+    
     //Back Button
     @objc func backBtnAct(){
-//        self.navigationController?.popToRootViewController(animated: true)
-//        self.navigationController?.popViewController(animated: true)
-        
-        
-//        let backToCart = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartVC") as! CartVC
-//        backToCart.navigationItem.hidesBackButton = true
-//        self.navigationController?.pushViewController(backToCart, animated: true)
-        let TabViewController = self.storyboard?.instantiateViewController(withIdentifier: "MainTabBarVC") as! MainTabBarVC
-        TabViewController.selectedIndex = 2
-        
-        
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
-
+    
     //Add Card Button
     @objc func addCardBtnAct(){
         let addCardBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddCardVC") as! AddCardVC
@@ -96,7 +85,7 @@ class PaymentVC: UIViewController {
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
         //cart button
@@ -108,14 +97,14 @@ class PaymentVC: UIViewController {
         cardPaymentCollect.register(PaymentCollectCell.nib(), forCellWithReuseIdentifier: PaymentCollectCell.identifier)
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-
+        
     }
-
+    
     // MARK: - viewWillAppear
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         retrieveCardOnStart()
         
     }
@@ -152,15 +141,15 @@ class PaymentVC: UIViewController {
     @IBAction func deleteCardBtn(_ sender: UIButton) {
         guard let selectedCell = selectedCellIndex else {return}
         let alertController = UIAlertController(title: "Confirmation", message: "Are you sure want to delete this cards?", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alertController.addAction(cancelAction)
-            let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
-                self?.deleteCard(indexPath: selectedCell)
-            }
-            alertController.addAction(okAction)
-            
-            present(alertController, animated: true, completion: nil)
-
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] (action) in
+            self?.deleteCard(indexPath: selectedCell)
+        }
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
     }
     
     // MARK: - Edit Card Btn
@@ -181,7 +170,7 @@ class PaymentVC: UIViewController {
         let chooseBank = bank
         print("protocol payment ini nomer kartu: \(chooseCardNumber), \(chooseBank)")
         self.delegate?.delegatCardPayment(cardNumber: chooseCardNumber, bankName: chooseBank)
-    self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -236,31 +225,29 @@ extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
         cardExpiredTf.text = "\(card.cardExpYear)/\(card.cardExpMonth)"
         cardCvvTf.text = String(card.cardCvv)
     }
-  
-
+    
+    
     // MARK: - scrollViewDidEndDecelerating
     // Metode ini akan dipanggil setelah user selesai menggeser dan koleksi berhenti bergerak (decelerating).
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // Menggunakan if let untuk memeriksa apakah selectedCellIndex tidak nil
         guard let selectedIndexPath = selectedCellIndex else { return }
         let currentIndex = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
-
+        
         // Dapatkan bagian (section) dari selectedIndexPath
         let selectedSection = selectedIndexPath.section
         // Buat IndexPath baru dengan selectedSection dan currentIndex
         let newIndexPath = IndexPath(item: currentIndex, section: selectedSection)
-
+        
         // Memanggil fungsi performCardInTextfield dengan newIndexPath
         performCardInTextfield(indexPath: newIndexPath)
-
+        
         // Dapat memeriksa apakah currentIndex sama dengan selectedRow atau tidak
         if currentIndex != selectedIndexPath.row {
             // Melakukan tindakan yang sesuai jika currentIndex berbeda
             print("Indeks terpilih setelah berhenti: \(currentIndex)")
         }
     }
-
- 
+    
+    
 }
-
-

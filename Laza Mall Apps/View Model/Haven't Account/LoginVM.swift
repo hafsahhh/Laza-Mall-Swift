@@ -108,6 +108,8 @@ class LoginViewModel{
             do {
                 // Mendekode data JSON respons ke dalam tipe DataUseProfile
                 let userProfile = try JSONDecoder().decode(profileUser.self, from: data)
+                KeychainManager.shared.setCurrentProfile(profile: data)
+            
                 // Mengirim hasil yang berhasil kepada completion handler
                 completion(.success(userProfile.data))
             } catch {

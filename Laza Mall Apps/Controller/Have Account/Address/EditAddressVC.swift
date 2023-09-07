@@ -44,10 +44,6 @@ class EditAddressVC: UIViewController {
     let editAddressViewModel = EditAddressViewModel()
     var userAddress: DataAllAddress?
     var idAddress: Int = 0
-//    var name: String = ""
-//    var country: String = ""
-//    var phone: String = ""
-//    var addres: String = ""
     var switchPrimary: Bool?
     
     
@@ -89,7 +85,6 @@ class EditAddressVC: UIViewController {
             print("userAddress is nil, cannot proceed with API call")
             return
         }
-//        print("Ini adalah address Id \(addressId)")
         
         editAddressViewModel.updateAddress(idAddress: addressId, country: country, city: address, receiverName: name, phoneNumber: phone, isPrimary: isSwitchOn) { result in
             switch result {
@@ -100,11 +95,6 @@ class EditAddressVC: UIViewController {
                     ShowAlert.performAlertApi(on: self, title: "Notification", message: "Successfully Edit Address")
                 }
             case .failure(let error):
-//                self.editAddressViewModel.apiAddressAlert = { description in
-//                    DispatchQueue.main.async {
-//                        ShowAlert.performAlertApi(on: self, title: "Notification", message: description)
-//                    }
-//                }
                 print("JSON edit address error: \(error)")
             }
         }

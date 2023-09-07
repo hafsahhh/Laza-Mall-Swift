@@ -18,7 +18,7 @@ class CategoryBrandVC: UIViewController {
             sortItemView.setTitle("Sort", for: .normal)
         }
     }
-    
+    @IBOutlet weak var emptyProductLabel: UILabel!
     
     
     //    var brandId : Int = 0
@@ -110,7 +110,11 @@ class CategoryBrandVC: UIViewController {
 extension CategoryBrandVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("modelbrand \(modelBrand.count)")
+        if modelBrand.count == 0 {
+            emptyProductLabel.isHidden = false
+        } else {
+            emptyProductLabel.isHidden = true
+        }
         return modelBrand.count
     }
     

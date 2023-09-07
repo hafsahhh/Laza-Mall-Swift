@@ -3683,6 +3683,13 @@
                                     <action selector="sortActBtn:" destination="OhN-nO-cn1" eventType="touchUpInside" id="u3v-H3-HGL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EMPTY PRODUCT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8NE-Rx-4Ic">
+                                <rect key="frame" x="0.0" y="150" width="393" height="702"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" name="ColorBtn"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L6i-Bl-MQq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3706,6 +3713,7 @@
                     <connections>
                         <outlet property="brandNameView" destination="AOI-d5-BJj" id="9r3-OZ-ous"/>
                         <outlet property="categoryFilterCollectView" destination="ogN-Hj-g6q" id="wEd-h7-LH2"/>
+                        <outlet property="emptyProductLabel" destination="8NE-Rx-4Ic" id="9aK-QC-4Q7"/>
                         <outlet property="sortItemView" destination="t1B-X0-lqE" id="4ri-Cu-2TH"/>
                         <outlet property="totalItems" destination="9pq-vg-BwY" id="L8k-oJ-PU2"/>
                     </connections>
@@ -4231,7 +4239,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add Card"/>
                                 <connections>
-                                    <action selector="updateCard:" destination="9dU-dy-e33" eventType="touchUpInside" id="iDA-nF-mc0"/>
+                                    <action selector="updateCard:" destination="9dU-dy-e33" eventType="touchUpInside" id="kcr-zz-Avz"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMc-SM-93Y" customClass="CreditCardFormView" customModule="CreditCardForm">

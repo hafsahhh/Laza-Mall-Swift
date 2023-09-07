@@ -11,6 +11,15 @@ import Security
 class KeychainManager {
     static let shared = KeychainManager()
     
+    private(set) var userProfile: DataUseProfile?
+    
+    
+    //save profile model with userdefault
+    func setCurrentProfile(profile: Data) {
+//        userProfile = profile
+        UserDefaults.standard.set(profile, forKey: "UserProfileDefault")
+    }
+    
     func saveAccessToken(token: String) {
         let data = Data(token.utf8)
         let queary = [

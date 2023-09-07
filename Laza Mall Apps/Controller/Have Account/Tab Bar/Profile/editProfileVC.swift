@@ -45,10 +45,12 @@ class editProfileVC: UIViewController {
     var media: Media?
     weak var delegate: EditProfileDelegate?
     private let imagePicker = UIImagePickerController()
+    var modelProfile : DataUseProfile?
     var email: String = ""
     var name: String = ""
     var userName: String = ""
     var image: String = ""
+    var linkImage: String = ""
     
     // MARK: - Button back using programmaticly
     //Back Button
@@ -85,6 +87,46 @@ class editProfileVC: UIViewController {
         
     }
     
+//    func updateDataProfileUserdefault() {
+//        if let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
+//           let profile = try? JSONDecoder().decode(profileUser.self, from: data) {
+//            self.modelProfile = profile.data
+//        }
+//
+//        self.editNameView.text = modelProfile?.fullName
+//        self.editUsernameView.text = modelProfile?.username
+//        self.editEmailView.text = modelProfile?.email
+//        self.linkImage = String(modelProfile?.image_url ?? "")
+//        let imgURl = URL(string: modelProfile?.image_url ?? "")
+//        self.editImageView.sd_setImage(with: imgURl)
+//
+//    }
+    
+    func updateDataProfileUserdefault() {
+        let newFullName = editNameView.text ?? ""
+        let newUsername = editUsernameView.text ?? ""
+        let newEmail = editEmailView.text ?? ""
+        if let newImage = editImageView.image {
+            media = Media(withImage: newImage, forKey: "image")
+        }
+        
+        if newFullName != ""  || newUsername != ""  || newEmail != "" {
+           //Mengubah fullName dalam objek modelProfile
+            modelProfile?.fullName = newFullName
+            modelProfile?.email = newEmail
+            modelProfile?.username = newUsername
+            modelProfile?.image_url = "\(String(describing: media))"
+            
+            // Mengubah objek modelProfile menjadi data JSON
+            if let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
+               let profile = try? JSONDecoder().decode(profileUser.self, from: data) {
+                self.modelProfile = profile.data
+                print("Update profile data: \(profile.data.fullName)")
+            }
+        }
+    }
+
+    
     func updateProfileUser(){
         let fullname = editNameView.text ?? ""
         let username = editUsernameView.text ?? ""
@@ -95,9 +137,10 @@ class editProfileVC: UIViewController {
         
         if username != "" && fullname != "" && email != "" {
             editProfileViewModel.updateProfile(fullName: fullname, username: username, email: email, media: media) { update in
+
                 DispatchQueue.main.async {
+//                    self.updateDataProfileUserdefault()
                     ShowAlert.performAlertApi(on: self, title: "Success", message: "Successfully ")
-                    print("Alert profile")
                     self.navigationController?.popViewController(animated: true)
                 }
                 

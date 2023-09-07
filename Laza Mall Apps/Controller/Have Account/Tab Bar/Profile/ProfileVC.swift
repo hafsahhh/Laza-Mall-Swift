@@ -26,6 +26,7 @@ class ProfileVC: UIViewController {
     let imagePicker = UIImagePickerController()
     let profileViewModel = LoginViewModel()
     var linkImage: String = ""
+    var modelProfile : DataUseProfile?
     
     //Profile
     private func setupTabBarText() {
@@ -53,7 +54,9 @@ class ProfileVC: UIViewController {
         userImageView.layer.masksToBounds = true
         userImageView.contentMode = .scaleAspectFill
         
-        fetchUserProfile()
+        displayUserProfileByUserdefault()
+        
+//        fetchUserProfile()
 //        loginViewModel.performLogin(username: "your_username", password: "your_password")
         
         
@@ -64,13 +67,13 @@ class ProfileVC: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = false
         ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
-            self?.fetchUserProfile()
+            self?.displayUserProfileByUserdefault()
         } onError: { errorMessage in
             print(errorMessage)
         }
-//        fetchUserProfile()
     }
     
+    //func untuk menampilkan data user menggunakan api
     func fetchUserProfile() {
         profileViewModel.getUserProfile { result in
             switch result {
@@ -98,6 +101,22 @@ class ProfileVC: UIViewController {
         } else {
             // Failed to get user profile
             print("Failed to get user profile")
+        }
+    }
+    
+    func displayUserProfileByUserdefault() {
+        DispatchQueue.main.async {
+            if let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
+               let profile = try? JSONDecoder().decode(profileUser.self, from: data) {
+                self.modelProfile = profile.data
+            }
+            
+            self.fullnameProfileView.text = self.modelProfile?.fullName
+            self.usernameProfileView.text = self.modelProfile?.username
+            self.emailProfileView.text = self.modelProfile?.email
+            self.linkImage = String(self.modelProfile?.image_url ?? "")
+            let imgURl = URL(string: self.modelProfile?.image_url ?? "")
+            self.userImageView.sd_setImage(with: imgURl)
         }
     }
     

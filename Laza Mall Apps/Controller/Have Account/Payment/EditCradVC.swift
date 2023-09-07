@@ -10,7 +10,7 @@ import CreditCardForm
 import Stripe
 
 class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
-
+    
     private var cardParams: STPPaymentMethodCardParams!
     let paymentTextField = STPPaymentCardTextField()
     var cardModels = [CreditCard]()
@@ -26,7 +26,7 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
             cardNumberText.delegate = self
         }
     }
-
+    
     @IBOutlet weak var cardNameText: UITextField!{
         didSet {
             cardNameText.addTarget(self, action: #selector(cardNameTextChanged(_:)), for: .editingChanged)
@@ -49,31 +49,31 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
         backBtn.addTarget(self, action: #selector(backBtnAct), for: .touchUpInside)
         backBtn.frame = CGRect(x: 0, y: 0, width: 45, height: 45)
         
-
+        
         return backBtn
     }()
-
+    
     //Back Button
     @objc func backBtnAct(){
-//        let backToPayment = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
-//        self.navigationController?.pushViewController(backToPayment, animated: true)
+        //        let backToPayment = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
+        //        self.navigationController?.pushViewController(backToPayment, animated: true)
         self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - View Didload
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
-
+        
         cardNumberText.postalCodeEntryEnabled = false
         paymentTextField.delegate = self
         cardParams = STPPaymentMethodCardParams()
         self.cardNumberText.paymentMethodParams.card = cardParams
         
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,7 +84,7 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
         
         
     }
-
+    
     
     func savedCard (){
         creditCardView.paymentCardTextFieldDidChange(cardNumber: cardParams.number, expirationYear: cardParams!.expYear as? UInt, expirationMonth: cardParams!.expMonth as? UInt, cvc: cardParams.cvc)
@@ -113,13 +113,33 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
     @IBAction func updateCard(_ sender: UIButton) {
         savedCard()
         updateCardModelToCoreData()
-        let addCard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentVC
-        addCard.cardModels = cardModels
-        addCard.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(addCard, animated: true)
-    }
-    
+        
+//        let addCard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentVC
+//        addCard.cardModels = cardModels
+//        self.navigationController?.pushViewController(addCard, animated: true)
+        
+        // Cek apakah ada instance PaymentViewController yang sudah ada dalam navigation stack
+        var foundCardViewController: PaymentVC?
+        if let viewControllers = self.navigationController?.viewControllers {
+            for viewController in viewControllers {
+                if let cardViewController = viewController as? PaymentVC {
+                    foundCardViewController = cardViewController
+                    break
+                }
+            }
+        }
 
+        if let existingCardViewController = foundCardViewController {
+            // Jika sudah ada, tinggal perbarui data kartu dan kembali ke tampilan tersebut
+            existingCardViewController.cardModels = cardModels
+            self.navigationController?.popToViewController(existingCardViewController, animated: false)
+        } else {
+            // Jika belum ada, buat instance baru dan tambahkan ke navigation stack
+            let addCard = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentVC
+            addCard.cardModels = cardModels
+            self.navigationController?.pushViewController(addCard, animated: false)
+        }
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == cardNameText {
@@ -130,7 +150,7 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
         }
         return true
     }
-
+    
     func updateCardModelToCoreData() {
         guard let creditCardNumber = indexPathCardNumber else { print("kosong")
             return
@@ -150,11 +170,11 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
         )
         print("list update card\(editCard)")
         coredataManage.update(editCard, cardNumber: creditCardNumber) // Save the new card to Core Data
-            
-            // Menambahkan kartu baru ke dalam array
-            cardModels.append(editCard)
-            
-            print("Sukses update kartu ke Core Data")
+        
+        // Menambahkan kartu baru ke dalam array
+        cardModels.append(editCard)
+        
+        print("Sukses update kartu ke Core Data")
     }
-
+    
 }

@@ -8,15 +8,38 @@
 import Foundation
 import UIKit
 
+// MARK: - DataUseProfile
+typealias profileIndex = profileUser?
+struct profileUser: Codable {
+    let status: String
+    let isError: Bool
+    let data: DataUseProfile
+}
+struct DataUseProfile: Codable {
+    var id: Int
+    var fullName, username, email: String
+    var image_url: String?
+    let isVerified: Bool
+    let createdAt, updatedAt: String
 
-// MARK: - Welcome
+    enum CodingKeys: String, CodingKey {
+        case id
+        case fullName = "full_name"
+        case username, email, image_url
+        case isVerified = "is_verified"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
+
+// MARK: - EditProfileResponse
 struct EditProfileResponse: Codable {
     let status: String
     let isError: Bool
     let data: EditProfile
 }
 
-// MARK: - DataClass
+// MARK: - EditProfile
 struct EditProfile: Codable {
     let id: Int
     let fullName: String

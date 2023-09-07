@@ -212,9 +212,9 @@ class CartVC: UIViewController{
     
     
     @IBAction func paymentBtn(_ sender: Any) {
-        let payemntBtn = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
-        payemntBtn.delegate = self
-        self.navigationController?.pushViewController(payemntBtn, animated: true)
+        let paymentVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentVC
+        paymentVC.delegate = self
+        self.navigationController?.pushViewController(paymentVC, animated: true)
     }
     
     @IBAction func checkoutBtn(_ sender: Any) {
