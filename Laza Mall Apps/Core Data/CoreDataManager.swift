@@ -37,15 +37,13 @@ class CoreDataManage {
     func retrieve(completion: @escaping ([CreditCard]) -> Void) {
         var creditCard = [CreditCard]() // Mulai dengan array kosong
         
-        //check user id from useer default
-        guard let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
-           let profile = try? JSONDecoder().decode(profileUser.self, from: data) else { return }
-        let userID = profile.data.id
+        //save id into coredata
+        guard let dataUser = KeychainManager.shared.getProfileFromKeychain(service: "UserProfileCoreData") else {return}
         
         let managedContext = appDelegate?.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LazaEntitiesCoredata")
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-            NSPredicate(format: "userId = %@", String(userID))
+            NSPredicate(format: "userId = %@", String(dataUser.id))
         ])
         
         do {
@@ -74,17 +72,15 @@ class CoreDataManage {
     func update(_ creditCard: CreditCard, cardNumber: String ) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
-        //check user id from useer default
-        guard let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
-           let profile = try? JSONDecoder().decode(profileUser.self, from: data) else { return }
-        let userID = profile.data.id
+        //save id into coredata
+        guard let dataUser = KeychainManager.shared.getProfileFromKeychain(service: "UserProfileCoreData") else {return}
 
         let managedContext = appDelegate.persistentContainer.viewContext
 
         let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "LazaEntitiesCoredata")
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
             NSPredicate(format: "cardNumber = %@", cardNumber),
-            NSPredicate(format: "userId = %@", String(userID))
+            NSPredicate(format: "userId = %@", String(dataUser.id))
         ])
 
         do {
@@ -115,15 +111,18 @@ class CoreDataManage {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         
         //check user id from useer default
-        guard let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
-           let profile = try? JSONDecoder().decode(profileUser.self, from: data) else { return }
-        let userID = profile.data.id
+//        guard let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
+//           let profile = try? JSONDecoder().decode(profileUser.self, from: data) else { return }
+//        let userID = profile.data.id
+        
+        //save id into coredata
+        guard let dataUser = KeychainManager.shared.getProfileFromKeychain(service: "UserProfileCoreData") else {return}
 
         // Fetch data to delete
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "LazaEntitiesCoredata")
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
             NSPredicate(format: "cardNumber = %@", creditCard.cardNumber),
-            NSPredicate(format: "userId = %@", String(userID))
+            NSPredicate(format: "userId = %@", String(dataUser.id))
         ])
 
         do {

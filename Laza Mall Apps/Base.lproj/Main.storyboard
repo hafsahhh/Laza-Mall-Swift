@@ -378,7 +378,7 @@
                                             <constraint firstAttribute="width" constant="25" id="fej-Ea-5VL"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visa" translatesAutoresizingMaskIntoConstraints="NO" id="RYd-Qu-mpC">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bank" translatesAutoresizingMaskIntoConstraints="NO" id="RYd-Qu-mpC">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="TRO-Te-Y3q"/>
@@ -760,6 +760,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="ColorBg"/>
                     </tabBar>
                     <connections>
                         <segue destination="vwr-Yx-bH3" kind="relationship" relationship="viewControllers" id="ECD-Vb-tf0"/>
@@ -868,23 +869,8 @@
                                     <action selector="cartMenuBtn:" destination="BK8-zH-Z0T" eventType="touchUpInside" id="748-5v-2Oo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iab-ZK-wbQ">
-                                <rect key="frame" x="20" y="399" width="280" height="39"/>
-                                <color key="tintColor" name="ColorBlack"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Wallet">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content=" My Cards">
-                                            <attributes>
-                                                <font key="NSFont" size="12" name="Helvetica"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </buttonConfiguration>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJb-Cu-5MS">
-                                <rect key="frame" x="20" y="438" width="280" height="39"/>
+                                <rect key="frame" x="20" y="399" width="280" height="39"/>
                                 <color key="tintColor" name="ColorBlack"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="Whislist-Menu" subtitle="">
@@ -981,15 +967,12 @@
                             <constraint firstItem="6HU-gk-n3P" firstAttribute="top" secondItem="Ah6-6K-hHQ" secondAttribute="bottom" id="TjO-Xf-ayp"/>
                             <constraint firstItem="VOg-d9-RoA" firstAttribute="top" secondItem="QVc-cA-a6D" secondAttribute="top" constant="110" id="Tyn-un-3YG"/>
                             <constraint firstItem="Ee3-1l-Xn3" firstAttribute="top" secondItem="DSj-oa-H5a" secondAttribute="bottom" constant="29" id="W47-85-W6X"/>
+                            <constraint firstItem="LJb-Cu-5MS" firstAttribute="top" secondItem="oA9-UZ-1jd" secondAttribute="bottom" id="XIc-mN-osf"/>
                             <constraint firstItem="EoT-zW-J7g" firstAttribute="leading" secondItem="QVc-cA-a6D" secondAttribute="leading" constant="20" id="bcI-9f-C71"/>
                             <constraint firstItem="QVc-cA-a6D" firstAttribute="trailing" secondItem="6HU-gk-n3P" secondAttribute="trailing" constant="20" id="d6N-3p-Hcy"/>
                             <constraint firstItem="EoT-zW-J7g" firstAttribute="centerX" secondItem="hnq-51-rCV" secondAttribute="centerX" id="dEE-1y-Rib"/>
-                            <constraint firstItem="iab-ZK-wbQ" firstAttribute="top" secondItem="oA9-UZ-1jd" secondAttribute="bottom" id="fFh-9K-hbX"/>
-                            <constraint firstItem="QVc-cA-a6D" firstAttribute="trailing" secondItem="iab-ZK-wbQ" secondAttribute="trailing" constant="20" id="fI2-mk-cku"/>
-                            <constraint firstItem="iab-ZK-wbQ" firstAttribute="leading" secondItem="QVc-cA-a6D" secondAttribute="leading" constant="20" id="fjC-ES-KvT"/>
                             <constraint firstItem="6HU-gk-n3P" firstAttribute="top" secondItem="cg7-TP-tnP" secondAttribute="bottom" constant="5" id="g4K-CM-6oa"/>
                             <constraint firstItem="DSj-oa-H5a" firstAttribute="leading" secondItem="QVc-cA-a6D" secondAttribute="leading" constant="16" id="gqE-CH-S2h"/>
-                            <constraint firstItem="LJb-Cu-5MS" firstAttribute="top" secondItem="iab-ZK-wbQ" secondAttribute="bottom" id="h5r-bf-vRa"/>
                             <constraint firstItem="QVc-cA-a6D" firstAttribute="trailing" secondItem="oA9-UZ-1jd" secondAttribute="trailing" constant="20" id="kaE-Z3-8PX"/>
                             <constraint firstItem="DSj-oa-H5a" firstAttribute="top" secondItem="QVc-cA-a6D" secondAttribute="top" constant="10" id="nbG-NG-OcU"/>
                             <constraint firstItem="QVc-cA-a6D" firstAttribute="trailing" secondItem="LJb-Cu-5MS" secondAttribute="trailing" constant="20" id="o39-bm-CyZ"/>
@@ -1005,6 +988,7 @@
                         <outlet property="backMenu" destination="DSj-oa-H5a" id="Jgl-mu-iq6"/>
                         <outlet property="imageUiviewOutlet" destination="Ee3-1l-Xn3" id="pu2-Ez-dlK"/>
                         <outlet property="logoutBtnOutlet" destination="EoT-zW-J7g" id="sUL-3H-Eav"/>
+                        <outlet property="switchModeOutlet" destination="cg7-TP-tnP" id="1Ts-fU-RX0"/>
                         <outlet property="usernameLabel" destination="VOg-d9-RoA" id="bhv-On-tJF"/>
                     </connections>
                 </viewController>
@@ -3200,6 +3184,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iR-Gg-Du7">
+                                <rect key="frame" x="20" y="98.333333333333314" width="353" height="267"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" name="ColorBtn"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sML-TK-ryB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3215,9 +3205,12 @@
                             <constraint firstItem="FVo-5k-quM" firstAttribute="leading" secondItem="sML-TK-ryB" secondAttribute="leading" constant="20" id="Epi-H0-agK"/>
                             <constraint firstItem="dgU-2z-R6q" firstAttribute="leading" secondItem="sML-TK-ryB" secondAttribute="leading" constant="20" id="Fkr-6a-SaP"/>
                             <constraint firstItem="P3g-rh-rHn" firstAttribute="top" secondItem="WFC-5a-gzw" secondAttribute="bottom" constant="20" id="G0H-xp-7uJ"/>
+                            <constraint firstItem="1DP-z2-cMx" firstAttribute="top" secondItem="0iR-Gg-Du7" secondAttribute="bottom" constant="10" id="ISQ-QM-JQv"/>
                             <constraint firstItem="bPX-CJ-HdY" firstAttribute="leading" secondItem="sML-TK-ryB" secondAttribute="leading" constant="20" id="Kbo-Wh-SFI"/>
                             <constraint firstItem="c2n-Rp-LSs" firstAttribute="top" secondItem="QG1-LT-jA2" secondAttribute="bottom" constant="15" id="PYH-cO-xAY"/>
+                            <constraint firstItem="sML-TK-ryB" firstAttribute="trailing" secondItem="0iR-Gg-Du7" secondAttribute="trailing" constant="20" id="QBO-P5-6iB"/>
                             <constraint firstItem="sML-TK-ryB" firstAttribute="trailing" secondItem="6tb-9X-ss1" secondAttribute="trailing" constant="20" id="QWL-Sz-bXk"/>
+                            <constraint firstItem="0iR-Gg-Du7" firstAttribute="leading" secondItem="sML-TK-ryB" secondAttribute="leading" constant="20" id="Qk5-NR-peq"/>
                             <constraint firstItem="sML-TK-ryB" firstAttribute="trailing" secondItem="dgU-2z-R6q" secondAttribute="trailing" constant="20" id="Qyo-i4-6Gu"/>
                             <constraint firstItem="dgU-2z-R6q" firstAttribute="top" secondItem="1DP-z2-cMx" secondAttribute="bottom" constant="9.0000000000000568" id="V7G-8f-e8R"/>
                             <constraint firstItem="6tb-9X-ss1" firstAttribute="top" secondItem="c2n-Rp-LSs" secondAttribute="bottom" constant="10" id="VNy-C9-w9G"/>
@@ -3230,6 +3223,7 @@
                             <constraint firstItem="1DP-z2-cMx" firstAttribute="leading" secondItem="sML-TK-ryB" secondAttribute="leading" constant="10" id="dbJ-ed-XoX"/>
                             <constraint firstItem="6tb-9X-ss1" firstAttribute="leading" secondItem="nIX-QP-3pg" secondAttribute="trailing" constant="15" id="fQf-hg-fV6"/>
                             <constraint firstItem="sML-TK-ryB" firstAttribute="trailing" secondItem="FVo-5k-quM" secondAttribute="trailing" constant="20" id="gaM-uf-T6J"/>
+                            <constraint firstItem="0iR-Gg-Du7" firstAttribute="top" secondItem="WFC-5a-gzw" secondAttribute="bottom" constant="20" id="l6M-jN-Vev"/>
                             <constraint firstItem="c2n-Rp-LSs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bPX-CJ-HdY" secondAttribute="trailing" constant="8" symbolic="YES" id="lPJ-6i-uiM"/>
                             <constraint firstItem="QG1-LT-jA2" firstAttribute="leading" secondItem="sML-TK-ryB" secondAttribute="leading" constant="20" id="pdB-ci-WrH"/>
                             <constraint firstAttribute="bottom" secondItem="wwc-3K-8j0" secondAttribute="bottom" id="qeX-zh-NlX"/>
@@ -3247,6 +3241,7 @@
                         <outlet property="cardNumberTf" destination="QG1-LT-jA2" id="Shs-j2-DME"/>
                         <outlet property="cardOwnerTf" destination="hdG-Zc-3v2" id="AHo-Dy-OC0"/>
                         <outlet property="cardPaymentCollect" destination="P3g-rh-rHn" id="10W-TO-biu"/>
+                        <outlet property="emptyCardLabel" destination="0iR-Gg-Du7" id="SO3-PA-Mo6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTn-RO-jzN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4316,6 +4311,7 @@
         <image name="Add Review" width="114" height="35"/>
         <image name="ArrowRight" width="15" height="15"/>
         <image name="Bag" width="25" height="25"/>
+        <image name="Bank" width="651" height="386"/>
         <image name="Check-2" width="25" height="25"/>
         <image name="FrameMenu" width="45" height="45"/>
         <image name="Info Circle" width="25" height="25"/>
@@ -4325,7 +4321,6 @@
         <image name="ResendEmail" width="151" height="148"/>
         <image name="Screen1" width="500" height="1082.6666259765625"/>
         <image name="ScreenForgotPass" width="108.33333587646484" height="76"/>
-        <image name="Wallet" width="25" height="25"/>
         <image name="Whislist-Menu" width="25" height="25"/>
         <image name="camera.fill" catalog="system" width="128" height="93"/>
         <image name="card-home" width="21" height="20"/>
@@ -4348,7 +4343,6 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="sun" width="25" height="25"/>
         <image name="updateCard" width="160" height="50"/>
-        <image name="visa" width="30" height="30"/>
         <namedColor name="ColorBg">
             <color red="0.59200000762939453" green="0.45899999141693115" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

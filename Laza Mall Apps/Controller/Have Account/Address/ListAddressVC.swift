@@ -114,14 +114,6 @@ class ListAddressVC: UIViewController {
             return
         }
         editAddress.userAddress = addressUserData[indexPath.row]
-//        if let addressData = modelAddress?.data?[indexPath.row] {
-//            editAddress.name = addressData.receiverName.capitalized
-//            editAddress.country = addressData.country.capitalized
-//            editAddress.addres = addressData.city.capitalized
-//            editAddress.phone = addressData.phoneNumber
-//            editAddress.switchPrimary = addressData.isPrimary
-//        }
-      
         self.navigationController?.pushViewController(editAddress, animated: true)
     }
 

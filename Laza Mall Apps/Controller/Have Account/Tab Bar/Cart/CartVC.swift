@@ -62,6 +62,12 @@ class CartVC: UIViewController{
         
         //hide back button
         navigationItem.hidesBackButton = true
+        
+        // Gunakan alamat yang dipilih melalui protocol jika ada
+        self.deliveryAddressView.text = selectedCountry
+        self.cityAddress.text = selectedAddress
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,8 +103,6 @@ class CartVC: UIViewController{
                             self.resultsProductOrder.append(dataProduct)
                         }
                     }
-                  
-                    print("ini keranjang")
                 case .failure(let error):
                     // Handle the error appropriately
                     print("Error fetching user carts: \(error.localizedDescription)")
@@ -117,7 +121,6 @@ class CartVC: UIViewController{
                 case .success(let userAddress):
                     self.modelAddress = userAddress
                     self.updatePrimaryAddress()
-                    print("address user primary")
                 case .failure(let error):
                     // Handle the error appropriately
                     print("Error fetching address user: \(error.localizedDescription)")
@@ -133,16 +136,17 @@ class CartVC: UIViewController{
             self.deliveryAddressView.text = selectedCountry
             self.cityAddress.text = selectedAddress
         } else if let primaryAddress = modelAddress?.data.first(where: { $0.isPrimary == true }) {
-            // Gunakan alamat utama jika alamat yang dipilih tidak ada
+            // Gunakan alamat utama jika alamat yang dipilih melalui protocol kosong
             self.deliveryAddressView.text = primaryAddress.country.capitalized
             self.cityAddress.text = primaryAddress.city.capitalized
         } else {
-            // Tampilkan teks "No Address" jika tidak ada alamat utama atau alamat yang dipilih
+            // Tampilkan teks "No Address" jika tidak ada alamat utama atau alamat yang dipilih melalui protocol
             self.deliveryAddressView.text = "No Address"
             self.cityAddress.text = "No Address"
             print("Tidak ada alamat utama atau alamat yang dipilih")
         }
     }
+
 
     // MARK: - Func Get All Size
     func getSizeAll(){
@@ -271,9 +275,9 @@ extension CartVC : choosePaymentProtocol{
 
 extension CartVC: productInCartProtocol, chooseAddressProtocol {
     func delegateAddress(addressModel: DataAllAddress?) {
-        deliveryAddressView.text = addressModel?.city
-        cityAddress.text = addressModel?.country
         addressId = addressModel?.id ?? 0
+        selectedAddress = addressModel?.city ?? ""
+        selectedCountry = addressModel?.country ?? ""
         print("Updated Address ID: \(addressId)")
     }
     

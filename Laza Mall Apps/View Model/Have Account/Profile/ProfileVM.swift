@@ -12,7 +12,7 @@ class ProfileViewModel {
     var token: String?
     
     func updateProfile(fullName: String, username: String, email: String, media: Media?,
-                       completion: @escaping (String) -> Void, onError: @escaping(String) -> Void) {
+                       completion: @escaping (EditProfileResponse) -> Void, onError: @escaping(String) -> Void) {
         
         guard let url = URL(string: Endpoints.Gets.updateProfile.url) else {return}
         guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
@@ -42,7 +42,7 @@ class ProfileViewModel {
                     let serializedJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
                     print(serializedJson)
                     guard let getSuccess = try? JSONDecoder().decode(EditProfileResponse.self, from: data) else { return }
-                    completion(getSuccess.status)
+                    completion(getSuccess)
                 } catch {
                     print(error)
                 }

@@ -38,9 +38,6 @@ class CategoryTableCell: UITableViewCell {
             guard let response = categoryIndex else { return }
             self.modelCat.append(contentsOf: response.description)
             self.categoryCollectView.reloadData()
-            for product in self.modelCat{
-                print("helo \(product.name)")
-            }
             self.reloadTable?()
         }
     }

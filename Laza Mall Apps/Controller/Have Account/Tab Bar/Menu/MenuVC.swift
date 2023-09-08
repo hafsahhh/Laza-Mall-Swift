@@ -35,12 +35,12 @@ class MenuVC: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var logoutBtnOutlet: UIButton!
     @IBOutlet weak var backMenu: UIButton!
-    
+    @IBOutlet weak var switchModeOutlet: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         displayUserProfile()
-        
+        darkModeInSwitch()
     }
     
     @IBAction func menuCloseBtn(_ sender: UIButton) {
@@ -58,33 +58,13 @@ class MenuVC: UIViewController {
         
     }
     
-//    func fetchUserProfile() {
-//        menuViewModel.getUserProfile { result in
-//            switch result {
-//            case .success(let userProfile):
-//                //save id into coredata
-//                guard let unwrappedUserProfile = userProfile else { return }
-////                KeychainManager.shared.setCurrentProfile(profile: unwrappedUserProfile)
-//                print("User ID Side Menu: \(userProfile?.id)")
-//                // Panggil fungsi untuk menampilkan data profil pengguna di tampilan
-//                self.displayUserProfile(userProfile)
-//            case .failure(let error):
-//                // Tangani kesalahan dengan sesuai
-//                print("Error fetching user profile: \(error)")
-//            }
-//        }
-//    }
+
     
     func displayUserProfile() {
         DispatchQueue.main.async {
-            if let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
-               let profile = try? JSONDecoder().decode(profileUser.self, from: data) {
-                   self.modelProfile = profile.data
-                   
-               }
-            
-            self.usernameLabel.text = self.modelProfile?.username
-            let imgURl = URL(string: self.modelProfile?.image_url ?? "")
+            guard let dataUser = KeychainManager.shared.getProfileFromKeychain(service: "UserProfileCoreData") else {return}
+            self.usernameLabel.text = dataUser.username
+            let imgURl = URL(string: dataUser.image_url ?? "")
             self.imageUiviewOutlet.sd_setImage(with: imgURl)
         }
     }
@@ -92,14 +72,27 @@ class MenuVC: UIViewController {
     
     
     @IBAction func switchBtnMode(_ sender: UISwitch) {
-        
-        let appDelegate = UIApplication.shared.windows.first
         if sender.isOn {
-            appDelegate?.overrideUserInterfaceStyle = .dark
-            return
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                let appDelegate = windowScene.windows.first
+                appDelegate?.overrideUserInterfaceStyle = .dark
+            }
+            UserDefaults.standard.setValue(true, forKey: "darkmode")
+        } else {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                let appDelegate = windowScene.windows.first
+                appDelegate?.overrideUserInterfaceStyle = .light
+            }
+            UserDefaults.standard.setValue(false, forKey: "darkmode")
         }
-        appDelegate?.overrideUserInterfaceStyle =  .light
-        return
+        
+//        let appDelegate = UIApplication.shared.windows.first
+//        if sender.isOn {
+//            appDelegate?.overrideUserInterfaceStyle = .dark
+//            return
+//        }
+//        appDelegate?.overrideUserInterfaceStyle =  .light
+//        return
     }
     
     @IBAction func logoutBtn(_ sender: Any) {
@@ -137,4 +130,20 @@ class MenuVC: UIViewController {
         delegate?.protocolGoToCart()
     }
     
+    func darkModeInSwitch() {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "darkmode")
+        if isDarkMode {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                let appDelegate = windowScene.windows.first
+                appDelegate?.overrideUserInterfaceStyle = .dark
+            }
+            switchModeOutlet.isOn = true
+        } else {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                let appDelegate = windowScene.windows.first
+                appDelegate?.overrideUserInterfaceStyle = .light
+            }
+            switchModeOutlet.isOn = false
+        }
+    }
 }

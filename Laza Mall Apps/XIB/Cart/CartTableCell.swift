@@ -107,7 +107,6 @@ class CartTableCell: UITableViewCell {
             self.quantityProduct = currentTotalProd
         })
          print("Delegate arrowDownProductCart called")
-         print("juju")
     }
     
     

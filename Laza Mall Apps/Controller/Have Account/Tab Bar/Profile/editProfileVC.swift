@@ -16,25 +16,31 @@ class editProfileVC: UIViewController {
     @IBOutlet weak var editImageView: UIImageView!
     {
         didSet{
+            guard let imageEdit = profileModel?.image_url else {return}
             editImageView.layer.cornerRadius = editImageView.frame.width / 2
             editImageView.layer.masksToBounds = true
             editImageView.contentMode = .scaleToFill
-//            editImageView.image = image
+            let imgURl = URL(string: "\(imageEdit )" )
+            self.editImageView.sd_setImage(with: imgURl)
         }
     }
     @IBOutlet weak var imageEditBtn: UIButton!
+    
     @IBOutlet weak var editNameView: UITextField! {
         didSet{
+            guard let name = profileModel?.fullName else {return}
             editNameView.text = name
         }
     }
     @IBOutlet weak var editUsernameView: UITextField! {
         didSet{
-            editUsernameView.text = userName
+            guard let username = profileModel?.username else {return}
+            editUsernameView.text = username
         }
     }
     @IBOutlet weak var editEmailView: UITextField! {
         didSet{
+            guard let email = profileModel?.email else {return}
             editEmailView.text = email
         }
     }
@@ -45,12 +51,9 @@ class editProfileVC: UIViewController {
     var media: Media?
     weak var delegate: EditProfileDelegate?
     private let imagePicker = UIImagePickerController()
-    var modelProfile : DataUseProfile?
-    var email: String = ""
-    var name: String = ""
-    var userName: String = ""
+    var profileModel: DataUseProfile?
     var image: String = ""
-    var linkImage: String = ""
+//    var linkImage: String = ""
     
     // MARK: - Button back using programmaticly
     //Back Button
@@ -78,6 +81,7 @@ class editProfileVC: UIViewController {
         setupView()
     }
     
+    
     private func setupView() {
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -87,46 +91,6 @@ class editProfileVC: UIViewController {
         
     }
     
-//    func updateDataProfileUserdefault() {
-//        if let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
-//           let profile = try? JSONDecoder().decode(profileUser.self, from: data) {
-//            self.modelProfile = profile.data
-//        }
-//
-//        self.editNameView.text = modelProfile?.fullName
-//        self.editUsernameView.text = modelProfile?.username
-//        self.editEmailView.text = modelProfile?.email
-//        self.linkImage = String(modelProfile?.image_url ?? "")
-//        let imgURl = URL(string: modelProfile?.image_url ?? "")
-//        self.editImageView.sd_setImage(with: imgURl)
-//
-//    }
-    
-    func updateDataProfileUserdefault() {
-        let newFullName = editNameView.text ?? ""
-        let newUsername = editUsernameView.text ?? ""
-        let newEmail = editEmailView.text ?? ""
-        if let newImage = editImageView.image {
-            media = Media(withImage: newImage, forKey: "image")
-        }
-        
-        if newFullName != ""  || newUsername != ""  || newEmail != "" {
-           //Mengubah fullName dalam objek modelProfile
-            modelProfile?.fullName = newFullName
-            modelProfile?.email = newEmail
-            modelProfile?.username = newUsername
-            modelProfile?.image_url = "\(String(describing: media))"
-            
-            // Mengubah objek modelProfile menjadi data JSON
-            if let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
-               let profile = try? JSONDecoder().decode(profileUser.self, from: data) {
-                self.modelProfile = profile.data
-                print("Update profile data: \(profile.data.fullName)")
-            }
-        }
-    }
-
-    
     func updateProfileUser(){
         let fullname = editNameView.text ?? ""
         let username = editUsernameView.text ?? ""
@@ -135,12 +99,31 @@ class editProfileVC: UIViewController {
             media = Media(withImage: image, forKey: "image")
         }
         
+        
+        //bisa guard var agar isi dalamya bisa di edit
+//        guard var unwrappedUserProfile = profileModel else { return }
+//        unwrappedUserProfile.fullName = fullname
+//        unwrappedUserProfile.email = email
+//        unwrappedUserProfile.username = username
+////        unwrappedUserProfile.image_url = image
+        
+        
+//        print("Update Profile: \(unwrappedUserProfile)")
+        
         if username != "" && fullname != "" && email != "" {
             editProfileViewModel.updateProfile(fullName: fullname, username: username, email: email, media: media) { update in
-
+                let newProfile = DataUseProfile(
+                    id: update.data.id,
+                    fullName: update.data.fullName,
+                    username: update.data.username,
+                    email: update.data.email,
+                    image_url: update.data.imageUrl,
+                    isVerified: update.data.isVerified,
+                    createdAt: update.data.createdAt,
+                    updatedAt: update.data.updatedAt)
+                KeychainManager.shared.addProfileToKeychain(profile: newProfile, service: "UserProfileCoreData")
                 DispatchQueue.main.async {
-//                    self.updateDataProfileUserdefault()
-                    ShowAlert.performAlertApi(on: self, title: "Success", message: "Successfully ")
+                    ShowAlert.performAlertApi(on: self, title: "Profile Notification", message: "Successfully Update Your Profile ")
                     self.navigationController?.popViewController(animated: true)
                 }
                 

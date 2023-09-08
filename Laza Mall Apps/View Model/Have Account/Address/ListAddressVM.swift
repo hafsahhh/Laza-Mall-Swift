@@ -82,7 +82,7 @@ class ListAddressViewModel {
                             // Memanggil penanganan API
                             self.apiAddressAlert?(data)
                         }
-                        print("INI ERROR Address \(jsonResponse)")
+                        print("Error Address \(jsonResponse)")
                         return
                     }
                     if let data = data,

@@ -8,7 +8,7 @@
 import UIKit
 
 class EditAddressVC: UIViewController {
-
+    
     @IBOutlet weak var nameView: UITextField!{
         didSet{
             nameView.text = userAddress?.receiverName
@@ -31,8 +31,7 @@ class EditAddressVC: UIViewController {
     }
     @IBOutlet weak var editAddressSwitchView: UISwitch!{
         didSet{
-//            editAddressSwitchView.isOn = switchPrimary
-            let isPrimary = switchPrimary
+            let isPrimary = userAddress?.isPrimary
             if isPrimary == nil {
                 editAddressSwitchView.isOn = false
             } else {
@@ -71,7 +70,14 @@ class EditAddressVC: UIViewController {
         //back button
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
-
+        
+//        let isPrimary = switchPrimary
+//        if isPrimary == nil {
+//            editAddressSwitchView.isOn = false
+//        } else {
+//            editAddressSwitchView.isOn = true
+//        }
+//        print("Switch button: \(isPrimary)")
     }
     // MARK: - Func for edit address using API
     func editAddressApi() {
@@ -80,11 +86,12 @@ class EditAddressVC: UIViewController {
         let phone = phoneView.text ?? ""
         let address = addressView.text ?? ""
         let isSwitchOn = editAddressSwitchView.isOn
-        
+
         guard let addressId = userAddress?.id else {
             print("userAddress is nil, cannot proceed with API call")
             return
         }
+        
         
         editAddressViewModel.updateAddress(idAddress: addressId, country: country, city: address, receiverName: name, phoneNumber: phone, isPrimary: isSwitchOn) { result in
             switch result {
@@ -99,10 +106,8 @@ class EditAddressVC: UIViewController {
             }
         }
     }
-
-
     
-
+    
     @IBAction func saveEditAddressBtn(_ sender: Any) {
         editAddressApi()
     }

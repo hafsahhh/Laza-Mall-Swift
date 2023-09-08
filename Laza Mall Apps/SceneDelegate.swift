@@ -13,6 +13,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        let isDarkMode = UserDefaults.standard.bool(forKey: "darkmode")
+        if isDarkMode {
+          if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            let appDelegate = windowScene.windows.first
+            appDelegate?.overrideUserInterfaceStyle = .dark
+          }
+        } else {
+          if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            let appDelegate = windowScene.windows.first
+            appDelegate?.overrideUserInterfaceStyle = .light
+          }
+        }
+        
 //        guard let windowScene = (scene as? UIWindowScene) else { return }
 //        let window = UIWindow(windowScene: windowScene)
 //

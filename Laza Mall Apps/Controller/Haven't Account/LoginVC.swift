@@ -150,11 +150,9 @@ class LoginVC: UIViewController {
                 self.loginViewModel.getUserProfile { result in
                     switch result {
                     case .success(let userProfile):
-                        print("User ID: \(String(describing: userProfile?.id))")
-                        
                         //save id into coredata
                         guard let unwrappedUserProfile = userProfile else { return }
-//                        KeychainManager.shared.setCurrentProfile(profile: unwrappedUserProfile)
+                        KeychainManager.shared.addProfileToKeychain(profile: unwrappedUserProfile, service: "UserProfileCoreData")
                         
                         // Panggil metode untuk berpindah ke view controller selanjutnya
                         DispatchQueue.main.async {
@@ -224,11 +222,11 @@ class LoginVC: UIViewController {
     
     // Fungsi untuk mengambil data pengguna dari UserDefaults
     func getSaveInfo(){
-        if let savedUsername = UserDefaults.standard.string(forKey: "username"),
-           let savedPassword = KeychainManager.shared.getPassword()
+        if let savedUsername = UserDefaults.standard.string(forKey: "username")
+//           let savedPassword = KeychainManager.shared.getPassword()
         {
             usernameOutlet.text = savedUsername
-            passwordOutlet.text = savedPassword
+//            passwordOutlet.text = savedPassword
         }
     }
     

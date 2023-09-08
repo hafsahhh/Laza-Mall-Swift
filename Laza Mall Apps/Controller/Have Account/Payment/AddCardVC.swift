@@ -148,9 +148,8 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
 
     func saveCardModelToCoreData() {
         
-        guard let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
-           let profile = try? JSONDecoder().decode(profileUser.self, from: data) else { return }
-        let userID = profile.data.id
+        //save id into coredata
+        guard let dataUser = KeychainManager.shared.getProfileFromKeychain(service: "UserProfileCoreData") else {return}
         
         let cardOwner = cardNameText.text ?? ""
         let cardNumber = cardNumberText.cardNumber ?? ""
@@ -164,7 +163,7 @@ class AddCardVC: UIViewController, STPPaymentCardTextFieldDelegate {
             cardExpMonth: Int16(cardExpMonth),
             cardExpYear: Int16(cardYear),
             cardCvv: Int16(cardCvv),
-            userId: Int32(userID)
+            userId: Int32(dataUser.id)
         )
         print("list new card\(newCard)")
         coredataManage.create(newCard) // Save the new card to Core Data

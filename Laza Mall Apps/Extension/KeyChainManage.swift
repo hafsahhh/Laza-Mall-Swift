@@ -205,4 +205,61 @@ class KeychainManager {
         }
         
     }
+    
+    //Menyimpan data profile
+    func addProfileToKeychain(profile: DataUseProfile, service: String) {
+        guard let data = try? JSONEncoder().encode(profile) else {
+            print("Encode error")
+            return
+        }
+        let addquery = [
+            kSecAttrService: service,
+            kSecAttrAccount: "laza-account",
+            kSecClass: kSecClassGenericPassword,
+            kSecValueData: data
+        ] as [CFString : Any] as CFDictionary
+        // Add to keychain
+        let status = SecItemAdd(addquery, nil)
+        if status == errSecDuplicateItem {
+            // Item already exists, thus update it
+            let updatequery = [
+                kSecAttrService: service,
+                kSecAttrAccount: "laza-account",
+                kSecClass: kSecClassGenericPassword
+            ] as [CFString : Any] as CFDictionary
+            let attributeToUpdate = [kSecValueData: data] as CFDictionary
+            // Update to keychain
+            let updateStatus = SecItemUpdate(updatequery, attributeToUpdate)
+            if updateStatus != errSecSuccess {
+                print("Error updating profile to keychain, status: \(status)")
+            }
+        } else if status != errSecSuccess {
+            print("Error adding token to keychain, status: \(status)")
+        }
+    }
+    
+    //Mendapatkan data profile
+    func getProfileFromKeychain(service: String) -> DataUseProfile? {
+        
+        let getquery = [
+            kSecAttrService: service,
+            kSecAttrAccount: "laza-account",
+            kSecClass: kSecClassGenericPassword,
+            kSecReturnData: true
+        ] as [CFString : Any] as CFDictionary
+        
+        var ref: CFTypeRef?
+        let status = SecItemCopyMatching(getquery, &ref)
+        guard status == errSecSuccess else {
+            // Error
+            print("Error retrieving refresh token from keychain, status: \(status)")
+            return nil
+        }
+        let data = ref as! Data
+        guard let dataProfile = try? JSONDecoder().decode(DataUseProfile.self, from: data) else {
+            print("Encode error")
+            return nil
+        }
+        return dataProfile
+    }
 }

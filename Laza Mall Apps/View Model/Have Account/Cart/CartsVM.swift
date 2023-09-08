@@ -60,7 +60,6 @@ class CartsViewModel{
     
     // MARK: - Fungsi untuk menghapus keranjang menggunakan API
     func deleteCarts(idProduct: Int, idSize: Int, completion: @escaping (Result<Data?, Error>) -> Void) {
-        //        print("Menghapus Data keranjang")
         
         // Membuat URL untuk menghapus keranjang dengan menggunakan endpoint yang sesuai
         guard let url = URL(string: Endpoints.Gets.deleteCarts(idProduct: idProduct, idSize: idSize).url) else {
@@ -93,7 +92,7 @@ class CartsViewModel{
                             // Memanggil penanganan API
                             self.apiCarts?(status, data)
                         }
-                        print("INI ERROR \(jsonResponse)")
+                        print("Error \(jsonResponse)")
                         return
                     }
                 } else {
@@ -197,7 +196,7 @@ class CartsViewModel{
                             // Memanggil alert API
                             self.apiCarts?(status, data)
                         }
-                        print("INI ERROR Update\(jsonResponse)")
+                        print("Error Update\(jsonResponse)")
                         return
                     }
                     if let data = data,

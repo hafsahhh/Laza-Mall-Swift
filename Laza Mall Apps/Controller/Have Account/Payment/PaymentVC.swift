@@ -39,6 +39,8 @@ class PaymentVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var emptyCardLabel: UILabel!
+    
     var cardModels = [CreditCard]()
     var coreDataManage = CoreDataManage()
     var selectedCellIndex: IndexPath?
@@ -180,7 +182,11 @@ class PaymentVC: UIViewController {
 // MARK: - Extensions Payment View Controller
 extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("total card \(cardModels.count)")
+        if cardModels.count == 0 {
+            emptyCardLabel.isHidden = false
+        } else {
+            emptyCardLabel.isHidden = true
+        }
         return cardModels.count
     }
     

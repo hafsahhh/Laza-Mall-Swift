@@ -26,7 +26,7 @@ class ProfileVC: UIViewController {
     let imagePicker = UIImagePickerController()
     let profileViewModel = LoginViewModel()
     var linkImage: String = ""
-    var modelProfile : DataUseProfile?
+    var modelProfile: DataUseProfile?
     
     //Profile
     private func setupTabBarText() {
@@ -54,12 +54,7 @@ class ProfileVC: UIViewController {
         userImageView.layer.masksToBounds = true
         userImageView.contentMode = .scaleAspectFill
         
-        displayUserProfileByUserdefault()
-        
-//        fetchUserProfile()
-//        loginViewModel.performLogin(username: "your_username", password: "your_password")
-        
-        
+        displayProfileUserByKeychain()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +62,7 @@ class ProfileVC: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = false
         ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
-            self?.displayUserProfileByUserdefault()
+            self?.displayProfileUserByKeychain()
         } onError: { errorMessage in
             print(errorMessage)
         }
@@ -104,20 +99,38 @@ class ProfileVC: UIViewController {
         }
     }
     
-    func displayUserProfileByUserdefault() {
+//    func displayUserProfileByUserdefault() {
+//        DispatchQueue.main.async {
+//            if let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
+//               let profile = try? JSONDecoder().decode(profileUser.self, from: data) {
+//                self.modelProfile = profile.data
+//            }
+//
+//            self.fullnameProfileView.text = self.modelProfile?.fullName
+//            self.usernameProfileView.text = self.modelProfile?.username
+//            self.emailProfileView.text = self.modelProfile?.email
+//            self.linkImage = String(self.modelProfile?.image_url ?? "")
+//            let imgURl = URL(string: self.modelProfile?.image_url ?? "")
+//            self.userImageView.sd_setImage(with: imgURl)
+//        }
+//    }
+    
+    
+    func displayProfileUserByKeychain() {
+        //save data user into keychain
         DispatchQueue.main.async {
-            if let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
-               let profile = try? JSONDecoder().decode(profileUser.self, from: data) {
-                self.modelProfile = profile.data
-            }
             
-            self.fullnameProfileView.text = self.modelProfile?.fullName
-            self.usernameProfileView.text = self.modelProfile?.username
-            self.emailProfileView.text = self.modelProfile?.email
-            self.linkImage = String(self.modelProfile?.image_url ?? "")
-            let imgURl = URL(string: self.modelProfile?.image_url ?? "")
+            guard let dataUser = KeychainManager.shared.getProfileFromKeychain(service: "UserProfileCoreData") else {return}
+            
+            self.fullnameProfileView.text = dataUser.fullName
+            self.usernameProfileView.text = dataUser.username
+            self.emailProfileView.text = dataUser.email
+            self.linkImage = dataUser.image_url ?? ""
+            let imgURl = URL(string: dataUser.image_url ?? "")
             self.userImageView.sd_setImage(with: imgURl)
+            self.modelProfile = dataUser
         }
+        
     }
     
     @IBAction func editImageUserBtn(_ sender: UIButton) {
@@ -128,15 +141,9 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func editProfileBtn(_ sender: UIButton) {
-        guard let emailProfile = emailProfileView.text else {return}
-        guard let nameProfile = fullnameProfileView.text else {return}
-        guard let usernameProfile = usernameProfileView.text else {return}
         let editProfileCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "editProfileVC") as! editProfileVC
-        editProfileCtrl.email = emailProfile
-        editProfileCtrl.name = nameProfile
-        editProfileCtrl.userName = usernameProfile
-//        editProfileCtrl.image = linkImage
-        
+        editProfileCtrl.image = linkImage
+        editProfileCtrl.profileModel = modelProfile
         self.navigationController?.pushViewController(editProfileCtrl, animated: true)
     }
     

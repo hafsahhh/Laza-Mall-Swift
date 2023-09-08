@@ -10,6 +10,8 @@ pod 'SideMenu'
 
 pod 'CreditCardForm'
 
+#pod 'SkeletonView'
+
 #pod 'SnackBar.swift'
 
 #pod "Stripe"
