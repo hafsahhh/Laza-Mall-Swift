@@ -11,9 +11,9 @@ class CartVC: UIViewController{
     
     @IBOutlet weak var cartTableView: UITableView!
     @IBOutlet weak var emptyDataCart: UILabel!
-    @IBOutlet weak var subTotalView: UILabel!
-    @IBOutlet weak var shippingTotalView: UILabel!
-    @IBOutlet weak var totalView: UILabel!
+    @IBOutlet weak var subTotalLabel: UILabel!
+    @IBOutlet weak var shippingTotalLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var deliveryAddressView: UILabel!
     @IBOutlet weak var cityAddress: UILabel!
     @IBOutlet weak var cardNumberPayemntLabel: UILabel!
@@ -94,9 +94,9 @@ class CartVC: UIViewController{
                     if let userCarts = userCarts { // Safely unwrap the optional
                         self.cartArrayModel = userCarts.data.products
                         self.cartModel = userCarts
-                        self.subTotalView.text = "$ \(userCarts.data.orderInfo.subTotal)"
-                        self.shippingTotalView.text = "$ \(userCarts.data.orderInfo.shippingCost)"
-                        self.totalView.text = "$ \(userCarts.data.orderInfo.total)"
+                        self.subTotalLabel.text = "$ \(userCarts.data.orderInfo.subTotal)"
+                        self.shippingTotalLabel.text = "$ \(userCarts.data.orderInfo.shippingCost)"
+                        self.totalLabel.text = "$ \(userCarts.data.orderInfo.total)"
                         
                         userCarts.data.products.forEach { productChart in
                             let dataProduct = DataProduct(id: productChart.id, quantity: productChart.quantity)

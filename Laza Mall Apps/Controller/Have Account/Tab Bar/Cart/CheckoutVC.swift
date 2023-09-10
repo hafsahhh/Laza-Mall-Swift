@@ -30,10 +30,12 @@ class CheckoutVC: UIViewController {
     }
     
     @IBAction func goToOrderBtn(_ sender: Any) {
-        self.dismiss(animated: true)
-      let goToOrderCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartVC") as! CartVC
-        goToOrderCtrl.navigationItem.hidesBackButton = true
-        self.navigationController?.pushViewController(goToOrderCtrl, animated: true)
+        self.navigationController?.popViewController(animated: true)
+        delegate?.goToCart()
+//        self.dismiss(animated: true)
+//      let goToOrderCtrl = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CartVC") as! CartVC
+//        goToOrderCtrl.navigationItem.hidesBackButton = true
+//        self.navigationController?.pushViewController(goToOrderCtrl, animated: true)
     }
     
     

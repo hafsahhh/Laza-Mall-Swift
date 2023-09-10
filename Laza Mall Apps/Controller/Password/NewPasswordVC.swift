@@ -62,22 +62,6 @@ class NewPasswordVC: UIViewController {
     }
     
     
-    //fungsi untuk mengubah button backgournd color
-//    @objc func textFieldDidChange() {
-//        //validasi email [validEmail] di folder extensions
-//        isNewPassValid = newPasswordOutlet.validPassword(newPasswordOutlet.text ?? "")
-//        //validasi password [validPassword] di folder extensions
-//        isConfirmPassValid = confirmPassOutlet.validPassword(confirmPassOutlet.text ?? "")
-//
-//        if isNewPassValid || isConfirmPassValid {
-//            resetPassOutlet.isEnabled = false
-//            resetPassOutlet.backgroundColor = UIColor(named: "ColorValid" )
-//        }else{
-//            resetPassOutlet.isEnabled = true
-//            resetPassOutlet.backgroundColor = UIColor(named: "ColorBg" )
-//        }
-//    }
-    
     // MARK: - Func Validasi Updatse Pass
     @objc func validasiUpdatePass() {
         //validasi email [validEmail] di folder extensions

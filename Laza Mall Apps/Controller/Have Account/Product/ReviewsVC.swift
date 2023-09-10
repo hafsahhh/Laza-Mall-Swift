@@ -12,7 +12,11 @@ import Cosmos
 class ReviewsVC: UIViewController {
     
     @IBOutlet weak var userReviewTable: UITableView!
-    @IBOutlet weak var reviewRating: CosmosView!
+    @IBOutlet weak var reviewRating: CosmosView!{
+        didSet{
+            reviewRating.isUserInteractionEnabled = false
+        }
+    }
     @IBOutlet weak var emptyDataReview: UILabel!
     @IBOutlet weak var totalReviews: UILabel!
     

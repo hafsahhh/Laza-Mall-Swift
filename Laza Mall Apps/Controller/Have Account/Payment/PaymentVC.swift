@@ -127,16 +127,102 @@ class PaymentVC: UIViewController {
         }
     }
     
+
     // MARK: - Delete Card Func
+    // Fungsi untuk menghapus kartu berdasarkan indexPath
     func deleteCard(indexPath: IndexPath) {
-        let card = cardModels[indexPath.row]
+        // Mendapatkan kartu yang akan dihapus dari cardModels berdasarkan indexPath
+        let card = cardModels[indexPath.item]
+        
+        // Menghapus kartu dari CoreData menggunakan coreDataManage
         coreDataManage.delete(card) { [weak self] in
-            DispatchQueue.main.async {
-                self?.cardModels.remove(at: indexPath.row)
-                self?.cardPaymentCollect.deleteItems(at: [indexPath])
+            guard let self = self else { return }
+            
+            // hapus kartu dari array cardModels
+            self.cardModels.remove(at: indexPath.item)
+            
+            // periksa apakah array cardModels sekarang kosong
+            if self.cardModels.isEmpty {
+                // Jika array sekarang kosong, tangani sesuai
+                DispatchQueue.main.async {
+                    // Menampilkan tampilan default karena tidak ada kartu tersisa
+                    self.performCardInTextfield(indexPath: nil)
+                    
+                    // Memuat ulang koleksi kartu pembayaran
+                    self.cardPaymentCollect.reloadData()
+                }
+            } else {
+                // Jika masih ada kartu yang tersisa, perbarui tampilan dan pilih item baru
+                DispatchQueue.main.async {
+                    // hapus item kartu yang dihapus dari tampilan koleksi
+                    self.cardPaymentCollect.deleteItems(at: [indexPath])
+                    
+                    // Memeriksa jika ada item terakhir yang terlihat dalam tampilan koleksi
+                    if let lastRow = self.cardPaymentCollect.indexPathsForVisibleItems.last {
+                        // Membuat indeks baru untuk item yang akan dipilih
+                        let newIndex = IndexPath(item: min(lastRow.item, self.cardModels.count - 1), section: 0)
+                        
+                        // panggil func performCardInTextfield untuk menampilkan kartu yang baru dipilih
+                        self.performCardInTextfield(indexPath: newIndex)
+                        
+                        // pilih item yang baru dipilih dalam tampilan koleksi
+                        self.cardPaymentCollect.selectItem(at: newIndex, animated: true, scrollPosition: .centeredHorizontally)
+                    }
+                    print("Berhasil menghapus kartu")
+                }
             }
         }
-        print("successfully delete card")
+    }
+
+
+    
+    // MARK: - Fungsi Tampilkan Kartu di TextField
+    // Fungsi untuk menampilkan informasi kartu dalam teks field
+    func performCardInTextfield(indexPath: IndexPath?) {
+        // Periksa apakah indexPath tidak nil dan berada dalam rentang valid cardModels
+        if let indexPath = indexPath, indexPath.item < cardModels.count {
+            // Atur selectedCellIndex ke indexPath yang diberikan
+            selectedCellIndex = indexPath
+            
+            // Akses data kartu berdasarkan indexPath
+            let card = cardModels[indexPath.item]
+            self.numberCardChoose = card.cardNumber
+            cardOwnerTf.text = card.cardOwner
+            cardNumberTf.text = card.cardNumber
+            cardExpiredTf.text = "\(card.cardExpYear)/\(card.cardExpMonth)"
+            cardCvvTf.text = String(card.cardCvv)
+        } else {
+            // Hapus selectedCellIndex karena tidak ada pilihan yang valid
+            selectedCellIndex = nil
+            self.numberCardChoose = nil
+            cardOwnerTf.text = ""
+            cardNumberTf.text = ""
+            cardExpiredTf.text = ""
+            cardCvvTf.text = ""
+        }
+    }
+
+    
+    // MARK: - scrollViewDidEndDecelerating
+    // Metode ini akan dipanggil setelah user selesai menggeser dan koleksi berhenti bergerak (decelerating).
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // Menggunakan if let untuk memeriksa apakah selectedCellIndex tidak nil
+        guard let selectedIndexPath = selectedCellIndex else { return }
+        let currentIndex = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
+        
+        // Dapatkan bagian (section) dari selectedIndexPath
+        let selectedSection = selectedIndexPath.section
+        // Buat IndexPath baru dengan selectedSection dan currentIndex
+        let newIndexPath = IndexPath(item: currentIndex, section: selectedSection)
+        
+        // Memanggil fungsi performCardInTextfield dengan newIndexPath
+        performCardInTextfield(indexPath: newIndexPath)
+        
+        // Dapat memeriksa apakah currentIndex sama dengan selectedRow atau tidak
+        if currentIndex != selectedIndexPath.row {
+            // Melakukan tindakan yang sesuai jika currentIndex berbeda
+            print("Indeks terpilih setelah berhenti: \(currentIndex)")
+        }
     }
     
     // MARK: - Delete Card Btn
@@ -219,41 +305,4 @@ extension PaymentVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performCardInTextfield(indexPath: indexPath)
     }
-    
-    // MARK: - Func Show Card in textfield
-    //Func untuk menampilkan informasi crad di tetfield
-    func performCardInTextfield(indexPath: IndexPath){
-        selectedCellIndex = indexPath
-        let card = cardModels[indexPath.item]
-        self.numberCardChoose = card.cardNumber
-        cardOwnerTf.text = card.cardOwner
-        cardNumberTf.text = card.cardNumber
-        cardExpiredTf.text = "\(card.cardExpYear)/\(card.cardExpMonth)"
-        cardCvvTf.text = String(card.cardCvv)
-    }
-    
-    
-    // MARK: - scrollViewDidEndDecelerating
-    // Metode ini akan dipanggil setelah user selesai menggeser dan koleksi berhenti bergerak (decelerating).
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        // Menggunakan if let untuk memeriksa apakah selectedCellIndex tidak nil
-        guard let selectedIndexPath = selectedCellIndex else { return }
-        let currentIndex = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
-        
-        // Dapatkan bagian (section) dari selectedIndexPath
-        let selectedSection = selectedIndexPath.section
-        // Buat IndexPath baru dengan selectedSection dan currentIndex
-        let newIndexPath = IndexPath(item: currentIndex, section: selectedSection)
-        
-        // Memanggil fungsi performCardInTextfield dengan newIndexPath
-        performCardInTextfield(indexPath: newIndexPath)
-        
-        // Dapat memeriksa apakah currentIndex sama dengan selectedRow atau tidak
-        if currentIndex != selectedIndexPath.row {
-            // Melakukan tindakan yang sesuai jika currentIndex berbeda
-            print("Indeks terpilih setelah berhenti: \(currentIndex)")
-        }
-    }
-    
-    
 }

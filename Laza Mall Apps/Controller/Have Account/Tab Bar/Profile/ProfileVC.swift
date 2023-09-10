@@ -41,7 +41,7 @@ class ProfileVC: UIViewController {
         tabBarItem.selectedImage = UIImage(view: label4)
     }
     
-    
+    // MARK: - Viewdidload
     override func viewDidLoad() {
         super.viewDidLoad()
         //hide back button
@@ -57,6 +57,7 @@ class ProfileVC: UIViewController {
         displayProfileUserByKeychain()
     }
     
+    // MARK: - viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -68,6 +69,7 @@ class ProfileVC: UIViewController {
         }
     }
     
+    // MARK: - Func get user profile from API
     //func untuk menampilkan data user menggunakan api
     func fetchUserProfile() {
         profileViewModel.getUserProfile { result in
@@ -82,6 +84,7 @@ class ProfileVC: UIViewController {
         }
     }
     
+    // MARK: - Func Display Profile
     func displayUserProfile(_ userProfile: DataUseProfile?) {
         if let userProfile = userProfile {
             DispatchQueue.main.async {
@@ -99,23 +102,8 @@ class ProfileVC: UIViewController {
         }
     }
     
-//    func displayUserProfileByUserdefault() {
-//        DispatchQueue.main.async {
-//            if let data = UserDefaults.standard.object(forKey: "UserProfileDefault") as? Data,
-//               let profile = try? JSONDecoder().decode(profileUser.self, from: data) {
-//                self.modelProfile = profile.data
-//            }
-//
-//            self.fullnameProfileView.text = self.modelProfile?.fullName
-//            self.usernameProfileView.text = self.modelProfile?.username
-//            self.emailProfileView.text = self.modelProfile?.email
-//            self.linkImage = String(self.modelProfile?.image_url ?? "")
-//            let imgURl = URL(string: self.modelProfile?.image_url ?? "")
-//            self.userImageView.sd_setImage(with: imgURl)
-//        }
-//    }
     
-    
+    // MARK: - Func get and display profile from keychain
     func displayProfileUserByKeychain() {
         //save data user into keychain
         DispatchQueue.main.async {

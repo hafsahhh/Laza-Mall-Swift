@@ -19,6 +19,7 @@ class VerifyCodeVC: UIViewController {
     let verifyCodeViewModel = VerifyPasswordViewModel()
     var totalTime = 300
     var countdownTimer: Timer!
+    var isCodeFilled = false
     
     // MARK: - Button back using programmaticly
     //Back Button
@@ -44,12 +45,17 @@ class VerifyCodeVC: UIViewController {
         self.navigationItem.leftBarButtonItem  = backBarBtn
         
         starCountDown()
-        // Do any additional setup after loading the view.
+
+
     }
+    
+
+    
     private func starCountDown() {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
     }
     
+    // MARK: - Func Update time
     @objc func updateTime() {
         timerView.text = "\(timeFormatted(totalTime))"
         if totalTime != 0 {
@@ -61,13 +67,14 @@ class VerifyCodeVC: UIViewController {
         }
     }
     
+    // MARK: - Func time
     func timeFormatted(_ totalSeconds: Int) -> String {
         let seconds: Int = totalSeconds % 60
         let minutes: Int = (totalSeconds / 60) % 60
-        //     let hours: Int = totalSeconds / 3600
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
+
     // MARK: - Func VerifyApi
     func verifyCodeApi() {
         let codeString = codeVerificText.text ?? ""
@@ -93,6 +100,7 @@ class VerifyCodeVC: UIViewController {
             }
         }
     }
+    
     
     //untuk jump to new password view controller
     func newPasswordVc(){

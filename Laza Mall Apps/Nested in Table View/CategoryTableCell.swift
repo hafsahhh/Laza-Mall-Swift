@@ -33,7 +33,7 @@ class CategoryTableCell: UITableViewCell {
         categoryCollectView.register(CategoryCollectionCell.nib(), forCellWithReuseIdentifier: CategoryCollectionCell.identifier)
         
         
-        //panggil AllCategoryApi
+        //panggil api getBrandAllData
         homeViewModel.getBrandAllData() { categoryIndex in
             guard let response = categoryIndex else { return }
             self.modelCat.append(contentsOf: response.description)

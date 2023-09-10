@@ -26,22 +26,23 @@ class editProfileVC: UIViewController {
     }
     @IBOutlet weak var imageEditBtn: UIButton!
     
-    @IBOutlet weak var editNameView: UITextField! {
+    @IBOutlet weak var editNameTf: UITextField! {
         didSet{
             guard let name = profileModel?.fullName else {return}
-            editNameView.text = name
+            editNameTf.text = name
         }
     }
-    @IBOutlet weak var editUsernameView: UITextField! {
+    @IBOutlet weak var editUsernameTf: UITextField! {
         didSet{
             guard let username = profileModel?.username else {return}
-            editUsernameView.text = username
+            editUsernameTf.text = username
         }
     }
-    @IBOutlet weak var editEmailView: UITextField! {
+    @IBOutlet weak var editEmailTf: UITextField! {
         didSet{
             guard let email = profileModel?.email else {return}
-            editEmailView.text = email
+            editEmailTf.text = email
+            editEmailTf.isEnabled = false
         }
     }
     @IBOutlet weak var saveProfileBtnView: UIButton!
@@ -53,7 +54,6 @@ class editProfileVC: UIViewController {
     private let imagePicker = UIImagePickerController()
     var profileModel: DataUseProfile?
     var image: String = ""
-//    var linkImage: String = ""
     
     // MARK: - Button back using programmaticly
     //Back Button
@@ -92,23 +92,12 @@ class editProfileVC: UIViewController {
     }
     
     func updateProfileUser(){
-        let fullname = editNameView.text ?? ""
-        let username = editUsernameView.text ?? ""
-        let email = editEmailView.text ?? ""
+        let fullname = editNameTf.text ?? ""
+        let username = editUsernameTf.text ?? ""
+        let email = editEmailTf.text ?? ""
         if let image = editImageView.image {
             media = Media(withImage: image, forKey: "image")
         }
-        
-        
-        //bisa guard var agar isi dalamya bisa di edit
-//        guard var unwrappedUserProfile = profileModel else { return }
-//        unwrappedUserProfile.fullName = fullname
-//        unwrappedUserProfile.email = email
-//        unwrappedUserProfile.username = username
-////        unwrappedUserProfile.image_url = image
-        
-        
-//        print("Update Profile: \(unwrappedUserProfile)")
         
         if username != "" && fullname != "" && email != "" {
             editProfileViewModel.updateProfile(fullName: fullname, username: username, email: email, media: media) { update in
@@ -161,7 +150,6 @@ extension editProfileVC: UIImagePickerControllerDelegate, UINavigationController
         if let result = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.editImageView.contentMode = .scaleToFill
             self.editImageView.image = result
-            //            titleButton.isEnabled = true
             dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Failed", message: "Image can't be loaded.", preferredStyle: .actionSheet)

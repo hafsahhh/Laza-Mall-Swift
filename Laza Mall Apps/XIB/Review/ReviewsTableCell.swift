@@ -27,7 +27,10 @@ class ReviewsTableCell: UITableViewCell {
     @IBOutlet weak var ratingLabelOutlet: UILabel!
     @IBOutlet weak var reviewLabelOutlet: UILabel!
     @IBOutlet weak var dateLabelOutlet: UILabel!
-    @IBOutlet weak var ratingFromUser: CosmosView!
+    @IBOutlet weak var ratingFromUser: CosmosView!{
+        didSet{ ratingFromUser.isUserInteractionEnabled = false
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

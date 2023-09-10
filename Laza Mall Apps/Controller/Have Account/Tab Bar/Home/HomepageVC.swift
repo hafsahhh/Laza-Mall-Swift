@@ -19,6 +19,7 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
     var productFilter: [ProductEntry] = []
     var searchActive : Bool = false
     var isValidToken = false
+    var homeViewModel = HomeViewModel()
     
     
     private func setupTabBarText() {
@@ -99,15 +100,11 @@ class HomepageVC: UIViewController, UICollectionViewDataSource {
         if isValidToken{
             
         }
-        
-        //panggil AllProductApi
-        AllProductApi().getData { ProductIndex in
+        //panggil getData from API
+        homeViewModel.getData { ProductIndex in
             guard let response = ProductIndex else { return }
             self.productModel.append(contentsOf: response.data)
             self.productCollectCellView.reloadData()
-            for product in self.productModel{
-                print(product.name)
-            }
         }
 
     }

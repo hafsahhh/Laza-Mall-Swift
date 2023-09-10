@@ -155,6 +155,10 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
         guard let creditCardNumber = indexPathCardNumber else { print("kosong")
             return
         }
+        
+        //save id into coredata
+        guard let dataUser = KeychainManager.shared.getProfileFromKeychain(service: "UserProfileCoreData") else {return}
+        
         let cardOwner = cardNameText.text ?? ""
         let cardNumber = cardNumberText.cardNumber ?? ""
         let cardExpMonth = cardNumberText.expirationMonth
@@ -166,7 +170,8 @@ class EditCradVC: UIViewController, STPPaymentCardTextFieldDelegate {
             cardNumber: cardNumber,
             cardExpMonth: Int16(cardExpMonth),
             cardExpYear: Int16(cardYear),
-            cardCvv: Int16(cardCvv)
+            cardCvv: Int16(cardCvv),
+            userId: Int32(dataUser.id)
         )
         print("list update card\(editCard)")
         coredataManage.update(editCard, cardNumber: creditCardNumber) // Save the new card to Core Data

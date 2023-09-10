@@ -38,7 +38,7 @@ class ProductTableCell: UITableViewCell {
         productCollectView.register(ProductHomeCollectCell.nib(), forCellWithReuseIdentifier: ProductHomeCollectCell.identifier)
         
         
-        //panggil AllProductApi
+        //panggil getData from API
         homeViewModel.getData { ProductIndex in
             guard let response = ProductIndex else { return }
             self.modelProduct.append(contentsOf: response.data)

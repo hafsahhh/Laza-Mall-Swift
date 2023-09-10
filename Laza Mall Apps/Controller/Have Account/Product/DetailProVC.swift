@@ -13,15 +13,19 @@ class DetailProVC: UIViewController {
     
     
     @IBOutlet weak var imageProView: UIImageView!
-    @IBOutlet weak var catBrandView: UILabel!
-    @IBOutlet weak var catTitleView: UILabel!
-    @IBOutlet weak var priceView: UILabel!
+    @IBOutlet weak var catBrandLabel: UILabel!
+    @IBOutlet weak var catTitleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var sizeCollectView: UICollectionView!
-    @IBOutlet weak var descView: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var usernameReviewerView: UILabel!
-    @IBOutlet weak var reviewView: UILabel!
-    @IBOutlet weak var dateReviewView: UILabel!
-    @IBOutlet weak var ratingProView: CosmosView!
+    @IBOutlet weak var reviewLabel: UILabel!
+    @IBOutlet weak var dateReviewLabel: UILabel!
+    @IBOutlet weak var ratingProView: CosmosView!{
+        didSet{
+            ratingProView.isUserInteractionEnabled = false
+        }
+    }
     @IBOutlet weak var imageReviewView: UIImageView!
     {
         didSet{
@@ -30,7 +34,7 @@ class DetailProVC: UIViewController {
             imageReviewView.contentMode = .scaleToFill
         }
     }
-    @IBOutlet weak var ratingUserReview: UILabel!
+    @IBOutlet weak var ratingUserReviewLabel: UILabel!
     
     
     var product: ProductEntry?
@@ -46,6 +50,8 @@ class DetailProVC: UIViewController {
     var idSizeProductSelected: Int!
     var selectedSizeIndexPath: IndexPath?
     var isValidToken = false
+    // Tambahkan properti boolean untuk menandai apakah data produk sudah diambil atau belum
+    var isProductDataLoaded = false
     
     
     // MARK: - Button back using programmaticly
@@ -194,15 +200,30 @@ class DetailProVC: UIViewController {
         
     }
 
-    // MARK: - View Will Appear
+//    // MARK: - View Will Appear
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        self.tabBarController?.tabBar.isHidden = false
+//        ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
+//            self?.detailProductApi()
+//        } onError: { errorMessage in
+//            print(errorMessage)
+//        }
+//    }
+    // Di dalam viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
-        ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
-            self?.detailProductApi()
-        } onError: { errorMessage in
-            print(errorMessage)
+        
+        // Cek apakah data produk sudah diambil
+        if !isProductDataLoaded {
+            ApiRefreshToken().refreshTokenIfNeeded { [weak self] in
+                self?.detailProductApi()
+            } onError: { errorMessage in
+                print(errorMessage)
+            }
         }
     }
     
@@ -213,21 +234,26 @@ class DetailProVC: UIViewController {
         sizeCollectView.register(sizeCollectCell.nib(), forCellWithReuseIdentifier: sizeCollectCell.identifier)
     }
     // MARK: - Func Detail Product
+    // Fungsi ini digunakan untuk mengambil dan menampilkan detail produk.
     func detailProductApi() {
         detailProductViewModel.getDataDetailProduct(id: productId) { [weak self] productDetail in
             DispatchQueue.main.async {
+                // periksa apakah data produk tersedia
                 guard let product = productDetail?.data else {
                     print("productDetail data is nil")
                     return
                 }
                 
+                // isi array ukuran produk dengan data ukuran dari produk
                 self?.sizeProduct.append(contentsOf: product.size)
-                self?.reviewProduct.append(contentsOf: product.reviews)
-                self?.catTitleView.text = product.name
-                self?.priceView.text = String("$ \(product.price)")
-                self?.descView.text = product.description
-                self?.catBrandView.text = product.category.category
                 
+                // isi data produk ke elemen tampilan
+                self?.catTitleLabel.text = product.name
+                self?.priceLabel.text = String("$ \(product.price)")
+                self?.descLabel.text = product.description
+                self?.catBrandLabel.text = product.category.category
+                
+                // ambil dan tampilkan gambar produk dari URL
                 if let imageUrl = URL(string: product.imageURL) {
                     URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                         guard let data = data, let image = UIImage(data: data) else {
@@ -239,16 +265,18 @@ class DetailProVC: UIViewController {
                     }.resume()
                 }
                 
+                // isi data rating produk dan review ke elemen tampilan
                 if let rating = self?.reviewProduct.first?.rating {
                     self?.ratingProView.rating = rating
-                    self?.ratingUserReview.text = String(rating)
+                    self?.ratingUserReviewLabel.text = String(rating)
                 }
                 
                 if let review = self?.reviewProduct.first {
-                    self?.reviewView.text = review.comment
+                    self?.reviewLabel.text = review.comment
                     self?.usernameReviewerView.text = review.fullName
-                    self?.dateReviewView.text = DateTimeUtils.shared.formatReview(date: review.createdAt)
+                    self?.dateReviewLabel.text = DateTimeUtils.shared.formatReview(date: review.createdAt)
                     
+                    // Mengambil dan menampilkan gambar pengulas produk dari URL
                     if let imageUrl = URL(string: review.imageURL) {
                         URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                             guard let data = data, let image = UIImage(data: data) else {
@@ -261,10 +289,15 @@ class DetailProVC: UIViewController {
                     }
                 }
                 
+                // Setelah mendapatkan data produk, atur isProductDataLoaded ke true
+                self?.isProductDataLoaded = true
+                
+                // Memperbarui tampilan koleksi ukuran produk
                 self?.sizeCollectView.reloadData()
             }
         }
     }
+
     
 
     
