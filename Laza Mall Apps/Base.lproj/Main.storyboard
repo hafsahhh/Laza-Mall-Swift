@@ -620,20 +620,6 @@
                                             <constraint firstAttribute="width" constant="150" id="NPN-C5-iES"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ls-w2-iq7">
-                                        <rect key="frame" x="230.99999999999997" y="256" width="55.666666666666657" height="34.333333333333314"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34.329999999999998" id="1Qs-xF-5ka"/>
-                                        </constraints>
-                                        <color key="tintColor" name="ColorWhiteDark"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="camera.fill" catalog="system">
-                                            <attributedString key="attributedTitle"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="editImageUserBtn:" destination="grI-Tu-OFa" eventType="touchUpInside" id="T1E-xC-nMY"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8k9-ag-2bq">
                                         <rect key="frame" x="298" y="280" width="75" height="20"/>
                                         <constraints>
@@ -661,14 +647,11 @@
                                 <constraints>
                                     <constraint firstItem="QxX-dh-k25" firstAttribute="leading" secondItem="62Z-D4-dfO" secondAttribute="leading" constant="20" id="03C-1s-Gec"/>
                                     <constraint firstAttribute="trailing" secondItem="8k9-ag-2bq" secondAttribute="trailing" constant="20" id="2Nh-fo-J8r"/>
-                                    <constraint firstItem="7ls-w2-iq7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="62Z-D4-dfO" secondAttribute="leading" constant="20" symbolic="YES" id="JK8-oF-Qv6"/>
                                     <constraint firstAttribute="trailing" secondItem="QxX-dh-k25" secondAttribute="trailing" constant="20" id="O0X-nR-4fv"/>
-                                    <constraint firstItem="7ls-w2-iq7" firstAttribute="top" secondItem="QxX-dh-k25" secondAttribute="bottom" constant="177.66999999999999" id="PBq-iM-JS8"/>
                                     <constraint firstItem="QxX-dh-k25" firstAttribute="top" secondItem="62Z-D4-dfO" secondAttribute="top" constant="58" id="Y4J-PL-mbb"/>
                                     <constraint firstAttribute="trailing" secondItem="1DR-Jo-AA3" secondAttribute="trailing" constant="122" id="hsm-j6-NaF"/>
                                     <constraint firstAttribute="height" constant="320" id="jPI-HU-dnJ"/>
                                     <constraint firstItem="1DR-Jo-AA3" firstAttribute="top" secondItem="QxX-dh-k25" secondAttribute="bottom" constant="53.670000000000002" id="oSM-j2-IFB"/>
-                                    <constraint firstAttribute="trailing" secondItem="7ls-w2-iq7" secondAttribute="trailing" constant="106.33" id="s7J-cg-r49"/>
                                     <constraint firstItem="8k9-ag-2bq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="62Z-D4-dfO" secondAttribute="leading" constant="20" symbolic="YES" id="snl-Ve-v9v"/>
                                     <constraint firstItem="1DR-Jo-AA3" firstAttribute="leading" secondItem="62Z-D4-dfO" secondAttribute="leading" constant="121" id="swd-cx-FXd"/>
                                     <constraint firstAttribute="bottom" secondItem="8k9-ag-2bq" secondAttribute="bottom" constant="20" id="w4m-Se-SMW"/>
@@ -3614,7 +3597,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDp-tT-LZS">
                                 <rect key="frame" x="157" y="60" width="86" height="45"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOI-d5-BJj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOI-d5-BJj">
                                         <rect key="frame" x="0.0" y="12" width="86" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="ColorBlack"/>

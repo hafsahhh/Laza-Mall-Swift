@@ -16,7 +16,6 @@
 		1A0560F82AA0C525000B04B0 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0560F72AA0C525000B04B0 /* ChangePasswordVC.swift */; };
 		1A0671ED2A7B58CE0079B97F /* sizeCollectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671EB2A7B58CE0079B97F /* sizeCollectCell.swift */; };
 		1A0671EE2A7B58CE0079B97F /* sizeCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0671EC2A7B58CE0079B97F /* sizeCollectCell.xib */; };
-		1A0671F12A7B883C0079B97F /* DataDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F02A7B883C0079B97F /* DataDummy.swift */; };
 		1A0671F52A7B8B150079B97F /* ReviewsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F32A7B8B150079B97F /* ReviewsTableCell.swift */; };
 		1A0671F62A7B8B150079B97F /* ReviewsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A0671F42A7B8B150079B97F /* ReviewsTableCell.xib */; };
 		1A0671F82A7B8B360079B97F /* ReviewsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0671F72A7B8B360079B97F /* ReviewsVC.swift */; };
@@ -108,7 +107,6 @@
 		1AAF92572A7F7CC5005BBB68 /* Like Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF92562A7F7CC5005BBB68 /* Like Product.swift */; };
 		1ACBD63A2A6FD02C002C12A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD6392A6FD02C002C12A2 /* AppDelegate.swift */; };
 		1ACBD63C2A6FD02C002C12A2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD63B2A6FD02C002C12A2 /* SceneDelegate.swift */; };
-		1ACBD63E2A6FD02C002C12A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACBD63D2A6FD02C002C12A2 /* ViewController.swift */; };
 		1ACBD6412A6FD02C002C12A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACBD63F2A6FD02C002C12A2 /* Main.storyboard */; };
 		1ACBD6432A6FD02E002C12A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ACBD6422A6FD02E002C12A2 /* Assets.xcassets */; };
 		1ACBD6462A6FD02E002C12A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ACBD6442A6FD02E002C12A2 /* LaunchScreen.storyboard */; };
@@ -161,7 +159,6 @@
 		1A0560F72AA0C525000B04B0 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		1A0671EB2A7B58CE0079B97F /* sizeCollectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sizeCollectCell.swift; sourceTree = "<group>"; };
 		1A0671EC2A7B58CE0079B97F /* sizeCollectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = sizeCollectCell.xib; sourceTree = "<group>"; };
-		1A0671F02A7B883C0079B97F /* DataDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDummy.swift; sourceTree = "<group>"; };
 		1A0671F32A7B8B150079B97F /* ReviewsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableCell.swift; sourceTree = "<group>"; };
 		1A0671F42A7B8B150079B97F /* ReviewsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsTableCell.xib; sourceTree = "<group>"; };
 		1A0671F72A7B8B360079B97F /* ReviewsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsVC.swift; sourceTree = "<group>"; };
@@ -250,7 +247,6 @@
 		1ACBD6362A6FD02C002C12A2 /* Laza Mall Apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Laza Mall Apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ACBD6392A6FD02C002C12A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1ACBD63B2A6FD02C002C12A2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1ACBD63D2A6FD02C002C12A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1ACBD6402A6FD02C002C12A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1ACBD6422A6FD02E002C12A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1ACBD6452A6FD02E002C12A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -342,14 +338,6 @@
 				1A0671EC2A7B58CE0079B97F /* sizeCollectCell.xib */,
 			);
 			path = "Size Product";
-			sourceTree = "<group>";
-		};
-		1A0671EF2A7B88270079B97F /* Data Dummy */ = {
-			isa = PBXGroup;
-			children = (
-				1A0671F02A7B883C0079B97F /* DataDummy.swift */,
-			);
-			path = "Data Dummy";
 			sourceTree = "<group>";
 		};
 		1A0671F22A7B8AEF0079B97F /* Review */ = {
@@ -470,6 +458,7 @@
 		1A2B36372A70A3670050671E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1A29A8B32A7C884F00FA25AA /* fonts */,
 				1A2B36382A70A37E0050671E /* Extension.swift */,
 				1A561E532A7A03B30024FF29 /* IntrinsicTableView.swift */,
 				1A561E552A7A046D0024FF29 /* DynamicHeightTable.swift */,
@@ -567,6 +556,15 @@
 				1A4CC3C72A93B8D300100439 /* WishlistVM.swift */,
 			);
 			path = Wishlist;
+			sourceTree = "<group>";
+		};
+		1A5436192AAE01F30017E51C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1ACBD63B2A6FD02C002C12A2 /* SceneDelegate.swift */,
+				1ACBD6392A6FD02C002C12A2 /* AppDelegate.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		1A561E502A79DD4E0024FF29 /* Product */ = {
@@ -667,6 +665,7 @@
 		1A6D95252A720EFF00BAC168 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				1A24CEA22A78A881008F693F /* Nested in Table View */,
 				1A041A892A8384FB00737C0A /* Address */,
 				1A8C3D6F2A82359800ADE799 /* Payment */,
 				1A69B8E32A80965D0059EB85 /* Category Filter Brand */,
@@ -742,18 +741,13 @@
 		1ACBD6382A6FD02C002C12A2 /* Laza Mall Apps */ = {
 			isa = PBXGroup;
 			children = (
+				1A5436192AAE01F30017E51C /* Base */,
 				1AF8145B2AA35F7B00D35C32 /* Core Data */,
 				1A2D5C592A8608AE000F51DD /* View Model */,
-				1A29A8B32A7C884F00FA25AA /* fonts */,
-				1A0671EF2A7B88270079B97F /* Data Dummy */,
-				1A24CEA22A78A881008F693F /* Nested in Table View */,
 				1A6D95252A720EFF00BAC168 /* XIB */,
 				1A2B36442A70F8F30050671E /* Model */,
 				1A2B36372A70A3670050671E /* Extension */,
 				1ACBD6692A6FD050002C12A2 /* Controller */,
-				1ACBD6392A6FD02C002C12A2 /* AppDelegate.swift */,
-				1ACBD63B2A6FD02C002C12A2 /* SceneDelegate.swift */,
-				1ACBD63D2A6FD02C002C12A2 /* ViewController.swift */,
 				1ACBD63F2A6FD02C002C12A2 /* Main.storyboard */,
 				1ACBD6422A6FD02E002C12A2 /* Assets.xcassets */,
 				1ACBD6442A6FD02E002C12A2 /* LaunchScreen.storyboard */,
@@ -1165,7 +1159,6 @@
 				1A69B8F22A80E7620059EB85 /* AddCardVC.swift in Sources */,
 				1AF814602AA361C400D35C32 /* CoreDataManager.swift in Sources */,
 				1A24CEA02A789396008F693F /* CategoryCollectionCell.swift in Sources */,
-				1ACBD63E2A6FD02C002C12A2 /* ViewController.swift in Sources */,
 				1ACBD6712A700FA3002C12A2 /* LoginVC.swift in Sources */,
 				1A99868C2A9C3903008048C3 /* VerifyEmailVM.swift in Sources */,
 				1AAA913C2A8E5577004396BE /* VerifyPasswordVM.swift in Sources */,
@@ -1178,7 +1171,6 @@
 				1A4F61D52A77F2E7004D4C7E /* CardVC.swift in Sources */,
 				1AF3808D2A7F258A00A31FC6 /* CartTableCell.swift in Sources */,
 				1A4B6E762A8A5C6F00276694 /* ProfileVC.swift in Sources */,
-				1A0671F12A7B883C0079B97F /* DataDummy.swift in Sources */,
 				1A0671FA2A7BE60B0079B97F /* AddReviewVC.swift in Sources */,
 				1A2B36462A70F9030050671E /* Model.swift in Sources */,
 				1A11841E2A88EF6500D2CAC9 /* Slider.swift in Sources */,

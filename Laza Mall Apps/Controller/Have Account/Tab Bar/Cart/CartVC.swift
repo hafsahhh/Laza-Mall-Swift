@@ -227,7 +227,6 @@ class CartVC: UIViewController{
         } onError: { errorMessage in
             print(errorMessage)
         }
-        postOrder()
     }
     
 }

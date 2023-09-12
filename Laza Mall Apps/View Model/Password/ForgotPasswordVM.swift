@@ -7,9 +7,13 @@
 
 import Foundation
 class ForgotPasswordViewModel  {
+    
+    // Closure untuk menampilkan pesan alert ketika gagal
     var failedApiAlertForgotPassword: ((String) -> Void)?
+    // Closure untuk menampilkan pesan alert ketika berhasil
     var succesAlerForgotPass: ((String) -> Void)?
     
+    // Fungsi untuk mengirim permintaan lupa kata sandi berdasarkan email
     func getPassEmail(email: String,
                       completion: @escaping (Result<Data?, Error>) -> Void)//closure atau blok kode yang dapat dilewatkan ke fungsi sebagai parameter
    {
@@ -20,13 +24,14 @@ class ForgotPasswordViewModel  {
            return
        }
        
-       
+       // Membuat permintaan HTTP
        var request = URLRequest(url: url)
        request.httpMethod = "POST"
        request.httpBody = ApiService.getHttpBodyRaw(param: [
            "email": email
        ])
        
+       // Melakukan permintaan HTTP dengan URLSession
        URLSession.shared.dataTask(with: request){
            (data, response, error) in
            if let error = error {
@@ -42,6 +47,7 @@ class ForgotPasswordViewModel  {
                   let description = jsonResponse["description"] as? String{
                    
                    DispatchQueue.main.async {
+                       // Menampilkan pesan alert ketika gagal
                        self.failedApiAlertForgotPassword?(description)
                    }
                }
@@ -53,6 +59,7 @@ class ForgotPasswordViewModel  {
               let message = jsonResponse["data"] as? [String: String],
               let successMessage = message["message"] {
                DispatchQueue.main.async {
+                   // Menampilkan pesan alert ketika berhasil
                    self.succesAlerForgotPass?(successMessage)
                }
            }

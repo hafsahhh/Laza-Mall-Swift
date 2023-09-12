@@ -70,14 +70,7 @@ class EditAddressVC: UIViewController {
         //back button
         let backBarBtn = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem  = backBarBtn
-        
-//        let isPrimary = switchPrimary
-//        if isPrimary == nil {
-//            editAddressSwitchView.isOn = false
-//        } else {
-//            editAddressSwitchView.isOn = true
-//        }
-//        print("Switch button: \(isPrimary)")
+
     }
     // MARK: - Func for edit address using API
     func editAddressApi() {
@@ -86,22 +79,25 @@ class EditAddressVC: UIViewController {
         let phone = phoneView.text ?? ""
         let address = addressView.text ?? ""
         let isSwitchOn = editAddressSwitchView.isOn
-
+        
+        // Memeriksa apakah ada alamat pengguna yang akan diedit
         guard let addressId = userAddress?.id else {
             print("userAddress is nil, cannot proceed with API call")
             return
         }
         
-        
+        // Memanggil fungsi di ViewModel untuk mengupdate alamat
         editAddressViewModel.updateAddress(idAddress: addressId, country: country, city: address, receiverName: name, phoneNumber: phone, isPrimary: isSwitchOn) { result in
             switch result {
             case .success :
                 print("sukses edit address")
+                // Panggil metode untuk berpindah kembali ke view controller sebelumnya
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                     ShowAlert.performAlertApi(on: self, title: "Notification", message: "Successfully Edit Address")
                 }
             case .failure(let error):
+                // Menampilkan pesan kesalahan jika terjadi kesalahan dalam pembaruan alamat
                 print("JSON edit address error: \(error)")
             }
         }

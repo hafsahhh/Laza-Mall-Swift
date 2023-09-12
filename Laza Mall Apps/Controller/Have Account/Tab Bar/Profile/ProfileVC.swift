@@ -104,19 +104,19 @@ class ProfileVC: UIViewController {
     
     
     // MARK: - Func get and display profile from keychain
-    func displayProfileUserByKeychain() {
+    func displayProfileUserByKeychain() { 
         //save data user into keychain
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
             guard let dataUser = KeychainManager.shared.getProfileFromKeychain(service: "UserProfileCoreData") else {return}
             
-            self.fullnameProfileView.text = dataUser.fullName
-            self.usernameProfileView.text = dataUser.username
-            self.emailProfileView.text = dataUser.email
-            self.linkImage = dataUser.image_url ?? ""
+            self?.fullnameProfileView.text = dataUser.fullName
+            self?.usernameProfileView.text = dataUser.username
+            self?.emailProfileView.text = dataUser.email
+            self?.linkImage = dataUser.image_url ?? ""
             let imgURl = URL(string: dataUser.image_url ?? "")
-            self.userImageView.sd_setImage(with: imgURl)
-            self.modelProfile = dataUser
+            self?.userImageView.sd_setImage(with: imgURl)
+            self?.modelProfile = dataUser
         }
         
     }

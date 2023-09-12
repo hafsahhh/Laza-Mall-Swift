@@ -43,12 +43,14 @@ class AddressVC: UIViewController {
     }
     // MARK: - Func for add new user using API
     func addNewAddressApi() {
+        // Mengambil nilai input dari pengguna
         let name = nameView.text ?? ""
         let country = countryView.text ?? ""
         let city = cityView.text ?? ""
         let phone = phoneNumberView.text ?? ""
         let isSwitchOn = savePrimaryAddressView.isOn
         
+        // Memanggil fungsi di ViewModel untuk menambahkan alamat pengguna
         addressViewModel.addAddressUser(country: country, city: city, receiverName: name, phoneNumber: phone, isPrimary: isSwitchOn ){ result in
             switch result {
             case .success(let json):
@@ -59,6 +61,7 @@ class AddressVC: UIViewController {
                 }
                 print("Response JSON New Address User: \(String(describing: json))")
             case .failure(let error):
+                // Mengatur penanganan kesalahan API melalui ViewModel dan menampilkan pesan kesalahan
                 self.addressViewModel.apiAddress = { status, description in
                     DispatchQueue.main.async {
                         ShowAlert.performAlertApi(on: self, title: status, message: description)

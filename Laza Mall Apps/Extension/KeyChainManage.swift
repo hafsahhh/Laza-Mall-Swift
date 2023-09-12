@@ -21,33 +21,53 @@ class KeychainManager {
     }
     
     func saveAccessToken(token: String) {
+        // Mengkonversi token menjadi data yang dapat disimpan di Keychain
         let data = Data(token.utf8)
+        
+        // Menyiapkan query untuk operasi penambahan data ke Keychain
         let queary = [
+            // Nama layanan (service) yang digunakan untuk identifikasi data
             kSecAttrService: "access-token",
+            // Nama akun yang digunakan untuk identifikasi data
             kSecAttrAccount: "laza-account",
+            // Jenis data yang akan disimpan (generic password)
             kSecClass: kSecClassGenericPassword,
+            // Data yang akan disimpan
             kSecValueData: data
         ] as [CFString : Any]
+        
+        // Menyimpan data ke Keychain
         let status = SecItemAdd(queary as CFDictionary, nil)
         
+        // Menyiapkan query untuk operasi pembaruan data di Keychain
         let quearyUpdate = [
+            // Nama layanan (service) yang digunakan untuk identifikasi data
             kSecAttrService: "access-token",
+            // Nama akun yang digunakan untuk identifikasi data
             kSecAttrAccount: "laza-account",
+            // Jenis data yang akan diperbarui (generic password)
             kSecClass: kSecClassGenericPassword,
         ] as [CFString : Any]
+        
+        // Memperbarui data di Keychain dengan data yang baru
         let updateStatus = SecItemUpdate(quearyUpdate as CFDictionary, [kSecValueData: data] as CFDictionary)
+        
+        // Memeriksa status dari operasi penambahan dan pembaruan data
         if updateStatus == errSecSuccess {
             print("Update, \(status)")
         }
+        // Jika penambahan sukses, mencetak pesan berikut
         else if status == errSecSuccess {
             print("User saved successfully in the keychain")
         } else {
+            // Jika terjadi kesalahan dalam penambahan atau pembaruan data, mencetak pesan kesalahan
             print("Something went wrong trying to save the user in the keychain")
         }
         
     }
     
     func getAccessToken() -> String? {
+        // Membuat query untuk mengambil data token dari Keychain
         let queary = [
             kSecAttrService: "access-token",
             kSecAttrAccount: "laza-account",
@@ -56,18 +76,23 @@ class KeychainManager {
         ] as [CFString : Any]
         
         var ref: CFTypeRef?
+        // Melakukan pencocokan dan pengambilan data dari Keychain
         let status = SecItemCopyMatching(queary as CFDictionary, &ref)
+        // Jika pengambilan data sukses, mencetak pesan berhasil
         if status == errSecSuccess{
             print("berhasil keychain profile")
         } else {
+            // Jika terjadi kesalahan dalam pengambilan data, mencetak pesan kesalahan
             print("gagal, status: \(status)")
             return nil
         }
         let data = ref as! Data
+        // Mengkonversi data yang diambil menjadi String
         return String(decoding: data, as: UTF8.self)
     }
     
     func deleteAccessToken() {
+        // Membuat query untuk menghapus data token dari Keychain
         let queary = [
             kSecAttrService: "access-token",
             kSecAttrAccount: "laza-account",
@@ -75,9 +100,12 @@ class KeychainManager {
             kSecValueData: true
         ] as [CFString : Any]
         
+        // Melakukan operasi penghapusan data dari Keychain
         if SecItemDelete(queary as CFDictionary) == errSecSuccess {
+            // Jika penghapusan sukses, mencetak pesan berhasil
             print("Deleted from keychain")
         } else {
+            // Jika terjadi kesalahan dalam penghapusan data, mencetak pesan kesalahan
             print("Delete from keychain failed")
         }
         

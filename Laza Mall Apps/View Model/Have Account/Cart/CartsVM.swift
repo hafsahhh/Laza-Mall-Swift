@@ -44,7 +44,7 @@ class CartsViewModel{
                     completion(.failure(ErrorInfo.Error))
                     return
                 }
-                //print("Kode status respons: \(httpResponse.statusCode)")
+                print("Kode status respons: \(httpResponse.statusCode)")
                 
                 // Mendekode JSON respons menjadi model CartResponse
                 let productList = try JSONDecoder().decode(CartResponse.self, from: data)

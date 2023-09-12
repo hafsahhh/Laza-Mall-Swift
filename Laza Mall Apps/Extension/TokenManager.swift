@@ -13,9 +13,9 @@ class ApiRefreshToken {
     let token = KeychainManager.shared.getAccessToken()
     let refToken = KeychainManager.shared.getRefreshToken()
     
-    
+    // Fungsi untuk melakukan refresh token secara asynchronous
     static func refreshToken(refreshTokenKey: String) async -> Bool {
-        // Construct the URL
+        // Membuat URL untuk permintaan
         guard let url = URL(string: Endpoints.Gets.refreshToken.url) else {
             return false
         }
@@ -25,7 +25,7 @@ class ApiRefreshToken {
         request.httpMethod = "GET"
         request.setValue("Bearer \(refreshTokenKey)", forHTTPHeaderField: "X-Auth-Refresh")
         
-        // Perform the network request asynchronously
+        // Melakukan permintaan jaringan secara asynchronous
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             guard let httpResponse = response as? HTTPURLResponse else { return false }
@@ -52,6 +52,7 @@ class ApiRefreshToken {
     }
     
 
+    // Fungsi untuk memeriksa apakah perlu melakukan refresh token atau tidak
     func refreshTokenIfNeeded(completion: @escaping () -> Void, onError: ((String) -> Void)?) {
         guard let refreshToken = KeychainManager.shared.getRefreshToken() else {
             print("kosong") // Cetak pesan "kosong" jika refreshToken tidak tersedia
@@ -72,6 +73,7 @@ class ApiRefreshToken {
 
 }
 
+// Enum yang mendefinisikan beberapa kasus error yang mungkin terjadi
 enum APIServiceError: Error {
     case accessTokenNotFound
     case invalidURL

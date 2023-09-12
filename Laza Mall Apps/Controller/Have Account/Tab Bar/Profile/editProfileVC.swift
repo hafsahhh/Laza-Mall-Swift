@@ -91,16 +91,19 @@ class editProfileVC: UIViewController {
         
     }
     
+    // MARK: - Fungsi untuk memperbarui profil pengguna
     func updateProfileUser(){
         let fullname = editNameTf.text ?? ""
         let username = editUsernameTf.text ?? ""
         let email = editEmailTf.text ?? ""
+        // Menggunakan media (gambar) yang telah dipilih jika ada
         if let image = editImageView.image {
             media = Media(withImage: image, forKey: "image")
         }
         
         if username != "" && fullname != "" && email != "" {
             editProfileViewModel.updateProfile(fullName: fullname, username: username, email: email, media: media) { update in
+                // Membuat objek DataUserProfile baru dengan data yang diperbarui
                 let newProfile = DataUseProfile(
                     id: update.data.id,
                     fullName: update.data.fullName,
@@ -110,17 +113,21 @@ class editProfileVC: UIViewController {
                     isVerified: update.data.isVerified,
                     createdAt: update.data.createdAt,
                     updatedAt: update.data.updatedAt)
+                
+                // Menyimpan data profil yang diperbarui ke Keychain
                 KeychainManager.shared.addProfileToKeychain(profile: newProfile, service: "UserProfileCoreData")
                 DispatchQueue.main.async {
                     ShowAlert.performAlertApi(on: self, title: "Profile Notification", message: "Successfully Update Your Profile ")
                     self.navigationController?.popViewController(animated: true)
                 }
                 
+                // Menampilkan pesan kesalahan jika terjadi kesalahan saat memperbarui profil
             } onError: { error in
                 ShowAlert.performAlertApi(on: self, title: "Warning!", message: "Error")
             }
         }
         else {
+            // Menampilkan pesan kesalahan jika ada kolom yang belum diis
             DispatchQueue.main.async {
                 ShowAlert.performAlertApi(on: self, title: "Warning!", message: "Please filled all the form")
             }

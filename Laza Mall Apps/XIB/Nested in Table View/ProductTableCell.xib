@@ -42,7 +42,7 @@
                             <action selector="viewAllBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="arM-OL-5As"/>
                         </connections>
                     </button>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rem-Jd-r0O" customClass="DynamicHeightCollectionView" customModule="Laza_Mall_Apps" customModuleProvider="target">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rem-Jd-r0O" customClass="DynamicHeightCollectionView" customModule="Laza_Mall_Apps" customModuleProvider="target">
                         <rect key="frame" x="20" y="60" width="280" height="58"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LdH-MF-eWx">

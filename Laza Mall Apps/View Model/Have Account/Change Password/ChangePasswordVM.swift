@@ -8,8 +8,10 @@
 import Foundation
 class ChangePasswordViewModel  {
     
+    // Closure untuk menampilkan pesan alert
     var alertChangePassword: ((String) -> Void)?
     
+    // Fungsi untuk mengganti password
     func getPassEmail(oldPassword: String, newPassword:String, confirmNewPassword:String,
                       completion: @escaping (Result<Data?, Error>) -> Void)//closure atau blok kode yang dapat dilewatkan ke fungsi sebagai parameter
    {
@@ -20,8 +22,10 @@ class ChangePasswordViewModel  {
            return
        }
        
+       // Mendapatkan token akses dari Keychain
        guard let accesToken = KeychainManager.shared.getAccessToken() else { return }
        
+       // Membuat permintaan HTTP
        var request = URLRequest(url: url)
        request.setValue("Bearer \(accesToken)", forHTTPHeaderField: "X-Auth-Token")
        request.httpMethod = "PUT"
@@ -31,6 +35,7 @@ class ChangePasswordViewModel  {
            "re_password" : confirmNewPassword
        ])
        
+       // Melakukan permintaan HTTP dengan URLSession
        URLSession.shared.dataTask(with: request){
            (data, response, error) in
            if let error = error {

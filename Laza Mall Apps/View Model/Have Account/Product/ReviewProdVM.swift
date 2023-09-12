@@ -17,7 +17,7 @@ class ReviewViewModel {
             
             do {
                 guard let httpResponse = response as? HTTPURLResponse else { return }
-//                print("Status code review: \(httpResponse.statusCode)")
+                print("Status code review: \(httpResponse.statusCode)")
 //                print("Serisllized data")
                 let serializedJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
                 print(serializedJson)
